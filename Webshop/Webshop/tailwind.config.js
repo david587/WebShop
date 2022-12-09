@@ -5,6 +5,7 @@ module.exports = {
   ],
   theme: {
     colors: {
+      'lightGray': "#999999",
       'deepForest': '#243c5a',
       'neon': '#E33926',
       'white': '#ffff',

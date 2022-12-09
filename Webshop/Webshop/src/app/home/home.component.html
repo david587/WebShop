@@ -7,33 +7,36 @@
                 <button class=" py-1 px-5 border-2 border-neon bg-neon rounded-full text-white font-light ml-4">Show All</button>
             </div>
         </div>
-        <div class="flex-1">
-            <img class="w-[30px]" src="../img/homeheadset.jpg" alt="Headset">
+        <div>
+            <img [src]="path" [alt]="alt">
+            
         </div>
+            
+        
     </div>
 </div>
 
 <div class="bg-gradient-to-b from-deepForest-800 to-deepForest-900">
     <h1 class="text-center text-4xl font-medium text-white">Featured Proucts</h1>
-    <div class="grid gap-2 grid-cols-4 text-black m-20 text-center font-medium">
-        <div class="bg-lightGreen">
-            <img src="" alt="">
+    <div class="grid gap-2 grid-cols-4 m-20 text-center font-medium">
+        <div class="bg-lightGray">
+            <img [src]="path1" [alt]="alt1">
             <p>Series-x Controller</p>
             <p>$65.00</p>
         </div>
-            <div class="bg-lightGreen">
-                <img src="" alt="">
-                <p>Hyper-x Headset</p>
+        <div class="bg-lightGray pt-20">
+                <img [src]="path2" [alt]="alt2">
+                <p class="mt-20">Hyper-x Headset</p>
                 <p>$60.00</p>
         </div>
-            <div class="bg-lightGreen">
-                <img src="" alt="">
+            <div class="bg-lightGray">
+                <img [src]="path3" [alt]="alt3">
                 <p>Logitech G-Pro</p>
                 <p>$35.00</p>
         </div>
-            <div class="bg-lightGreen">
-            <img src="" alt="">
-            <p>Logitech G502</p>
+            <div class="bg-lightGray pt-20">
+            <img [src]="path4" [alt]="alt4">
+            <p class="mt-8">Logitech G502</p>
             <p>$45.00</p>
         </div>
 
