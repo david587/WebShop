@@ -16,3 +16,11 @@
     0 0 40px #E33926,
     0 0 0 #E33926;
   }
+  .gomb{
+    text-shadow:
+    0 0 6px #ffff,
+    0 0 6px #ffff,
+    0 0 7px #ffff,
+    0 0 20px #ffff,
+    0 0 0 #ffff;
+  }
