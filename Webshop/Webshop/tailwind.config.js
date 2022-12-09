@@ -7,6 +7,7 @@ module.exports = {
     colors: {
       'lightGray': "#999999",
       'deepForest': '#243c5a',
+      'gray':'#9B9B93',
       'neon': '#E33926',
       'white': '#ffff',
       'deepForest': {

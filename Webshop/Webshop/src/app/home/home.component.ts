@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+
   path: string = '../assets/img/homeheadset.png';
   alt: string = 'headset';
 
@@ -21,14 +22,5 @@ export class HomeComponent {
   path4: string = '../assets/img/LogitechG502.png';
   alt4: string = 'LogitechG502';
 
-
-  
-
-
-
-
-  // path: string = '../assets/img/homeheadset.png';
-  // path: string = '../assets/img/homeheadset.png';
-  // path: string = '../assets/img/homeheadset.png';
 
 }
