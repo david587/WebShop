@@ -53,7 +53,7 @@ create table mousepads (
     compatibility_id integer,
     foreign key (compatibility_id) references compatibilities (compatibilities_id)
 );
-create table headstes (
+create table headsets (
     headsets_id int not null primary key auto_increment,
     name varchar(30),
     brand varchar(30),
@@ -65,14 +65,21 @@ create table headstes (
 );
 create table categories (
     categories_id int not null primary key auto_increment,
-    keyboard_id integer,
-    mouse_id integer,
-    mousepad_id integer,
-    headset_id integer,
+    keyboard_id int,
+    mouse_id int,
+    mousepad_id int,
+    headset_id int,
     foreign key (keyboard_id) references keyboards (keyboards_id),
     foreign key (mouse_id) references mouses (mouses_id),
     foreign key (mousepad_id) references mousepads (mousepads_id),
     foreign key (headset_id) references headsets (headsets_id)
+);
+create table users (
+    users_id int not null primary key auto_increment,
+    email varchar(30),
+    password varchar(50),
+    confirm_password varchar(50),
+    timestamps date
 );
 create table carts (
     carts_id int not null primary key auto_increment,
@@ -81,13 +88,6 @@ create table carts (
     user_id integer,
     foreign key (categorie_id) references categories (categories_id),
     foreign key (user_id) references users (users_id)
-);
-create table users (
-    users_id int not null primary key auto_increment,
-    email varchar(30),
-    password varchar(50),
-    confirm_password varchar(50),
-    timestamps date
 );
 create table buyers (
     buyers_id int not null primary key auto_increment,
