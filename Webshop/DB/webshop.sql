@@ -14,23 +14,13 @@ on webshop.*
 to webshop@localhost
 identified by "Almafa12;";
 
-create table compatibilities (
-    compatibilities_id int not null primary key auto_increment,
-    pc boolean,
-    ps boolean,
-    nintendo_switch boolean,
-    xbox boolean
-);
-
 create table keyboards (
     keyboards_id int not null primary key auto_increment,
     name varchar(30),
     brand varchar(30),
     price int,
     details varchar(200),
-    img longblob,
-    compatibility_id integer,
-    foreign key (compatibility_id) references compatibilities (compatibilities_id)
+    img longblob
 );
 
 create table mouses (
@@ -39,9 +29,7 @@ create table mouses (
     brand varchar(30),
     price int,
     details varchar(200),
-    img longblob,
-    compatibility_id integer,
-    foreign key (compatibility_id) references compatibilities (compatibilities_id)
+    img longblob
 );
 create table mousepads (
     mousepads_id int not null primary key auto_increment,
@@ -49,9 +37,7 @@ create table mousepads (
     brand varchar(30),
     price int,
     details varchar(200),
-    img longblob,
-    compatibility_id integer,
-    foreign key (compatibility_id) references compatibilities (compatibilities_id)
+    img longblob
 );
 create table headsets (
     headsets_id int not null primary key auto_increment,
@@ -59,9 +45,23 @@ create table headsets (
     brand varchar(30),
     price int,
     details varchar(200),
-    img longblob,
-    compatibility_id integer,
-    foreign key (compatibility_id) references compatibilities (compatibilities_id)
+    img longblob
+);
+
+create table compatibilities (
+    compatibilities_id int not null primary key auto_increment,
+    pc boolean,
+    ps boolean,
+    nintendo_switch boolean,
+    xbox boolean,
+    keyboard_id integer,
+    mouse_id integer,
+    mousepad_id integer,
+    headset_id integer,
+    foreign key(keyboard_id) references keyboards (keyboards_id),
+    foreign key(mouse_id) references mouses (mouses_id),
+    foreign key(mousepad_id) references mousepads (mousepads_id),
+    foreign key(headset_id) references headsets (headsets_id)
 );
 create table categories (
     categories_id int not null primary key auto_increment,
