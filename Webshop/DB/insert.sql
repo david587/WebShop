@@ -67,3 +67,76 @@ values
     (select carts_id from carts where user_id = 1),
     (select buyers_id from buyers where user_id = 1)
 );
+
+
+
+-----Második adat------
+insert into keyboards (name, brand, price, details, img) 
+values ("Air60", "Nuphy", 42154, "new", LOAD_FILE('./img'));
+
+insert into mouses (name, brand, price, details, img) 
+values ("lightweight", "Logitech", 13300, "new", LOAD_FILE('./img'));
+
+insert into mousepads (name, brand, price, details, img) 
+values ("led mousepad", "Logitech", 13400, "new", LOAD_FILE('./img'));
+
+insert into headsets (name, brand, price, details, img) 
+values ("new word", "Xbox", 17430, "new", LOAD_FILE('./img'));
+
+
+insert into compatibilities(pc, ps, nintendo_switch, xbox, keyboard_id,mouse_id,mousepad_id,headset_id )
+values (
+    false, false, true, false,
+(select keyboards_id from keyboards where keyboards.name = "Air60"),
+(select mouses_id from mouses where mouses.name = "lightweight"),
+(select mousepads_id from mousepads where mousepads.name = "led mousepad"),
+(select headsets_id from headsets where headsets.name = "new word")
+);
+
+insert into categories (keyboard_id,mouse_id,headset_id,mousepad_id)
+values
+(
+    (select keyboards_id from keyboards where keyboards.name = "Air60"),
+    (select mouses_id from mouses where mouses.name ="lightweight"),
+    (select mousepads_id from mousepads where mousepads.name="led mousepad"),
+    (select headsets_id from headsets where headsets.name = "new word")
+);
+
+
+INSERT INTO users (email, password, confirm_password, timestamps)
+values
+(
+    "zoli@gmail.com","12345","12345","2010-08-04"
+);
+
+
+INSERT INTO carts (quantity,categorie_id,user_id)
+values
+(
+    2,
+    (select keyboards_id from keyboards where keyboards.name ="Air60"),
+    (select users_id from users where users.email = "zoli@gmail.com")
+);
+
+
+INSERT into buyers (name,email,address,phone,card,user_id)
+values
+(
+    "zoli","zoli@gmail.com","Budapest","063435621",233334661,
+    (select users_id from users where users.email = "zoli@gmail.com")
+);
+
+
+INSERT INTO purcases (timestamps,productName,productBrand,productPrice,buyerName,buyerEmail,buyerAddress,cart_id,buyer_id)
+values
+(
+    "2022-08-04",
+    (select name from keyboards where keyboards.name = "Air60"),
+    (select brand from keyboards where keyboards.name = "Air60"),
+    (select price from keyboards where keyboards.name = "Air60"),
+    (select name from buyers where buyers.name = "zoli"),
+    (select email from buyers where buyers.name = "zoli"),
+    (select address from buyers where buyers.name = "zoli"),
+    (select carts_id from carts where user_id = 2),
+    (select buyers_id from buyers where user_id = 2)
+);
