@@ -51,3 +51,13 @@ values
     "david@gmail.com","1234","1234","2022-08-04"
 );
 
+--carts table
+INSERT INTO carts (quantity,categorie_id,user_id)
+values
+(
+    2,
+    (select keyboards_id from keyboards where keyboards.name ="Redragon"),
+    (select users_id from users where users.email = "david@gmail.com")
+);
+
+INSERT in
