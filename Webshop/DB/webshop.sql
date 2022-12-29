@@ -104,6 +104,12 @@ create table purcases (
     timestamps date,
     cart_id integer,
     buyer_id integer,
+    productName varchar(30),
+    productPrice integer,
+    productBrand varchar(20),
+    buyerName varchar(20),
+    buyerEmail varchar(30),
+    buyerAddress varchar(40)
     foreign key (cart_id) references carts (carts_id),
     foreign key (buyer_id) references buyers (buyers_id)
 );

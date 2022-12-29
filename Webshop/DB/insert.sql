@@ -60,4 +60,24 @@ values
     (select users_id from users where users.email = "david@gmail.com")
 );
 
-INSERT in
+--buyer datas
+INSERT into buyers (name,email,address,phone,card,user_id)
+values
+(
+    "david","david@gmail.com","Esztergom","063212321",231231231,
+    (select users_id from users where users.email = "david@gmail.com")
+);
+
+--purcases
+INSERT INTO purcases (productName,productBrand,productPrice,buyerName,buyerEmail,buyerAddress,cart_id,buyer_id,timestamps)
+values
+(
+    (select name from keyboards where keyboards.name = "Redragon"),
+    (select brand from keyboards where keyboards.name = "Redragon"),
+    (select price from keyboards where keyboards.name = "Redragon"),
+    (select name from buyers where buyers.name = "david"),
+    (select email from buyers where buyers.name = "david"),
+    (select address from buyers where buyers.name = "david"),
+    (select carts_id from carts where user_id = 1),
+    (select buyers_id from buyers where user_id = 1)
+);
