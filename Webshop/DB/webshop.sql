@@ -109,7 +109,7 @@ create table purcases (
     productBrand varchar(20),
     buyerName varchar(20),
     buyerEmail varchar(30),
-    buyerAddress varchar(40)
+    buyerAddress varchar(40),
     foreign key (cart_id) references carts (carts_id),
     foreign key (buyer_id) references buyers (buyers_id)
 );

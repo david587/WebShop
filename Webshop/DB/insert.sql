@@ -69,9 +69,10 @@ values
 );
 
 --purcases
-INSERT INTO purcases (productName,productBrand,productPrice,buyerName,buyerEmail,buyerAddress,cart_id,buyer_id,timestamps)
+INSERT INTO purcases (timestamps,productName,productBrand,productPrice,buyerName,buyerEmail,buyerAddress,cart_id,buyer_id)
 values
 (
+    "2022-08-04",
     (select name from keyboards where keyboards.name = "Redragon"),
     (select brand from keyboards where keyboards.name = "Redragon"),
     (select price from keyboards where keyboards.name = "Redragon"),
