@@ -1,5 +1,5 @@
 insert into keyboards (name, brand, price, details, img) 
-values ("Razer", "Gipr", 1554, "new", LOAD_FILE('./img'));
+values ("Redragon", "Gipr", 1554, "new", LOAD_FILE('./img'));
 
 
 insert into compatibilities(pc, ps, nintendo_switch, xbox, keyboard_id )
@@ -33,3 +33,21 @@ insert into compatibilities(pc, ps, nintendo_switch, xbox, mouse_id )
 values (true, true, true, false,
 (select headsets_id from headsets where headsets.name = "stringer")
 );
+
+--insert into categories
+insert into categories (keyboard_id,mouse_id,headset_id,mousepad_id)
+values
+(
+    (select keyboards_id from keyboards where keyboards.name = "Redragon"),
+    (select mouses_id from mouses where mouses.name ="g20"),
+    (select mousepads_id from mousepads where mousepads.name="g20 mousepad"),
+    (select headsets_id from headsets where headsets.name = "stringer")
+);
+
+--users table
+INSERT INTO users (email, password, confirm_password, timestamps)
+values
+(
+    "david@gmail.com","1234","1234","2022-08-04"
+);
+
