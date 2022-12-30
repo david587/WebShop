@@ -11,6 +11,8 @@ module.exports = {
       colors: {
         'lightGreen': '#EBEBEB',
         'deepForest': '#243c5a',
+        'gray': '#EEEEEE',
+        'neon':'#E33926',
         'deepForest': {
           100: '#cffafe',
           200: '#a5f3fc',
