@@ -20,9 +20,9 @@
     </div>
 </div>
 
-<div class="bg-gradient-to-b from-deepForest-800 to-deepForest-900 pt-[50px]">
-    <h1 class="text-center text-4xl font-medium text-white">Featured Proucts</h1>
-    <div class="grid gap-2 md:grid-cols-4 grid-cols-2 m-20 text-center font-medium">
+<div class="bg-gradient-to-b from-deepForest-800 to-deepForest-900 pt-[50px] py-20">
+    <!-- <h1 class="text-center text-4xl font-medium text-white">Featured Proucts</h1>
+    <div class="grid gap-2 md:grid-cols-4 grid-cols-2 mx-20 mt-10 text-center font-medium">
         <div class="bg-lightGray">
             <img [src]="path1" [alt]="alt1">
             <p>Series-x Controller</p>
@@ -48,44 +48,47 @@
                 <p>$60.00</p>
             </div>
     </div>
-</div>
+</div> -->
+<!-- color cards -->
+
 </div>
 
 <!-- Most popular -->
 <div class="bg-gradient-to-b from-deepForest-900 to-black">
-    <div class="flex flex-row text-white gap-4 py-5">
-        <div class="w-2/6 text-center">
-            <p class="text-2xl font-medium">Most popular</p>
+    <p class="text-2xl font-medium  text-center text-white block md:hidden">Most popular</p>
+    <div class="flex flex-row text-white justify-center md:gap-4 sm:gap-3 py-5">
+        <div class="w-2/6 text-center hidden md:block">
+            <p class="text-2xl font-medium hidden md:block text-center">Most popular</p>
         </div>
-        <div class="py-2 px-5 border-2 border-white rounded-full text-center">
+        <div class="md:flex-1 py-2 px-3 border-2 border-white rounded-full text-center">
             <p class="">All</p>
         </div>
-        <div class="flex-1 py-2 border-2 border-white rounded-full text-center">
+        <div class="md:flex-1 py-2 px-3 border-2 border-white rounded-full text-center">
             <p class="">Logitech</p>
         </div>
-        <div class="flex-1 py-2 border-2 border-white rounded-full text-center">
+        <div class="md:flex-1 py-2 px-3 border-2 border-white rounded-full text-center">
             <p class="">Redragon</p>
         </div>
-        <div class="flex-1 py-2  border-2 border-white rounded-full text-center">
+        <div class="md:flex-1 py-2  px-3 border-2 border-white rounded-full text-center">
             <p class="">Urage</p>
         </div>
-        <div class="flex-1">
+        <div class="hidden md:block md:flex-1">
         </div>
 
     </div>
 <!-- grid -->
-<div class="grid grid-cols-4 gap-4 mx-20 pt-5">
+<div class="grid md:grid-cols-4 grid-cols-2 gap-4 md:mx-[100px] lg:mx-[250px] pt-5 pb-[80px]">
     <div>
         <div class="bg-gray">
             <img src={{path}} alt="">
             <p class="text-md font-semibold text-center pb-4">Theory Headset</p>
         </div>
         <div class="flex flex-row">
-            <div class="w-4/6">
+            <div class="md:w-4/6">
                 <button class="text-white p-2 bg-black">Add to cart</button>
             </div>
             <div class="flex-1">
-                <p class="text-white bg-neon p-2">$60.00</p>
+                <p class="text-white bg-neon p-2 text-center">$60.00</p>
             </div>
         </div> 
     </div> 
@@ -100,7 +103,7 @@
                 <button class="text-white p-2 bg-black">Add to cart</button>
             </div>
             <div class="flex-1">
-                <p class="text-white bg-neon p-2">$60.00</p>
+                <p class="text-white bg-neon p-2 text-center">$60.00</p>
             </div>
         </div> 
     </div>
@@ -115,7 +118,7 @@
                 <button class="text-white p-2 bg-black">Add to cart</button>
             </div>
             <div class="flex-1">
-                <p class="text-white bg-neon p-2">$60.00</p>
+                <p class="text-white bg-neon p-2 text-center">$60.00</p>
             </div>
         </div> 
     </div>  
@@ -130,12 +133,29 @@
                 <button class="text-white p-2 bg-black">Add to cart</button>
             </div>
             <div class="flex-1">
-                <p class="text-white bg-neon p-2">$60.00</p>
+                <p class="text-white bg-neon p-2 text-center">$60.00</p>
             </div>
         </div> 
     </div>  
 
 </div>
 </div>
+
+<!-- Subscribe -->
+<div class="bg-neon md:h-[110px] pb-5">
+    <p class="block md:hidden text-2xl font-normal text-center">Newsletter Subscribe</p>
+    <div class="flex flex-row justify-center items-center">
+        <div class="hidden md:block flex-1"></div>
+        <div>
+            <p class="hidden md:block text-2xl font-semibold md:mt-[20%]">Newsletter Subscribe</p>
+        </div>
+        <div class="md:ml-5">
+            <input type="text" class="py-1 px-5 rounded-l-full md:mt-12 mt-5">
+            <button class="bg-black border-2 border-black py-1 px-3 text-white text-center rounded-r-full">Submit</button>
+        </div>
+        <div class="hidden md:block flex-1"></div>
+    </div>
+</div>
+
 
 
