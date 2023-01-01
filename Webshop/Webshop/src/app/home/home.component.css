@@ -24,3 +24,13 @@
     0 0 20px #ffff,
     0 0 0 #ffff;
   }
+
+  .borderGlow{
+    box-shadow: 
+    0 0 6px #ffff,
+    0 0 6px #ffff,
+    0 0 7px #ffff,
+    0 0 8px #ffff,
+    0 0 7px #ffff;
+    ;
+  }
