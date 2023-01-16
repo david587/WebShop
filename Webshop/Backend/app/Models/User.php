@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use app\Models\Order;
+use app\Models\cartItem;
 
 class User extends Authenticatable
 {
@@ -20,8 +22,21 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        "address",
+        "phone",
+        "card_number",
         'password',
     ];
+
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function cartItem()
+    {
+        return $this->hasMany(cartItem::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
