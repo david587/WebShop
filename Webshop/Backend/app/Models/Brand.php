@@ -10,10 +10,10 @@ class Brand extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "Redragon",
-        "Hp",
-        "Logitech",
-        "Urage"
+        "redragon",
+        "hp",
+        "logitech",
+        "urage"
     ];
 
     public function product()

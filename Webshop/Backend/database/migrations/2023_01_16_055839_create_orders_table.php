@@ -20,8 +20,8 @@ class CreateOrdersTable extends Migration
             $table->integer("total");
             $table->string("paymentMethod")->nullable();
             $table->timestamps();
-            $table->foreignId("product_id");
-            $table->foreignId("user_id");
+            $table->foreignId("product_id")->onDelete('cascade');
+            $table->foreignId("user_id")->onDelete('cascade');
         });
     }
 

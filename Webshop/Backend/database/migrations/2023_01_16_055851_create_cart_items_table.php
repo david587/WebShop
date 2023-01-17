@@ -20,8 +20,8 @@ class CreateCartItemsTable extends Migration
             $table->integer("quantity");
             $table->integer("itemCost");
             $table->integer("totalCost");
-            $table->foreignId("product_id");
-            $table->foreignId("user_id");
+            $table->foreignId("product_id")->onDelete('cascade');;
+            $table->foreignId("user_id")->onDelete('cascade');;
             $table->timestamps();
         });
     }

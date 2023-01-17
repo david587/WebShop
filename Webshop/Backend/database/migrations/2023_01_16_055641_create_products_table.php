@@ -19,8 +19,8 @@ class CreateProductsTable extends Migration
             $table->integer("price");
             $table->string("details");
             $table->string("path");
-            $table->foreignId("brand_id");
-            $table->foreignId("categorie_id");
+            $table->foreignId("brand_id")->onDelete('cascade');
+            $table->foreignId("categorie_id")->onDelete('cascade');
             $table->timestamps();
         });
     }
