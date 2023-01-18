@@ -1,26 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Validator;
-
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\BaseController as BaseController;
 
 class AuthController extends BaseController
 {
     public function signIn(Request $request)
     {
-        if(Auth::attempt(["email"=>$request->email,
-                          "password"=>$request->password])){
+        if(Auth::attempt(["email"=> $request->email,"password"=>$request->password])){
             $authUser = Auth::user();
-            $success["token"] = $authUser->createToken("MyAuthApp")->accessToken;
+            $success["token"] = $authUser->createToken("MyAuthApp")->plainTextToken;
             $success["name"] = $authUser->name;
-
-            return $this->sendResponse($success,"Sikeres bejelentkezés");
+            return $this->sendResponse($success,"Sikeres Bejelentkezés");
         }
         else{
-            return $this->sendError(["error"=> "Unathorized. Hibás adatok" ]);
+            return $this->sendError("unathorized.".["error"=> "Hibás Adatok"]);
         }
     }
 
