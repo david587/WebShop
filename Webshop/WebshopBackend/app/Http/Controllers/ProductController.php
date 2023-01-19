@@ -18,13 +18,11 @@ class ProductController extends BaseController
 
     public function store(Request $request)
     {
-       //folytatás
+        // if( $validator->fails()){
+        //     return $this->sendError( $validator->errors());
+        // }
 
-        if( $validator->fails()){
-            return $this->sendError( $validator->errors());
-        }
-
-        $product = Product::create($input);
-        return $this->sendResponse(new ProductResources($product), "Post Létrejött");
+        // $product = Product::create($input);
+        // return $this->sendResponse(new ProductResources($product), "Post Létrejött");
     }
 }

@@ -11,14 +11,12 @@ class Categorie extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "keyboard",
-        "mouse",
-        "headset",
-        "monitor"
+       "categorie"
       ];
-  
+      public $timestamps = false;
+      
       public function product()
       {
-        return $this->hasOne(Product::class);
+        return $this->hasMany(Product::class);
       }
 }

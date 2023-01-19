@@ -10,14 +10,12 @@ class Brand extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "redragon",
-        "hp",
-        "logitech",
-        "urage"
+        "brand",
     ];
+    public $timestamps = false;
 
     public function product()
     {
-      return $this->hasOne(Product::class);
+      return $this->hasMany(Product::class);
     }
 }

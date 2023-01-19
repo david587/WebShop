@@ -15,11 +15,7 @@ return new class extends Migration
     {
         Schema::create('brands', function (Blueprint $table) {
             $table->id("brands_id");
-            $table->boolean("redragon");
-            $table->boolean("hp");
-            $table->boolean("logitech");
-            $table->boolean("urage");
-            $table->timestamps();
+            $table->string("brand");
         });
     }
 
