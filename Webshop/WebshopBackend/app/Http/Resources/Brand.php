@@ -16,10 +16,7 @@ class Brand extends JsonResource
     {
         return [
             "brands_id" => $this->brands_id,
-            "redragon" => $this->redragon,
-            "hp"=> $this->hp,
-            "logitech"=>$this->logitech,
-            "urage"=>$this->urage
+            "brand"=> $this->brand
         ];
     }
 }

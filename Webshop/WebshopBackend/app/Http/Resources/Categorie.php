@@ -16,10 +16,7 @@ class Categorie extends JsonResource
     {
         return [
             "categories_id" => $this->categories_id,
-            "keyboard" => $this->keyboard,
-            "mouse"=> $this->mouse,
-            "headset"=>$this->headset,
-            "monitor"=>$this->monitor
+            "categorie"=> $this->categorie
         ];
     }
 }
