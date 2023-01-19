@@ -24,4 +24,5 @@ Route::post("/register", [AuthController::class, "signUp"]);
 Route::post("/login",[AuthController::class, "signIn"]);
 Route::post("/logOut", [AuthController::class, "signOut"]);
 
-Route::get("/index", [ProductController::class, "index"]);
+Route::get("/Products", [ProductController::class, "index"]);
+Route::post("/Products/Store", [ProductController::class, "store"]);

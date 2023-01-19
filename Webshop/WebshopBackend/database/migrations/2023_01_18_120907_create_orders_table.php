@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id("orders_id");
+            $table->id();
             $table->timestamps();
             $table->string("shippingAddress");
             $table->string("paymentMethod")->nullable();

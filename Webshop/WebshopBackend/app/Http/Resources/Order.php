@@ -16,8 +16,8 @@ class Order extends JsonResource
     {
         return [
             "orders_id" => $this->orders_id,
-            "product_id"=>$this->product->name,
-            "user_id" => $this->user->name,
+            "product_id"=>$this->name->name,
+            "user_id" => $this->name->name,
             "shippingAddress"=> $this->shippingAddress,
             "paymentMethod,"=>$this->paymentMethod,
            
