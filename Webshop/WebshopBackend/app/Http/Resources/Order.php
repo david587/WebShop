@@ -19,8 +19,9 @@ class Order extends JsonResource
             "orderDate" => $this->orderDate,
             "shippingAddress"=> $this->shippingAddress,
             "total"=>$this->total,
-            "paymentMethod,"=>$this->paymentMethod
-            
+            "paymentMethod,"=>$this->paymentMethod,
+            "product_id"=>$this->product_id,
+            "user_id" => $this->user_id
         ];
     }
 }

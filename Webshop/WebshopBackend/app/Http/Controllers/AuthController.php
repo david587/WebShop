@@ -43,4 +43,10 @@ class AuthController extends BaseController
 
         return $this->sendResponse($success, "Sikeres regisztráció");
     }
+
+    public function signOut(Request $request)
+    {
+        auth("sanctum")->user()->currentAccesToken()->delete();
+        return response()->json("Successfully logout");
+    }
 }
