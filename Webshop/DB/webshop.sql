@@ -16,35 +16,35 @@ identified by "Almafa12;";
 
 create table keyboards (
     keyboards_id int not null primary key auto_increment,
-    name varchar(30),
-    brand varchar(30),
+    name varchar(50),
+    brand varchar(50),
     price int,
-    details varchar(200),
+    details varchar(500),
     img longblob
 );
 
 create table mouses (
     mouses_id int not null primary key auto_increment,
-    name varchar(30),
-    brand varchar(30),
+    name varchar(50),
+    brand varchar(50),
     price int,
-    details varchar(200),
+    details varchar(500),
     img longblob
 );
 create table mousepads (
     mousepads_id int not null primary key auto_increment,
-    name varchar(30),
-    brand varchar(30),
+    name varchar(50),
+    brand varchar(50),
     price int,
-    details varchar(200),
+    details varchar(500),
     img longblob
 );
 create table headsets (
     headsets_id int not null primary key auto_increment,
-    name varchar(30),
-    brand varchar(30),
+    name varchar(50),
+    brand varchar(50),
     price int,
-    details varchar(200),
+    details varchar(500),
     img longblob
 );
 
@@ -52,7 +52,7 @@ create table compatibilities (
     compatibilities_id int not null primary key auto_increment,
     pc boolean,
     ps boolean,
-    nintendo_switch boolean,
+    PlayStation boolean,
     xbox boolean,
     keyboard_id integer,
     mouse_id integer,
@@ -76,7 +76,8 @@ create table categories (
 );
 create table users (
     users_id int not null primary key auto_increment,
-    email varchar(30),
+    name varchar(50),
+    email varchar(50),
     password varchar(50),
     confirm_password varchar(50),
     timestamps date
@@ -84,6 +85,9 @@ create table users (
 create table carts (
     carts_id int not null primary key auto_increment,
     quantity int,
+    productName varchar(50),
+    productPrice integer,
+    productBrand varchar(50),
     categorie_id integer,
     user_id integer,
     foreign key (categorie_id) references categories (categories_id),
@@ -91,8 +95,8 @@ create table carts (
 );
 create table buyers (
     buyers_id int not null primary key auto_increment,
-    name varchar(30),
-    email varchar(30),
+    name varchar(50),
+    email varchar(50),
     address varchar(50),
     phone varchar(50),
     card varchar(50),
@@ -104,12 +108,12 @@ create table purcases (
     timestamps date,
     cart_id integer,
     buyer_id integer,
-    productName varchar(30),
+    productName varchar(50),
     productPrice integer,
-    productBrand varchar(20),
-    buyerName varchar(20),
-    buyerEmail varchar(30),
-    buyerAddress varchar(40),
+    productBrand varchar(50),
+    buyerName varchar(50),
+    buyerEmail varchar(50),
+    buyerAddress varchar(50),
     foreign key (cart_id) references carts (carts_id),
     foreign key (buyer_id) references buyers (buyers_id)
 );
