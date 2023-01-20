@@ -24,5 +24,11 @@ Route::post("/register", [AuthController::class, "signUp"]);
 Route::post("/login",[AuthController::class, "signIn"]);
 Route::post("/logOut", [AuthController::class, "signOut"]);
 
+//Frontend
 Route::get("/Products", [ProductController::class, "index"]);
+
+//Asztali alkalmazás rest-api
 Route::post("/Products/Store", [ProductController::class, "store"]);
+Route::get("/Products/Show/{id}", [ProductController::class, "show"]);
+Route::post("/Products/Update/{id}", [ProductController::class,"update"]);
+Route::delete("Products/Delete/{id}", [ProductController::class, "destroy"]);

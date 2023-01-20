@@ -37,4 +37,45 @@ class ProductController extends BaseController
         $product = Product::create($input);
         return $this->sendResponse(new ProductResources($product), "Product Létrehozva");
     }
+
+    public function show($id)
+    {
+        $product = Product::find($id);
+
+        if(is_null($product))
+        {
+            return $this->sendError("Product nem létezik");
+        }
+
+        return $this->sendResponse(New ProductResources($product), "Ok");
+    }
+
+    public function update(Request $request, $id)
+    {
+        $input = $request->all();
+
+        $validator = Validator::make($input, [
+            "name"=>"required",
+            "price"=>"required",
+            "details"=>"required",
+            "image"=>"required",
+        ]);
+
+        if($validator->fails())
+        {
+            return $this->sendError($validator->errors());
+        }
+
+        $product = Product::find($id);
+        $product->update($request->all());
+
+        return $this->sendResponse(new ProductResources($product), "Product frissitve");
+    }
+
+    public function destroy($id)
+    {
+        Product::destroy($id);
+
+        return $this->sendResponse([],"Product törölve");
+    }
 }
