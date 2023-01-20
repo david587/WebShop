@@ -28,7 +28,17 @@ Route::post("/logOut", [AuthController::class, "signOut"]);
 
 //Frontend
 Route::get("/Products", [ProductController::class, "index"]);
-Route::get("/Products/Keyboard", [ProductController::class, "sortKeyboards"]);
+//Sorting by Categories
+Route::get("/Products/Keyboards", [ProductController::class, "sortKeyboards"]);
+Route::get("/Products/Mouses", [ProductController::class, "sortMouses"]);
+Route::get("/Products/Headsets", [ProductController::class, "sortHeadsets"]);
+Route::get("/Products/Monitors", [ProductController::class, "sortMonitors"]);
+//Sorting by Brands
+Route::get("/Products/Logitech", [ProductController::class, "sortLogitech"]);
+Route::get("/Products/Hp", [ProductController::class, "sortHp"]);
+Route::get("/Products/Urage", [ProductController::class, "sortUrage"]);
+Route::get("/Products/Redragon", [ProductController::class, "sortRedragon"]);
+
 
 //Asztali alkalmazás rest-api
 Route::post("/Products/Store", [ProductController::class, "store"]);

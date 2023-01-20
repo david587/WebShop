@@ -11,17 +11,69 @@ use App\Models\Categorie;
 
 class ProductController extends BaseController
 {
-    public function index()
-    {
-        $products = Product::all();
-        return $this->sendResponse(ProductResources::collection( $products ), "OK");
-    }
-
-    //sort keyboard
+    //sort categories
     public function sortKeyboards()
     {
         $keyboard_id = Categorie::where("categorie","Keyboard")->first()->id;
         $products = Product::where("categorie_id",$keyboard_id)->get();
+        return $this->sendResponse(ProductResources::collection( $products ), "OK");
+    }
+
+    public function sortMouses()
+    {
+        $mouse_id = Categorie::where("categorie","Mouse")->first()->id;
+        $products = Product::where("categorie_id",$mouse_id)->get();
+        return $this->sendResponse(ProductResources::collection( $products ), "OK");
+        
+    }
+
+    public function sortHeadsets()
+    {
+        $headset_id = Categorie::where("categorie","Headset")->first()->id;
+        $products = Product::where("categorie_id",$headset_id)->get();
+        return $this->sendResponse(ProductResources::collection( $products ), "OK");
+    }
+
+    public function sortMonitors()
+    {
+        $monitor_id = Categorie::where("categorie","Monitor")->first()->id;
+        $products = Product::where("categorie_id",$monitor_id)->get();
+        return $this->sendResponse(ProductResources::collection( $products ), "OK");
+    }
+
+    //sort brands
+    public function sortLogitech()
+    {
+        $logitech_id = Brand::where("brand","Logitech")->first()->id;
+        $products = Product::where("brand_id",$logitech_id)->get();
+        return $this->sendResponse(ProductResources::collection( $products ), "OK");
+    }
+
+    public function sortHp()
+    {
+        $hp_id = Brand::where("brand","Hp")->first()->id;
+        $products = Product::where("brand_id",$hp_id)->get();
+        return $this->sendResponse(ProductResources::collection( $products ), "OK");
+    }
+
+    public function sortUrage()
+    {
+        $urage_id = Brand::where("brand","Urage")->first()->id;
+        $products = Product::where("brand_id",$urage_id)->get();
+        return $this->sendResponse(ProductResources::collection( $products ), "OK");
+    }
+
+    public function sortRedragon()
+    {
+        $redragon_id = Brand::where("brand","Redragon")->first()->id;
+        $products = Product::where("brand_id",$redragon_id)->get();
+        return $this->sendResponse(ProductResources::collection( $products ), "OK");
+    }
+
+    //product CRUD
+    public function index()
+    {
+        $products = Product::all();
         return $this->sendResponse(ProductResources::collection( $products ), "OK");
     }
 
