@@ -15,7 +15,6 @@ class Categorie extends JsonResource
     public function toArray($request)
     {
         return [
-            "categories_id" => $this->categories_id,
             "categorie"=> $this->categorie
         ];
     }
