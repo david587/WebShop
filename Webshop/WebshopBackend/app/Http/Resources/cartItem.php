@@ -17,8 +17,8 @@ class cartItem extends JsonResource
         return [
             "cartItems_id" => $this->cartItems_id,
             "quantity"=>$this->quantity,
-            "product_id"=>$this->product->name,
-            "user_id" => $this->user->name
+            "product_id"=>$this->name->name,
+            "user_id" => $this->name->name
         ];
     }
 }

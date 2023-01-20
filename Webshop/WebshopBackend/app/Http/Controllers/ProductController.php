@@ -17,6 +17,13 @@ class ProductController extends BaseController
         return $this->sendResponse(ProductResources::collection( $products ), "OK");
     }
 
+    // //sort keyboard
+    // public function sortProduct()
+    // {
+    //     $products = Product::where("brand_id",4)->get();
+    //     return $this->sendResponse(ProductResources::collection( $products ), "OK");
+    // }
+
     public function store(Request $request)
     {
         $input = $request->all();

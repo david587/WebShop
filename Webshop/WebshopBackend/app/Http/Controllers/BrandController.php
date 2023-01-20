@@ -11,7 +11,7 @@ use App\Models\Brand;
 
 class BrandController extends BaseController
 {
-    public function show()
+    public function index()
     {
         $brands = Brand::all();
         return $this->sendResponse(BrandResources::collection( $brands ), "OK");
@@ -31,5 +31,12 @@ class BrandController extends BaseController
 
         $brands = Brand::create($input);
         return $this->sendResponse(new BrandResources($brands), "Brand létrehozva");
+    }
+
+    public function destroy($id)
+    {
+        Brand::destroy($id);
+
+        return $this->sendResponse([],"Brand törölve");
     }
 }
