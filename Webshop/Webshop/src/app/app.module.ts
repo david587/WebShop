@@ -9,7 +9,6 @@ import { FooterComponent } from './footer/footer.component';
 import { ProductsComponent } from './products/products.component';
 import { AboutComponent } from './about/about.component';
 import { SupportComponent } from './support/support.component';
-import { GearDropComponent } from './gear-drop/gear-drop.component';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 
@@ -22,7 +21,6 @@ import { SigninComponent } from './signin/signin.component';
     ProductsComponent,
     AboutComponent,
     SupportComponent,
-    GearDropComponent,
     SignupComponent,
     SigninComponent
   ],
