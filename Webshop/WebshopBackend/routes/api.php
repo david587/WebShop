@@ -28,6 +28,7 @@ Route::post("/logOut", [AuthController::class, "signOut"]);
 
 //Frontend
 Route::get("/Products", [ProductController::class, "index"]);
+Route::get("/Products/Keyboard", [ProductController::class, "sortKeyboards"]);
 
 //Asztali alkalmazás rest-api
 Route::post("/Products/Store", [ProductController::class, "store"]);

@@ -17,12 +17,13 @@ class ProductController extends BaseController
         return $this->sendResponse(ProductResources::collection( $products ), "OK");
     }
 
-    // //sort keyboard
-    // public function sortProduct()
-    // {
-    //     $products = Product::where("brand_id",4)->get();
-    //     return $this->sendResponse(ProductResources::collection( $products ), "OK");
-    // }
+    //sort keyboard
+    public function sortKeyboards()
+    {
+        $keyboard_id = Categorie::where("categorie","Keyboard")->first()->id;
+        $products = Product::where("categorie_id",$keyboard_id)->get();
+        return $this->sendResponse(ProductResources::collection( $products ), "OK");
+    }
 
     public function store(Request $request)
     {
