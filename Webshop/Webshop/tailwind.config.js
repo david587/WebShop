@@ -9,6 +9,7 @@ module.exports = {
         'hero': "url('./img/background_image.jpg')"
       },
       colors: {
+        'white': '#ffffff',
         'darkgray': '#313638',
         'deepForest': '#243c5a',
         'gray': '#EEEEEE',
