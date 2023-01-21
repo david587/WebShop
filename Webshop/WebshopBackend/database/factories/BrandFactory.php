@@ -17,7 +17,7 @@ class BrandFactory extends Factory
     public function definition()
     {
         return [
-            'brand' => fake()->randomElement(['Logitech', 'Hp', 'Urage', 'Redragon']),
+            'brand' => fake()->unique()->randomElement(['Logitech', 'Hp', 'Urage', 'Redragon']),
         ];
     }
 }

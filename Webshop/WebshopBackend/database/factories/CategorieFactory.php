@@ -17,7 +17,7 @@ class CategorieFactory extends Factory
     public function definition()
     {
         return [
-            'categorie' => fake()->randomElement(['Keyboard', 'Mouse', 'Headset', 'Monitor']),
+            'categorie' => fake()->unique()->randomElement(['Keyboard', 'Mouse', 'Headset', 'Monitor']),
         ];
     }
 }

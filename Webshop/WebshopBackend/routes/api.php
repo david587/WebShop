@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\cartItemController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategorieController;
 
@@ -38,6 +39,8 @@ Route::get("/Products/Logitech", [ProductController::class, "sortLogitech"]);
 Route::get("/Products/Hp", [ProductController::class, "sortHp"]);
 Route::get("/Products/Urage", [ProductController::class, "sortUrage"]);
 Route::get("/Products/Redragon", [ProductController::class, "sortRedragon"]);
+//Put item to cart
+Route::post("Products/cartItems/{id}", [cartItemController::class, "store"]);
 
 
 //Asztali alkalmazás rest-api
