@@ -19,9 +19,12 @@ use App\Http\Controllers\CategorieController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware(['auth:api'])->group(function () {
+    // routes here
 });
+
+
+
 
 Route::post("/register", [AuthController::class, "signUp"]);
 Route::post("/login",[AuthController::class, "signIn"]);
@@ -40,7 +43,9 @@ Route::get("/Products/Hp", [ProductController::class, "sortHp"]);
 Route::get("/Products/Urage", [ProductController::class, "sortUrage"]);
 Route::get("/Products/Redragon", [ProductController::class, "sortRedragon"]);
 //Put item to cart
-Route::post("Products/cartItems/{id}", [cartItemController::class, "store"]);
+// Route::post("Products/cartItems/{id}", [cartItemController::class, "store"]);
+Route::middleware(['auth:api'])->post("Products/cartItems/{id}", [CartItemController::class, "store"]);
+
 
 
 //Asztali alkalmazás rest-api

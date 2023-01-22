@@ -4,22 +4,35 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\cartItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use function PHPUnit\Framework\isEmpty;
 
 class cartItemController extends Controller
 {
     public function store($id)
+    //when put different item not storeing that, just add plus 1 to the preveous quantity
     {
         $product_id = Product::find($id)->id;
-        $cartItem = new cartItem();
-        $cartItem->product_id = $product_id;
-        // if($cartItem->user_id = $cartItem->user_id ){
-        // }
-        $input= [
-            'product_id' => $cartItem->product_id,
-            'quantity' => $cartItem->quantity,
-            'user_id' => 0 // assuming that you want to add user_id too.
+        $cart_item = new CartItem();
+        $cart_item->user_id = Auth::id();
+        $cart_item->product_id = $product_id;
+        $cart_item->quantity += 1;
+        $cart_items = CartItem::where("user_id", Auth::id())->first();
+
+        if($cart_items) {
+            $cart_items->quantity += 1;
+            $cart_items->save();
+        }
+        $datas = [
+            "product_id"=>$product_id,
+            "user_id"=>Auth::id(),
+            "quantity"=>$cart_item->quantity
         ];
-        cartItem::create($input);
+        $all=cartItem::all();
+        if($all->isEmpty()){
+            cartItem::create($datas);
+        }
         
     }
 }
