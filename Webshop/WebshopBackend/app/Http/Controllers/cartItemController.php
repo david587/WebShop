@@ -18,21 +18,24 @@ class cartItemController extends Controller
         $cart_item->user_id = Auth::id();
         $cart_item->product_id = $product_id;
         $cart_item->quantity += 1;
-        $cart_items = CartItem::where("user_id", Auth::id())->first();
-
-        if($cart_items) {
-            $cart_items->quantity += 1;
-            $cart_items->save();
-        }
-        $datas = [
-            "product_id"=>$product_id,
-            "user_id"=>Auth::id(),
-            "quantity"=>$cart_item->quantity
-        ];
-        $all=cartItem::all();
-        if($all->isEmpty()){
-            cartItem::create($datas);
+        if(cartItem::all()->isEmpty() || $cart_item->user_id = Auth::id() ||  $cart_item->product_id != $product_id){
+            $cart_item->save();
         }
         
+        // $cart_items = CartItem::where("user_id", Auth::id())->first();
+
+        // if($cart_items && $cart_items->product_id = $product_id) {
+        //     $cart_item->quantity->update($cart_items);
+        // }
+        // $datas = [
+        //     "product_id"=>$product_id,
+        //     "user_id"=>Auth::id(),
+        //     "quantity"=>$cart_item->quantity
+        // ];
+
+        // $all=cartItem::all();
+        // if($all->isEmpty() || $cart_items->product_id != $product_id){
+        //     cartItem::create($datas);
+        // }
     }
 }
