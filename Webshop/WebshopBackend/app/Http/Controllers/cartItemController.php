@@ -5,10 +5,16 @@ use App\Models\Product;
 use App\Models\cartItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\BaseController;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\cartItem as cartItemResources;
+use App\Models\Brand;
+use App\Models\Categorie;
+
 
 use function PHPUnit\Framework\isEmpty;
 
-class cartItemController extends Controller
+class cartItemController extends BaseController
 {
     public function store($id)
     //when put different item not storeing that, just add plus 1 to the preveous quantity
@@ -27,7 +33,12 @@ class cartItemController extends Controller
             $cart_item = cartItem::where('user_id', Auth::id())->where('product_id', $product_id)->first();
             $cart_item->quantity += 1;
             $cart_item->save();
-
         }
+    }
+
+    public function show()
+    {
+        $Cartitems = cartItem::all();
+        return $this->sendResponse(cartItemResources::collection( $Cartitems ), "OK");
     }
 }

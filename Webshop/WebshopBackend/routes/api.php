@@ -7,6 +7,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\cartItemController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategorieController;
+use App\Models\CartItem;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,8 @@ Route::get("/Products/Redragon", [ProductController::class, "sortRedragon"]);
 //Put item to cart
 // Route::post("Products/cartItems/{id}", [cartItemController::class, "store"]);
 Route::middleware(['auth:api'])->post("Products/cartItems/{id}", [CartItemController::class, "store"]);
+//show CartItems
+Route::get("show",[cartItemController::class, "show"]);
 
 
 
