@@ -45,10 +45,11 @@ Route::get("/Products/Urage", [ProductController::class, "sortUrage"]);
 Route::get("/Products/Redragon", [ProductController::class, "sortRedragon"]);
 //Put item to cart
 // Route::post("Products/cartItems/{id}", [cartItemController::class, "store"]);
-Route::middleware(['auth:api'])->post("Products/cartItems/{id}", [CartItemController::class, "store"]);
+Route::middleware(['auth:api'])->post("cartItems/{id}", [CartItemController::class, "store"]);
 //show CartItems
-Route::get("show",[cartItemController::class, "show"]);
-
+Route::get("/cartItems/show",[cartItemController::class, "show"]);
+//Delete cart items
+Route::delete("/cartItems/delete/{id}", [cartItemController::class, "destroy"]);
 
 
 //Asztali alkalmazás rest-api
