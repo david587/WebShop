@@ -18,7 +18,8 @@ class cartItemController extends Controller
         $cart_item->user_id = Auth::id();
         $cart_item->product_id = $product_id;
         $cart_item->quantity += 1;
-        //is checking if there is already an existing cart item in the database that has the same user ID and product ID as the current user and product. If there is no such cart item, it will save the new cart item that is being created.
+        //is checking if there is already an existing cart item in the database that has the same user ID and product ID as the current user and product.
+        //If there is no such cart item, it will save the new cart item that is being created.
         if(cartItem::where('user_id', Auth::id())->where('product_id', $product_id)->first() == null){
             $cart_item->save();
         }
