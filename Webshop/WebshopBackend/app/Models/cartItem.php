@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use app\Models\User;
-use app\Models\Product;
+use App\Models\User;
+use App\Models\Product;
 
 
 class CartItem extends Model
@@ -13,8 +13,8 @@ class CartItem extends Model
     use HasFactory;
     protected $fillable = [
         "quantity",
-        "product_id",
-        "user_id"
+        "user_id",
+        "product_id"
       ];
   
       public function user()
