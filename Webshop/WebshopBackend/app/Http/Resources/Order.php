@@ -19,6 +19,7 @@ class Order extends JsonResource
             "product_id"=>$this->name->name,
             "user_id" => $this->name->name,
             "shippingAddress"=> $this->shippingAddress,
+            "phone"=> $this->phone,
             "paymentMethod,"=>$this->paymentMethod,
            
         ];

@@ -52,8 +52,8 @@ Route::middleware(['auth:api'])->get("/cartItems/show",[cartItemController::clas
 //Delete cart items
 Route::middleware(['auth:api'])->delete("/cartItems/delete/{id}", [cartItemController::class, "destroy"]);
 //Orders
-Route::middleware(['auth:api'])->post("Orders/Store/{id}", [OrderController::class,"store"]);
-Route::middleware(['auth:api'])->get("Orders/Show/{id}", [OrderController::class,"show"]);
+Route::middleware(['auth:api'])->post("Orders/Store/", [OrderController::class,"store"]);
+Route::middleware(['auth:api'])->get("Orders/Show", [OrderController::class,"showUserItems"]);
 
 
 //Asztali alkalmazás rest-api
