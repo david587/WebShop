@@ -7,6 +7,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\cartItemController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\OrderController;
 use App\Models\CartItem;
 
 /*
@@ -47,9 +48,12 @@ Route::get("/Products/Redragon", [ProductController::class, "sortRedragon"]);
 // Route::post("Products/cartItems/{id}", [cartItemController::class, "store"]);
 Route::middleware(['auth:api'])->post("cartItems/{id}", [CartItemController::class, "store"]);
 //show CartItems
-Route::get("/cartItems/show",[cartItemController::class, "show"]);
+Route::middleware(['auth:api'])->get("/cartItems/show",[cartItemController::class, "show"]);
 //Delete cart items
-Route::delete("/cartItems/delete/{id}", [cartItemController::class, "destroy"]);
+Route::middleware(['auth:api'])->delete("/cartItems/delete/{id}", [cartItemController::class, "destroy"]);
+//Orders
+Route::middleware(['auth:api'])->post("Orders/Store/{id}", [OrderController::class,"store"]);
+Route::middleware(['auth:api'])->get("Orders/Show/{id}", [OrderController::class,"show"]);
 
 
 //Asztali alkalmazás rest-api
