@@ -15,10 +15,6 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->string("shippingAddress");
-            $table->string("phone");
-            $table->string("paymentMethod")->nullable();
             $table->integer("quantity");
             $table->foreignId("product_id")->onDelete('cascade');
             $table->foreignId("user_id")->onDelete('cascade');
