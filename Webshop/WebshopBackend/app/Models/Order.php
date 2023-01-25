@@ -15,6 +15,7 @@ class Order extends Model
         "quantity",
         "product_id",
         "user_id",
+        "orderInfo_id"
     ];
 
     public function user(){
@@ -25,8 +26,10 @@ class Order extends Model
         return $this->belongsTo(Product::class);
     }
 
+    
+
     public function orderInfo()
     {
-        return $this->hasMany(orderInfo::class);
+        return $this->belongsTo(orderInfo::class);
     }
 }

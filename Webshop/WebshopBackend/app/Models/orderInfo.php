@@ -9,15 +9,16 @@ use App\Models\Order;
 class orderInfo extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+    
     protected $fillable = [
         "shippingAddress",
         "phone",
         "paymentMethod",
-        "order_id"
     ];
 
     public function order()
     {
-        return $this->belongsTo(Order::class);
+        return $this->hasMany(Order::class);
     }
 }

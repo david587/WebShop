@@ -15,10 +15,10 @@ class orderInfo extends JsonResource
     public function toArray($request)
     {
         return [
+            "id"=>$this->id,
             "shippingAddress"=>$this->shippingAddress,
             "phone" => $this->phone,
             "paymentMethod,"=>$this->paymentMethod,
-            "order_id" => $this->order_id
         ];
     }
 }

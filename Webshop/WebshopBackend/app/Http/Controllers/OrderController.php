@@ -19,19 +19,21 @@ class OrderController extends BaseController
         //csak egg adatot tölt fel, akkor is ha több rendelése van a kosárban
         // $products_id = cartItem::where("user_id",Auth::id())->first()->product_id;
         // $cartQuantity = cartItem::where("user_id", Auth::id())->first()->quantity;
+        $order_Information = new orderInfo();
+        $order_Information->shippingAddress =$request->shippingAddress;
+        $order_Information->phone = $request->phone;
+        $order_Information->paymentMethod = $request->paymentMethod;
+        $order_Information->save();
+
         $allSorted = cartItem::where("user_id",Auth::id())->get();
         foreach($allSorted as $cartItem) {
             $order_item = new Order();
             $order_item->user_id = Auth::id();
             $order_item->product_id = $cartItem->product_id;
             $order_item->quantity = $cartItem->quantity;
+            $order_item->orderInfo_id = $order_Information->id;
             $order_item->save();
         }
-        $order_Inormation = new orderInfo();
-        $order_Inormation->shippingAddress =$request->shippingAddress;
-        $order_Inormation->phone = $request->phone;
-        $order_Inormation->paymentMethod = $request->paymentMethod;
-        
         return $this->sendResponse([],"All cart items added to Orders");
         
          

@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orderInfos', function (Blueprint $table) {
+        Schema::create('order_infos', function (Blueprint $table) {
             $table->id();
             $table->string("shippingAddress");
             $table->string("phone");
             $table->string("paymentMethod")->nullable();
-            $table->foreignId("order_id")->onDelete('cascade');
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orderInfos');
+        Schema::dropIfExists('order_infos');
     }
 };
