@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use app\Models\User;
-use app\Models\Product;
-use app\Models\orderInfo;
+use App\Models\User;
+use App\Models\Product;
+use App\Models\orderInfo;
 
 class Order extends Model
 {
@@ -27,7 +27,6 @@ class Order extends Model
     }
 
     
-
     public function orderInfo()
     {
         return $this->belongsTo(orderInfo::class);

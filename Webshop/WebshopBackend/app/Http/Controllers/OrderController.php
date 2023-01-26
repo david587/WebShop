@@ -10,15 +10,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\BaseController;
 use App\Http\Resources\Order as orderResources;
-use App\Models\orderdatas;
 
 class OrderController extends BaseController
 {
     public function store(Request $request)
     {
-        //csak egg adatot tölt fel, akkor is ha több rendelése van a kosárban
-        // $products_id = cartItem::where("user_id",Auth::id())->first()->product_id;
-        // $cartQuantity = cartItem::where("user_id", Auth::id())->first()->quantity;
         $order_Information = new orderInfo();
         $order_Information->shippingAddress =$request->shippingAddress;
         $order_Information->phone = $request->phone;
@@ -35,17 +31,11 @@ class OrderController extends BaseController
             $order_item->save();
         }
         return $this->sendResponse([],"All cart items added to Orders");
-        
-         
-        
-        // $order_item->shippingAddress = $request->shippingAddress;
-        // $order_item->phone = $request->phone;
-        // $order_item->paymentMethod = $request->paymentMethod;
     }
 
-    // public function showUserItems()
-    // {
-    //     $userOrder = Order::where("user_id",Auth::id())->get();
-    //     return $this->sendResponse(orderResources::collection( $order_item ), "OK");
-    // }
+    public function showUserItems()
+    {
+        $userOrder = Order::where("user_id",Auth::id())->get();
+        return $this->sendResponse(orderResources::collection( $userOrder ), "OK");
+    }
 }

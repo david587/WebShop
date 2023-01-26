@@ -16,12 +16,16 @@ class Order extends JsonResource
     {
         return [
             //change these to the current
-            "id" => $this->id,
-            "product_id"=>$this->product_id,
-            "user_id" => $this->user_id,
+            "productName"=>$this->product->name,
+            "Description"=>$this->product->details,
+            "Price"=>$this->product->price,
             "quantity" => $this->quantity,
-            "orderInfo_id" => $this->orderInfo_id
-           
+            "userName"=>$this->user->name,
+            "email"=>$this->user->email,
+            //innentül nem jó, nem jön át az orderinfo
+            // "shippingAddress"=>$this->orderInfo,
+            // "phoneNumber"=>$this->orderInfo,
+            // "paymentMethod"=>$this->orderInfo
         ];
     }
 }

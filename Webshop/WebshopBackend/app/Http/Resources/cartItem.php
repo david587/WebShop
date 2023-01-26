@@ -16,12 +16,12 @@ class cartItem extends JsonResource
     {
         return [
             "quantity"=>$this->quantity,
-            "product"=> [
-                "name"=>$this->product->name,
-                "description"=>$this->product->description,
+            // "product"=> [
+                "Productname"=>$this->product->name,
+                "description"=>$this->product->details,
                 "price"=>$this->product->price,
-                "image"=>$this->product->image
-            ],
+                "image"=>$this->product->image,
+            // ],
             "user_id" => $this->user->name 
         ];
     }
