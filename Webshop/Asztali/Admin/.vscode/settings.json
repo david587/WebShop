@@ -11,6 +11,16 @@
         "c:\\Program Files\\Java\\javafx-sdk-19\\lib\\javafx.swing.jar",
         "c:\\Program Files\\Java\\javafx-sdk-19\\lib\\javafx.web.jar",
         "c:\\Program Files\\Java\\javafx-sdk-19\\lib\\javafx-swt.jar",
-        "c:\\Program Files\\Java\\gson-2.10.1.jar"
+        "c:\\Program Files\\Java\\gson-2.10.1.jar",
+        "c:\\Users\\diak\\boros\\gson-2.10.1.jar",
+        "c:\\Users\\diak\\boros\\mariadb-java-client-2.7.6.jar",
+        "c:\\Users\\diak\\boros\\openjfx-19_windows-x64_bin-sdk\\javafx-sdk-19\\lib\\javafx.base.jar",
+        "c:\\Users\\diak\\boros\\openjfx-19_windows-x64_bin-sdk\\javafx-sdk-19\\lib\\javafx.controls.jar",
+        "c:\\Users\\diak\\boros\\openjfx-19_windows-x64_bin-sdk\\javafx-sdk-19\\lib\\javafx.fxml.jar",
+        "c:\\Users\\diak\\boros\\openjfx-19_windows-x64_bin-sdk\\javafx-sdk-19\\lib\\javafx.graphics.jar",
+        "c:\\Users\\diak\\boros\\openjfx-19_windows-x64_bin-sdk\\javafx-sdk-19\\lib\\javafx.media.jar",
+        "c:\\Users\\diak\\boros\\openjfx-19_windows-x64_bin-sdk\\javafx-sdk-19\\lib\\javafx.swing.jar",
+        "c:\\Users\\diak\\boros\\openjfx-19_windows-x64_bin-sdk\\javafx-sdk-19\\lib\\javafx.web.jar",
+        "c:\\Users\\diak\\boros\\openjfx-19_windows-x64_bin-sdk\\javafx-sdk-19\\lib\\javafx-swt.jar"
     ]
 }
