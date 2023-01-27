@@ -2,7 +2,7 @@ package models;
 
 public class Product {
     // át kell írni a megbeszélt adatokra
-     int id;
+    static int id;
     static String name;
     static String itemNumber;
     static int count;
