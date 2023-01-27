@@ -6,10 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+  navVisible =false;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onClickToggle()
+  {
+    if(this.navVisible == false){
+      this.navVisible =true;
+    }
+    else{
+      this.navVisible =false;
+    }
+   
   }
 
 }

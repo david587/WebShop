@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer("quantity");
             $table->foreignId("product_id")->onDelete('cascade');
             $table->foreignId("user_id")->onDelete('cascade');
-            $table->foreignId("orderInfo_id")->onDelete('cascade');
+            $table->foreignId("order_information_id")->onDelete('cascade');
             $table->timestamps();
         });
     }

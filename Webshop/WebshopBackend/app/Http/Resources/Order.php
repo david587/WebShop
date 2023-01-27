@@ -14,18 +14,21 @@ class Order extends JsonResource
      */
     public function toArray($request)
     {
+        // $uniqueAddresses = $this->unique('orderInformation.shippingAddress');
+        // $uniquePhoneNumbers = $this->unique('orderInformation.phone');
+        // $uniquePaymentMethods = $this->unique('orderInformation.paymentMethod');
+        
         return [
-            //change these to the current
             "productName"=>$this->product->name,
             "Description"=>$this->product->details,
             "Price"=>$this->product->price,
             "quantity" => $this->quantity,
             "userName"=>$this->user->name,
             "email"=>$this->user->email,
-            //innentül nem jó, nem jön át az orderinfo
-            // "shippingAddress"=>$this->orderInfo,
-            // "phoneNumber"=>$this->orderInfo,
-            // "paymentMethod"=>$this->orderInfo
+            "shippingAddress"=>$this->orderInformation->shippingAddress,
+            "phoneNumber"=>$this->orderInformation->phone,
+            "paymentMethod"=>$this->orderInformation->paymentMethod
         ];
+        
     }
 }

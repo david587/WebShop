@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Product;
-use App\Models\orderInfo;
+use App\Models\OrderInformations;
 
 class Order extends Model
 {
@@ -15,7 +15,7 @@ class Order extends Model
         "quantity",
         "product_id",
         "user_id",
-        "orderInfo_id"
+        "order_information_id"
     ];
 
     public function user(){
@@ -27,8 +27,8 @@ class Order extends Model
     }
 
     
-    public function orderInfo()
+    public function orderInformation()
     {
-        return $this->belongsTo(orderInfo::class);
+        return $this->belongsTo(OrderInformations::class);
     }
 }
