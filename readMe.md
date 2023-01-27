@@ -1,13 +1,1 @@
-file:///home/davis/Desktop/k%C3%A9pek/webshop/1.png
-file:///home/davis/Desktop/k%C3%A9pek/webshop/2.png
-file:///home/davis/Desktop/k%C3%A9pek/webshop/3.png
-file:///home/davis/Desktop/k%C3%A9pek/webshop/4.png
-file:///home/davis/Desktop/k%C3%A9pek/webshop/5.png
-file:///home/davis/Desktop/k%C3%A9pek/webshop/6.png
-file:///home/davis/Desktop/k%C3%A9pek/webshop/7.png
-file:///home/davis/Desktop/k%C3%A9pek/webshop/8.png
-file:///home/davis/Desktop/k%C3%A9pek/webshop/9.png
-file:///home/davis/Desktop/k%C3%A9pek/webshop/10.png
-file:///home/davis/Desktop/k%C3%A9pek/webshop/11.png
-file:///home/davis/Desktop/k%C3%A9pek/webshop/12.png
-file:///home/davis/Desktop/k%C3%A9pek/webshop/13.png
+![My Image](1.png)
