@@ -23,8 +23,27 @@ use App\Models\CartItem;
 */
 
 Route::middleware(['auth:api'])->group(function () {
-    // routes here
+    // 
 });
+
+//Require Admin access
+Route::middleware(['check_admin'])->group(function () {
+    Route::middleware(['auth:api'])->post("/Products/Store", [ProductController::class, "store"]);
+    Route::post("/Products/Update/{id}", [ProductController::class,"update"]);
+    Route::delete("Products/Delete/{id}", [ProductController::class, "destroy"]);
+    //Brand tablenek ->show,store és update és delete utvonal
+    Route::get("/Brands/Index", [BrandController::class, "index"]);
+    Route::post("/Brands/Store", [BrandController::class, "store"]);
+    Route::delete("/Brands/Delete/{id}", [BrandController::class, "destroy"]);
+    //Categorie tabelnek ->show,store és delete utvonal
+    Route::get("/Categories/Index", [CategorieController::class, "index"]);
+    Route::post("/Categories/Store", [CategorieController::class, "store"]);
+    Route::delete("/Categories/Delete/{id}", [CategorieController::class, "destroy"]);
+    //User routes
+    Route::get("Users/Show",[UserController::class,"listUsers"]);
+    Route::post("Users/Admin/{id}",[UserController::class,"AdminAccess"]);
+});
+
 
 
 
@@ -59,7 +78,7 @@ Route::middleware(['auth:api'])->get("Orders/Show", [OrderController::class,"sho
 
 
 //Asztali alkalmazás rest-api
-Route::post("/Products/Store", [ProductController::class, "store"]);
+Route::middleware(['auth:api'])->post("/Products/Store", [ProductController::class, "store"]);
 Route::post("/Products/Update/{id}", [ProductController::class,"update"]);
 Route::delete("Products/Delete/{id}", [ProductController::class, "destroy"]);
 //Brand tablenek ->show,store és update és delete utvonal
