@@ -5,12 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\cartItem;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\BaseController;
-use App\Http\Models\OrderInformations;
+use App\Models\OrderInformations;
 use App\Http\Resources\Order as orderResources;
+use App\Http\Resources\OrderInformation as OrderInformationResources;
+use App\Http\Resources\User as UserResources;
 use App\Models\OrderInformations as ModelsOrderInformations;
+//visualize the array
+use League\Fractal\Manager;
+use League\Fractal\Resource\Collection;
+
 
 class OrderController extends BaseController
 {
@@ -37,6 +44,12 @@ class OrderController extends BaseController
     public function showUserItems()
     {
         $userOrder = Order::where("user_id",Auth::id())->get();
-        return $this->sendResponse(orderResources::collection( $userOrder ), "OK");
+        $userOrder_id = Order::where("user_id",Auth::id())->first()->id;
+        $shippingData = OrderInformations::where("id",$userOrder_id)->get();
+        $UserData = User::where("id",Auth::id())->get();
+        //  
+        return $this->OrderResponse(orderResources::collection( $userOrder),
+        OrderInformationResources::collection($shippingData),
+        UserResources::collection($UserData),"OK");
     }
 }
