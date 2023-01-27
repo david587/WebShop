@@ -60,7 +60,7 @@ public class MainView extends VBox{
         return proList;
     }
 
-    private void initTable
+    
 
     
 }

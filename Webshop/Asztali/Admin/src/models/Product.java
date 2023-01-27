@@ -2,12 +2,12 @@ package models;
 
 public class Product {
     // át kell írni a megbeszélt adatokra
-    int id;
-    String name;
-    String itemNumber;
-    int count;
-    double price;
-    
+     int id;
+    static String name;
+    static String itemNumber;
+    static int count;
+    static double price;
+
     public int getId() {
         return id;
     }
