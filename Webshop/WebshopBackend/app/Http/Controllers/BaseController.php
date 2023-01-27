@@ -17,6 +17,19 @@ class BaseController extends Controller
         return response()->json($response,200);
     }
 
+    public function OrderResponse($result,$informations,$users,$message)
+    {
+        $response = [
+            "success"=> true,
+            "data"=>$result,
+            "informations"=>$informations,
+            "user"=>$users,
+            "message"=>$message
+        ];
+
+        return response()->json($response,200);   
+    }
+
     public function sendError($error, $errorMessage = [], $code=404)
     {
         $response = [
