@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .glow {
     color: rgb(214, 82, 133);
     text-shadow:
@@ -33,4 +34,41 @@
     0 0 8px #ffff,
     0 0 7px #ffff;
     ;
+=======
+.glow {
+    color: rgb(214, 82, 133);
+    text-shadow:
+    0 0 22px rgb(214, 82, 133),
+    0 0 42px rgb(214, 82, 133),
+    0 0 52px rgb(214, 82, 133),
+    0 0 52px rgb(214, 82, 133),
+    0 0 0 rgb(214, 82, 133);
+  }
+  .glow2 {
+    color: #E33926;
+    text-shadow:
+    0 0 6px #E33926,
+    0 0 6px #E33926,
+    0 0 7px #E33926,
+    0 0 40px #E33926,
+    0 0 0 #E33926;
+  }
+  .gomb{
+    text-shadow:
+    0 0 6px #ffff,
+    0 0 6px #ffff,
+    0 0 7px #ffff,
+    0 0 20px #ffff,
+    0 0 0 #ffff;
+  }
+
+  .borderGlow{
+    box-shadow: 
+    0 0 6px #ffff,
+    0 0 6px #ffff,
+    0 0 7px #ffff,
+    0 0 8px #ffff,
+    0 0 7px #ffff;
+    ;
+>>>>>>> ffe7901c58235b516c33253a271c9a43a34f0d64
   }

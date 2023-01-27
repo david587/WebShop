@@ -13,6 +13,7 @@ class Order extends JsonResource
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
+<<<<<<< HEAD
     {
         return [
             //change these to the current
@@ -23,5 +24,17 @@ class Order extends JsonResource
             "orderInfo_id" => $this->orderInfo_id
            
         ];
+=======
+    {   
+        return [
+            "productName"=>$this->product->name,
+            "Description"=>$this->product->details,
+            "Price"=>$this->product->price,
+            "quantity" => $this->quantity,
+            "userName"=>$this->user->name,
+            "email"=>$this->user->email,
+        ];
+        
+>>>>>>> ffe7901c58235b516c33253a271c9a43a34f0d64
     }
 }

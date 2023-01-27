@@ -15,7 +15,11 @@ class cartItemController extends BaseController
 {
     public function show()
     {
+<<<<<<< HEAD
         $Cartitems = cartItem::all();
+=======
+        $Cartitems = cartItem::where("user_id",Auth::id())->get();
+>>>>>>> ffe7901c58235b516c33253a271c9a43a34f0d64
         return $this->sendResponse(cartItemResources::collection( $Cartitems ), "OK");
     }
 
@@ -33,6 +37,10 @@ class cartItemController extends BaseController
             $cart_item->save();
             return $this->sendResponse([],"Product hozzáadva a kosárhoz");
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> ffe7901c58235b516c33253a271c9a43a34f0d64
         else{
             // cartItem::where('user_id', Auth::id())->where('product_id', $product_id)->update(['quantity' => $cart_item->quantity+1]);
             $cart_item = cartItem::where('user_id', Auth::id())->where('product_id', $product_id)->first();

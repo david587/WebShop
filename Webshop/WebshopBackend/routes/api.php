@@ -34,6 +34,10 @@ Route::post("/logOut", [AuthController::class, "signOut"]);
 
 //Frontend
 Route::get("/Products", [ProductController::class, "index"]);
+<<<<<<< HEAD
+=======
+Route::get("/Products/Show/{id}", [ProductController::class, "show"]);
+>>>>>>> ffe7901c58235b516c33253a271c9a43a34f0d64
 //Sorting by Categories
 Route::get("/Products/Keyboards", [ProductController::class, "sortKeyboards"]);
 Route::get("/Products/Mouses", [ProductController::class, "sortMouses"]);
@@ -58,7 +62,10 @@ Route::middleware(['auth:api'])->get("Orders/Show", [OrderController::class,"sho
 
 //Asztali alkalmazás rest-api
 Route::post("/Products/Store", [ProductController::class, "store"]);
+<<<<<<< HEAD
 Route::get("/Products/Show/{id}", [ProductController::class, "show"]);
+=======
+>>>>>>> ffe7901c58235b516c33253a271c9a43a34f0d64
 Route::post("/Products/Update/{id}", [ProductController::class,"update"]);
 Route::delete("Products/Delete/{id}", [ProductController::class, "destroy"]);
 //Brand tablenek ->show,store és update és delete utvonal
