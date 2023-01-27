@@ -8,6 +8,7 @@ use App\Http\Controllers\cartItemController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserController;
 use App\Models\CartItem;
 
 /*
@@ -34,10 +35,7 @@ Route::post("/logOut", [AuthController::class, "signOut"]);
 
 //Frontend
 Route::get("/Products", [ProductController::class, "index"]);
-<<<<<<< HEAD
-=======
 Route::get("/Products/Show/{id}", [ProductController::class, "show"]);
->>>>>>> ffe7901c58235b516c33253a271c9a43a34f0d64
 //Sorting by Categories
 Route::get("/Products/Keyboards", [ProductController::class, "sortKeyboards"]);
 Route::get("/Products/Mouses", [ProductController::class, "sortMouses"]);
@@ -62,10 +60,6 @@ Route::middleware(['auth:api'])->get("Orders/Show", [OrderController::class,"sho
 
 //Asztali alkalmazás rest-api
 Route::post("/Products/Store", [ProductController::class, "store"]);
-<<<<<<< HEAD
-Route::get("/Products/Show/{id}", [ProductController::class, "show"]);
-=======
->>>>>>> ffe7901c58235b516c33253a271c9a43a34f0d64
 Route::post("/Products/Update/{id}", [ProductController::class,"update"]);
 Route::delete("Products/Delete/{id}", [ProductController::class, "destroy"]);
 //Brand tablenek ->show,store és update és delete utvonal
@@ -76,3 +70,6 @@ Route::delete("/Brands/Delete/{id}", [BrandController::class, "destroy"]);
 Route::get("/Categories/Index", [CategorieController::class, "index"]);
 Route::post("/Categories/Store", [CategorieController::class, "store"]);
 Route::delete("/Categories/Delete/{id}", [CategorieController::class, "destroy"]);
+//User routes
+Route::get("Users/Show",[UserController::class,"listUsers"]);
+Route::post("Users/Admin/{id}",[UserController::class,"AdminAccess"]);
