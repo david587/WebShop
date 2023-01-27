@@ -1,3 +1,8 @@
+Frontend(Not done):
+Backend(Almost Done).
+Java AdminApp(In progress)
+
+Frontend review:
 ![My Image](review/1.png)
 ![My Image](review/2.png)
 ![My Image](review/3.png)
