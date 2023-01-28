@@ -22,35 +22,29 @@ use App\Models\CartItem;
 |
 */
 
-Route::middleware(['auth:api'])->group(function () {
-    // 
-});
 
-//Require Admin access
+
+//Require Admin access and token
 Route::middleware(['check_admin'])->group(function () {
     Route::middleware(['auth:api'])->post("/Products/Store", [ProductController::class, "store"]);
-    Route::post("/Products/Update/{id}", [ProductController::class,"update"]);
-    Route::delete("Products/Delete/{id}", [ProductController::class, "destroy"]);
+    Route::middleware(['auth:api'])->post("/Products/Update/{id}", [ProductController::class,"update"]);
+    Route::middleware(['auth:api'])->delete("Products/Delete/{id}", [ProductController::class, "destroy"]);
     //Brand tablenek ->show,store és update és delete utvonal
-    Route::get("/Brands/Index", [BrandController::class, "index"]);
-    Route::post("/Brands/Store", [BrandController::class, "store"]);
-    Route::delete("/Brands/Delete/{id}", [BrandController::class, "destroy"]);
+    Route::middleware(['auth:api'])->get("/Brands/Index", [BrandController::class, "index"]);
+    Route::middleware(['auth:api'])->post("/Brands/Store", [BrandController::class, "store"]);
+    Route::middleware(['auth:api'])->delete("/Brands/Delete/{id}", [BrandController::class, "destroy"]);
     //Categorie tabelnek ->show,store és delete utvonal
-    Route::get("/Categories/Index", [CategorieController::class, "index"]);
-    Route::post("/Categories/Store", [CategorieController::class, "store"]);
-    Route::delete("/Categories/Delete/{id}", [CategorieController::class, "destroy"]);
+    Route::middleware(['auth:api'])->get("/Categories/Index", [CategorieController::class, "index"]);
+    Route::middleware(['auth:api'])->post("/Categories/Store", [CategorieController::class, "store"]);
+    Route::middleware(['auth:api'])->delete("/Categories/Delete/{id}", [CategorieController::class, "destroy"]);
     //User routes
-    Route::get("Users/Show",[UserController::class,"listUsers"]);
-    Route::post("Users/Admin/{id}",[UserController::class,"AdminAccess"]);
+    Route::middleware(['auth:api'])->get("Users/Show",[UserController::class,"listUsers"]);
+    Route::middleware(['auth:api'])->post("Users/Admin/{id}",[UserController::class,"AdminAccess"]);
 });
-
-
-
 
 
 Route::post("/register", [AuthController::class, "signUp"]);
 Route::post("/login",[AuthController::class, "signIn"]);
-Route::post("/logOut", [AuthController::class, "signOut"]);
 
 //Frontend
 Route::get("/Products", [ProductController::class, "index"]);
@@ -65,30 +59,18 @@ Route::get("/Products/Logitech", [ProductController::class, "sortLogitech"]);
 Route::get("/Products/Hp", [ProductController::class, "sortHp"]);
 Route::get("/Products/Urage", [ProductController::class, "sortUrage"]);
 Route::get("/Products/Redragon", [ProductController::class, "sortRedragon"]);
+
 //Put item to cart
-// Route::post("Products/cartItems/{id}", [cartItemController::class, "store"]);
-Route::middleware(['auth:api'])->post("cartItems/{id}", [CartItemController::class, "store"]);
-//show CartItems
-Route::middleware(['auth:api'])->get("/cartItems/show",[cartItemController::class, "show"]);
-//Delete cart items
-Route::middleware(['auth:api'])->delete("/cartItems/delete/{id}", [cartItemController::class, "destroy"]);
-//Orders
-Route::middleware(['auth:api'])->post("Orders/Store/", [OrderController::class,"store"]);
-Route::middleware(['auth:api'])->get("Orders/Show", [OrderController::class,"showUserItems"]);
+Route::middleware(['auth:api'])->group(function () {
+    Route::post("cartItems/{id}", [CartItemController::class, "store"]);
+    //show CartItems
+    Route::get("/cartItems/show",[cartItemController::class, "show"]);
+    //Delete cart items
+    Route::delete("/cartItems/delete/{id}", [cartItemController::class, "destroy"]);
+    //Orders
+    Route::post("Orders/Store/", [OrderController::class,"store"]);
+    Route::get("Orders/Show", [OrderController::class,"showUserItems"]);
 
+    Route::post("/logOut", [AuthController::class, "signOut"]);
+});
 
-//Asztali alkalmazás rest-api
-Route::middleware(['auth:api'])->post("/Products/Store", [ProductController::class, "store"]);
-Route::post("/Products/Update/{id}", [ProductController::class,"update"]);
-Route::delete("Products/Delete/{id}", [ProductController::class, "destroy"]);
-//Brand tablenek ->show,store és update és delete utvonal
-Route::get("/Brands/Index", [BrandController::class, "index"]);
-Route::post("/Brands/Store", [BrandController::class, "store"]);
-Route::delete("/Brands/Delete/{id}", [BrandController::class, "destroy"]);
-//Categorie tabelnek ->show,store és delete utvonal
-Route::get("/Categories/Index", [CategorieController::class, "index"]);
-Route::post("/Categories/Store", [CategorieController::class, "store"]);
-Route::delete("/Categories/Delete/{id}", [CategorieController::class, "destroy"]);
-//User routes
-Route::get("Users/Show",[UserController::class,"listUsers"]);
-Route::post("Users/Admin/{id}",[UserController::class,"AdminAccess"]);

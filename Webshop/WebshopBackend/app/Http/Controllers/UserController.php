@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\BaseController;
 use App\Http\Resources\FullUser as FullUserResources;
 
@@ -20,9 +21,12 @@ class UserController extends BaseController
 
     public function AdminAccess($id)
     {
-        // $user = User::find($id);
-        // $user->admin_since = now();
-        // $user->update($user->admin_since);
+        $user = User::find($id);
+        //  $user = User::where("id",Auth::id())->update(["admin_since"=>now()]);
+        $user->admin_since = now();
+        $user->save();
+        return $this->sendResponse(new FullUserResources( $user ), "Admin access gived");
+
     }
 
 
