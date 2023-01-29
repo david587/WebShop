@@ -1,7 +1,13 @@
 Frontend(Not done):
 <br>
 Backend(Almost Done).
-![My Image](review/Frontend_routes.pdf)
+<br>
+Frontend routes:
+<br>
+![My Image](review/Frontend_routes.png)
+<br>
+AdminApp routes:
+<br>
 ![My Image](review/AdminApp_routes.pdf)
 
 <br>
