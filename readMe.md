@@ -1,6 +1,9 @@
 Frontend(Not done):
 <br>
 Backend(Almost Done).
+![My Image](review/Frontend_routes.pdf)
+![My Image](review/AdminApp_routes.pdf)
+
 <br>
 Java AdminApp(In progress)
 

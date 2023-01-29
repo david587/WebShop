@@ -48,6 +48,7 @@ Route::post("/login",[AuthController::class, "signIn"]);
 
 //Frontend
 Route::get("/Products", [ProductController::class, "index"]);
+//Random 4products, visualize in home page
 Route::get("/Products/Home",[ProductController::class, "home"]);
 Route::get("/Products/Show/{id}", [ProductController::class, "show"]);
 //Sorting by Categories
