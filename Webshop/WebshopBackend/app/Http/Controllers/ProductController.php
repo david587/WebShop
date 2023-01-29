@@ -77,6 +77,19 @@ class ProductController extends BaseController
         return $this->sendResponse(ProductResources::collection( $products ), "OK");
     }
 
+    public function home()
+    {
+        $products = Product::all();
+        if ($products->count() < 4) {
+            return $this->sendResponse([], "There are less than 4items");
+        }
+        
+        $randomProducts = $products->random(4);
+        if($randomProducts)
+        return $this->sendResponse(ProductResources::collection($randomProducts), "Ok");
+
+    }
+
     public function store(Request $request)
     {
         $input = $request->all();

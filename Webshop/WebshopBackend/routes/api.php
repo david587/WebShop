@@ -42,12 +42,13 @@ Route::middleware(['check_admin'])->group(function () {
     Route::middleware(['auth:api'])->post("Users/Admin/{id}",[UserController::class,"AdminAccess"]);
 });
 
-
+// Auth
 Route::post("/register", [AuthController::class, "signUp"]);
 Route::post("/login",[AuthController::class, "signIn"]);
 
 //Frontend
 Route::get("/Products", [ProductController::class, "index"]);
+Route::get("/Products/Home",[ProductController::class, "home"]);
 Route::get("/Products/Show/{id}", [ProductController::class, "show"]);
 //Sorting by Categories
 Route::get("/Products/Keyboards", [ProductController::class, "sortKeyboards"]);
