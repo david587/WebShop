@@ -12,7 +12,7 @@ AdminApp routes:
 
 <br>
 Java AdminApp(In progress)
-<br>
+
 Frontend review:
 ![My Image](review/1.png)
 ![My Image](review/2.png)
