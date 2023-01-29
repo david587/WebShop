@@ -12,6 +12,10 @@ import { SupportComponent } from './support/support.component';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,8 +30,10 @@ import { SigninComponent } from './signin/signin.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

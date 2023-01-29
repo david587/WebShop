@@ -1,11 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import  { RandomService } from "../shared/random.service";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+
+export class HomeComponent implements OnInit{
+  
+  constructor(private random: RandomService){}
+  ngOnInit(): void {
+    this.getRandomProducts();
+  }
+
+  getRandomProducts()
+  {
+    this.random.getRandomProducts().subscribe({
+      next: (data: any)=>
+      {
+        console.log(data);
+        
+      }
+    })
+  }
 
   path: string = '../assets/img/homeheadset.png';
   alt: string = 'headset';
