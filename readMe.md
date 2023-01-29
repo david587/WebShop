@@ -8,7 +8,7 @@ Frontend routes:
 <br>
 AdminApp routes:
 <br>
-![My Image](review/AdminApp_routes.pdf)
+![My Image](review/AdminApp_routes.png)
 
 <br>
 Java AdminApp(In progress)
