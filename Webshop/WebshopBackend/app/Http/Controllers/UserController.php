@@ -38,7 +38,7 @@ class UserController extends BaseController
         $validator = Validator::make($input,[
             //todo:
             //implement unique parameter there
-            "email"=> "required|email"
+            "email"=> "required|email|unique:news_letters"
         ]);
 
         if ($validator->fails()) {
