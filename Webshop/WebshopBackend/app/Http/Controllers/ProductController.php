@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Brand;
 use App\Models\Product;
+use App\Models\Categorie;
+use App\Models\newLetter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\Product as ProductResources;
-use App\Models\Brand;
-use App\Models\Categorie;
 
 class ProductController extends BaseController
 {

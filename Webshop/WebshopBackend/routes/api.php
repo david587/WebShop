@@ -28,7 +28,7 @@ use App\Models\CartItem;
 Route::middleware(['check_admin'])->group(function () {
     Route::middleware(['auth:api'])->post("/Products/Store", [ProductController::class, "store"]);
     Route::middleware(['auth:api'])->post("/Products/Update/{id}", [ProductController::class,"update"]);
-    Route::middleware(['auth:api'])->delete("Products/Delete/{id}", [ProductController::class, "destroy"]);
+    Route::middleware(['auth:api'])->delete("/Products/Delete/{id}", [ProductController::class, "destroy"]);
     //Brand tablenek ->show,store és update és delete utvonal
     Route::middleware(['auth:api'])->get("/Brands/Index", [BrandController::class, "index"]);
     Route::middleware(['auth:api'])->post("/Brands/Store", [BrandController::class, "store"]);
@@ -38,8 +38,8 @@ Route::middleware(['check_admin'])->group(function () {
     Route::middleware(['auth:api'])->post("/Categories/Store", [CategorieController::class, "store"]);
     Route::middleware(['auth:api'])->delete("/Categories/Delete/{id}", [CategorieController::class, "destroy"]);
     //User routes
-    Route::middleware(['auth:api'])->get("Users/Show",[UserController::class,"listUsers"]);
-    Route::middleware(['auth:api'])->post("Users/Admin/{id}",[UserController::class,"AdminAccess"]);
+    Route::middleware(['auth:api'])->get("/Users/Show",[UserController::class,"listUsers"]);
+    Route::middleware(['auth:api'])->post("/Users/Admin/{id}",[UserController::class,"AdminAccess"]);
 });
 
 // Auth
@@ -61,17 +61,19 @@ Route::get("/Products/Logitech", [ProductController::class, "sortLogitech"]);
 Route::get("/Products/Hp", [ProductController::class, "sortHp"]);
 Route::get("/Products/Urage", [ProductController::class, "sortUrage"]);
 Route::get("/Products/Redragon", [ProductController::class, "sortRedragon"]);
+//subscribe to newsletters
+Route::post("/Users/NewsLetter",[UserController::class,"newsLetter"]);
 
 //Put item to cart
 Route::middleware(['auth:api'])->group(function () {
-    Route::post("cartItems/{id}", [CartItemController::class, "store"]);
+    Route::post("/cartItems/{id}", [CartItemController::class, "store"]);
     //show CartItems
     Route::get("/cartItems/show",[cartItemController::class, "show"]);
     //Delete cart items
     Route::delete("/cartItems/delete/{id}", [cartItemController::class, "destroy"]);
     //Orders
-    Route::post("Orders/Store/", [OrderController::class,"store"]);
-    Route::get("Orders/Show", [OrderController::class,"showUserItems"]);
+    Route::post("/Orders/Store/", [OrderController::class,"store"]);
+    Route::get("/Orders/Show", [OrderController::class,"showUserItems"]);
 
     Route::post("/logOut", [AuthController::class, "signOut"]);
 });
