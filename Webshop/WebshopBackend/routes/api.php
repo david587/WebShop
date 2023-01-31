@@ -63,6 +63,8 @@ Route::get("/Products/Urage", [ProductController::class, "sortUrage"]);
 Route::get("/Products/Redragon", [ProductController::class, "sortRedragon"]);
 //subscribe to newsletters
 Route::post("/Users/NewsLetter",[UserController::class,"newsLetter"]);
+//searchbar
+Route::get("/Products/Search",[ProductController::class,"search"]);
 
 //Put item to cart
 Route::middleware(['auth:api'])->group(function () {

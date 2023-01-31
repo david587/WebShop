@@ -152,4 +152,23 @@ class ProductController extends BaseController
 
         return $this->sendResponse([],"Product törölve");
     }
+
+    public function search(Request $request)
+    {
+        $input = $request->name;
+        //i have to null the wariable if the input is not coming for brand table
+        $brand = Brand::where("brand", $input)->first();
+        $brand_id = $brand ? $brand->id : null;
+        
+        //same happening here
+        $categorie = Categorie::where("categorie", $input)->first();
+        $categorie_id = $categorie ? $categorie->id : null;
+        
+        //Sorting products
+        $sortedProducts = Product::Where("name","like", "%".$input."%")->
+        orwhere("categorie_id",$categorie_id)->
+        orwhere("brand_id",$brand_id)
+        ->get();
+        return $this->sendResponse(ProductResources::collection( $sortedProducts ), "OK");
+    }
 }
