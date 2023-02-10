@@ -1,15 +1,16 @@
 <?php
 
+use App\Models\CartItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BrandController;
-use App\Http\Controllers\cartItemController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\CategorieController;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
-use App\Models\CartItem;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\EmailController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\cartItemController;
+use App\Http\Controllers\CategorieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,10 @@ use App\Models\CartItem;
 
 
 
+
 //Require Admin access and token
 Route::middleware(['check_admin'])->group(function () {
-    //name,price,details,imageurl,stock number,brand,headset
+    //name,price,details,imageurl,stock number,brand,categorie
     Route::middleware(['auth:api'])->post("/Products/Store", [ProductController::class, "store"]);
     Route::middleware(['auth:api'])->post("/Products/Update/{id}", [ProductController::class,"update"]);
     Route::middleware(['auth:api'])->delete("/Products/Delete/{id}", [ProductController::class, "destroy"]);
@@ -41,6 +43,9 @@ Route::middleware(['check_admin'])->group(function () {
     //User routes
     Route::middleware(['auth:api'])->get("/Users/Show",[UserController::class,"listUsers"]);
     Route::middleware(['auth:api'])->post("/Users/Admin/{id}",[UserController::class,"AdminAccess"]);
+
+    // send messages to stored emails,
+    Route::middleware(['auth:api'])->get('/sendEmail', [EmailController::class,'sendEmail']);
 });
 
 // Auth
@@ -65,9 +70,9 @@ Route::get("/Products/Logitech", [ProductController::class, "sortLogitech"]);
 Route::get("/Products/Hp", [ProductController::class, "sortHp"]);
 Route::get("/Products/Urage", [ProductController::class, "sortUrage"]);
 Route::get("/Products/Redragon", [ProductController::class, "sortRedragon"]);
-//subscribe to newsletters
+//subscribe to newsletters,store email
 Route::post("/Users/NewsLetter",[UserController::class,"newsLetter"]);
-//searchbar
+//searchbar,searching
 Route::get("/Products/Search",[ProductController::class,"search"]);
 
 //Put item to cart
