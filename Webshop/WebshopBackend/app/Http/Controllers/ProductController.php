@@ -72,11 +72,16 @@ class ProductController extends BaseController
     }
 
     //product CRUD
-    public function index()
+    //in request->pagination number, if we not providing request the dafult value will be 10
+    // $request->page
+    public function index(Request $request)
     {
-        $products = Product::all();
-        return $this->sendResponse(ProductResources::collection( $products ), "OK");
+        $perPage = 10;
+        $page = $request->page ?? 1;
+        $products = Product::paginate($perPage, ['*'], 'page', $page);
+        return $this->sendResponse(ProductResources::collection($products), 'OK');
     }
+    
 
     public function home()
     {
@@ -101,6 +106,7 @@ class ProductController extends BaseController
             "price"=>"required",
             "details"=>"required",
             "image"=>"required",
+            "inStock"=>"required",
             "brand_id"=>"required",
             "categorie_id"=>"required"
         ]);
@@ -133,6 +139,7 @@ class ProductController extends BaseController
             "price"=>"required",
             "details"=>"required",
             "image"=>"required",
+            "inStock"=>"required"
         ]);
 
         if($validator->fails())

@@ -31,6 +31,10 @@ class OrderController extends BaseController
             $order_item = new Order();
             $order_item->user_id = Auth::id();
             $order_item->product_id = $cartItem->product_id;
+
+            $product = Product::find($cartItem->product_id);
+            $product->inStock = $product->inStock - 1;
+            $product->save();
             $order_item->quantity = $cartItem->quantity;
             $order_item->order_information_id = $order_Information->id;
             $order_item->save();

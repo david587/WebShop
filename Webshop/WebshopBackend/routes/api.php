@@ -26,6 +26,7 @@ use App\Models\CartItem;
 
 //Require Admin access and token
 Route::middleware(['check_admin'])->group(function () {
+    //name,price,details,imageurl,stock number,brand,headset
     Route::middleware(['auth:api'])->post("/Products/Store", [ProductController::class, "store"]);
     Route::middleware(['auth:api'])->post("/Products/Update/{id}", [ProductController::class,"update"]);
     Route::middleware(['auth:api'])->delete("/Products/Delete/{id}", [ProductController::class, "destroy"]);
@@ -43,10 +44,13 @@ Route::middleware(['check_admin'])->group(function () {
 });
 
 // Auth
+//name,adress,phone,email,password,confirm_password
 Route::post("/register", [AuthController::class, "signUp"]);
+//email,password
 Route::post("/login",[AuthController::class, "signIn"]);
 
 //Frontend
+//pagination is in it, so if we providing number in the $request->page ,per page/10 products
 Route::get("/Products", [ProductController::class, "index"]);
 //Random 4products, visualize in home page
 Route::get("/Products/Home",[ProductController::class, "home"]);
