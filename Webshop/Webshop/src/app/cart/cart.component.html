@@ -1,0 +1,24 @@
+<div class="bg-gradient-to-b from-deepForest-800 to-neon lg:px-[250px]">
+    <h1 class="text-white">Products</h1>
+    <div></div>
+    <div>
+        <table class="table table-striped text-white">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <td>{{product.image}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.quantity}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

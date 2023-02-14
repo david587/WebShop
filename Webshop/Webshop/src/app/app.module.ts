@@ -15,7 +15,6 @@ import { SigninComponent } from './signin/signin.component';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +25,7 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
     AboutComponent,
     SupportComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
   ],
   imports: [
     BrowserModule,
