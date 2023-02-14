@@ -13,7 +13,7 @@ export class LoginService {
       let endpoint = 'login';
       let url = "http://localhost:8000/api/" + endpoint;
       
-      let loginData = {
+      let data = {
         email: email,
         password: pass
       };
@@ -26,6 +26,6 @@ export class LoginService {
       let httpOption = {
         headers: headers
       };
-      return this.http.post<any>(url, loginData, httpOption);
+      return this.http.post<any>(url, data, httpOption);
     }
   }

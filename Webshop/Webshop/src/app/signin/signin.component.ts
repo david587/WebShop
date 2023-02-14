@@ -26,13 +26,13 @@ export class SigninComponent implements OnInit {
   login () {
     let email = this.loginForm.value.email;
     let pass = this.loginForm.value.password;
+
+    
     this.loginService.login(email, pass)
     .subscribe({
       next: data => {
-        console.log(data.token)
-        console.log(data.name)
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('name', data.name);
+        localStorage.setItem('token', data.data.token);
+        localStorage.setItem('name', data.data.name);
       },
       error: err => {
         console.log('Hiba! Az azonosítás sikertelen!')
