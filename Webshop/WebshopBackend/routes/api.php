@@ -60,16 +60,11 @@ Route::get("/Products", [ProductController::class, "index"]);
 //Random 4products, visualize in home page
 Route::get("/Products/Home",[ProductController::class, "home"]);
 Route::get("/Products/Show/{id}", [ProductController::class, "show"]);
-//Sorting by Categories
-Route::get("/Products/Keyboards", [ProductController::class, "sortKeyboards"]);
-Route::get("/Products/Mouses", [ProductController::class, "sortMouses"]);
-Route::get("/Products/Headsets", [ProductController::class, "sortHeadsets"]);
-Route::get("/Products/Monitors", [ProductController::class, "sortMonitors"]);
-//Sorting by Brands
-Route::get("/Products/Logitech", [ProductController::class, "sortLogitech"]);
-Route::get("/Products/Hp", [ProductController::class, "sortHp"]);
-Route::get("/Products/Urage", [ProductController::class, "sortUrage"]);
-Route::get("/Products/Redragon", [ProductController::class, "sortRedragon"]);
+
+//Sorting
+Route::get("/Products/Categories/{name}", [ProductController::class, "sortCategories"]);
+Route::get("/Products/Brands/{name}", [ProductController::class, "sortBrands"]);
+
 //subscribe to newsletters,store email
 Route::post("/Users/NewsLetter",[UserController::class,"newsLetter"]);
 //searchbar,searching
