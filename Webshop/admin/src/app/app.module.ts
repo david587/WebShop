@@ -10,6 +10,7 @@ import { ProductsComponent } from './products/products.component';
 import { BrandsComponent } from './brands/brands.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     UsersComponent,
     ProductsComponent,
     BrandsComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
