@@ -27,7 +27,7 @@ use App\Http\Controllers\CategorieController;
 
 
 //Require Admin access and token
-Route::middleware(['check_admin'])->group(function () {
+// Route::middleware(['check_admin'])->group(function () {
     //name,price,details,imageurl,stock number,brand,categorie
     Route::middleware(['auth:api'])->post("/Products/Store", [ProductController::class, "store"]);
     Route::middleware(['auth:api'])->post("/Products/Update/{id}", [ProductController::class,"update"]);
@@ -46,7 +46,7 @@ Route::middleware(['check_admin'])->group(function () {
 
     // send messages to stored emails,
     Route::middleware(['auth:api'])->get('/sendEmail', [EmailController::class,'sendEmail']);
-});
+// });
 
 // Auth
 //name,adress,phone,email,password,confirm_password
