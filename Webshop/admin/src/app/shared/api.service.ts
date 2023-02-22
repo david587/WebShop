@@ -63,4 +63,28 @@ export class ApiService {
     };
     return this.http.put(url, product, httpOption);
   }
+
+  //Users
+
+  getUsers(){
+    
+    let endpoint = 'Users/Show';
+    let url = this.apihost + endpoint;
+    return this.http.get<any>(url);
+  }
+
+  giveAdmin(user:any){
+    let id = user.id;
+    let endpoint = 'User/Admin/{id}';
+    let url = this.apihost + endpoint + "/" + id;
+
+    return this.http.get<any>(url);
+  }
+
+  sendEmail(){
+    let endpoint = '/sendEmail';
+    let url = this.apihost + endpoint;
+    return this.http.get<any>(url);
+  }
+
 }
