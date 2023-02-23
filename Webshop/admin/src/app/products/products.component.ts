@@ -41,6 +41,7 @@ export class ProductsComponent {
     });
     this.getProducts();
   }
+
   getProducts() {
     this.api.getProducts().subscribe({
       next: (products:any) => {        
@@ -52,18 +53,20 @@ export class ProductsComponent {
       }
     });
   }
+
   onClick() {
     this.addProduct();
   }
+
   addProduct() {
     let data = {
-      name: this.productForm.value.inputName,
-      price: this.productForm.value.inputPrice,
-      detale: this.productForm.value.inputDetale,
-      image: this.productForm.value.inputImage,
-      inStock: this.productForm.value.inputInStock,
-      brand: this.productForm.value.inputBrand,
-      categorie: this.productForm.value.inputCategorie
+      name: this.productForm.value.Name,
+      price: this.productForm.value.Price,
+      detale: this.productForm.value.Detale,
+      image: this.productForm.value.Image,
+      instock: this.productForm.value.InStock,
+      brand: this.productForm.value.Brand,
+      categorie: this.productForm.value.Categorie
     };
     this.clearField();
     this.api.addProduct(data)
@@ -80,13 +83,13 @@ export class ProductsComponent {
 
   clearField() {
     this.productForm.patchValue({
-        inputName: '', 
-        inputPrice: '',
-        inputDetale: '',
-        inputImage: '',
-        inputInStock: '',
-        inputBrand: '',
-        inputCategorie: '',
+        Name: '', 
+        Price: '',
+        Detale: '',
+        Image: '',
+        InStock: '',
+        Brand: '',
+        Categorie: '',
       });
   }
 
@@ -112,6 +115,7 @@ export class ProductsComponent {
     this.editForm.patchValue({brand_id: product.brand});
     this.editForm.patchValue({categorie_id: product.categorie});
   }
+  
   updateProduct() {
     let data = {
       id: this.editForm.value.Id,
