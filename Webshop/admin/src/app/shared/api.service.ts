@@ -87,4 +87,44 @@ export class ApiService {
     return this.http.get<any>(url);
   }
 
+
+  // Brands
+
+  getBrands(){
+    let endpoint = '/Brand/index';
+    let url = this.apihost + endpoint;
+    return this.http.get<any>(url);
+  }
+
+  addBrand(data:any){
+    let endpoint = '/Brand/Store';
+    let url = this.apihost + endpoint;
+
+    let token = localStorage.getItem('token');
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.post<any>(url, data, httpOption);
+  }
+
+  deleteBrand(id: number){
+    let endpoint = '/Brand/Delete/{id}';
+    let url = this.apihost + endpoint + "/" + id;
+    let token = localStorage.getItem('token');    
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.delete<any>(url, httpOption);
+  }
+
 }
