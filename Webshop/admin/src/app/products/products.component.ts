@@ -20,24 +20,24 @@ export class ProductsComponent {
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
-      Name: ['', Validators.required],
-      Price: [''],
-      Details:[''],
-      Image:[''],
-      InStock:[''],
-      Brand:[''],
-      Categorie:['']
+      inName: ['', Validators.required],
+      inPrice: [''],
+      inDetails:[''],
+      inImage:[''],
+      inInStock:[''],
+      inBrand:[''],
+      inCategorie:['']
 
     });
     this.editForm = this.formBuilder.group({
-      id: [''],
-      Name: ['', Validators.required],
-      Price: [''],
-      Details:[''],
-      Image:[''],
-      InStock:[''],
-      Brand:[''],
-      Categorie:['']
+      edInId: [''],
+      edInName: ['', Validators.required],
+      edInPrice: [''],
+      edInDetails:[''],
+      edInImage:[''],
+      edInInStock:[''],
+      edInBrand:[''],
+      edInCategorie:['']
     });
     this.getProducts();
   }
@@ -61,14 +61,15 @@ export class ProductsComponent {
 
   addProduct() {
     let data = {
-      name: this.productForm.value.Name,
-      price: this.productForm.value.Price,
-      detale: this.productForm.value.Details,
-      image: this.productForm.value.Image,
-      instock: this.productForm.value.InStock,
-      brand: this.productForm.value.Brand,
-      categorie: this.productForm.value.Categorie
+      name: this.productForm.value.inName,
+      price: this.productForm.value.inPrice,
+      detale: this.productForm.value.inDetails,
+      image: this.productForm.value.inImage,
+      instock: this.productForm.value.inInStock,
+      brand: this.productForm.value.inBrand,
+      categorie: this.productForm.value.inCategorie
     };
+
     this.clearField();
     this.api.addProduct(data)
     .subscribe({
@@ -84,13 +85,13 @@ export class ProductsComponent {
 
   clearField() {
     this.productForm.patchValue({
-        Name: '', 
-        Price: '',
-        Detale: '',
-        Image: '',
-        InStock: '',
-        Brand: '',
-        Categorie: '',
+        inName: '', 
+        inPrice: '',
+        inDetale: '',
+        inImage: '',
+        inInStock: '',
+        inBrand: '',
+        inCategorie: '',
       });
   }
 
@@ -107,26 +108,26 @@ export class ProductsComponent {
   }
 
   editProduct(product: any) {
-    this.editForm.patchValue({id: product.id});
-    this.editForm.patchValue({Name: product.name});
-    this.editForm.patchValue({Price: product.price});
-    this.editForm.patchValue({Details: product.details});
-    this.editForm.patchValue({Image: product.image});
-    this.editForm.patchValue({InStock: product.inStock});
-    this.editForm.patchValue({Brand: product.brand_id});
-    this.editForm.patchValue({Categorie: product.categorie_id});
+    this.editForm.patchValue({edInId: product.id});
+    this.editForm.patchValue({edInName: product.name});
+    this.editForm.patchValue({edInPrice: product.price});
+    this.editForm.patchValue({edInDetails: product.details});
+    this.editForm.patchValue({edInImage: product.image});
+    this.editForm.patchValue({edInInStock: product.inStock});
+    this.editForm.patchValue({edInBrand: product.brand_id});
+    this.editForm.patchValue({edInCategorie: product.categorie_id});
   }
   
   updateProduct() {
     let data = {
-      id: this.editForm.value.id,
-      name: this.editForm.value.Name,
-      price: this.editForm.value.Price,
-      detail: this.editForm.value.Details,
-      image: this.editForm.value.Image,
-      inStock: this.editForm.value.InStock,
-      brand: this.editForm.value.Brand,
-      categorie: this.editForm.value.Categorie
+      id: this.editForm.value.edInId,
+      name: this.editForm.value.edInName,
+      price: this.editForm.value.edInPrice,
+      detail: this.editForm.value.edInDetails,
+      image: this.editForm.value.edInImage,
+      inStock: this.editForm.value.edInInStock,
+      brand: this.editForm.value.edInBrand,
+      categorie: this.editForm.value.edInCategorie
     };
     this.api.updateProduct(data).subscribe({
       next: (res) => {

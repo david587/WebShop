@@ -16,6 +16,7 @@ export class ApiService {
   getProducts() {
     let endpoint = 'Products';
     let url = this.apihost + endpoint;
+    
     return this.http.get<any>(url);
   }
 
@@ -70,6 +71,7 @@ export class ApiService {
     
     let endpoint = 'Users/Show';
     let url = this.apihost + endpoint;
+
     return this.http.get<any>(url);
   }
 
@@ -84,6 +86,7 @@ export class ApiService {
   sendEmail(){
     let endpoint = '/sendEmail';
     let url = this.apihost + endpoint;
+
     return this.http.get<any>(url);
   }
 

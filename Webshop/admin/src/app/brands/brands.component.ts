@@ -19,7 +19,7 @@ constructor(
 
 ngOnInit(): void {
   this.brandForm = this.formBuilder.group({
-    Brand: ['', Validators.required],
+    inBrand: ['', Validators.required],
   });
 
   this.getBrands();
@@ -43,7 +43,7 @@ ngOnInit(): void {
 
   addBrand() {
     let data = {
-      brand: this.brandForm.value.Brand,
+      brand: this.brandForm.value.inBrand,
     };
     this.clearField();
     this.api.addBrand(data)
@@ -60,7 +60,7 @@ ngOnInit(): void {
 
   clearField() {
     this.brandForm.patchValue({
-        Brand: ''
+        inBrand: ''
       });
   }
 

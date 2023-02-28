@@ -18,7 +18,7 @@ export class CategoriesComponent {
   
   ngOnInit(): void {
     this.categorieForm = this.formBuilder.group({
-      Categorie: ['', Validators.required],
+      inCategorie: ['', Validators.required],
     });
   
     this.getCategories();
@@ -55,7 +55,7 @@ export class CategoriesComponent {
 
     clearField() {
       this.categorieForm.patchValue({
-        Categorie: ''
+        inCategorie: ''
         });
     }
 }
