@@ -20,16 +20,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
       <tr class="col" *ngFor="let brand of brands">
         <th scope="row">2</th>
         <td>{{brand.brand}}</td>
+        <td>
+          <div class="row mx-2">
+            <button class="text-white bg-danger p-2 rounded border-danger" (click)="deleteBrand(brands.id)">
+              Delete 
+            </button>
+          </div>
+        </td>
       </tr>
+
     </tbody>
   </table>
 

@@ -22,7 +22,7 @@ export class ProductsComponent {
     this.productForm = this.formBuilder.group({
       Name: ['', Validators.required],
       Price: [''],
-      Detale:[''],
+      Details:[''],
       Image:[''],
       InStock:[''],
       Brand:[''],
@@ -30,10 +30,10 @@ export class ProductsComponent {
 
     });
     this.editForm = this.formBuilder.group({
-      Id: [''],
+      id: [''],
       Name: ['', Validators.required],
       Price: [''],
-      Detale:[''],
+      Details:[''],
       Image:[''],
       InStock:[''],
       Brand:[''],
@@ -44,8 +44,8 @@ export class ProductsComponent {
 
   getProducts() {
     this.api.getProducts().subscribe({
-      next: (products:any) => {        
-        this.products = products;
+      next: (response: any) => {
+        this.products = response.data;
       },
       error: (err) => {
         console.log('Hiba! A REST API lekérdezés sikertelen!');
@@ -53,6 +53,7 @@ export class ProductsComponent {
       }
     });
   }
+  
 
   onClick() {
     this.addProduct();
@@ -62,7 +63,7 @@ export class ProductsComponent {
     let data = {
       name: this.productForm.value.Name,
       price: this.productForm.value.Price,
-      detale: this.productForm.value.Detale,
+      detale: this.productForm.value.Details,
       image: this.productForm.value.Image,
       instock: this.productForm.value.InStock,
       brand: this.productForm.value.Brand,
@@ -107,25 +108,25 @@ export class ProductsComponent {
 
   editProduct(product: any) {
     this.editForm.patchValue({id: product.id});
-    this.editForm.patchValue({name: product.name});
-    this.editForm.patchValue({price: product.price});
-    this.editForm.patchValue({details: product.details});
-    this.editForm.patchValue({image: product.image});
-    this.editForm.patchValue({inStock: product.inStock});
-    this.editForm.patchValue({brand_id: product.brand});
-    this.editForm.patchValue({categorie_id: product.categorie});
+    this.editForm.patchValue({Name: product.name});
+    this.editForm.patchValue({Price: product.price});
+    this.editForm.patchValue({Details: product.details});
+    this.editForm.patchValue({Image: product.image});
+    this.editForm.patchValue({InStock: product.inStock});
+    this.editForm.patchValue({Brand: product.brand_id});
+    this.editForm.patchValue({Categorie: product.categorie_id});
   }
   
   updateProduct() {
     let data = {
-      id: this.editForm.value.Id,
+      id: this.editForm.value.id,
       name: this.editForm.value.Name,
       price: this.editForm.value.Price,
-      detail: this.editForm.value.detail,
-      image: this.editForm.value.image,
-      inStock: this.editForm.value.inStock,
-      brand: this.editForm.value.brand,
-      categorie: this.editForm.value.categorie
+      detail: this.editForm.value.Details,
+      image: this.editForm.value.Image,
+      inStock: this.editForm.value.InStock,
+      brand: this.editForm.value.Brand,
+      categorie: this.editForm.value.Categorie
     };
     this.api.updateProduct(data).subscribe({
       next: (res) => {
