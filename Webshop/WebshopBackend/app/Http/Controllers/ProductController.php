@@ -90,21 +90,24 @@ class ProductController extends BaseController
     {
         $input = $request->all();
 
-        $validator = Validator::make($input, [
-            "name"=>"required",
-            "price"=>"required",
-            "details"=>"required",
-            "image"=>"required",
-            "inStock"=>"required"
-        ]);
+        // $validator = Validator::make($input, [
+        //     "name"=>"required",
+        //     "price"=>"required",
+        //     "details"=>"required",
+        //     "image"=>"required",
+        //     "inStock"=>"required"
+        // ]);
 
-        if($validator->fails())
-        {
-            return $this->sendError($validator->errors());
-        }
+        // if($validator->fails())
+        // {
+        //     return $this->sendError($validator->errors());
+        // }
+
+        $input["brand_id"] = Brand::where("brand",$input["brand_id"])->first()->id;
+        $input["categorie_id"] = Categorie::where("categorie",$input["categorie_id"])->first()->id;
 
         $product = Product::find($id);
-        $product->update($request->all());
+        $product->update($input);
 
         return $this->sendResponse(new ProductResources($product), "Product frissitve");
     }

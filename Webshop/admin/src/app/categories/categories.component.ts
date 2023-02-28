@@ -26,8 +26,8 @@ export class CategoriesComponent {
   
     getCategories(){
       this.api.getCategories().subscribe({
-        next: (categories:any) => {        
-          this.categories = categories;
+        next: (response:any) => {        
+          this.categories = response.data;
         },
         error: (err:any) => {
           console.log('Hiba! A REST API lekérdezés sikertelen!');
@@ -36,12 +36,12 @@ export class CategoriesComponent {
       });
     }
 
-    addBrand() {
+    addCategorie() {
       let data = {
         categorie: this.categorieForm.value.Categorie,
       };
       this.clearField();
-      this.api.addBrand(data)
+      this.api.addCategorie(data)
       .subscribe({
         next: (data:any) => {
           console.log('vissza: ' + data);

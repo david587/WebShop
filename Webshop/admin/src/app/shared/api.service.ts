@@ -133,7 +133,7 @@ export class ApiService {
   // Categories
 
   getCategories(){
-    let endpoint = '/Categories/index';
+    let endpoint = '/Categories/Index';
     let url = this.apihost + endpoint;
     return this.http.get<any>(url);
   }
