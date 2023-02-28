@@ -20,24 +20,24 @@ export class ProductsComponent {
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
-      inName: ['', Validators.required],
-      inPrice: [''],
-      inDetails:[''],
-      inImage:[''],
-      inInStock:[''],
-      inBrand:[''],
-      inCategorie:['']
+      name: ['', Validators.required],
+      price: [''],
+      details:[''],
+      image:[''],
+      inStock:[''],
+      brand_id:[''],
+      categorie_id:['']
 
     });
     this.editForm = this.formBuilder.group({
-      edInId: [''],
-      edInName: ['', Validators.required],
-      edInPrice: [''],
-      edInDetails:[''],
-      edInImage:[''],
-      edInInStock:[''],
-      edInBrand:[''],
-      edInCategorie:['']
+      id: [''],
+      name: ['', Validators.required],
+      price: [''],
+      details:[''],
+      image:[''],
+      inStock:[''],
+      brand_id:[''],
+      categorie_id:['']
     });
     this.getProducts();
   }
@@ -61,13 +61,13 @@ export class ProductsComponent {
 
   addProduct() {
     let data = {
-      name: this.productForm.value.inName,
-      price: this.productForm.value.inPrice,
-      detale: this.productForm.value.inDetails,
-      image: this.productForm.value.inImage,
-      instock: this.productForm.value.inInStock,
-      brand: this.productForm.value.inBrand,
-      categorie: this.productForm.value.inCategorie
+      name: this.productForm.value.name,
+      price: this.productForm.value.price,
+      details: this.productForm.value.details,
+      image: this.productForm.value.image,
+      inStock: this.productForm.value.inStock,
+      brand_id: this.productForm.value.brand_id,
+      categorie_id: this.productForm.value.categorie_id
     };
 
     this.clearField();
@@ -85,13 +85,13 @@ export class ProductsComponent {
 
   clearField() {
     this.productForm.patchValue({
-        inName: '', 
-        inPrice: '',
-        inDetale: '',
-        inImage: '',
-        inInStock: '',
-        inBrand: '',
-        inCategorie: '',
+        name: '', 
+        price: '',
+        details: '',
+        image: '',
+        inStock: '',
+        brand_id: '',
+        categorie_id: '',
       });
   }
 
@@ -108,27 +108,28 @@ export class ProductsComponent {
   }
 
   editProduct(product: any) {
-    this.editForm.patchValue({edInId: product.id});
-    this.editForm.patchValue({edInName: product.name});
-    this.editForm.patchValue({edInPrice: product.price});
-    this.editForm.patchValue({edInDetails: product.details});
-    this.editForm.patchValue({edInImage: product.image});
-    this.editForm.patchValue({edInInStock: product.inStock});
-    this.editForm.patchValue({edInBrand: product.brand_id});
-    this.editForm.patchValue({edInCategorie: product.categorie_id});
+    this.editForm.patchValue({id: product.id});
+    this.editForm.patchValue({name: product.name});
+    this.editForm.patchValue({price: product.price});
+    this.editForm.patchValue({details: product.details});
+    this.editForm.patchValue({image: product.image});
+    this.editForm.patchValue({inStock: product.inStock});
+    this.editForm.patchValue({brand_id: product.brand_id});
+    this.editForm.patchValue({categorie_id: product.categorie_id});
   }
   
   updateProduct() {
     let data = {
-      id: this.editForm.value.edInId,
-      name: this.editForm.value.edInName,
-      price: this.editForm.value.edInPrice,
-      detail: this.editForm.value.edInDetails,
-      image: this.editForm.value.edInImage,
-      inStock: this.editForm.value.edInInStock,
-      brand: this.editForm.value.edInBrand,
-      categorie: this.editForm.value.edInCategorie
+      id: this.editForm.value.id,
+      name: this.editForm.value.name,
+      price: this.editForm.value.price,
+      detail: this.editForm.value.deatails,
+      image: this.editForm.value.image,
+      inStock: this.editForm.value.inStock,
+      brand_id: this.editForm.value.brand_id,
+      categorie_id: this.editForm.value.categorie_id
     };
+
     this.api.updateProduct(data).subscribe({
       next: (res) => {
         console.log(res);

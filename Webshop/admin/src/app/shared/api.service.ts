@@ -52,7 +52,7 @@ export class ApiService {
   }
   updateProduct(product: any) {
     let id = product.id;
-    let endpoint = 'Products/Updata';
+    let endpoint = 'Products/Update';
     let url = this.apihost + endpoint + "/" + id;
     let token = localStorage.getItem('token');    
     let headers = new HttpHeaders({
@@ -62,7 +62,7 @@ export class ApiService {
     let httpOption = {
       headers: headers
     };
-    return this.http.put(url, product, httpOption);
+    return this.http.post(url, product, httpOption);
   }
 
   //Users
