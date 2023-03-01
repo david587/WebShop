@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../shared/api.service';
 
@@ -12,10 +12,13 @@ export class ProductsComponent {
   productForm !: FormGroup;
   editForm !: FormGroup;
   products:any = [];
+  message!:any;
+  errmess!:any;
 
   constructor(
     private api: ApiService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private ngZone: NgZone,
     ) { }
 
   ngOnInit(): void {
@@ -42,10 +45,24 @@ export class ProductsComponent {
     this.getProducts();
   }
 
+  showMessage() {
+    // set a timeout function to clear the message after 4 seconds
+    this.ngZone.run(() => {
+      setTimeout(() => {
+        this.message = '';
+        this.errmess ='';
+      }, 4000);
+    });
+  }
+
   getProducts() {
     this.api.getProducts().subscribe({
       next: (response: any) => {
         this.products = response.data;
+        this.showMessage();
+        
+        
+        // this.message = response.message;
       },
       error: (err) => {
         console.log('Hiba! A REST API lekérdezés sikertelen!');
@@ -75,10 +92,13 @@ export class ProductsComponent {
     .subscribe({
       next: (data:any) => {
         console.log('vissza: ' + data);
+        this.message = data.message;
         this.getProducts();
+        this.showMessage();
       },
       error: (err:any) => {
-        console.log('Hiba! A termék felévtele sikertelen!')
+        this.errmess = 'Hiba! A termék felvétele sikertelen!';
+        this.showMessage();
       }
     });
   }
@@ -97,12 +117,15 @@ export class ProductsComponent {
 
   deleteProduct(id: number) {
     this.api.deleteProduct(id).subscribe({
-      next: (res) => {
-        console.log(res);
+      next: (res:any) => {
+        this.message = res.message;
         this.getProducts();
+        this.showMessage();
       },
       error: (err) => {
+        this.message = err;
         console.log(err);
+        this.showMessage();
       }
     });
   }
@@ -131,12 +154,15 @@ export class ProductsComponent {
     };
 
     this.api.updateProduct(data).subscribe({
-      next: (res) => {
-        console.log(res);
+      next: (res:any) => {
+        console.log(res.message);
+        this.message = res.message;
         this.getProducts();
+        this.showMessage();
       },
       error: (err) => {
         console.log(err);
+        this.showMessage();
       }
     });
 
