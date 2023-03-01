@@ -97,7 +97,7 @@ export class ProductsComponent {
         this.showMessage();
       },
       error: (err:any) => {
-        this.errmess = 'Hiba! A termék felvétele sikertelen!';
+        this.errmess = err.error.message;
         this.showMessage();
       }
     });
@@ -123,8 +123,7 @@ export class ProductsComponent {
         this.showMessage();
       },
       error: (err) => {
-        this.message = err;
-        console.log(err);
+        this.errmess = err.error.message;
         this.showMessage();
       }
     });
@@ -161,7 +160,7 @@ export class ProductsComponent {
         this.showMessage();
       },
       error: (err) => {
-        console.log(err);
+        this.errmess = err.error.message;
         this.showMessage();
       }
     });
