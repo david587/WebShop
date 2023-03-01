@@ -102,10 +102,8 @@ class ProductController extends BaseController
         // {
         //     return $this->sendError($validator->errors());
         // }
-
         $input["brand_id"] = Brand::where("brand",$input["brand_id"])->first()->id;
         $input["categorie_id"] = Categorie::where("categorie",$input["categorie_id"])->first()->id;
-
         $product = Product::find($id);
         $product->update($input);
 

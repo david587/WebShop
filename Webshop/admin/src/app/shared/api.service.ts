@@ -52,7 +52,7 @@ export class ApiService {
   }
   updateProduct(product: any) {
     let id = product.id;
-    let endpoint = 'Products/Updata';
+    let endpoint = 'Products/Update';
     let url = this.apihost + endpoint + "/" + id;
     let token = localStorage.getItem('token');    
     let headers = new HttpHeaders({
@@ -62,7 +62,7 @@ export class ApiService {
     let httpOption = {
       headers: headers
     };
-    return this.http.put(url, product, httpOption);
+    return this.http.post(url, product, httpOption);
   }
 
   //Users
@@ -79,28 +79,44 @@ export class ApiService {
     let id = user.id;
     let endpoint = 'User/Admin';
     let url = this.apihost + endpoint + "/" + id;
+    let token = localStorage.getItem('token');    
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+    let httpOption = {
+      headers: headers
+    };
 
-    return this.http.get<any>(url);
+    return this.http.post<any>(url, user, httpOption );
   }
 
   sendEmail(){
-    let endpoint = '/sendEmail';
+    let endpoint = 'sendEmail';
     let url = this.apihost + endpoint;
+    let token = localStorage.getItem('token');    
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+    let httpOption = {
+      headers: headers
+    };
 
-    return this.http.get<any>(url);
+    return this.http.post<any>(url, httpOption);
   }
 
 
   // Brands
 
   getBrands(){
-    let endpoint = '/Brand/index';
+    let endpoint = 'Brand/index';
     let url = this.apihost + endpoint;
     return this.http.get<any>(url);
   }
 
   addBrand(data:any){
-    let endpoint = '/Brand/Store';
+    let endpoint = 'Brand/Store';
     let url = this.apihost + endpoint;
 
     let token = localStorage.getItem('token');
@@ -117,7 +133,7 @@ export class ApiService {
   }
 
   deleteBrand(id: number){
-    let endpoint = '/Brand/Delete';
+    let endpoint = 'Brand/Delete';
     let url = this.apihost + endpoint + "/" + id;
     let token = localStorage.getItem('token');    
     let headers = new HttpHeaders({
@@ -133,13 +149,13 @@ export class ApiService {
   // Categories
 
   getCategories(){
-    let endpoint = '/Categories/Index';
+    let endpoint = 'Categories/Index';
     let url = this.apihost + endpoint;
     return this.http.get<any>(url);
   }
 
   addCategorie(data:any){
-    let endpoint = '/Categories/Store';
+    let endpoint = 'Categories/Store';
     let url = this.apihost + endpoint;
 
     let token = localStorage.getItem('token');
@@ -156,7 +172,7 @@ export class ApiService {
   }
 
   deleteCategorie(id: number){
-    let endpoint = '/Categories/Delete';
+    let endpoint = 'Categories/Delete';
     let url = this.apihost + endpoint + "/" + id;
     let token = localStorage.getItem('token');    
     let headers = new HttpHeaders({

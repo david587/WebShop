@@ -18,7 +18,7 @@ export class CategoriesComponent {
   
   ngOnInit(): void {
     this.categorieForm = this.formBuilder.group({
-      inCategorie: ['', Validators.required],
+      categorie: ['', Validators.required],
     });
   
     this.getCategories();
@@ -36,9 +36,13 @@ export class CategoriesComponent {
       });
     }
 
-    addCategorie() {
+    onClick(){
+      this.addCategories();
+    }
+
+    addCategories() {
       let data = {
-        categorie: this.categorieForm.value.Categorie,
+        categorie: this.categorieForm.value.categorie,
       };
       this.clearField();
       this.api.addCategorie(data)
