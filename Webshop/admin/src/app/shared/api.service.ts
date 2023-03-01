@@ -110,13 +110,23 @@ export class ApiService {
   // Brands
 
   getBrands(){
-    let endpoint = 'Brand/index';
+    let endpoint = 'Brands/Index';
     let url = this.apihost + endpoint;
-    return this.http.get<any>(url);
+    let token = localStorage.getItem('token');
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.get<any>(url, httpOption);
   }
 
   addBrand(data:any){
-    let endpoint = 'Brand/Store';
+    let endpoint = 'Brands/Store';
     let url = this.apihost + endpoint;
 
     let token = localStorage.getItem('token');
@@ -133,7 +143,7 @@ export class ApiService {
   }
 
   deleteBrand(id: number){
-    let endpoint = 'Brand/Delete';
+    let endpoint = 'Brands/Delete';
     let url = this.apihost + endpoint + "/" + id;
     let token = localStorage.getItem('token');    
     let headers = new HttpHeaders({
@@ -151,7 +161,17 @@ export class ApiService {
   getCategories(){
     let endpoint = 'Categories/Index';
     let url = this.apihost + endpoint;
-    return this.http.get<any>(url);
+    let token = localStorage.getItem('token');
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.get<any>(url, httpOption);
   }
 
   addCategorie(data:any){

@@ -19,7 +19,7 @@ constructor(
 
 ngOnInit(): void {
   this.brandForm = this.formBuilder.group({
-    inBrand: ['', Validators.required],
+    brand: ['', Validators.required],
   });
 
   this.getBrands();
@@ -27,8 +27,8 @@ ngOnInit(): void {
 
   getBrands(){
     this.api.getBrands().subscribe({
-      next: (brands:any) => {        
-        this.brands = brands;
+      next: (response:any) => {        
+        this.brands = response.data;
       },
       error: (err:any) => {
         console.log('Hiba! A REST API lekérdezés sikertelen!');
@@ -43,7 +43,7 @@ ngOnInit(): void {
 
   addBrand() {
     let data = {
-      brand: this.brandForm.value.inBrand,
+      brand: this.brandForm.value.brand,
     };
     this.clearField();
     this.api.addBrand(data)

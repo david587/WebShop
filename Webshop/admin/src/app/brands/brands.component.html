@@ -21,7 +21,7 @@
     </thead>
     <tbody>
       <tr class="col" *ngFor="let bra of brands">
-        <th scope="row">2</th>
+        <td>{{bra.id}}</td>
         <td>{{bra.brand}}</td>
         <td>
           <div class="row mx-2">
@@ -51,7 +51,7 @@
             <div class="mb-3">
               <label for="brand" class="form-label">Brand</label>
               <input type="text" class="form-control" id="brand"
-              formControlName="inBrand">              
+              formControlName="brand">              
             </div>
           </form>
         </div>

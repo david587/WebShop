@@ -62,4 +62,16 @@ export class CategoriesComponent {
         inCategorie: ''
         });
     }
+
+    deleteCategorie(id: number) {
+      this.api.deleteCategorie(id).subscribe({
+        next: (res:any) => {
+          console.log(res);
+          this.getCategories();
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+    }
 }

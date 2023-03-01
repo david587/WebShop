@@ -22,6 +22,11 @@
       <tr class="col" *ngFor="let cate of categories ">
         <td>{{cate.id}}</td>
         <td>{{cate.categorie}}</td>
+        <div class="row mx-2">
+          <button class="text-white bg-danger p-2 rounded border-danger" (click)="deleteCategorie(categories.id)">
+            Delete 
+          </button>
+        </div>
       </tr>
 
     </tbody>
