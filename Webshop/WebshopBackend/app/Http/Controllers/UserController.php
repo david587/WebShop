@@ -13,13 +13,16 @@ use App\Http\Resources\newsLetter as NewsLetterResources;
 
 class UserController extends BaseController
 {
-    //todo:
-    // -admin jog beszurhatósága,
-    // -utovalak védése admin jog alapján,
     public function listUsers()
     {
         $users = User::all();
         return $this->sendResponse(FullUserResources::collection( $users ), "OK");
+    }
+
+    public function deleteUsers($id)
+    {
+        $user= User::destroy($id);
+        return $this->sendResponse([],"User törölve");
     }
 
     public function AdminAccess($id)
@@ -38,7 +41,7 @@ class UserController extends BaseController
         $validator = Validator::make($input,[
             //todo:
             //implement unique parameter there
-            "email"=> "required|email"
+            "email"=> "required|email|unique:news_letters"
         ]);
 
         if ($validator->fails()) {

@@ -15,6 +15,7 @@ class Product extends Model
         "price",
         "details",
         "image",
+        "inStock",
         "brand_id",
         "categorie_id"
     ];

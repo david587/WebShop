@@ -6,6 +6,8 @@ Frontend routes:
 <br>
 ![My Image](review/Frontend_routes.png)
 <br>
+![My Image](review/Frontend_routes2.png)
+<br>
 AdminApp routes:
 <br>
 ![My Image](review/AdminApp_routes.png)
