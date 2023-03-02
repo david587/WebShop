@@ -13,7 +13,7 @@ export class ProductsComponent {
   editForm !: FormGroup;
   products:any = [];
   message!:any;
-  errmess: any = [];
+  errmess: any;
 
 
   constructor(
@@ -97,8 +97,7 @@ export class ProductsComponent {
         this.getProducts();
         this.showMessage();
       },
-      error: (err:any) => {
-        console.log(err.error.message);        
+      error: (err:any) => {       
         this.errmess = err.error.message;
         this.showMessage();
       }
