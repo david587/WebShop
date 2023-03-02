@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../shared/auth.service';
+import { EmitterService } from '../shared/emitter.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,9 @@ export class LoginComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router,
+    private emit: EmitterService
     ) { }
 
   ngOnInit(): void {
@@ -22,6 +26,8 @@ export class LoginComponent {
       email: [''],
       password: ['']
     });
+
+
   }
 
   login() {
@@ -36,6 +42,8 @@ export class LoginComponent {
         localStorage.setItem('name', data.data.name);
         this.loginForm.patchValue({email: ''});
         this.loginForm.patchValue({password: ''});
+        this.router.navigate(['/dashboard']);
+        this.emit.onButton();
       },
       error: err => {
         console.log('Hiba! Az azonosítás sikertelen!')

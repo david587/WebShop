@@ -9,12 +9,12 @@ import { CategoriesComponent } from './categories/categories.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  {path: "", component: DashboardComponent},
+  {path: "dashboard", component: DashboardComponent},
   {path: "products", component: ProductsComponent},
   {path: "users", component: UsersComponent},
   {path: "brands", component: BrandsComponent},
   {path: "categories", component: CategoriesComponent},
-  {path: "login", component: LoginComponent},
+  {path: "", component: LoginComponent},
 ];
 
 @NgModule({

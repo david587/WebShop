@@ -1,10 +1,10 @@
 <section class="bg-dark">
     <ul class="nav flex-column">
         <li class="nav-item p-4">
-            <img src="../assets/images/Logo.png" alt="Logo" class="w-75">
+            <img src="../assets/images/Logo.png" alt="Logo" class="w-75" routerLink="">
         </li>
         <li class="nav-item p-2 border-top border-bottom border-end">
-            <a routerLink="" class="text-white px-4 nav-link">DashBoard</a>
+            <a routerLink="/dashboard" class="text-white px-4 nav-link">DashBoard</a>
         </li>
         <li class="nav-item p-2 border-end">
             <a routerLink="/products" class="text-white px-4 nav-link">Products</a>
@@ -18,8 +18,11 @@
         <li class="nav-item p-2 border-end">
             <a routerLink="/brands" class="text-white px-4 nav-link">Brands</a>
         </li>
-        <li class="nav-item p-2 border-top border-end">
-            <a routerLink="/login" class="text-white px-4 nav-link">Login</a>
+        <li *ngIf="loginVisible" class="nav-item p-2 border-top border-end">
+            <a routerLink="/" class="text-white px-4 nav-link">Login</a>
+        </li>
+        <li *ngIf="logoutVisible" class="nav-item p-2 border-top border-end">
+            <a (click)="logout()" routerLink="/" class="text-white px-4 nav-link">Logout</a>
         </li>
       </ul>
 </section>
