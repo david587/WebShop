@@ -30,10 +30,10 @@ export class LoginComponent {
     this.auth.login(email, pass)
     .subscribe({
       next: data => {
-        console.log(data.token)
-        console.log(data.name)
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('name', data.name);
+        console.log(data.data.token)
+        console.log(data.data.name)
+        localStorage.setItem('token', data.data.token);
+        localStorage.setItem('name', data.data.name);
         this.loginForm.patchValue({email: ''});
         this.loginForm.patchValue({password: ''});
       },

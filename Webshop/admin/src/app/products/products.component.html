@@ -24,13 +24,13 @@
     <tbody>
       <tr class="col" *ngFor="let product of products">
         <th>{{product.id}}</th>
-        <td>{{product.Name}}</td>
-        <td>{{product.Price}}</td>
-        <td>{{product.Details}}</td>
-        <td>{{product.Image}}</td>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.details}}</td>
+        <td>{{product.image}}</td>
         <td>{{product.inStock}}</td>
-        <td>{{product.Brand}}</td>
-        <td>{{product.Categorie}}</td>
+        <td>{{product.brand_id}}</td>
+        <td>{{product.categorie_id}}</td>
         <td>
           <div class="row mx-2">
             <button class="text-dark bg-warning p-2 rounded border-warning" (click)=" editProduct(product)"
@@ -82,7 +82,7 @@
             </div>
             <div class="mb-3">
               <label for="image" class="form-label">Image</label>
-              <input type="file" class="form-control" id="image"
+              <input type="text" class="form-control" id="image"
               formControlName="Image">              
             </div>
             <div class="mb-3">
@@ -136,37 +136,37 @@
               <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control" id="name"
-                formControlName="name">              
+                formControlName="Name">              
               </div>
               <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
                 <input type="text" class="form-control" id="price"
-                formControlName="price">              
+                formControlName="Price">              
               </div>
               <div class="mb-3">
                 <label for="details" class="form-label">Details</label>
                 <input type="text" class="form-control" id="details"
-                formControlName="details">              
+                formControlName="Details">              
               </div>
               <div class="mb-3">
                 <label for="image" class="form-label">Image</label>
-                <input type="file" class="form-control" id="image"
+                <input type="text" class="form-control" id="image"
                 formControlName="Image">              
               </div>
               <div class="mb-3">
                 <label for="inStock" class="form-label">InStock</label>
                 <input type="text" class="form-control" id="inStock"
-                formControlName="inStock">              
+                formControlName="InStock">              
               </div>
               <div class="mb-3">
                 <label for="brand" class="form-label">Brand</label>
                 <input type="text" class="form-control" id="brand"
-                formControlName="brand">              
+                formControlName="Brand">              
               </div>
               <div class="mb-3">
                 <label for="categorie" class="form-label">Categorie</label>
                 <input type="text" class="form-control" id="categorie"
-                formControlName="categorie">              
+                formControlName="Categorie">              
               </div>
             </form>
   
