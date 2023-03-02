@@ -1,0 +1,187 @@
+<div class="row bg-dark mt-3">
+  <h1 class="text-white text-center">
+    Products
+  </h1>
+</div>
+<div class="row bg-dark mt-2">
+  <button class="text-white p-2 col-1 bg-info mx-3 rounded border-info " data-bs-toggle="modal" data-bs-target="#addModal">
+    Add 
+  </button>
+  <h1 style="--bs-bg-opacity: .5;" class="bg-success display-6 text-center text-white my-3 py-1 rounded" *ngIf="message">{{ message }}</h1>
+  <h1 style="--bs-bg-opacity: .5;" class="bg-danger display-6 text-center text-white my-3 py-1 rounded" *ngIf="errmess">{{ errmess }}</h1>
+
+</div>
+<table class="table table-striped table-dark mt-2">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Details</th>
+        <th scope="col">Image</th>
+        <th scope="col">inStock</th>
+        <th scope="col">Brand</th>
+        <th scope="col">Categorie</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="col" *ngFor="let product of products">
+        <th>{{product.id}}</th>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.details}}</td>
+        <td>{{product.image}}</td>
+        <td>{{product.inStock}}</td>
+        <td>{{product.brand_id}}</td>
+        <td>{{product.categorie_id}}</td>
+        <td>
+          <div class="row mx-2">
+            <button class="text-dark bg-warning p-2 rounded border-warning" (click)=" editProduct(product)"
+            data-bs-toggle="modal" 
+            data-bs-target="#modifyModal" >
+              Edit 
+          </button>
+          </div>
+        </td>
+        <td>
+          <div class="row mx-2">
+            <button class="text-white bg-danger p-2 rounded border-danger" (click)="deleteProduct(product.id)">
+              Delete 
+            </button>
+          </div>
+        </td>
+       
+      </tr>
+    </tbody>
+  </table>
+
+   <!-- add Modal -->
+
+   <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+         
+          <form [formGroup]="productForm">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name"
+              formControlName="name">              
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label">Price</label>
+              <input type="text" class="form-control" id="price"
+              formControlName="price">              
+            </div>
+            <div class="mb-3">
+              <label for="details" class="form-label">Details</label>
+              <input type="text" class="form-control" id="details"
+              formControlName="details">              
+            </div>
+            <div class="mb-3">
+              <label for="image" class="form-label">Image</label>
+              <input type="text" class="form-control" id="image"
+              formControlName="image">              
+            </div>
+            <div class="mb-3">
+              <label for="inStock" class="form-label">inStocn</label>
+              <input type="text" class="form-control" id="inStock"
+              formControlName="inStock">              
+            </div>
+            <div class="mb-3">
+              <label for="brand_id" class="form-label">Brand</label>
+              <input type="text" class="form-control" id="brand_id"
+              formControlName="brand_id">              
+            </div>
+            <div class="mb-3">
+              <label for="categorie_id" class="form-label">Categorie</label>
+              <input type="text" class="form-control" id="categorie_id"
+              formControlName="categorie_id">              
+            </div>
+          </form>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" 
+          data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="onClick()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- modify Modal -->
+
+    <div class="modal fade" id="modifyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Termék módosítása</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+  
+           
+            <form [formGroup]="editForm">
+              <div class="mb-3">
+                <label for="id" class="form-label">Id</label>
+                <input type="text" class="form-control" id="id"
+                formControlName="id" readonly>
+              </div>
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name"
+                formControlName="name">              
+              </div>
+              <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="text" class="form-control" id="price"
+                formControlName="price">              
+              </div>
+              <div class="mb-3">
+                <label for="details" class="form-label">Details</label>
+                <input type="text" class="form-control" id="details"
+                formControlName="details">              
+              </div>
+              <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input type="text" class="form-control" id="image"
+                formControlName="image">              
+              </div>
+              <div class="mb-3">
+                <label for="inStock" class="form-label">InStock</label>
+                <input type="text" class="form-control" id="inStock"
+                formControlName="inStock">              
+              </div>
+              <div class="mb-3">
+                <label for="brand_id" class="form-label">Brand</label>
+                <input type="text" class="form-control" id="brand_id"
+                formControlName="brand_id">              
+              </div>
+              <div class="mb-3">
+                <label for="categorie_id" class="form-label">Categorie</label>
+                <input type="text" class="form-control" id="categorie_id"
+                formControlName="categorie_id">              
+              </div>
+            </form>
+  
+  
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" 
+            data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary"
+            data-bs-dismiss="modal"
+            (click)="updateProduct()">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>

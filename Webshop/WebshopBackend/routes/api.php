@@ -32,20 +32,29 @@ use App\Http\Controllers\CategorieController;
     Route::middleware(['auth:api'])->post("/Products/Store", [ProductController::class, "store"]);
     Route::middleware(['auth:api'])->post("/Products/Update/{id}", [ProductController::class,"update"]);
     Route::middleware(['auth:api'])->delete("/Products/Delete/{id}", [ProductController::class, "destroy"]);
+    
     //Brand tablenek ->show,store és update és delete utvonal
     Route::middleware(['auth:api'])->get("/Brands/Index", [BrandController::class, "index"]);
     Route::middleware(['auth:api'])->post("/Brands/Store", [BrandController::class, "store"]);
     Route::middleware(['auth:api'])->delete("/Brands/Delete/{id}", [BrandController::class, "destroy"]);
+
     //Categorie tabelnek ->show,store és delete utvonal
     Route::middleware(['auth:api'])->get("/Categories/Index", [CategorieController::class, "index"]);
     Route::middleware(['auth:api'])->post("/Categories/Store", [CategorieController::class, "store"]);
     Route::middleware(['auth:api'])->delete("/Categories/Delete/{id}", [CategorieController::class, "destroy"]);
+
     //User routes
+    //show users
     Route::middleware(['auth:api'])->get("/Users/Show",[UserController::class,"listUsers"]);
+    //delete user by id
+    Route::middleware(['auth:api'])->delete("/Users/Delete/{id}",[UserController::class,"deleteUsers"]);
+    //give acess by id
     Route::middleware(['auth:api'])->post("/Users/Admin/{id}",[UserController::class,"AdminAccess"]);
 
     // send messages to stored emails,
     Route::middleware(['auth:api'])->get('/sendEmail', [EmailController::class,'sendEmail']);
+    //get all emails from nevsletterTable
+    Route::middleware(['auth:api'])->get('/Emails', [EmailController::class,'Emails']);
 // });
 
 // Auth
@@ -60,16 +69,11 @@ Route::get("/Products", [ProductController::class, "index"]);
 //Random 4products, visualize in home page
 Route::get("/Products/Home",[ProductController::class, "home"]);
 Route::get("/Products/Show/{id}", [ProductController::class, "show"]);
-//Sorting by Categories
-Route::get("/Products/Keyboards", [ProductController::class, "sortKeyboards"]);
-Route::get("/Products/Mouses", [ProductController::class, "sortMouses"]);
-Route::get("/Products/Headsets", [ProductController::class, "sortHeadsets"]);
-Route::get("/Products/Monitors", [ProductController::class, "sortMonitors"]);
-//Sorting by Brands
-Route::get("/Products/Logitech", [ProductController::class, "sortLogitech"]);
-Route::get("/Products/Hp", [ProductController::class, "sortHp"]);
-Route::get("/Products/Urage", [ProductController::class, "sortUrage"]);
-Route::get("/Products/Redragon", [ProductController::class, "sortRedragon"]);
+
+//Sorting
+Route::get("/Products/Categories/{name}", [ProductController::class, "sortCategories"]);
+Route::get("/Products/Brands/{name}", [ProductController::class, "sortBrands"]);
+
 //subscribe to newsletters,store email
 Route::post("/Users/NewsLetter",[UserController::class,"newsLetter"]);
 //searchbar,searching

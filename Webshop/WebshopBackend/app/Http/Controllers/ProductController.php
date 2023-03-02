@@ -12,65 +12,21 @@ use App\Http\Resources\Product as ProductResources;
 
 class ProductController extends BaseController
 {
-    //sort categories
-    public function sortKeyboards()
+
+    public function sortCategories($name)
     {
-        $keyboard_id = Categorie::where("categorie","Keyboard")->first()->id;
-        $products = Product::where("categorie_id",$keyboard_id)->get();
+        $categories_id = Categorie::where("categorie",$name)->first()->id;
+        $products = Product::where("categorie_id", $categories_id)->get();
         return $this->sendResponse(ProductResources::collection( $products ), "OK");
     }
 
-    public function sortMouses()
+    public function sortBrands($name)
     {
-        $mouse_id = Categorie::where("categorie","Mouse")->first()->id;
-        $products = Product::where("categorie_id",$mouse_id)->get();
-        return $this->sendResponse(ProductResources::collection( $products ), "OK");
-        
-    }
-
-    public function sortHeadsets()
-    {
-        $headset_id = Categorie::where("categorie","Headset")->first()->id;
-        $products = Product::where("categorie_id",$headset_id)->get();
+        $brand_id = Brand::where("brand",$name)->first()->id;
+        $products = Product::where("brand_id", $brand_id)->get();
         return $this->sendResponse(ProductResources::collection( $products ), "OK");
     }
-
-    public function sortMonitors()
-    {
-        $monitor_id = Categorie::where("categorie","Monitor")->first()->id;
-        $products = Product::where("categorie_id",$monitor_id)->get();
-        return $this->sendResponse(ProductResources::collection( $products ), "OK");
-    }
-
-    //sort brands
-    public function sortLogitech()
-    {
-        $logitech_id = Brand::where("brand","Logitech")->first()->id;
-        $products = Product::where("brand_id",$logitech_id)->get();
-        return $this->sendResponse(ProductResources::collection( $products ), "OK");
-    }
-
-    public function sortHp()
-    {
-        $hp_id = Brand::where("brand","Hp")->first()->id;
-        $products = Product::where("brand_id",$hp_id)->get();
-        return $this->sendResponse(ProductResources::collection( $products ), "OK");
-    }
-
-    public function sortUrage()
-    {
-        $urage_id = Brand::where("brand","Urage")->first()->id;
-        $products = Product::where("brand_id",$urage_id)->get();
-        return $this->sendResponse(ProductResources::collection( $products ), "OK");
-    }
-
-    public function sortRedragon()
-    {
-        $redragon_id = Brand::where("brand","Redragon")->first()->id;
-        $products = Product::where("brand_id",$redragon_id)->get();
-        return $this->sendResponse(ProductResources::collection( $products ), "OK");
-    }
-
+   
     //product CRUD
     //in request->pagination number, if we not providing request the dafult value will be 10
     // $request->page
@@ -107,11 +63,13 @@ class ProductController extends BaseController
             "details"=>"required",
             "image"=>"required",
             "inStock"=>"required",
-            "brand_id"=>"required",
+            "brand_id" => "required",
             "categorie_id"=>"required"
         ]);
-        if( $validator->fails()){
-            return $this->sendError( $validator->errors());
+
+        if($validator->fails())
+        {
+            return $this->sendError($validator->errors());
         }
 
         $product = Product::create($input);
@@ -139,7 +97,9 @@ class ProductController extends BaseController
             "price"=>"required",
             "details"=>"required",
             "image"=>"required",
-            "inStock"=>"required"
+            "inStock"=>"required",
+            "brand_id" => "required",
+            "categorie_id"=>"required"
         ]);
 
         if($validator->fails())
@@ -147,8 +107,10 @@ class ProductController extends BaseController
             return $this->sendError($validator->errors());
         }
 
+        $input["brand_id"] = Brand::where("brand",$input["brand_id"])->first()->id;
+        $input["categorie_id"] = Categorie::where("categorie",$input["categorie_id"])->first()->id;
         $product = Product::find($id);
-        $product->update($request->all());
+        $product->update($input);
 
         return $this->sendResponse(new ProductResources($product), "Product frissitve");
     }
@@ -156,7 +118,6 @@ class ProductController extends BaseController
     public function destroy($id)
     {
         Product::destroy($id);
-
         return $this->sendResponse([],"Product törölve");
     }
 
