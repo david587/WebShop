@@ -63,11 +63,13 @@ class ProductController extends BaseController
             "details"=>"required",
             "image"=>"required",
             "inStock"=>"required",
-            "brand_id"=>"required",
+            "brand_id" => "required",
             "categorie_id"=>"required"
         ]);
-        if( $validator->fails()){
-            return $this->sendError( $validator->errors());
+
+        if($validator->fails())
+        {
+            return $this->sendError($validator->errors());
         }
 
         $product = Product::create($input);
@@ -90,18 +92,21 @@ class ProductController extends BaseController
     {
         $input = $request->all();
 
-        // $validator = Validator::make($input, [
-        //     "name"=>"required",
-        //     "price"=>"required",
-        //     "details"=>"required",
-        //     "image"=>"required",
-        //     "inStock"=>"required"
-        // ]);
+        $validator = Validator::make($input, [
+            "name"=>"required",
+            "price"=>"required",
+            "details"=>"required",
+            "image"=>"required",
+            "inStock"=>"required",
+            "brand_id" => "required",
+            "categorie_id"=>"required"
+        ]);
 
-        // if($validator->fails())
-        // {
-        //     return $this->sendError($validator->errors());
-        // }
+        if($validator->fails())
+        {
+            return $this->sendError($validator->errors());
+        }
+
         $input["brand_id"] = Brand::where("brand",$input["brand_id"])->first()->id;
         $input["categorie_id"] = Categorie::where("categorie",$input["categorie_id"])->first()->id;
         $product = Product::find($id);
@@ -113,7 +118,6 @@ class ProductController extends BaseController
     public function destroy($id)
     {
         Product::destroy($id);
-
         return $this->sendResponse([],"Product törölve");
     }
 
