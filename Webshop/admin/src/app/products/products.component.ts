@@ -13,7 +13,8 @@ export class ProductsComponent {
   editForm !: FormGroup;
   products:any = [];
   message!:any;
-  errmess!:any;
+  errmess: any = [];
+
 
   constructor(
     private api: ApiService,
@@ -97,6 +98,7 @@ export class ProductsComponent {
         this.showMessage();
       },
       error: (err:any) => {
+        console.log(err.error.message);        
         this.errmess = err.error.message;
         this.showMessage();
       }
@@ -145,7 +147,7 @@ export class ProductsComponent {
       id: this.editForm.value.id,
       name: this.editForm.value.name,
       price: this.editForm.value.price,
-      detail: this.editForm.value.deatails,
+      details: this.editForm.value.details,
       image: this.editForm.value.image,
       inStock: this.editForm.value.inStock,
       brand_id: this.editForm.value.brand_id,

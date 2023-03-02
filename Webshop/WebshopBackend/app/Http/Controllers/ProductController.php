@@ -55,8 +55,7 @@ class ProductController extends BaseController
     public function store(Request $request)
     {
         $input = $request->all();
-        $input["brand_id"] = Brand::where("brand",$input["brand_id"])->first()->id;
-        $input["categorie_id"] = Categorie::where("categorie",$input["categorie_id"])->first()->id;
+        
         $validator = Validator::make($input, [
             "name"=>"required",
             "price"=>"required",
@@ -64,7 +63,7 @@ class ProductController extends BaseController
             "image"=>"required",
             "inStock"=>"required",
             "brand_id" => "required",
-            "categorie_id"=>"required"
+            "categorie_id"=>"required",
         ]);
 
         if($validator->fails())
@@ -72,6 +71,9 @@ class ProductController extends BaseController
             return $this->sendError($validator->errors());
         }
 
+        $input["brand_id"] = Brand::where("brand",$input["brand_id"])->first()->id;
+        $input["categorie_id"] = Categorie::where("categorie",$input["categorie_id"])->first()->id;
+        
         $product = Product::create($input);
         return $this->sendResponse(new ProductResources($product), "Product Létrehozva");
     }

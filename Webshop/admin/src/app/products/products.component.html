@@ -8,7 +8,10 @@
     Add 
   </button>
   <h1 style="--bs-bg-opacity: .5;" class="bg-success display-6 text-center text-white my-3 py-1 rounded" *ngIf="message">{{ message }}</h1>
-  <h1 style="--bs-bg-opacity: .5;" class="bg-danger display-6 text-center text-white my-3 py-1 rounded" *ngIf="errmess">{{ errmess }}</h1>
+   
+  <div *ngfor="let err of errmess">
+    <h1 style="--bs-bg-opacity: .5;" class="bg-danger display-6 text-center text-white my-3 py-1 rounded"  *ngIf="errmess">{{err}}</h1> 
+  </div>
 
 </div>
 <table class="table table-striped table-dark mt-2">
@@ -139,17 +142,17 @@
               <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control" id="name"
-                formControlName="Name">              
+                formControlName="name">              
               </div>
               <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
                 <input type="text" class="form-control" id="price"
-                formControlName="Price">              
+                formControlName="price">              
               </div>
               <div class="mb-3">
                 <label for="details" class="form-label">Details</label>
                 <input type="text" class="form-control" id="details"
-                formControlName="Details">              
+                formControlName="details">              
               </div>
               <div class="mb-3">
                 <label for="image" class="form-label">Image</label>
@@ -159,7 +162,7 @@
               <div class="mb-3">
                 <label for="inStock" class="form-label">InStock</label>
                 <input type="text" class="form-control" id="inStock"
-                formControlName="InStock">              
+                formControlName="inStock">              
               </div>
               <div class="mb-3">
                 <label for="brand_id" class="form-label">Brand</label>
