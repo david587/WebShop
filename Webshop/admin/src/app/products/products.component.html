@@ -7,6 +7,9 @@
   <button class="text-white p-2 col-1 bg-info mx-3 rounded border-info " data-bs-toggle="modal" data-bs-target="#addModal">
     Add 
   </button>
+  <h1 style="--bs-bg-opacity: .5;" class="bg-success display-6 text-center text-white my-3 py-1 rounded" *ngIf="message">{{ message }}</h1>
+  <h1 style="--bs-bg-opacity: .5;" class="bg-danger display-6 text-center text-white my-3 py-1 rounded" *ngIf="errmess">{{ errmess }}</h1>
+
 </div>
 <table class="table table-striped table-dark mt-2">
     <thead>
@@ -68,37 +71,41 @@
             <div class="mb-3">
               <label for="name" class="form-label">Name</label>
               <input type="text" class="form-control" id="name"
-              formControlName="Name">              
+              formControlName="name">              
             </div>
             <div class="mb-3">
               <label for="price" class="form-label">Price</label>
               <input type="text" class="form-control" id="price"
-              formControlName="Price">              
+              formControlName="price">              
             </div>
             <div class="mb-3">
               <label for="details" class="form-label">Details</label>
               <input type="text" class="form-control" id="details"
-              formControlName="Details">              
+              formControlName="details">              
             </div>
             <div class="mb-3">
               <label for="image" class="form-label">Image</label>
               <input type="text" class="form-control" id="image"
+<<<<<<< HEAD
               formControlName="Image">              
+=======
+              formControlName="image">              
+>>>>>>> 5d6f40c0bc9decbf68467b0810a9e8357bf646b8
             </div>
             <div class="mb-3">
               <label for="inStock" class="form-label">inStocn</label>
               <input type="text" class="form-control" id="inStock"
-              formControlName="InStock">              
+              formControlName="inStock">              
             </div>
             <div class="mb-3">
-              <label for="brand" class="form-label">Brand</label>
-              <input type="text" class="form-control" id="brand"
-              formControlName="Brand">              
+              <label for="brand_id" class="form-label">Brand</label>
+              <input type="text" class="form-control" id="brand_id"
+              formControlName="brand_id">              
             </div>
             <div class="mb-3">
-              <label for="categorie" class="form-label">Categorie</label>
-              <input type="text" class="form-control" id="categorie"
-              formControlName="Categorie">              
+              <label for="categorie_id" class="form-label">Categorie</label>
+              <input type="text" class="form-control" id="categorie_id"
+              formControlName="categorie_id">              
             </div>
           </form>
 
@@ -151,7 +158,11 @@
               <div class="mb-3">
                 <label for="image" class="form-label">Image</label>
                 <input type="text" class="form-control" id="image"
+<<<<<<< HEAD
                 formControlName="Image">              
+=======
+                formControlName="image">              
+>>>>>>> 5d6f40c0bc9decbf68467b0810a9e8357bf646b8
               </div>
               <div class="mb-3">
                 <label for="inStock" class="form-label">InStock</label>
@@ -159,6 +170,7 @@
                 formControlName="InStock">              
               </div>
               <div class="mb-3">
+<<<<<<< HEAD
                 <label for="brand" class="form-label">Brand</label>
                 <input type="text" class="form-control" id="brand"
                 formControlName="Brand">              
@@ -167,6 +179,16 @@
                 <label for="categorie" class="form-label">Categorie</label>
                 <input type="text" class="form-control" id="categorie"
                 formControlName="Categorie">              
+=======
+                <label for="brand_id" class="form-label">Brand</label>
+                <input type="text" class="form-control" id="brand_id"
+                formControlName="brand_id">              
+              </div>
+              <div class="mb-3">
+                <label for="categorie_id" class="form-label">Categorie</label>
+                <input type="text" class="form-control" id="categorie_id"
+                formControlName="categorie_id">              
+>>>>>>> 5d6f40c0bc9decbf68467b0810a9e8357bf646b8
               </div>
             </form>
   

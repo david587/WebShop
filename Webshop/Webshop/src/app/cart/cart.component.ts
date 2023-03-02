@@ -7,7 +7,7 @@ import { ProductsService } from '../shared/products.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class ProductsComponent implements OnInit {
+export class CartComponent implements OnInit {
   products !: any;
   constructor(private ProductService: ProductsService) { }
 
@@ -24,5 +24,9 @@ export class ProductsComponent implements OnInit {
           console.log(err);
         }
       });
+    
+  }
+  emptyCart(){
+    
   }
 }

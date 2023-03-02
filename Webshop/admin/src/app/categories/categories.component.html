@@ -15,29 +15,53 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Categorie</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+      <tr class="col" *ngFor="let cate of categories ">
+        <td>{{cate.id}}</td>
+        <td>{{cate.categorie}}</td>
+        <div class="row mx-2">
+          <button class="text-white bg-danger p-2 rounded border-danger" (click)="deleteCategorie(categories.id)">
+            Delete 
+          </button>
+        </div>
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
+
     </tbody>
   </table>
+
+     <!-- add Modal -->
+
+     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Categorie</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+  
+           
+            <form [formGroup]="categorieForm">
+              <div class="mb-3">
+                <label for="categorie" class="form-label">categorie</label>
+                <input type="text" class="form-control" id="categorie"
+                formControlName="categorie">              
+              </div>
+            </form>
+  
+  
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" 
+            data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary"
+            data-bs-dismiss="modal"
+            (click)="onClick()">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import  { RandomService } from "../shared/random.service";
-
+import { ProductsService } from '../shared/products.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,22 +7,22 @@ import  { RandomService } from "../shared/random.service";
 })
 
 export class HomeComponent implements OnInit{
-  
-  constructor(private random: RandomService){}
+  products !: any;
+  constructor(private api: ProductsService) { }
   ngOnInit(): void {
-    this.getRandomProducts();
+    this.getProducts();
   }
 
-  getRandomProducts()
-  {
-    this.random.getRandomProducts().subscribe({
-      next: (data: any)=>
-      {
-        console.log(data);
-        
+  getProducts(){
+    this.api.getProducts().subscribe(
+      res=>{
+        console.log(res);
+        this.products=res;
+
       }
-    })
+    )
   }
+
 
   path: string = '../assets/img/homeheadset.png';
   alt: string = 'headset';

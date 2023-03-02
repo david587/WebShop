@@ -16,6 +16,7 @@ export class ApiService {
   getProducts() {
     let endpoint = 'Products';
     let url = this.apihost + endpoint;
+    
     return this.http.get<any>(url);
   }
 
@@ -70,21 +71,138 @@ export class ApiService {
     
     let endpoint = 'Users/Show';
     let url = this.apihost + endpoint;
+
     return this.http.get<any>(url);
   }
 
   giveAdmin(user:any){
     let id = user.id;
-    let endpoint = 'User/Admin/{id}';
+    let endpoint = 'User/Admin';
     let url = this.apihost + endpoint + "/" + id;
+    let token = localStorage.getItem('token');    
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+    let httpOption = {
+      headers: headers
+    };
 
-    return this.http.get<any>(url);
+    return this.http.post<any>(url, user, httpOption );
   }
 
   sendEmail(){
-    let endpoint = '/sendEmail';
+    let endpoint = 'sendEmail';
     let url = this.apihost + endpoint;
-    return this.http.get<any>(url);
+    let token = localStorage.getItem('token');    
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+    let httpOption = {
+      headers: headers
+    };
+
+    return this.http.post<any>(url, httpOption);
+  }
+
+
+  // Brands
+
+  getBrands(){
+    let endpoint = 'Brands/Index';
+    let url = this.apihost + endpoint;
+    let token = localStorage.getItem('token');
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.get<any>(url, httpOption);
+  }
+
+  addBrand(data:any){
+    let endpoint = 'Brands/Store';
+    let url = this.apihost + endpoint;
+
+    let token = localStorage.getItem('token');
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.post<any>(url, data, httpOption);
+  }
+
+  deleteBrand(id: number){
+    let endpoint = 'Brands/Delete';
+    let url = this.apihost + endpoint + "/" + id;
+    let token = localStorage.getItem('token');    
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.delete<any>(url, httpOption);
+  }
+
+  // Categories
+
+  getCategories(){
+    let endpoint = 'Categories/Index';
+    let url = this.apihost + endpoint;
+    let token = localStorage.getItem('token');
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.get<any>(url, httpOption);
+  }
+
+  addCategorie(data:any){
+    let endpoint = 'Categories/Store';
+    let url = this.apihost + endpoint;
+
+    let token = localStorage.getItem('token');
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.post<any>(url, data, httpOption);
+  }
+
+  deleteCategorie(id: number){
+    let endpoint = 'Categories/Delete';
+    let url = this.apihost + endpoint + "/" + id;
+    let token = localStorage.getItem('token');    
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.delete<any>(url, httpOption);
   }
 
 }
