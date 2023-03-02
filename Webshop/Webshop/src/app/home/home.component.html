@@ -135,7 +135,7 @@
 
 <!-- grid -->
 <div class="grid md:grid-cols-4 grid-cols-2 gap-4 md:mx-[50px] mx-[15px] lg:mx-[170px] xl:mx-[220px] pt-5 pb-[80px] font-medium ">
-    <div class="">
+    <div *ngFor="let product of products" >
         <div class="bg-gray rounded-t-sm">
             <img src={{path}} alt="">
             <p class="text-md font-semibold text-center pb-4">Theory Headset</p>
@@ -147,7 +147,7 @@
             <div class="flex-1">
                 <p class="text-white bg-neon p-2 text-center">$60.00</p>
             </div>
-        </div> 
+        <!-- </div>  -->
     </div> 
 
     <div>
@@ -195,8 +195,8 @@
         </div> 
     </div>  
 
-</div> -->
-<!-- </div>
+</div> 
+<!-- </div-->
 
 <!-- Subscribe -->
 <div class="bg-gradient-to-t from-neon to-black md:h-[200px] pb-5 px-[10px]">

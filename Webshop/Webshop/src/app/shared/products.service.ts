@@ -11,7 +11,7 @@ export class ProductsService {
 
   getProducts(){
     let endpoint = "Products";
-    let url = this.host + "/"+endpoint;
+    let url = this.host + "/" +endpoint;
     return this.http.get<any>(url)
   }
   //cartitem->getCartItem() kell token

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { LoginService } from '../shared/login.service';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -13,7 +13,7 @@ export class SigninComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private loginService: LoginService
+    private authService: AuthService
     ) { }
 
   ngOnInit(): void {
@@ -28,7 +28,7 @@ export class SigninComponent implements OnInit {
     let pass = this.loginForm.value.password;
 
     
-    this.loginService.login(email, pass)
+    this.authService.login(email, pass)
     .subscribe({
       next: data => {
         localStorage.setItem('token', data.data.token);
