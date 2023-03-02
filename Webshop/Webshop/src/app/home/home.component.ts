@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../shared/products.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,21 +8,26 @@ import { ProductsService } from '../shared/products.service';
 })
 
 export class HomeComponent implements OnInit{
+
   products !: any;
+  host = "http://localhost:8000/api";
+
   constructor(private api: ProductsService) { }
+
   ngOnInit(): void {
-    this.getProducts();
+    this.getRandomFour();
   }
 
-  getProducts(){
-    this.api.getProducts().subscribe(
+  getRandomFour(){
+    this.api.getRandomFour().subscribe(
       res=>{
-        console.log(res);
-        this.products=res;
-
+        console.log(res.data);
+        this.products=res.data;
       }
     )
   }
+
+  
 
 
   path: string = '../assets/img/homeheadset.png';
@@ -39,5 +45,4 @@ export class HomeComponent implements OnInit{
   path4: string = '../assets/img/LogitechG502.png';
   alt4: string = 'LogitechG502';
 
-
-}
+    }

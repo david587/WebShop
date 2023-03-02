@@ -1,14 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService {
+export class ProductsService implements OnInit {
+  products !: any;
   host = "http://localhost:8000/api";
 
-  constructor(private http: HttpClient) { }
 
+  constructor(private http: HttpClient) { }
+  ngOnInit(): void {
+    this.getProducts();
+  }
   getProducts(){
     let endpoint = "Products";
     let url = this.host + "/" +endpoint;
@@ -31,5 +35,12 @@ export class ProductsService {
     };
     return this.http.get<any>(url, httpOption);
   }
+
+  getRandomFour(){
+    let endpoint = "Products/Home";
+    let url = this.host + "/" +endpoint;
+    return this.http.get<any>(url)
+  }
+  
 }
 
