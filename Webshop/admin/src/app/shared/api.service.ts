@@ -71,13 +71,21 @@ export class ApiService {
     
     let endpoint = 'Users/Show';
     let url = this.apihost + endpoint;
+    let token = localStorage.getItem('token');    
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+    let httpOption = {
+      headers: headers
+    };
 
-    return this.http.get<any>(url);
+    return this.http.get<any>(url, httpOption );
   }
 
   giveAdmin(user:any){
     let id = user.id;
-    let endpoint = 'User/Admin';
+    let endpoint = 'Users/Admin';
     let url = this.apihost + endpoint + "/" + id;
     let token = localStorage.getItem('token');    
     let headers = new HttpHeaders({
@@ -104,6 +112,20 @@ export class ApiService {
     };
 
     return this.http.post<any>(url, httpOption);
+  }
+
+  deleteUser(id: number) {
+    let endpoint = 'Users/Delete';
+    let url = this.apihost + endpoint + "/" + id;
+    let token = localStorage.getItem('token');    
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.delete<any>(url, httpOption);
   }
 
 
