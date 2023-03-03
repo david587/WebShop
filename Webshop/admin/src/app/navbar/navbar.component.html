@@ -15,10 +15,13 @@
         <li class="nav-item p-2 border-end">
             <a routerLink="/categories" class="text-white px-4 nav-link">Categories</a>
         </li>
-        <li class="nav-item p-2 border-end">
+        <li class="nav-item p-2 border-end border-bottom">
             <a routerLink="/brands" class="text-white px-4 nav-link">Brands</a>
         </li>
-        <li *ngIf="loginVisible" class="nav-item p-2 border-top border-end">
+        <li class="nav-item p-2 border-end border-bottom">
+            <a routerLink="/email" class="text-white px-4 nav-link">Email</a>
+        </li>
+        <li *ngIf="loginVisible" class="nav-item p-2 border-top border-end border-bottom">
             <a routerLink="/" class="text-white px-4 nav-link">Login</a>
         </li>
         <li *ngIf="logoutVisible" class="nav-item p-2 border-top border-end">

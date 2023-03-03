@@ -8,16 +8,7 @@
     Add 
   </button>
   <h1 style="--bs-bg-opacity: .5;" class="bg-success display-6 text-center text-white my-3 py-1 rounded" *ngIf="message">{{ message }}</h1>
-   
-  <!-- <div *ngFor="let err of errmess"> -->
-    <h1 style="--bs-bg-opacity: .5;" class="bg-danger display-6 text-center text-white my-3 py-1 rounded"  *ngIf="errmess?.name">{{errmess.name}}</h1>
-    <h1 style="--bs-bg-opacity: .5;" class="bg-danger display-6 text-center text-white my-3 py-1 rounded"  *ngIf="errmess?.price">{{errmess.price}}</h1>
-    <h1 style="--bs-bg-opacity: .5;" class="bg-danger display-6 text-center text-white my-3 py-1 rounded"  *ngIf="errmess?.details">{{errmess.details}}</h1>
-    <h1 style="--bs-bg-opacity: .5;" class="bg-danger display-6 text-center text-white my-3 py-1 rounded"  *ngIf="errmess?.image">{{errmess.image}}</h1>
-    <h1 style="--bs-bg-opacity: .5;" class="bg-danger display-6 text-center text-white my-3 py-1 rounded"  *ngIf="errmess?.inStock">{{errmess.inStock}}</h1>
-    <h1 style="--bs-bg-opacity: .5;" class="bg-danger display-6 text-center text-white my-3 py-1 rounded"  *ngIf="errmess?.brand_id">{{errmess.brand_id}}</h1>
-    <h1 style="--bs-bg-opacity: .5;" class="bg-danger display-6 text-center text-white my-3 py-1 rounded"  *ngIf="errmess?.categorie_id">{{errmess.categorie_id}}</h1> 
-  
+  <h1 style="--bs-bg-opacity: .5;" class="bg-danger display-6 text-center text-white my-3 py-1 rounded" *ngIf="errmess">{{ errmess }}</h1>
 
 </div>
 <table class="table table-striped table-dark mt-2">
@@ -80,37 +71,37 @@
             <div class="mb-3">
               <label for="name" class="form-label">Name</label>
               <input type="text" class="form-control" id="name"
-              placeholder="expl:  g250" formControlName="name">              
+              formControlName="name">              
             </div>
             <div class="mb-3">
               <label for="price" class="form-label">Price</label>
               <input type="text" class="form-control" id="price"
-              placeholder="expl:  15341" formControlName="price">              
+              formControlName="price">              
             </div>
             <div class="mb-3">
               <label for="details" class="form-label">Details</label>
               <input type="text" class="form-control" id="details"
-              placeholder="expl:   new keyboard" formControlName="details">              
+              formControlName="details">              
             </div>
             <div class="mb-3">
               <label for="image" class="form-label">Image</label>
               <input type="text" class="form-control" id="image"
-              placeholder="expl:   assets/image/honor400z.png" formControlName="image">              
+              formControlName="image">              
             </div>
             <div class="mb-3">
               <label for="inStock" class="form-label">inStocn</label>
               <input type="text" class="form-control" id="inStock"
-              placeholder="expl:  10" formControlName="inStock">              
+              formControlName="inStock">              
             </div>
             <div class="mb-3">
               <label for="brand_id" class="form-label">Brand</label>
               <input type="text" class="form-control" id="brand_id"
-              placeholder="expl:   Redragon,Urage,Hp,Logitech" formControlName="brand_id">              
+              formControlName="brand_id">              
             </div>
             <div class="mb-3">
               <label for="categorie_id" class="form-label">Categorie</label>
               <input type="text" class="form-control" id="categorie_id"
-              placeholder="expl:   Mouse,Monitor,Keyboard,Headset" formControlName="categorie_id">              
+              formControlName="categorie_id">              
             </div>
           </form>
 

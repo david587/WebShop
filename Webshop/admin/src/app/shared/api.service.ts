@@ -83,9 +83,9 @@ export class ApiService {
     return this.http.get<any>(url, httpOption );
   }
 
-  giveAdmin(user:any){
-    let id = user.id;
+  giveAdmin(id:any){
     let endpoint = 'Users/Admin';
+    
     let url = this.apihost + endpoint + "/" + id;
     let token = localStorage.getItem('token');    
     let headers = new HttpHeaders({
@@ -96,7 +96,7 @@ export class ApiService {
       headers: headers
     };
 
-    return this.http.post<any>(url, user, httpOption );
+    return this.http.post<any>(url, "", httpOption );
   }
 
   sendEmail(){
