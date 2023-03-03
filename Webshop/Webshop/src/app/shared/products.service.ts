@@ -20,7 +20,7 @@ export class ProductsService implements OnInit {
   }
   //cartitem->getCartItem() kell token
   getCartItem() {
-    let endpoint = 'products';
+    let endpoint = 'cartItems/show';
     let url = "http://localhost:8000/api/"+endpoint;
 
     let token = localStorage.getItem('token');
@@ -40,6 +40,24 @@ export class ProductsService implements OnInit {
     let endpoint = "Products/Home";
     let url = this.host + "/" +endpoint;
     return this.http.get<any>(url)
+  }
+
+  addToCart(id: number){
+    let endpoint = 'cartItems';
+    let url = "http://localhost:8000/api/"+endpoint + "/" + id;
+
+    let token = localStorage.getItem('token');
+    console.log(token);
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.post<any>(url," ", httpOption);
   }
   
 }

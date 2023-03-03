@@ -33,6 +33,7 @@ export class SigninComponent implements OnInit {
       next: data => {
         localStorage.setItem('token', data.data.token);
         localStorage.setItem('name', data.data.name);
+        console.log(data.data.token);
       },
       error: err => {
         console.log('Hiba! Az azonosítás sikertelen!')

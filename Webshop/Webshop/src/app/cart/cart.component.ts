@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../shared/products.service';
+import { CommonModule } from '@angular/common';
+
 
 
 @Component({
@@ -18,7 +20,7 @@ export class CartComponent implements OnInit {
   getCartItem(){
     this.ProductService.getCartItem().subscribe({
         next: (products:any) => {        
-          this.products = products;
+          this.products = products.data;
         },
         error: (err: any) => {
           console.log('Hiba! A REST API lekérdezés sikertelen!');
@@ -28,13 +30,6 @@ export class CartComponent implements OnInit {
     
   }
   emptyCart(){
-    
-  }
-  addToCart() {
-    
-  }
-
-  quantity(){
     
   }
 }

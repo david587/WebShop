@@ -7,6 +7,7 @@ import { ProductsService } from '../shared/products.service';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+
   products !: any;
   constructor(private api: ProductsService) { }
 
@@ -22,5 +23,11 @@ export class ProductsComponent implements OnInit {
       }
     )
   }
-
+  addToCart(id: number){
+    this.api.addToCart(id).subscribe(
+      res=>{
+        console.log(res.data);
+    }
+  )
+ }
 }
