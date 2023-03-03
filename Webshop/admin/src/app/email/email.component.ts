@@ -34,6 +34,8 @@ getEmails(){
   })
 }
 
-  sendEmail(){}
+  sendEmail(){
+    this.api.sendEmail()
+  }
 }
 

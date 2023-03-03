@@ -102,7 +102,6 @@ export class ApiService {
   //Email
 
   getEmails(){
-    
     let endpoint = 'Emails';
     let url = this.apihost + endpoint;
     let token = localStorage.getItem('token');    
@@ -129,7 +128,7 @@ export class ApiService {
       headers: headers
     };
 
-    return this.http.post<any>(url, httpOption);
+    return this.http.get<any>(url, httpOption);
   }
 
   deleteUser(id: number) {
