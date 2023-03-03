@@ -99,6 +99,24 @@ export class ApiService {
     return this.http.post<any>(url, "", httpOption );
   }
 
+  //Email
+
+  getEmails(){
+    
+    let endpoint = 'Emails';
+    let url = this.apihost + endpoint;
+    let token = localStorage.getItem('token');    
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+    let httpOption = {
+      headers: headers
+    };
+
+    return this.http.get<any>(url, httpOption );
+  }
+
   sendEmail(){
     let endpoint = 'sendEmail';
     let url = this.apihost + endpoint;

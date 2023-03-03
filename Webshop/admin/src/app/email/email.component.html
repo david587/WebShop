@@ -1,1 +1,28 @@
-<p>email works!</p>
+
+<div class="row bg-dark mt-3">
+    <h1 class="text-white text-center">
+      Email
+    </h1>
+  </div>
+  
+  <div class="row bg-dark mt-2">
+    <button class="text-white p-2 col-2 bg-info mx-3 rounded border-info " data-bs-toggle="modal" data-bs-target="#addModal">
+      Send Email 
+    </button>
+  </div>
+  
+  <table class="table table-striped table-dark">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="col" *ngFor="let ema of emails" >
+          <td>{{ema.id}}</td>
+          <td>{{ema.SubscribedEmail}}</td>
+        </tr>
+  
+      </tbody>
+    </table>
