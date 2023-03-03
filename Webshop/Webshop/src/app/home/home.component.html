@@ -6,7 +6,7 @@
             <div class="mt-[50px] md:mt-[0]">
                 <h1 class="md:text-left text-center text-3xl md:4xl lg:7xl font-semibold text-white md:mb-[90px] mb-4">Follow the <span class="glow2">Trend</span> , upgrade your  <span class="glow">Gear</span></h1>
                 <p class="text-center md:text-left  text-white mb-8 lg:text-xl xl:text-2xl  md:mb-[100px]  ">Shop the latest peripherals for your computer and boost your productivity. From keyboards and mice to monitors and headsets, we've got everything you need to upgrade your setup.</p>
-                <button class=" py-3 px-7 w-[200px] md:px-5 md:w-[140px]  xl:px-6 xl:w-[160px] border-2 border-neon glow2 rounded-full md:inline-block md:mx-0 mx-auto block  text-white font-medium mb-4 md:mb-0">Buy Now</button>
+                <button class=" py-3 px-7 w-[200px] md:px-5 md:w-[140px]  xl:px-6 xl:w-[160px] border-2 border-neon  rounded-full md:inline-block md:mx-0 mx-auto block  text-neon font-medium mb-4 md:mb-0">Buy Now</button>
                 <button class=" py-3 px-7 w-[200px] md:px-5 md:w-[140px] xl:px-6 xl:w-[160px] border-2 border-white gomb rounded-full md:inline-block md:mx-0 mx-auto block text-white font-normal md:ml-4">Show All</button>
             </div>
         </div>
@@ -101,102 +101,32 @@
     </div>
 <!-- color cards -->
 
-<!-- </div> -->
+
 
 <!-- option -->
-<div class="bg-gradient-to-b from-deepForest-800 to-black pt-60-px]">
-    <h1 class="text-3xl font-light  text-center pt-5 glow2">Featured products</h1>
-    <!-- 4grid items -->
-
-</div>
-<!-- Most popular -->
-<!-- <div class="bg-gradient-to-b from-deepForest-800 to-black">
-    <span class="text-2xl font-medium  text-center pt-5 block md:hidden glow2">Most popular</span>
-    <div class="flex flex-row text-white justify-center md:gap-4 sm:gap-3 py-5">
-        <div class="w-1/4 text-center hidden md:block">
-            <p class="text-2xl md:text-3xl lg:text-4xl font-light hidden md:block text-center glow2">Most popular</p>
-        </div>
-        <div class="flex-1 py-2 px-3 border-2 border-white rounded-full text-center">
-            <p class="gomb">All</p>
-        </div>
-        <div class="flex-1 py-2 px-3 border-2 border-white rounded-full text-center">
-            <p class="gomb">Logitech</p>
-        </div>
-        <div class="flex-1 py-2 px-3 border-2 border-white rounded-full text-center">
-            <p class="gomb">Redragon</p>
-        </div>
-        <div class="flex-1 py-2  px-3 border-2 border-white rounded-full text-center">
-            <p class="gomb">Urage</p>
-        </div>
-        <div class="hidden md:block md:flex-1">
-        </div>
-
-    </div> -->
-
-<!-- grid -->
-<div class="grid md:grid-cols-4 grid-cols-2 gap-4 md:mx-[50px] mx-[15px] lg:mx-[170px] xl:mx-[220px] pt-5 pb-[80px] font-medium ">
-    <div *ngFor="let product of products" >
-        <div class="bg-gray rounded-t-sm">
-            <img src={{path}} alt="">
-            <p class="text-md font-semibold text-center pb-4">Theory Headset</p>
-        </div>
-        <div class="flex flex-row">
-            <div class="md:w-4/6">
-                <button class="text-white p-2 bg-black">Add to cart</button>
+<div class="bg-gradient-to-b from-deepForest-800 to-black justify-center items-center flex px-10">
+    <div class="grid md:grid-cols-4 grid-cols-2 gap-8 pt-5 pb-[80px] font-medium text-white max-w-[1200px] ">
+        <div *ngFor="let product of products"  >
+            <div class=" rounded-t-sm">
+                <img src="{{product.image}}" alt="">
+                
             </div>
-            <div class="flex-1">
-                <p class="text-white bg-neon p-2 text-center">$60.00</p>
+            <div>
+                <p class="text-xl font-semibold text-center font">{{product.name}}</p>
+                <p class="text-sm font-normal text-center">{{product.brand_id}}</p>
+
             </div>
-        <!-- </div>  -->
+            <div>
+                <p class="text-xl text-neon font-semibold text-center py-4">{{product.price}} ft</p>
+            </div>
+            <div>
+                <img src="" alt="">
+                <p class="text-center">ADD TO CART</p>
+            </div>
+        </div> 
     </div> 
-
-    <div>
-        <div class="bg-gray rounded-t-sm">
-            <img src={{path1}} alt="">
-            <p class="text-md font-semibold text-center pb-4">Theory Headset</p>
-        </div>
-        <div class="flex flex-row">
-            <div class="w-4/6">
-                <button class="text-white p-2 bg-black">Add to cart</button>
-            </div>
-            <div class="flex-1">
-                <p class="text-white bg-neon p-2 text-center">$60.00</p>
-            </div>
-        </div> 
-    </div>
-
-    <div>
-        <div class="bg-gray rounded-t-sm">
-            <img src={{path}} alt="">
-            <p class="text-md font-semibold text-center pb-4">Theory Headset</p>
-        </div>
-        <div class="flex flex-row">
-            <div class="w-4/6">
-                <button class="text-white p-2 bg-black">Add to cart</button>
-            </div>
-            <div class="flex-1">
-                <p class="text-white bg-neon p-2 text-center">$60.00</p>
-            </div>
-        </div> 
-    </div>  
-
-    <div>
-        <div class="bg-gray rounded-t-sm">
-            <img src={{path3}} alt="">
-            <p class="text-md font-semibold text-center pb-4">Theory Headset</p>
-        </div>
-        <div class="flex flex-row">
-            <div class="w-4/6">
-                <button class="text-white p-2 bg-black">Add to cart</button>
-            </div>
-            <div class="flex-1">
-                <p class="text-white bg-neon p-2 text-center">$60.00</p>
-            </div>
-        </div> 
-    </div>  
-
-</div> 
-<!-- </div-->
+ </div> 
+        <!-- md:mx-[50px] mx-[15px] lg:mx-[170px]  xl:mx-[220px] -->
 
 <!-- Subscribe -->
 <div class="bg-gradient-to-t from-neon to-black md:h-[200px] pb-5 px-[10px]">

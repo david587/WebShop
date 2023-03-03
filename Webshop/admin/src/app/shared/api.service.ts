@@ -96,7 +96,7 @@ export class ApiService {
       headers: headers
     };
 
-    return this.http.put<any>(url, user, httpOption );
+    return this.http.post<any>(url, user, httpOption );
   }
 
   sendEmail(){

@@ -8,6 +8,7 @@ import { ProductsService } from '../shared/products.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+ 
   products !: any;
   constructor(private ProductService: ProductsService) { }
 
@@ -27,6 +28,13 @@ export class CartComponent implements OnInit {
     
   }
   emptyCart(){
+    
+  }
+  addToCart() {
+    
+  }
+
+  quantity(){
     
   }
 }
