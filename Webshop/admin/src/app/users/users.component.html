@@ -9,38 +9,27 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Admin</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-
+      <tr class="col" *ngFor="let user of users">
+        <th>{{user.id}}</th>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.address}}</td>
+        <td>{{user.admin}}</td>
         <td>
           <div class="row mx-2">
-            <button class="text-dark bg-warning p-2 rounded border-warning ">Admin</button>
+            <button class="text-dark bg-warning p-2 rounded border-warning" (click)="giveAdmin(user.id)">Admin</button>
           </div>
         </td>
         <td>
           <div class="row mx-2">
-            <button class="text-white bg-danger p-2 rounded border-danger ">Delete </button>
+            <button class="text-white bg-danger p-2 rounded border-danger" (click)="deleteUser(user.id)">Delete </button>
           </div>
         </td>
       </tr>

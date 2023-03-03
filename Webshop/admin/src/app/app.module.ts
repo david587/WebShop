@@ -12,6 +12,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EmailComponent } from './email/email.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductsComponent,
     BrandsComponent,
     CategoriesComponent,
-    LoginComponent
+    LoginComponent,
+    EmailComponent
   ],
   imports: [
     BrowserModule,
