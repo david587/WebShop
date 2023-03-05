@@ -34,6 +34,16 @@ getEmails(){
   })
 }
 
-  sendEmail(){}
+  sendEmail(){
+    this.api.sendEmail().subscribe({
+      next: (response:any) => {
+        console.log(response);
+      },
+      error: (err:any) => {
+        console.log('Hiba! Email lekérése sikertelen!');
+      }
+  
+    })
+  }
 }
 
