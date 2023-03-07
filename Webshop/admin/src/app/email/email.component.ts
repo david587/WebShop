@@ -40,7 +40,7 @@ getEmails(){
         console.log(response);
       },
       error: (err:any) => {
-        console.log('Hiba! Email lekérése sikertelen!');
+       
       }
   
     })
