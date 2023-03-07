@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ApiService } from '../shared/api.service';
 
@@ -11,9 +11,12 @@ export class UsersComponent {
 
   userForm !: FormGroup;
   users:any = [];
+  message!:any;
+  errmess: any;
 
   constructor(
     private api: ApiService ,
+    private ngZone: NgZone,
     ){
     
   }
@@ -26,6 +29,7 @@ export class UsersComponent {
     this.api.getUsers().subscribe({
       next: (response:any) => {
         this.users = response.data;
+        this.showMessage();
       },
       error: (err) => {
         console.log('Hiba! A REST API lekérdezés sikertelen!');
@@ -37,12 +41,13 @@ export class UsersComponent {
   giveAdmin(id: number){
       this.api.giveAdmin(id).subscribe({
         next: (response:any) => {
-        console.log(response);
+        this.message = response.message;
         this.getUsers();
+        this.showMessage();
       },
       error: (err) => {
-        console.log('Hiba! Admin jog adás sikertelen!');
-        console.log(err);
+        this.errmess = err.error.message;
+        this.showMessage();
       }
     });
   }
@@ -50,15 +55,26 @@ export class UsersComponent {
   deleteUser(id: number){
     this.api.deleteUser(id).subscribe({
       next: (response:any) =>{
-        console.log(response);
+        this.message = response.message;
         this.getUsers();
+        this.showMessage();
       },
       error: (err) => {
-        console.log('Hiba! Felhasználó törlése sikertelen!');
-        console.log(err);
+        this.errmess = err.error.message;
+        this.showMessage();
       }
     });
 
+  }
+
+  showMessage() {
+    // set a timeout function to clear the message after 4 seconds
+    this.ngZone.run(() => {
+      setTimeout(() => {
+        this.message = '';
+        this.errmess ='';
+      }, 4000);
+    });
   }
 
 }
