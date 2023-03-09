@@ -10,13 +10,13 @@ import { ProductsService } from '../shared/products.service';
 export class CartComponent implements OnInit {
  
   products !: any;
-  constructor(private api: ProductsService) { }
+  constructor(private productSercive: ProductsService) { }
 
   ngOnInit(): void {
     this.getCartItem();
   }
   getCartItem(){
-    this.api.getCartItem().subscribe({
+    this.productSercive.getCartItem().subscribe({
         next: (products:any) => {        
           this.products = products.data;
         },
@@ -28,7 +28,7 @@ export class CartComponent implements OnInit {
     
   }
   remove(id:number){
-    this.api.remove(id).subscribe({
+    this.productSercive.remove(id).subscribe({
       next: (res) => {
         console.log(res.data);
         this.getCartItem();

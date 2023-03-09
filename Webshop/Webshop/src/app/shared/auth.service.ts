@@ -11,7 +11,7 @@ export class AuthService {
 
   signUp(name:string, email:string, address:string, phone:number, password:string, confirm_password:string){
     let endpoint = 'register';
-    let url = "http://localhost:8000/api" + endpoint;
+    let url = "http://localhost:8000/api/" + endpoint;
 
     let data = {
       name: name,
@@ -75,4 +75,7 @@ export class AuthService {
   //   let token = localStorage.getItem('token');
   //   return token;
   // }
+
+
+
 }

@@ -1,23 +1,62 @@
- <div class=" mx-auto py-6 sm:px-6 lg:px-8 bg-gradient-to-b from-deepForest-800 to-black">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <div *ngFor="let product of products"  >
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-        <div class="relative pb-48 overflow-hidden">
-          <img class="absolute inset-0 h-full w-full object-cover" 
-               src="{{product.image}}" alt="Product">
-        </div>
-        <div class="px-4 py-2">
-          <h3 class="text-lg font-medium text-gray-900 mb-2">{{product.name}}</h3>
-          <p class="text-gray-600 text-sm mb-4">{{product.brand_id}}</p>
-          <div class="flex justify-between">
-            <p class="text-indigo-500 font-bold text-lg">{{product.price}}</p>
-            <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded" (click)="addToCart(product.id)">
-              Add to Cart
-            </button>
-          </div>
-        </div>
-    </div>
+<div class=" bg-gradient-to-b from-deepForest-800 to-black px-20  ">
+  
+  
+   <div class=" md:flex md:flex-row grid grid-cols-2">
+    <div class="w-2/6 flex justify-center items-center gap-8">
+      <div class="flex items-center space-x-2">
+        <label class="text-blue-500">Sort by brand:</label>
+        <select class="border border-blue-500 rounded-md px-2">
+          <option value="nike">Nike</option>
+          <option value="adidas">Adidas</option>
+          <option value="puma">Puma</option>
+        </select>
       </div>
-          </div>
+  
+      <!-- Sort by Category: -->
+      <div class="flex items-center space-x-2">
+        <label class="text-blue-500">Sort by category:</label>
+        <select class="border border-blue-500 rounded-md  px-2">
+          <option value="men">Men</option>
+          <option value="women">Women</option>
+          <option value="kids">Kids</option>
+        </select>
+      </div>
+    </div>
+    <div class=" mx-auto py-6 sm:px-6 lg:px-8 flex-1">
+      <div class="flex justify-center items-center my-12">
+        <div class="relative flex w-full lg:w-2/3">
+          <input type="text" placeholder="Search..." class="w-full px-4 py-2 rounded-l-full rounded-r-none focus:outline-none focus:border-neon focus:border font-normal" >
+          <button class="bg-neon text-white px-4 py-2 rounded-r-full focus:outline-none">
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20">
+              <path d="M14.707,13.707l-3.982-3.982C10.689,9.57,11,8.828,11,8c0-2.757-2.243-5-5-5S1,5.243,1,8s2.243,5,5,5c1.828,0,2.57-0.311,3.725-0.725l3.982,3.982c0.195,0.195,0.512,0.195,0.707,0l1.414-1.414C14.902,14.219,14.902,13.902,14.707,13.707z M6,10c-1.654,0-3-1.346-3-3s1.346-3,3-3s3,1.346,3,3S7.654,10,6,10z"></path>
+            </svg>
+          </button>
         </div>
-
+      </div>
+      </div>
+    </div>
+  
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div *ngFor="let product of products"  >
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="relative pb-48 overflow-hidden">
+              <img class="absolute inset-0 h-full w-full object-cover"
+                   src="{{product.image}}" alt="Product">
+            </div>
+            <div class="px-4 py-2">
+              <h3 class="text-lg font-medium text-gray-900 mb-2">{{product.name}}</h3>
+              <p class="text-gray-600 text-sm mb-4">{{product.brand_id}}</p>
+              <div class="flex justify-between">
+                <p class="text-indigo-500 font-bold text-lg">{{product.price}}</p>
+                <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded" (click)="addToCart(product.id)">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+        </div>
+          </div>
+              </div>
+  
+  
+  
+</div>

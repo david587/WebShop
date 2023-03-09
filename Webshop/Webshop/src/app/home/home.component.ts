@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../shared/products.service';
+import { Router } from '@angular/router';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +11,22 @@ import { ProductsService } from '../shared/products.service';
 
 export class HomeComponent implements OnInit{
 
+  newsletterForm !: FormGroup;
   products !: any;
-  host = "http://localhost:8000/api";
 
-  constructor(private api: ProductsService) { }
+  constructor(
+    private api: ProductsService,
+    private productService: ProductsService,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    ) { }
 
   ngOnInit(): void {
     this.getRandomFour();
-  }
+    this.newsletterForm = this.formBuilder.group({
+      email:['']
+  });
+}
 
   getRandomFour(){
     this.api.getRandomFour().subscribe(
@@ -34,6 +44,17 @@ export class HomeComponent implements OnInit{
     }
   )
  }
+
+ newsLetter(){
+  let email = this.newsletterForm.value.email;
+
+  this.productService.newsLetter(email)
+  .subscribe({
+    next: data => {
+     
+    },
+  })
+}
 
   
 

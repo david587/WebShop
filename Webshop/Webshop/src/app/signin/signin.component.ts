@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../shared/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -13,7 +14,8 @@ export class SigninComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router,
     ) { }
 
   ngOnInit(): void {
@@ -33,7 +35,8 @@ export class SigninComponent implements OnInit {
       next: data => {
         localStorage.setItem('token', data.data.token);
         localStorage.setItem('name', data.data.name);
-        console.log(data.data.token);
+        this.router.navigate(['/products']);
+
       },
       error: err => {
         console.log('Hiba! Az azonosítás sikertelen!')

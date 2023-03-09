@@ -129,16 +129,19 @@
         <!-- md:mx-[50px] mx-[15px] lg:mx-[170px]  xl:mx-[220px] -->
 
 <!-- Subscribe -->
-<div class="bg-gradient-to-t from-black via-neon to-black md:h-[300px] pb-5 px-[10px]">
-    <p class="block md:hidden text-2xl font-medium text-center pt-4 text-white">Newsletter Subscribe</p>
+<div class="bg-gradient-to-t from-black via-neon to-black md:h-[300px] pb-5 px-[10px]" >
+    <p class="block md:hidden text-2xl font-medium text-center pt-4 text-white" >Newsletter Subscribe</p>
     <div class="flex flex-row justify-center items-center">
         <div class="hidden md:block flex-1"></div>
         <div class="">
             <p class="hidden md:block text-3xl font-semibold md:mt-[35%] text-white p-4">Newsletter Subscribe</p>
         </div>
         <div class="p-2">
-            <input type="text" class="py-2 px-5 rounded-l-full md:mt-[40%] mt-5 w-[65%] ml-[4%]" placeholder="example@gmail.com">
-            <button class="bg-black border-2 border-black py-2 px-3 text-white text-center rounded-r-full">Submit</button>
+            <form [formGroup]="newsletterForm" (ngSubmit)="newsLetter()" >
+                <input formControlName="email" type="text" class="py-2 px-5 rounded-l-full md:mt-[40%] mt-5 w-[65%] ml-[4%]" placeholder="example@gmail.com">
+                <button type="submit" class="bg-black border-2 border-black py-2 px-3 text-white text-center rounded-r-full">Submit</button>
+            </form>
+            
         </div>
         <div class="hidden md:block flex-1"></div>
     </div>
