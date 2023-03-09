@@ -13,7 +13,7 @@ module.exports = {
         'darkgray': '#313638',
         'deepForest': '#243c5a',
         'gray': '#EEEEEE',
-        'neon':'#E33926',
+        'neon':'#84cc16',
         'deepForest': {
           100: '#cffafe',
           200: '#a5f3fc',

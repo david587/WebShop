@@ -8,29 +8,36 @@
     0 0 0 rgb(214, 82, 133);
   }
   .glow2 {
-    color: #E33926;
+    color: #84cc16;
     text-shadow:
-    0 0 22px #E33926,
-    0 0 42px #E33926,
-    0 0 52px #E33926,
-    0 0 52px #E33926,
-    0 0 0 #E33926;
+    0 0 22px #84cc16,
+    0 0 22px #84cc16,
+    0 0 22px #84cc16,
+    0 0 2px #84cc16,
+    0 0 0 #84cc16;
   }
   .gomb{
     text-shadow:
-    0 0 6px #ffff,
-    0 0 6px #ffff,
-    0 0 7px #ffff,
-    0 0 20px #ffff,
+    0 0 2px #ffff,
+    0 0 2px #ffff,
+    0 0 3px #ffff,
+    0 0 10px #ffff,
     0 0 0 #ffff;
   }
+  /* .gomb2{
+    text-shadow:
+    0 0 2px #84cc16,
+    0 0 2px #84cc16,
+    0 0 3px #84cc16,
+    0 0 10px #84cc16,
+    0 0 0 #84cc16;
+  } */
 
   .borderGlow{
     box-shadow: 
-    0 0 6px #ffff,
-    0 0 6px #ffff,
-    0 0 7px #ffff,
-    0 0 8px #ffff,
-    0 0 7px #ffff;
-    ;
+    0 0 1px #ffff,
+    0 0 1px #ffff,
+    0 0 3px #ffff,
+    0 0 4px #ffff,
+    0 0 5px #ffff;
   }
