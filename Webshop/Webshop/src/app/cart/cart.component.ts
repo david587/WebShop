@@ -9,16 +9,26 @@ import { ProductsService } from '../shared/products.service';
 })
 export class CartComponent implements OnInit {
  
+  currentprice = 0;
   products !: any;
-  constructor(private productSercive: ProductsService) { }
+  price = 0;
+  constructor(private productService: ProductsService) { }
 
   ngOnInit(): void {
     this.getCartItem();
   }
   getCartItem(){
-    this.productSercive.getCartItem().subscribe({
+    this.productService.getCartItem().subscribe({
         next: (products:any) => {        
           this.products = products.data;
+          for(let product of products.data){
+            this.price += product.price * product.quantity;
+            this.currentprice = product.price
+            console.log(this.price);
+            
+          }
+          console.log(products.data);
+          
         },
         error: (err: any) => {
           console.log('Hiba! A REST API lekérdezés sikertelen!');
@@ -28,9 +38,12 @@ export class CartComponent implements OnInit {
     
   }
   remove(id:number){
-    this.productSercive.remove(id).subscribe({
+
+    this.productService.remove(id).subscribe({
       next: (res) => {
+        
         console.log(res.data);
+        
         this.getCartItem();
       },
       error: (err) => {
@@ -38,4 +51,15 @@ export class CartComponent implements OnInit {
       }
     });
 }
+addToCart(id: number){
+  this.productService.addToCart(id).subscribe(
+    res=>{
+      this.getCartItem();
+  }
+)
+}
+
+
+
+
 }
