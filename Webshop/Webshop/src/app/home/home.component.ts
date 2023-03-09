@@ -27,6 +27,14 @@ export class HomeComponent implements OnInit{
     )
   }
 
+  addToCart(id: number){
+    this.api.addToCart(id).subscribe(
+      res=>{
+        console.log(res.data);
+    }
+  )
+ }
+
   
 
 

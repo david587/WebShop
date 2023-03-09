@@ -59,6 +59,25 @@ export class ProductsService implements OnInit {
     };
     return this.http.post<any>(url," ", httpOption);
   }
-  
-}
+
+  remove(id:number){
+
+    let endpoint = 'cartItems/delete';
+    let url = "http://localhost:8000/api/"+endpoint + "/" + id;
+
+    let token = localStorage.getItem('token');
+    console.log(token);
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+    let httpOption = {
+      headers: headers
+    };
+
+    return this.http.delete<any>(url, httpOption);
+  }
+
+  }
 

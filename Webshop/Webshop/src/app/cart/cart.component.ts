@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../shared/products.service';
-import { CommonModule } from '@angular/common';
-
 
 
 @Component({
@@ -12,13 +10,13 @@ import { CommonModule } from '@angular/common';
 export class CartComponent implements OnInit {
  
   products !: any;
-  constructor(private ProductService: ProductsService) { }
+  constructor(private api: ProductsService) { }
 
   ngOnInit(): void {
     this.getCartItem();
   }
   getCartItem(){
-    this.ProductService.getCartItem().subscribe({
+    this.api.getCartItem().subscribe({
         next: (products:any) => {        
           this.products = products.data;
         },
@@ -29,7 +27,15 @@ export class CartComponent implements OnInit {
       });
     
   }
-  emptyCart(){
-    
-  }
+  remove(id:number){
+    this.api.remove(id).subscribe({
+      next: (res) => {
+        console.log(res.data);
+        this.getCartItem();
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+}
 }
