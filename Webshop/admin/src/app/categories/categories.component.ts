@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../shared/api.service';
 
@@ -10,10 +10,13 @@ import { ApiService } from '../shared/api.service';
 export class CategoriesComponent {
   categorieForm !: FormGroup;
   categories:any = [];
+  message!:any;
+  errmess: any;
   
   constructor(
     private api: ApiService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private ngZone: NgZone,
     ) { }
   
   ngOnInit(): void {
@@ -28,6 +31,7 @@ export class CategoriesComponent {
       this.api.getCategories().subscribe({
         next: (response:any) => {        
           this.categories = response.data;
+          this.showMessage();
         },
         error: (err:any) => {
           console.log('Hiba! A REST API lekérdezés sikertelen!');
@@ -49,10 +53,13 @@ export class CategoriesComponent {
       .subscribe({
         next: (data:any) => {
           console.log('vissza: ' + data);
+          this.message = data.message;
           this.getCategories();
+          this.showMessage();
         },
         error: (err:any) => {
-          console.log('Hiba! A termék felévtele sikertelen!')
+          this.errmess = err.error.message;
+          this.showMessage();
         }
       });
     }
@@ -66,12 +73,24 @@ export class CategoriesComponent {
     deleteCategorie(id: number) {
       this.api.deleteCategorie(id).subscribe({
         next: (res:any) => {
-          console.log(res);
+          this.message = res.message;
           this.getCategories();
+          this.showMessage();
         },
         error: (err) => {
-          console.log(err);
+          this.errmess = err.error.message;
+          this.showMessage();
         }
+      });
+    }
+
+    showMessage() {
+      // set a timeout function to clear the message after 4 seconds
+      this.ngZone.run(() => {
+        setTimeout(() => {
+          this.message = '';
+          this.errmess ='';
+        }, 4000);
       });
     }
 }

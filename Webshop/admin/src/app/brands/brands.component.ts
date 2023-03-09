@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../shared/api.service';
 
@@ -11,10 +11,13 @@ export class BrandsComponent {
 
 brandForm !: FormGroup;
 brands:any = [];
+message!:any;
+errmess: any;
 
 constructor(
   private api: ApiService,
-  private formBuilder: FormBuilder
+  private formBuilder: FormBuilder,
+  private ngZone: NgZone,
   ) { }
 
 ngOnInit(): void {
@@ -29,6 +32,7 @@ ngOnInit(): void {
     this.api.getBrands().subscribe({
       next: (response:any) => {        
         this.brands = response.data;
+        this.showMessage();
       },
       error: (err:any) => {
         console.log('Hiba! A REST API lekérdezés sikertelen!');
@@ -49,11 +53,13 @@ ngOnInit(): void {
     this.api.addBrand(data)
     .subscribe({
       next: (data:any) => {
-        console.log('vissza: ' + data);
+        this.message = data.message;
         this.getBrands();
+        this.showMessage();
       },
       error: (err:any) => {
-        console.log('Hiba! A termék felévtele sikertelen!')
+        this.errmess = err.error.message;
+        this.showMessage();
       }
     });
   }
@@ -67,12 +73,24 @@ ngOnInit(): void {
   deleteBrand(id: number) {
     this.api.deleteBrand(id).subscribe({
       next: (res) => {
-        console.log(res);
+        this.message = res.message;
         this.getBrands();
+        this.showMessage();
       },
       error: (err) => {
-        console.log(err);
+        this.errmess = err.error.message;
+        this.showMessage();
       }
+    });
+  }
+
+  showMessage() {
+    // set a timeout function to clear the message after 4 seconds
+    this.ngZone.run(() => {
+      setTimeout(() => {
+        this.message = '';
+        this.errmess ='';
+      }, 4000);
     });
   }
 

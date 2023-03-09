@@ -9,6 +9,8 @@
   <button class="text-white p-2 col-1 bg-info mx-3 rounded border-info " data-bs-toggle="modal" data-bs-target="#addModal">
     Add 
   </button>
+  <h1 style="--bs-bg-opacity: .5;" class="bg-success display-6 text-center text-white my-3 py-1 rounded" *ngIf="message">{{ message }}</h1>
+  <h1 style="--bs-bg-opacity: .5;" class="bg-danger display-6 text-center text-white my-3 py-1 rounded"  *ngIf="errmess?.brand">{{errmess.brand}}</h1>
 </div>
 
 <table class="table table-striped table-dark">
@@ -41,7 +43,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Brand</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -51,7 +53,7 @@
             <div class="mb-3">
               <label for="brand" class="form-label">Brand</label>
               <input type="text" class="form-control" id="brand"
-              formControlName="brand">              
+              formControlName="brand" placeholder="expl: Hp">              
             </div>
           </form>
         </div>

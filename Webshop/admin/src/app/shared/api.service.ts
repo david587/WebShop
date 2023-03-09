@@ -129,7 +129,7 @@ export class ApiService {
       headers: headers
     };
 
-    return this.http.post<any>(url, httpOption);
+    return this.http.get<any>(url, httpOption);
   }
 
   deleteUser(id: number) {
