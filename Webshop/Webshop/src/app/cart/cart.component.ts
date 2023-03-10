@@ -11,22 +11,28 @@ export class CartComponent implements OnInit {
  
   currentprice = 0;
   products !: any;
-  price = 0;
   constructor(private productService: ProductsService) { }
 
   ngOnInit(): void {
     this.getCartItem();
   }
+  getTotalPrice(): number {
+    let totalPrice = 0;
+    for (let product of this.products) {
+      totalPrice += product.price * product.quantity;
+    }
+    return totalPrice;
+  }
   getCartItem(){
     this.productService.getCartItem().subscribe({
         next: (products:any) => {        
           this.products = products.data;
-          for(let product of products.data){
-            this.price += product.price * product.quantity;
-            this.currentprice = product.price
-            console.log(this.price);
+          // for(let product of products.data){
+          //   this.price += product.price * product.quantity;
+          //   // this.currentprice = product.price
+          //   console.log(this.price);
             
-          }
+          // }
           console.log(products.data);
           
         },
