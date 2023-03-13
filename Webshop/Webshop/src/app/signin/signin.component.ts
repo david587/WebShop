@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../shared/auth.service';
 import { Router } from '@angular/router';
+import { EmitterService } from '../shared/emitter.service';
 
 @Component({
   selector: 'app-signin',
@@ -16,6 +17,7 @@ export class SigninComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
+    private emit: EmitterService
     ) { }
 
   ngOnInit(): void {
@@ -36,6 +38,7 @@ export class SigninComponent implements OnInit {
         localStorage.setItem('token', data.data.token);
         localStorage.setItem('name', data.data.name);
         this.router.navigate(['/products']);
+        this.emit.onButton();
 
       },
       error: err => {

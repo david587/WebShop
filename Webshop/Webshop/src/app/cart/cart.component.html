@@ -19,7 +19,7 @@
         <td class="py-4"><img class="object-scale-down h-48 w-96" src="{{product.image}}" alt="{{product.name}}"></td>
             <td class="py-4 text-xl text-white">{{product.Productname}}</td>
             <td class="py-4 flex items-center justify-center mt-16">
-              <button class="bg-[#65a30d] text-white p-2 rounded-full mr-2 text-white" (click)="addToCart(product.product_id)">+</button>
+              <button class="bg-[#65a30d] text-white p-2 rounded-full mr-2" (click)="addToCart(product.product_id)">+</button>
               <p class="text-white">{{product.quantity}}</p>
             </td>
             <td class="py-4 text-white"><p>{{product.price}}</p></td>
@@ -29,7 +29,7 @@
               </button>
             </td>
             <div class="bg-[#65a30d] py-4 px-8 text-white fixed bottom-0 left-0 right-0 flex justify-between items-center">
-              <h2 class="text-lg font-semibold">Total: <span class="font-normal">{{getTotalPrice()}}</span></h2>
+              <h2 class="text-lg font-semibold">Total: <span class="font-normal">{{getTotalPrice()}} ft</span></h2>
               <button class="bg-white text-blue-500 rounded-sm px-4 py-2 font-semibold">Checkout</button>
             </div>
 

@@ -38,11 +38,16 @@ export class HomeComponent implements OnInit{
   }
 
   addToCart(id: number){
-    this.api.addToCart(id).subscribe(
-      res=>{
-        console.log(res.data);
+    if(!localStorage.getItem('token')){
+      this.router.navigate(["signin"]);
     }
-  )
+    else{
+      this.api.addToCart(id).subscribe(
+        res=>{
+          console.log(res.data);
+      }
+    )
+    }
  }
 
  newsLetter(){

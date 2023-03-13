@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductsService } from '../shared/products.service';
 
 @Component({
@@ -9,11 +10,13 @@ import { ProductsService } from '../shared/products.service';
 export class ProductsComponent implements OnInit {
 
   products !: any;
-  constructor(private productService: ProductsService) { }
+  constructor(private productService: ProductsService,private router: Router,) { }
 
   ngOnInit(): void {
     this.getProducts();
   }
+
+  
   getProducts(){
     this.productService.getProducts().subscribe(
       res=>{
@@ -24,10 +27,16 @@ export class ProductsComponent implements OnInit {
     )
   }
   addToCart(id: number){
-    this.productService.addToCart(id).subscribe(
-      res=>{
-        console.log(res.data);
+    if(!localStorage.getItem('token')){
+      this.router.navigate(["signin"]);
     }
-  )
+    else{
+      this.productService.addToCart(id).subscribe(
+        res=>{
+          console.log(res.data);
+      }
+    )
+    }
+   
  }
 }
