@@ -6,8 +6,8 @@
             <div class="mt-[50px] md:mt-[0]">
                 <h1 class="md:text-left text-center text-3xl md:4xl lg:7xl font-semibold text-white md:mb-[90px] mb-4">Follow the <span class="glow2">Trend</span> , upgrade your  <span class="glow">Gear</span></h1>
                 <p class="text-center md:text-left  text-white mb-8 lg:text-xl xl:text-2xl  md:mb-[100px]  ">Shop the latest peripherals for your computer and boost your productivity. From keyboards and mice to monitors and headsets, we've got everything you need to upgrade your setup.</p>
-                <button class=" py-3 px-7 w-[200px] md:px-5 md:w-[140px]  xl:px-6 xl:w-[160px] border-2 border-neon  rounded-full md:inline-block md:mx-0 mx-auto block  text-white gomb font-medium mb-4 md:mb-0">Buy Now</button>
-                <button class=" py-3 px-7 w-[200px] md:px-5 md:w-[140px] xl:px-6 xl:w-[160px] border-2 border-white  rounded-full md:inline-block md:mx-0 mx-auto block text-white font-medium md:ml-4">Show All</button>
+                <button class=" py-3 px-7 w-[200px] md:px-5 md:w-[140px]  xl:px-6 xl:w-[160px] border-2 border-neon  rounded-full md:inline-block md:mx-0 mx-auto block  text-white gomb font-medium mb-4 md:mb-0" routerLink="/cart">Buy Now</button>
+                <button class=" py-3 px-7 w-[200px] md:px-5 md:w-[140px] xl:px-6 xl:w-[160px] border-2 border-white  rounded-full md:inline-block md:mx-0 mx-auto block text-white font-medium md:ml-4" routerLink="/products">Show All</button>
             </div>
         </div>
         <div class="flex-1">
@@ -16,8 +16,75 @@
     </div>
 </div>
 
-<!-- service cards -->
-<div class="grid md:grid-cols-4 grid-cols-2 bg-black text-white py-16 md:px-20 lg:px-[200px] text-left">
+
+<!-- random cards -->
+<div class=" justify-center bg-black items-center flex py-[80px] px-10">
+    <div class="container mx-auto block my-8 text-center">
+        <h1 class="text-gray text-5xl font-normal my-10 font-sans">Our trending Products</h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-white">
+        <div *ngFor="let product of products">
+          <div class="bg-deepForest-900 shadow rounded-lg overflow-hidden">
+            <img src="{{product.image}}" alt="Product Image" class="max-h-[300px] mx-auto block">
+      
+            <div class="p-4">
+              <h3 class="font-semibold text-xl mb-2">{{product.name}}</h3>
+              <p class="text-gray-700 font-light mb-2">{{product.brand_id}}</p>
+              <p class="text-neon font-bold text-[18px]">{{product.price}} ft</p>
+            </div>
+      
+            <div class="p-4 border-t border-gray-300 flex justify-between items-center">
+                <div>
+                    <button class="bg-neon text-white font-semibold py-2 px-2 border border-neon rounded shadow mx-auto block md:mx-0" (click)="addToCart(product.id)">
+                        Add to Cart
+                      </button>
+                </div>
+                <div>
+                    <p class="text-gray-700 font-normal mb-2 text-center">{{product.categorie_id}}</p>
+                </div>
+            </div>
+          </div>
+        </div>
+        </div> 
+    </div> 
+</div>
+
+
+<!-- cards end -->
+    <div class="grid md:grid-cols-3 grid-cols-1 leading-10 text-white">
+        <div class="bg-gradient-to-t from-deepForest-800 to-black pt-[60px] px-10">
+        
+            <h1 class="text-2xl font-semibold ml-5 text-center">Improve your visual experience with our selection of peripherals. </h1>
+            <p class="font-normal ml-5 text-center">Invest now</p>
+            <div class="relative">
+                <img src={{path}} alt="" class="pt-20"> 
+                <button class="font-medium ml-3 absolute md:top-[40px] top-5 border-2 py-1 px-5 rounded-full gomb" routerLink="/products">View More
+                </button>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-t from-deepForest-800 to-black pt-[60px]">
+            <h1 class="text-2xl font-semibold ml-5 text-center">Upgrade your gaming setup with our wide selection of peripherals.</h1>
+            <p class="font-normal ml-5 text-center">we've got everything you need</p>
+            <div class="relative">
+                <img src={{path1}} alt="" class="pt-10"> 
+                <button class="font-medium ml-3 absolute md:top-[40px] top-5 left-2 border-2 py-1 px-5 rounded-full gomb" routerLink="/products">View More
+                </button>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-t from-deepForest-800 to-black pt-[60px]">
+            <h1 class="text-2xl font-semibold ml-5 text-center">Looking for high-quality peripherals at affordable prices?</h1>
+            <p class="font-normal ml-5 text-center">Enhance your entertainment</p>
+            <div class="relative">
+                <img src={{path4}} alt="" class="pt-20"> 
+                <button class="font-medium ml-3 absolute md:top-[40px] md:left-[-25px] top-5 border-2 py-1 px-5 rounded-full gomb" routerLink="/products">View More
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- service cards -->
+<div class="grid md:grid-cols-4 grid-cols-2  bg-gradient-to-b from-deepForest-800 to-black text-white py-16 md:px-20 lg:px-[200px] text-left">
     <div class="borderGlow px-5 py-10">
     <div class="flex flex-row justify-center items-center">
         <div class="flex-1">
@@ -66,91 +133,8 @@
             </div>
             </div>
 </div>
-<!-- cards end -->
-    <div class="grid md:grid-cols-3 grid-cols-1 leading-10 text-white">
-        <div class="bg-gradient-to-t from-deepForest-800 to-black pt-[60px] ">
-        
-            <h1 class="text-2xl font-semibold ml-5 text-center">Improve your visual experience with our selection of peripherals. </h1>
-            <p class="font-normal ml-5 text-center">Invest now</p>
-            <div class="relative">
-                <img src={{path}} alt="" class="pt-20"> 
-                <button class="font-medium ml-3 absolute md:top-[40px] top-5 border-2 py-1 px-5 rounded-full gomb">View More
-                </button>
-            </div>
-        </div>
-
-        <div class="bg-gradient-to-t from-deepForest-800 to-black pt-[60px]">
-            <h1 class="text-2xl font-semibold ml-5 text-center">Upgrade your gaming setup with our wide selection of peripherals.</h1>
-            <p class="font-normal ml-5 text-center">we've got everything you need</p>
-            <div class="relative">
-                <img src={{path1}} alt="" class="pt-10"> 
-                <button class="font-medium ml-3 absolute md:top-[40px] top-5 left-2 border-2 py-1 px-5 rounded-full gomb">View More
-                </button>
-            </div>
-        </div>
-
-        <div class="bg-gradient-to-t from-deepForest-800 to-black pt-[60px]">
-            <h1 class="text-2xl font-semibold ml-5 text-center">Looking for high-quality peripherals at affordable prices?</h1>
-            <p class="font-normal ml-5 text-center">Enhance your entertainment</p>
-            <div class="relative">
-                <img src={{path4}} alt="" class="pt-20"> 
-                <button class="font-medium ml-3 absolute md:top-[40px] md:left-[-25px] top-5 border-2 py-1 px-5 rounded-full gomb">View More
-                </button>
-            </div>
-        </div>
-    </div>
-<!-- color cards -->
 
 
-
-<!-- option -->
-<!-- <div class="bg-gradient-to-b from-deepForest-800 to-black justify-center items-center flex px-10">
-    <div class="grid md:grid-cols-4 grid-cols-2 gap-8 pt-5 pb-[80px] font-medium text-white max-w-[1200px] "> -->
-        <!-- <div *ngFor="let product of products"  >
-            <div class=" rounded-t-sm">
-                <img src="{{product.image}}" alt="">
-                
-            </div>
-            <div>
-                <p class="text-xl font-semibold text-center font">{{product.name}}</p>
-                <p class="text-sm font-normal text-center">{{product.brand_id}}</p>
-
-            </div>
-            <div>
-                <p class="text-xl text-neon font-semibold text-center py-4">{{product.price}} ft</p>
-            </div>
-            <div>
-                <img src="" alt="">
-                <button class="text-center py-3 px-7 w-[200px] md:px-5 md:w-[140px]  xl:px-6 xl:w-[160px] border-2 border-white  rounded-full md:inline-block md:mx-0 mx-auto block  text-white font-medium mb-4 md:mb-0" (click)="addToCart(product.id)">ADD TO CART</button>
-            </div>
-        </div>  -->
-        <div class="bg-gradient-to-b from-deepForest-800 to-black justify-center items-center flex py-[80px]">
-            <div class="container mx-auto block my-8">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-white ">
-                <div *ngFor="let product of products">
-                  <div class="bg-transparent shadow rounded-lg overflow-hidden">
-                    <img src="{{product.image}}" alt="Product Image">
-              
-                    <div class="p-4">
-                      <h3 class="font-semibold text-lg mb-2">{{product.name}}</h3>
-                      <p class="text-gray-700 text-base mb-2">{{product.brand_id}}</p>
-                      <p class="text-gray-700 font-bold text-xl">{{product.price}}</p>
-                    </div>
-              
-                    <div class="p-4 border-t border-gray-300">
-                      <button class="bg-neon text-white font-semibold py-2 px-2 border border-neon rounded shadow mx-auto block md:mx-0" (click)="addToCart(product.id)">
-                        Add to Cart
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                </div> 
-            </div> 
-        </div>
-        
-    <!-- </div>
-    </div> -->
-        <!-- md:mx-[50px] mx-[15px] lg:mx-[170px]  xl:mx-[220px] -->
 
 <!-- Subscribe -->
 <div class="bg-gradient-to-t from-black via-neon to-black md:h-[300px] pb-5 px-[10px]" >
