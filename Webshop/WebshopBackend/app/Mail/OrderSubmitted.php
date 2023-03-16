@@ -11,9 +11,9 @@ class OrderSubmitted extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $UserData;
-    public $shippingData;
-    public $userOrder;
+    public $user;
+    public $shipping;
+    public $order;
     public $email;
 
     /**
@@ -21,11 +21,11 @@ class OrderSubmitted extends Mailable
      *
      * @return void
      */
-    public function __construct($UserData, $email, $shippingData, $userOrder)
+    public function __construct($user, $email, $shipping, $order)
     {
-        $this->UserData = $UserData;
-        $this->$shippingData= $shippingData;
-        $this->$userOrder = $userOrder;
+        $this->user = $user;
+        $this->shipping= $shipping;
+        $this->order = $order;
         $this->email = $email;
     }
 
@@ -38,6 +38,6 @@ class OrderSubmitted extends Mailable
     {
         return $this->from($this->email)
                     ->subject('Order details')
-                    ->view('Mail.order-submitted');
+                    ->view('emails.order-submitted');
     }
 }

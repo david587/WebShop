@@ -41,10 +41,10 @@ class OrderController extends BaseController
             $order_item->order_information_id = $order_Information->id;
             $order_item->save();
         }
-        $user = User::where("id",Auth::id())->get();
+        $user = User::where("id",Auth::id())->first();
         $emailAdd = $user->email;
         $this->showUserItems($emailAdd);
-         
+
         return $this->sendResponse([],"All cart items added to Orders");
     }
 
@@ -53,15 +53,24 @@ class OrderController extends BaseController
         $userOrder = Order::where("user_id",Auth::id())->get();
         $userOrder_id = Order::where("user_id",Auth::id())->first()->id;
         $shippingData = OrderInformations::where("id",$userOrder_id)->get();
-        $UserData = User::where("id",Auth::id())->get();
+        $UserData = User::where("id",Auth::id())->first();
+        // $user = $UserData->toArray();
+        // $shipping = $shippingData->toArray();
+        // $order = $userOrder->toArray();
 
         // Send email
         $email = config('mail.from.address');
         //Todo:orderSubmttedben fogadni a paramétereket
-        Mail::to($emailAdd)->send(new OrderSubmitted($UserData,$shippingData,$userOrder,$email));
+        Mail::to($emailAdd)->send(new OrderSubmitted($user, $email, $shipping, $order));
 
-        return $this->OrderResponse(orderResources::collection( $userOrder),
-        OrderInformationResources::collection($shippingData),
-        UserResources::collection($UserData),"OK");
+        return view('user.order', [
+            'userOrder' => orderResources::collection($userOrder),
+            'shippingData' => OrderInformationResources::collection($shippingData),
+            'userData' => UserResources::collection($UserData),
+        ]);
+
+        // return $this->OrderResponse(orderResources::collection( $userOrder),
+        // OrderInformationResources::collection($shippingData),
+        // UserResources::collection($UserData),"OK");
     }
 }
