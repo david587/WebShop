@@ -41,7 +41,7 @@ class OrderController extends BaseController
             $order_item->order_information_id = $order_Information->id;
             $order_item->save();
         }
-        $user = User::where("user_id",Auth::id())->get();
+        $user = User::where("id",Auth::id())->get();
         $emailAdd = $user->email;
         $this->showUserItems($emailAdd);
          
