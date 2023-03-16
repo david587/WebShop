@@ -1,22 +1,36 @@
-<p>Your order Details</p>
 
-<ul>
-    {{-- {{ dd($user['name']) }} --}}
-    <li><strong>Name:</strong> {{ $user['name'] }}</li>
-    <li><strong>Email:</strong> {{ $user['email'] }}</li>
 
-    @foreach ($order as $order)
-    {{ dd($order) }}
-        <li><strong>Name:</strong> {{ $order['productName'] }}</li>
-        <li><strong>Description:</strong> {{ $order['Description'] }}</li>
-        <li><strong>Price:</strong> {{ $order['Price'] }}</li>
-        <li><strong>Quantity:</strong> {{ $order['quantity'] }}</li>
-        <li><strong>Total:</strong> {{ $order['quantity'] * $order['Price'] }}</li>
-    @endforeach
+Your order Details<br><br>
+Name: {{ $user['name'] }}<br>
+Email: {{ $user['email'] }}<br><br>
+Shipping Details<br><br>
 
-    <li><strong>Name:</strong> {{ $shipping['shippingAddress'] }}</li>
-    <li><strong>Email:</strong> {{ $shipping['phone'] }}</li>
-    <li><strong>Email:</strong> {{ $shipping['paymentMethod '] }}</li>
-</ul>
+@foreach ($order as $order)
+Address: {{ $order['shippingAddress'] }}<br>
+Phone: {{ $order['phone'] }}<br>
+Payment: {{ $order['paymentMethod'] }}<br><br>
+@endforeach
 
-<p>Thanks, for your order</p>
+Products Ordered:<br><br>
+<table>
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($shipping as $order)
+            <tr>
+                <td>{{ $order->product->name }}</td>
+                <td>{{ $order->product->details }}</td>
+                <td>{{ $order->product->price }}</td>
+                <td>{{ $order->quantity }}</td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
+<br><br>
+Thanks for your order<br>

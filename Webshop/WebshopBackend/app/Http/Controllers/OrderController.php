@@ -54,23 +54,12 @@ class OrderController extends BaseController
         $userOrder_id = Order::where("user_id",Auth::id())->first()->id;
         $shippingData = OrderInformations::where("id",$userOrder_id)->get();
         $UserData = User::where("id",Auth::id())->first();
-        // $user = $UserData->toArray();
-        // $shipping = $shippingData->toArray();
-        // $order = $userOrder->toArray();
+        $user = $UserData->toArray();
+        $shipping = $shippingData->toArray();
+        $order = $userOrder;
 
         // Send email
         $email = config('mail.from.address');
-        //Todo:orderSubmttedben fogadni a paramétereket
-        Mail::to($emailAdd)->send(new OrderSubmitted($user, $email, $shipping, $order));
-
-        return view('user.order', [
-            'userOrder' => orderResources::collection($userOrder),
-            'shippingData' => OrderInformationResources::collection($shippingData),
-            'userData' => UserResources::collection($UserData),
-        ]);
-
-        // return $this->OrderResponse(orderResources::collection( $userOrder),
-        // OrderInformationResources::collection($shippingData),
-        // UserResources::collection($UserData),"OK");
+        Mail::to($emailAdd)->send(new OrderSubmitted($user,$email,$order,$shipping));
     }
 }

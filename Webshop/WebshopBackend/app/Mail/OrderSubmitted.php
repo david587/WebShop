@@ -21,7 +21,7 @@ class OrderSubmitted extends Mailable
      *
      * @return void
      */
-    public function __construct($user, $email, $shipping, $order)
+    public function __construct($user,$email,$shipping,$order)
     {
         $this->user = $user;
         $this->shipping= $shipping;
