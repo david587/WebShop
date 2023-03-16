@@ -9,8 +9,12 @@ import { ProductsService } from '../shared/products.service';
 })
 export class ProductsComponent implements OnInit {
 
+  searchValue : string="";
   products !: any;
-  constructor(private productService: ProductsService,private router: Router,) { }
+  constructor(
+    private productService: ProductsService,
+    private router: Router,
+    ) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -38,5 +42,18 @@ export class ProductsComponent implements OnInit {
     )
     }
    
+ }
+ search(){
+  this.productService.getProducts().subscribe({
+    next: (products:any) => {        
+      this.products = products.data;
+      console.log(products.data);
+      
+    },
+    error: (err: any) => {
+      console.log('Hiba! A REST API lekérdezés sikertelen!');
+      console.log(err);
+    }
+  });
  }
 }

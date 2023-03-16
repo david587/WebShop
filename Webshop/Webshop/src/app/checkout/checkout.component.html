@@ -1,0 +1,25 @@
+<form [formGroup]="nextForm" (ngSubmit)="next()">
+    <div class="bg-gradient-to-b from-deepForest-800 to-black">
+        <h2 class=" text-center text-white font-bold text-gray-900 pt-[80px] lg:pt-[120px] lg:pb-[20px] text-4xl text-[#84cc16]">Checkout</h2>
+          <input type="hidden" name="remember" value="true">
+          <div class="space-y-px rounded-md shadow-sm">
+            <div class="mx-auto block w-[60%] md:w-[30%]">
+                <input id="shippingAddress" formControlName="shippingAddress" type="text" autocomplete="text" required class="relative block w-full py-2 px-5 my-3 sm:text-sm rounded-sm" placeholder="Shipping Address">
+              </div>
+            <div class="mx-auto block w-[60%] md:w-[30%]">
+              <input id="phone" formControlName="phone" type="text" autocomplete="phone" required class="relative block w-full py-2 px-5 my-3 sm:text-sm rounded-sm" placeholder="06208752544">
+            </div>
+            <div class="">
+              <select id="paymentMethod" formControlName="paymentMethod" class="space-y-px shadow-sm mx-auto block w-[60%] md:w-[30%] mb-4">
+                <option selected>Choose a payment mode</option>
+                <option value="cash">Cash</option>
+              </select>
+              
+            </div>
+
+          </div>
+          <button type="submit" class="mx-auto block border-2 py-2 px-5 rounded-sm border-white text-black text-[16px] font-normal bg-white">Next</button>
+    </div>
+  </form>
+  
+  

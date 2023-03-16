@@ -95,6 +95,44 @@ export class ProductsService implements OnInit {
     return this.http.post<any>(url, data, httpOption);
 
   }
+  next(shippingAddress:string, phone:number, paymentMethod:string){
+    let endpoint = 'Orders/Store';
+    let url = "http://localhost:8000/api/" + endpoint;
+    
+    let token = localStorage.getItem('token');
 
+    let data = {
+      shippingAddress: shippingAddress,
+      phone: phone,
+      paymentMethod: paymentMethod
+    };
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'applicaton/json',
+      'Authorization': 'Bearer ' + token
+    });
+
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.post<any>(url,data, httpOption);
   }
+
+  search(){
+    let endpoint = 'Products/Search';
+    let url = "http://localhost:8000/api/"+endpoint;
+
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    });
+
+    let httpOption = {
+      headers: headers
+    };
+    return this.http.get<any>(url, httpOption);
+  }
+  }
+
 

@@ -64,8 +64,4 @@ addToCart(id: number){
   }
 )
 }
-
-
-
-
 }
