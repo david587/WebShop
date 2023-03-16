@@ -13,16 +13,18 @@ use App\Http\Resources\Product as ProductResources;
 class ProductController extends BaseController
 {
 
-    public function sortCategories($name)
+    public function sortCategories(Request $request)
     {
-        $categories_id = Categorie::where("categorie",$name)->first()->id;
+        $input = $request -> name;
+        $categories_id = Categorie::where("categorie",$input)->first()->id;
         $products = Product::where("categorie_id", $categories_id)->get();
         return $this->sendResponse(ProductResources::collection( $products ), "OK");
     }
 
-    public function sortBrands($name)
+    public function sortBrands(Request $request)
     {
-        $brand_id = Brand::where("brand",$name)->first()->id;
+        $input = $request -> name;
+        $brand_id = Brand::where("brand",$input)->first()->id;
         $products = Product::where("brand_id", $brand_id)->get();
         return $this->sendResponse(ProductResources::collection( $products ), "OK");
     }

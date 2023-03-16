@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductsService } from '../shared/products.service';
 
@@ -9,15 +10,29 @@ import { ProductsService } from '../shared/products.service';
 })
 export class ProductsComponent implements OnInit {
 
-  searchValue : string="";
+  searchForm !: FormGroup;
+  brandForm !: FormGroup;
+  categorieForm !: FormGroup;
+
   products !: any;
   constructor(
     private productService: ProductsService,
     private router: Router,
+    private formBuilder: FormBuilder,
     ) { }
 
   ngOnInit(): void {
     this.getProducts();
+
+    this.searchForm = this.formBuilder.group({
+      name: ['']
+    });
+    this.brandForm = this.formBuilder.group({
+      name: ['']
+    });
+    this.categorieForm = this.formBuilder.group({
+      name: ['']
+    });
   }
 
   
@@ -44,15 +59,38 @@ export class ProductsComponent implements OnInit {
    
  }
  search(){
-  this.productService.getProducts().subscribe({
-    next: (products:any) => {        
-      this.products = products.data;
-      console.log(products.data);
-      
-    },
-    error: (err: any) => {
-      console.log('Hiba! A REST API lekérdezés sikertelen!');
-      console.log(err);
+  let name = this.searchForm.value.name;
+
+  this.productService.search(name).subscribe({
+    next: data => {
+      this.products = data.data;
+      // console.log(this.products);
+      console.log(data);
+       
+    }
+  });
+ }
+ brand(){
+  let name = this.brandForm.value.name;
+
+  this.productService.brand(name).subscribe({
+    next: data => {
+      this.products = data.data;
+      // console.log(this.products);
+      console.log(data);
+       
+    }
+  });
+ }
+ categorie(){
+  let name = this.categorieForm.value.name;
+
+  this.productService.categorie(name).subscribe({
+    next: data => {
+      this.products = data.data;
+      // console.log(this.products);
+      console.log(data);
+       
     }
   });
  }

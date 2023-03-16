@@ -71,8 +71,8 @@ Route::get("/Products/Home",[ProductController::class, "home"]);
 Route::get("/Products/Show/{id}", [ProductController::class, "show"]);
 
 //Sorting
-Route::get("/Products/Categories/{name}", [ProductController::class, "sortCategories"]);
-Route::get("/Products/Brands/{name}", [ProductController::class, "sortBrands"]);
+Route::get("/Products/Categories", [ProductController::class, "sortCategories"]);
+Route::get("/Products/Brands", [ProductController::class, "sortBrands"]);
 
 //subscribe to newsletters,store email
 Route::post("/Users/NewsLetter",[UserController::class,"newsLetter"]);

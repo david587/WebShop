@@ -9,6 +9,7 @@ import { ProductsService } from '../shared/products.service';
 })
 export class CheckoutComponent implements OnInit {
 
+  message !: string;
   nextForm !: FormGroup;
   constructor(
     private router: Router,
@@ -32,7 +33,14 @@ export class CheckoutComponent implements OnInit {
     this.productService.next(shippingAddress, phone, paymentMethod)
     .subscribe({
       next: data => {
+        // this.message = data.message
+        // this.showMessage(this.message);
         this.router.navigate(['/']);
       }
   });
-}}
+}
+showMessage(message: string, duration: number = 3000): void {
+  this.message = message;
+  setTimeout(() => this.message="", duration);
+}
+}
