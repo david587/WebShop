@@ -14,6 +14,8 @@ use App\Http\Resources\Order as orderResources;
 use App\Http\Resources\OrderInformation as OrderInformationResources;
 use App\Http\Resources\User as UserResources;
 use App\Models\OrderInformations as ModelsOrderInformations;
+use App\Mail\OrderSubmitted;
+use Illuminate\Support\Facades\Mail;
 
 
 class OrderController extends BaseController
@@ -39,16 +41,25 @@ class OrderController extends BaseController
             $order_item->order_information_id = $order_Information->id;
             $order_item->save();
         }
+        $user = User::where("user_id",Auth::id())->get();
+        $emailAdd = $user->email;
+        $this->showUserItems($emailAdd);
+         
         return $this->sendResponse([],"All cart items added to Orders");
     }
 
-    public function showUserItems()
+    public function showUserItems($emailAdd)
     {
         $userOrder = Order::where("user_id",Auth::id())->get();
         $userOrder_id = Order::where("user_id",Auth::id())->first()->id;
         $shippingData = OrderInformations::where("id",$userOrder_id)->get();
         $UserData = User::where("id",Auth::id())->get();
-        //  
+
+        // Send email
+        $email = config('mail.from.address');
+        //Todo:orderSubmttedben fogadni a paramétereket
+        Mail::to($emailAdd)->send(new OrderSubmitted($UserData,$shippingData,$userOrder,$email));
+
         return $this->OrderResponse(orderResources::collection( $userOrder),
         OrderInformationResources::collection($shippingData),
         UserResources::collection($UserData),"OK");
