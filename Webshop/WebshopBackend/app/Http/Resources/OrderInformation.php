@@ -17,7 +17,7 @@ class OrderInformation extends JsonResource
         return [
             "shippingAddress"=>$this->shippingAddress,
             "phone" => $this->phone,
-            "paymentMethod,"=>$this->paymentMethod,
+            "paymentMethod"=>$this->paymentMethod,
         ];
     }
 }
