@@ -11,6 +11,7 @@ import { EmitterService } from '../shared/emitter.service';
 })
 export class SigninComponent implements OnInit {
 
+  message !: string;
   loginForm !: FormGroup
 
   constructor(
@@ -37,7 +38,11 @@ export class SigninComponent implements OnInit {
       next: data => {
         localStorage.setItem('token', data.data.token);
         localStorage.setItem('name', data.data.name);
-        this.router.navigate(['/products']);
+
+        this.message = data.message
+        this.showMessage(this.message);
+
+        // this.router.navigate(['/products']);
         this.emit.onButton();
 
       },
@@ -45,5 +50,10 @@ export class SigninComponent implements OnInit {
         console.log('Hiba! Az azonosítás sikertelen!')
       }
     });
+  }
+
+  showMessage(message: string, duration: number = 3000): void {
+    this.message = message;
+    setTimeout(() => this.message="", duration);
   }
 }

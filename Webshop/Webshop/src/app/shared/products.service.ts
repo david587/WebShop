@@ -115,23 +115,65 @@ export class ProductsService implements OnInit {
     let httpOption = {
       headers: headers
     };
-    return this.http.post<any>(url,data, httpOption);
+    return this.http.post<any>(url, data, httpOption);
   }
 
-  search(){
-    let endpoint = 'Products/Search';
-    let url = "http://localhost:8000/api/"+endpoint;
-
-
-    let headers = new HttpHeaders({
+  search(name: any) {
+    const endpoint = 'Products/Search';
+    const url = "http://localhost:8000/api/" + endpoint;
+  
+    const data = {
+      name: name,
+    };
+  
+    const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     });
-
-    let httpOption = {
-      headers: headers
+  
+    const httpOptions = {
+      headers: headers,
+      params: data
     };
-    return this.http.get<any>(url, httpOption);
+    return this.http.get<any>(url, httpOptions);
+  }
+  brand(name: any) {
+    const endpoint = 'Products/Brands';
+    const url = "http://localhost:8000/api/" + endpoint;
+  
+    const data = {
+      name: name,
+    };
+  
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    });
+  
+    const httpOptions = {
+      headers: headers,
+      params: data
+    };
+    return this.http.get<any>(url, httpOptions);
+  }
+  categorie(name: any) {
+    const endpoint = 'Products/Categories';
+    const url = "http://localhost:8000/api/" + endpoint;
+  
+    const data = {
+      name: name,
+    };
+  
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    });
+  
+    const httpOptions = {
+      headers: headers,
+      params: data
+    };
+    return this.http.get<any>(url, httpOptions);
   }
   }
 

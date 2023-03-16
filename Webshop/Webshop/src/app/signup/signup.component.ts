@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
+  message !: string;
+
   signupForm !: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
@@ -40,11 +42,17 @@ export class SignupComponent implements OnInit {
     this.authService.signUp(name, email, address, phone, password, confirm_password)
     .subscribe({
       next: data => {
+       this.message = data.message
+       this.showMessage(this.message);
        
         this.router.navigate(['/signin']);
        
       },
-    })
+    });
+  }
+  showMessage(message: string, duration: number = 3000): void {
+    this.message = message;
+    setTimeout(() => this.message="", duration);
   }
 
 }
