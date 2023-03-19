@@ -50,7 +50,7 @@ class OrderController extends BaseController
 
     public function showUserItems($emailAdd)
     {
-        $userOrder = Order::where("user_id",Auth::id())->get();
+        $userOrder = cartItem::where("user_id",Auth::id())->get();
         $userOrder_id = Order::where("user_id",Auth::id())->first()->id;
         $shippingData = OrderInformations::where("id",$userOrder_id)->get();
         $UserData = User::where("id",Auth::id())->first();
