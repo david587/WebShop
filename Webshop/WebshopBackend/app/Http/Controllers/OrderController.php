@@ -51,7 +51,8 @@ class OrderController extends BaseController
     public function showUserItems($emailAdd)
     {
         $userOrder = cartItem::where("user_id",Auth::id())->get();
-        $userOrder_id = Order::where("user_id",Auth::id())->first()->id;
+        //get the lastest id
+        $userOrder_id = Order::where("user_id", Auth::id())->latest('order_information_id')->value('order_information_id');
         $shippingData = OrderInformations::where("id",$userOrder_id)->get();
         $UserData = User::where("id",Auth::id())->first();
         $user = $UserData->toArray();
