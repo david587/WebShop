@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 
   message !: string;
+  error !: any;
 
   signupForm !: FormGroup;
   constructor(
@@ -48,6 +49,12 @@ export class SignupComponent implements OnInit {
         this.router.navigate(['/signin']);
        
       },
+      error: (err:any) => {
+        this.error = err.error.errors;
+        console.log(this.error);
+
+        
+      }
     });
   }
   showMessage(message: string, duration: number = 3000): void {

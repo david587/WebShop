@@ -1,3 +1,8 @@
+<div  *ngIf = "error" class="font-bold bg-red-200 border-2 border-red-400 text-red-700 px-4 py-3 relative" role="alert">
+
+  <p class="text-red-700 text-[13px]">{{error}}</p>
+</div>
+
 <form [formGroup]="loginForm" (ngSubmit)="login()">
 <div class="bg-gradient-to-b from-deepForest-800 to-black">
     <h2 class=" text-center text-white font-bold text-gray-900 pt-[80px] lg:pt-[120px] pb-[20px] text-4xl text-[#84cc16]">Sign in to your account</h2>
@@ -8,6 +13,7 @@
         </div>
         <div class="mx-auto block w-[60%] md:w-[30%]">
           <input id="password"  formControlName="password" type="password" autocomplete="current-password" required class="relative block w-full py-2 px-5 my-3 sm:text-sm rounded-sm" placeholder="Password">
+          
         </div>
       </div>
       <button class="mx-auto block border-2 py-2 px-5 rounded-sm border-white text-black text-[16px] font-normal bg-white" type="submit">Login</button>

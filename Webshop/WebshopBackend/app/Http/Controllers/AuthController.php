@@ -18,7 +18,7 @@ class AuthController extends BaseController
             return $this->sendResponse($success,"Sikeres Bejelentkezés");
         }
         else{
-            return $this->sendError("unathorized.".["error"=> "Hibás Adatok"]);
+            return $this->sendError("Hibás Adatok");
         }
     }
 
@@ -33,7 +33,10 @@ class AuthController extends BaseController
             "confirm_password"=> "required|same:password",
         ]);
         if($validator->fails()){
-            return $this->sendError("Error validation", $validator->errors() );
+            // return $this->sendError("Error validation", $validator->errors() );
+
+            return response() ->json([
+                'errors'=>$validator->errors()], 400);
         }
 
         $input = $request->all();

@@ -9,6 +9,8 @@ import { ProductsService } from '../shared/products.service';
 })
 export class CartComponent implements OnInit {
  
+  message !: string;
+
   currentprice = 0;
   products !: any;
   constructor(private productService: ProductsService) { }
@@ -27,12 +29,6 @@ export class CartComponent implements OnInit {
     this.productService.getCartItem().subscribe({
         next: (products:any) => {        
           this.products = products.data;
-          // for(let product of products.data){
-          //   this.price += product.price * product.quantity;
-          //   // this.currentprice = product.price
-          //   console.log(this.price);
-            
-          // }
           console.log(products.data);
           
         },
@@ -48,7 +44,8 @@ export class CartComponent implements OnInit {
     this.productService.remove(id).subscribe({
       next: (res) => {
         
-        console.log(res.data);
+        this.message = res.message
+        this.showMessage(this.message);
         
         this.getCartItem();
       },
@@ -60,8 +57,14 @@ export class CartComponent implements OnInit {
 addToCart(id: number){
   this.productService.addToCart(id).subscribe(
     res=>{
+      this.message = res.message
+      this.showMessage(this.message);
+      
       this.getCartItem();
   }
-)
+)};
+showMessage(message: string, duration: number = 3000): void {
+  this.message = message;
+  setTimeout(() => this.message="", duration);
 }
 }

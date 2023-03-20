@@ -11,6 +11,8 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 
 export class HomeComponent implements OnInit{
 
+  message !: string;
+
   newsletterForm !: FormGroup;
   products !: any;
 
@@ -44,7 +46,8 @@ export class HomeComponent implements OnInit{
     else{
       this.api.addToCart(id).subscribe(
         res=>{
-          console.log(res.data);
+        this.message = res.message
+        this.showMessage(this.message);;
       }
     )
     }
@@ -58,7 +61,12 @@ export class HomeComponent implements OnInit{
     next: data => {
      
     },
-  })
+  });
+
+}
+showMessage(message: string, duration: number = 3000): void {
+  this.message = message;
+  setTimeout(() => this.message="", duration);
 }
 
   

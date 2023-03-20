@@ -10,6 +10,8 @@ import { ProductsService } from '../shared/products.service';
 })
 export class ProductsComponent implements OnInit {
 
+  message !: string;
+
   searchForm !: FormGroup;
   brandForm !: FormGroup;
   categorieForm !: FormGroup;
@@ -47,11 +49,16 @@ export class ProductsComponent implements OnInit {
   }
   addToCart(id: number){
     if(!localStorage.getItem('token')){
-      this.router.navigate(["signin"]);
+       this.router.navigate(["signin"]);
     }
     else{
       this.productService.addToCart(id).subscribe(
         res=>{
+          this.message = res.message
+          console.log(res.message);
+
+                
+          this.showMessage(this.message);
           console.log(res.data);
       }
     )
@@ -94,4 +101,8 @@ export class ProductsComponent implements OnInit {
     }
   });
  }
+ showMessage(message: string, duration: number = 3000): void {
+  this.message = message;
+  setTimeout(() => this.message="", duration);
+}
 }

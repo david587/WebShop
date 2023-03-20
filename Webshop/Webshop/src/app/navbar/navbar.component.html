@@ -85,7 +85,7 @@
 
                     <a *ngIf="!authvisible" (click)="onClickToggle()" title="" class="py-2 text-base font-medium text-white transition-all duration-200 focus:text-blue-600"  routerLink="/signin"> Login </a>
 
-                    <a (click)="logout()" *ngIf="authvisible" href="#" title="" class="text-base font-medium text-white" routerLink="signin"> Logout </a>
+                    <a (click)="logout()" (click)="onClickToggle()" *ngIf="authvisible" href="signin" title="" class="text-base font-medium text-white" routerLink="signin"> Logout </a>
                 </div>
             </div>
         </div>
