@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit{
   products !: any;
 
   constructor(
-    private api: ProductsService,
+
     private productService: ProductsService,
     private router: Router,
     private formBuilder: FormBuilder,
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit{
 }
 
   getRandomFour(){
-    this.api.getRandomFour().subscribe(
+    this.productService.getRandomFour().subscribe(
       res=>{
         console.log(res.data);
         this.products=res.data;
@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit{
       this.router.navigate(["signin"]);
     }
     else{
-      this.api.addToCart(id).subscribe(
+      this.productService.addToCart(id).subscribe(
         res=>{
         this.message = res.message
         this.showMessage(this.message);;

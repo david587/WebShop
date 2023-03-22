@@ -174,7 +174,29 @@ export class ProductsService implements OnInit {
       params: data
     };
     return this.http.get<any>(url, httpOptions);
+  };
+
+  getProduct(id: number){
+    const endpoint = 'Products/Show/';
+    const url = "http://localhost:8000/api/" + endpoint + id;
+  
+    const data = {
+      id: id,
+    };
+  
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    });
+  
+    const httpOptions = {
+      headers: headers,
+      params: data
+    };
+    return this.http.get<any>(url, httpOptions);
+  };
+
   }
-  }
+  
 
 

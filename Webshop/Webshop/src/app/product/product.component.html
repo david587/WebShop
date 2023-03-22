@@ -1,0 +1,39 @@
+<div  *ngIf="message" class=" bg-[#ecfccb] border-l-8 border-[#84cc16] text-[#14532d] p-4 fixed  top-0  left-0 right-0" role="alert">
+    <p class="font-bold">
+      {{message}}
+    </p>
+  </div>
+
+<div   class="bg-gradient-to-b from-deepForest-800 to-black py-10 relative" >
+    <a routerLink="/products" class="absolute top-0 right-0 mt-2 mr-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white hover:text-neon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.47 10l5.94-5.94a1 1 0 10-1.41-1.41L11.06 8.59l-5.94-5.94A1 1 0 003.71 4.7L9.65 10l-5.94 5.94a1 1 0 101.41 1.41L11.06 11.41l5.94 5.94a1 1 0 101.41-1.41L12.47 10z" clip-rule="evenodd"/></svg></a>
+    <div class="container mx-auto flex flex-col lg:flex-row lg:space-x-10">
+      <div class="lg:w-1/2 relative">
+        <div class="group">
+          <img src="{{product.image}}" alt="Product Image" class="w-full object-cover rounded-lg shadow-lg transform transition duration-300 group-hover:scale-105">
+        </div>
+      </div>
+      <div class="lg:w-1/2 lg:pl-10 flex flex-col justify-between items-start">
+        <div >
+          <h1 class="text-neon text-4xl font-bold mb-4">{{product.name}}</h1>
+          <p class="text-white text-lg mb-8">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam harum id vel dignissimos autem ab sequi quaerat voluptates tempora doloremque?
+          </p>
+          <div class="flex items-center justify-between mb-8">
+            <div>
+              <span class="text-neon text-3xl font-bold">{{product.price}}</span>
+            </div>
+            <span class="text-neon text-sm font-bold">(20% off)</span>
+          </div>
+          <button class="bg-neon text-white py-3 px-8 rounded-lg shadow-lg mb-8" (click)="addToCart(product.id)">Add to Cart</button>
+        </div>
+        <div>
+          <h2 class="text-neon text-3xl font-bold mb-2">Product Details</h2>
+          <ul class="text-white text-lg">
+            <li>Detail 1</li>
+            <li>Detail 2</li>
+            <li>Detail 3</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>

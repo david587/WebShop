@@ -57,7 +57,7 @@
   <div class="container mx-auto block my-8 text-center">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-white">
       <div *ngFor="let product of products">
-        <div class=" md:border-r md:border-r-gray shadow  overflow-hidden">
+        <div class=" md:border-r md:border-r-gray shadow  overflow-hidden"  (click)="getProduct(product.id)">
           <img src="{{product.image}}" alt="Product Image" class="max-h-[200px] mx-auto block">
     
           <div class="p-4">

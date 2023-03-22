@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { ProductComponent } from './product/product.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     SignupComponent,
     SigninComponent,
     CartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

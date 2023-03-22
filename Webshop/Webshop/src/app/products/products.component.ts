@@ -10,6 +10,7 @@ import { ProductsService } from '../shared/products.service';
 })
 export class ProductsComponent implements OnInit {
 
+  product!: any;
   message !: string;
 
   searchForm !: FormGroup;
@@ -105,4 +106,13 @@ export class ProductsComponent implements OnInit {
   this.message = message;
   setTimeout(() => this.message="", duration);
 }
+
+getProduct(id: number){
+   this.productService.getProduct(id).subscribe(
+     res=>{
+      this.product = res.data;
+      console.log(this.product);
+      this.router.navigate(["product"], {state: {product: this.product}});
+   }
+ )};
 }
