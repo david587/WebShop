@@ -16,13 +16,9 @@ export class ProductComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.product= history.state.prouduct;
-    // console.log(this.product);
-
     console.log('ProductComponent ngOnInit called');
     this.product = history.state.product;
-    console.log(this.product);
-    console.log(this.product.name);
+    
     
   }
 

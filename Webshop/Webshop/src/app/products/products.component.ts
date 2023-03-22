@@ -112,6 +112,7 @@ getProduct(id: number){
      res=>{
       this.product = res.data;
       console.log(this.product);
+      localStorage.setItem("product",this.product);
       this.router.navigate(["product"], {state: {product: this.product}});
    }
  )};

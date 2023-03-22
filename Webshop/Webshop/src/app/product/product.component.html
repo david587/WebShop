@@ -5,35 +5,84 @@
   </div>
 
 <div   class="bg-gradient-to-b from-deepForest-800 to-black py-10 relative" >
-    <a routerLink="/products" class="absolute top-0 right-0 mt-2 mr-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white hover:text-neon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.47 10l5.94-5.94a1 1 0 10-1.41-1.41L11.06 8.59l-5.94-5.94A1 1 0 003.71 4.7L9.65 10l-5.94 5.94a1 1 0 101.41 1.41L11.06 11.41l5.94 5.94a1 1 0 101.41-1.41L12.47 10z" clip-rule="evenodd"/></svg></a>
-    <div class="container mx-auto flex flex-col lg:flex-row lg:space-x-10">
-      <div class="lg:w-1/2 relative">
+    <a routerLink="/products" class="absolute top-10 right-10 mt-2 mr-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white hover:text-neon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.47 10l5.94-5.94a1 1 0 10-1.41-1.41L11.06 8.59l-5.94-5.94A1 1 0 003.71 4.7L9.65 10l-5.94 5.94a1 1 0 101.41 1.41L11.06 11.41l5.94 5.94a1 1 0 101.41-1.41L12.47 10z" clip-rule="evenodd"/></svg></a>
+    <div class="flex md:flex-row flex-col  justify-center items-center">
+      <div class="lg:w-2/6 relative">
         <div class="group">
-          <img src="{{product.image}}" alt="Product Image" class="w-full object-cover rounded-lg shadow-lg transform transition duration-300 group-hover:scale-105">
+          <img src="{{product.image}}" alt="Product Image" class="w-full object-cover transform transition duration-300 group-hover:scale-105 mx-auto block max-w-[500px]">
         </div>
       </div>
-      <div class="lg:w-1/2 lg:pl-10 flex flex-col justify-between items-start">
+      <div class="flex flex-col justify-center items-start ml-20">
         <div >
-          <h1 class="text-neon text-4xl font-bold mb-4">{{product.name}}</h1>
+          <h1 class="text-neon text-5xl font-bold mb-4 underline">{{product.name}}</h1>
           <p class="text-white text-lg mb-8">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam harum id vel dignissimos autem ab sequi quaerat voluptates tempora doloremque?
+            {{ product.details }}
           </p>
-          <div class="flex items-center justify-between mb-8">
+          <div class="flex items-center mb-8">
             <div>
-              <span class="text-neon text-3xl font-bold">{{product.price}}</span>
+              <span class="text-neon text-xl font-bold">${{product.price}}</span>
             </div>
-            <span class="text-neon text-sm font-bold">(20% off)</span>
+            <span class="text-neon text-sm font-bold ml-2">(20% off)</span>
           </div>
-          <button class="bg-neon text-white py-3 px-8 rounded-lg shadow-lg mb-8" (click)="addToCart(product.id)">Add to Cart</button>
-        </div>
-        <div>
-          <h2 class="text-neon text-3xl font-bold mb-2">Product Details</h2>
-          <ul class="text-white text-lg">
-            <li>Detail 1</li>
-            <li>Detail 2</li>
-            <li>Detail 3</li>
-          </ul>
+          <div class="text-white text-sm font-bold pb-10">
+            <h2 class="text-neon text-3xl font-bold mb-2">Brand & Category</h2>
+            <ul class="text-[18px] leading-6 font-normal">
+              <li>{{ product.brand_id }}</li>
+              <li>{{ product.categorie_id }}</li>
+            </ul>
+          </div>
+          <button class="bg-neon text-white py-3 px-8 rounded-sm shadow-lg border-2 border-neon mb-8 hover:border-2 hover:border-white" (click)="addToCart(product.id)">Add to Cart</button>
         </div>
       </div>
     </div>
+
+    <div class="grid md:grid-cols-4 grid-cols-2 text-white md:px-20 lg:px-[200px] text-left">
+      <div class="borderGlow px-5 py-10">
+      <div class="flex flex-row justify-center items-center">
+          <div class="flex-1">
+              <img src="../assets/delivery-truck.svg" alt="" class="glow2 mx-auto block w-[50px]">
+          </div>
+          <div class="flex-1">
+              <p class="text-xl gomb">Free delivery</p>
+              <p>from $50.00</p>
+          </div>
+      </div>
+      </div>
+  
+      <div class="borderGlow px-5 py-10">
+          <div class="flex flex-row justify-center items-center">
+              <div class="flex-1">
+                  <img src="../assets/feedback.svg" alt="" class="glow2 mx-auto block w-[50px]">
+              </div>
+              <div class="flex-1">
+                  <p class="text-xl gomb">99% Positive</p>
+                  <p>FeedBacks</p>
+              </div>
+          </div>
+      </div>
+  
+      <div class="borderGlow px-5 py-10">
+          <div class="flex flex-row justify-center items-center">
+              <div class="flex-1">
+                  <img src="../assets/truck-return.svg" alt="" class="glow2 mx-auto block w-[50px]">
+              </div>
+              <div class="flex-1">
+                  <p class="text-xl gomb">365 days</p>
+                  <p>for free return</p>
+              </div>
+          </div>
+          </div>
+  
+          <div class="borderGlow px-5 py-10">
+              <div class="flex flex-row justify-center items-center">
+                  <div class="flex-1">
+                      <img src="../assets/account-payment-outline.svg" alt="" class="glow2 mx-auto block w-[50px]">
+                  </div>
+                  <div class="flex-1">
+                      <p class="text-xl gomb">Payment</p>
+                      <p>Pay when your prduct arrived</p>
+                  </div>
+              </div>
+              </div>
+  </div>
   </div>
