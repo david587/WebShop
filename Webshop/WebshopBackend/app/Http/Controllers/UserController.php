@@ -45,7 +45,8 @@ class UserController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            return $this->sendError($validator->errors());
+            return response() ->json([
+                'errors'=>$validator->errors()], 400);
         } 
         else {
             $email = newsLetter::create($input);

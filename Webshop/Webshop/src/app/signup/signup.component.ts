@@ -44,22 +44,24 @@ export class SignupComponent implements OnInit {
     .subscribe({
       next: data => {
        this.message = data.message
-       this.showMessage(this.message);
        
-        this.router.navigate(['/signin']);
+       
+        this.router.navigate(['/signin'], {state: {message: this.message}});
+        this.showMessage(this.message, "");
        
       },
       error: (err:any) => {
         this.error = err.error.errors;
         console.log(this.error);
+        this.showMessage("", this.error);
 
         
       }
     });
   }
-  showMessage(message: string, duration: number = 3000): void {
+  showMessage(message: string, error:any, duration: number = 3000): void {
     this.message = message;
-    setTimeout(() => this.message="", duration);
-  }
+    this.error = error;
+    setTimeout(() => this.message="", duration);  }
 
 }

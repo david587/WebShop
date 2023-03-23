@@ -4,6 +4,10 @@
       {{message}}
     </p>
   </div>
+  <div  *ngIf = "error" class="font-bold bg-red-200 border-2 border-red-400 text-red-700 p-4 fixed top-0  left-0 right-0" role="alert">
+
+    <p class="text-red-700 text-[13px]">{{error}}</p>
+  </div>
   <!-- westimre headset -->
 <div class=" bg-gradient-to-b from-deepForest-800 to-black ">
     <h1 class="text-center pt-[100px] md:text-6xl text-5xl md:font-extralight text-white shadow-sm gomb mx-4">The Westimre Pc Headset</h1>

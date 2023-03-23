@@ -27,6 +27,9 @@ export class SigninComponent implements OnInit {
       email: [''],
       password: ['']
     });
+    this.message = history.state.message;
+    this.showMessage(this.message,  "");
+    
   }
 
   login () {
@@ -41,21 +44,24 @@ export class SigninComponent implements OnInit {
         localStorage.setItem('name', data.data.name);
 
         this.message = data.message
-        this.showMessage(this.message);
 
-        this.router.navigate(['/products']);
+
+        this.router.navigate(['/products'], {state: {message: this.message}});
         this.emit.onButton();
+        this.showMessage(this.message,"");
 
       },
       error: (err:any) => {
         this.error = err.error.message;
         console.log(err.error.message);
+        this.showMessage("", this.error);
       }
     });
 
   }
-  showMessage(message: string, duration: number = 3000): void {
+  showMessage(message: string, error: any, duration: number = 3000): void {
     this.message = message;
     setTimeout(() => this.message="", duration);
+    setTimeout(() => this.error="", duration);
   }
 }

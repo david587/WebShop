@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit{
 
   newsletterForm !: FormGroup;
   products !: any;
+  error !: any;
 
   constructor(
 
@@ -28,6 +29,8 @@ export class HomeComponent implements OnInit{
     this.newsletterForm = this.formBuilder.group({
       email:['']
   });
+  this.message = history.state.message;
+  this.showMessage(this.message, "");
 }
 
   getRandomFour(){
@@ -47,7 +50,7 @@ export class HomeComponent implements OnInit{
       this.productService.addToCart(id).subscribe(
         res=>{
         this.message = res.message
-        this.showMessage(this.message);;
+        this.showMessage(this.message, "");;
       }
     )
     }
@@ -59,14 +62,24 @@ export class HomeComponent implements OnInit{
   this.productService.newsLetter(email)
   .subscribe({
     next: data => {
-     
+      this.message = data.message;
+      this.showMessage(this.message, "");
     },
+    error: (err:any) => {
+      this.error = err.error.errors.email;
+
+      console.log(err.error.errors.email);
+      this.showMessage("", this.error);
+    }
   });
 
 }
-showMessage(message: string, duration: number = 3000): void {
+showMessage(message: string, error: any, duration: number = 3000): void {
   this.message = message;
+  this.error= error;
+
   setTimeout(() => this.message="", duration);
+  setTimeout(() => this.error="", duration);
 }
 
   

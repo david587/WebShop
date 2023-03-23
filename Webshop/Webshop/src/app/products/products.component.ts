@@ -36,6 +36,8 @@ export class ProductsComponent implements OnInit {
     this.categorieForm = this.formBuilder.group({
       name: ['']
     });
+    this.message = history.state.message;
+    this.showMessage(this.message);
   }
 
   

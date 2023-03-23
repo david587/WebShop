@@ -23,6 +23,7 @@ export class CheckoutComponent implements OnInit {
       phone:[''],
       paymentMethod:[''],
   });
+  
   }
   next () {
     let shippingAddress = this.nextForm.value.shippingAddress;
@@ -33,14 +34,10 @@ export class CheckoutComponent implements OnInit {
     this.productService.next(shippingAddress, phone, paymentMethod)
     .subscribe({
       next: data => {
-        // this.message = data.message
-        // this.showMessage(this.message);
-        this.router.navigate(['/']);
+        this.message = data.message
+        this.router.navigate(['/'], {state: {message: this.message}} );
       }
   });
 }
-showMessage(message: string, duration: number = 3000): void {
-  this.message = message;
-  setTimeout(() => this.message="", duration);
-}
+
 }
