@@ -15,10 +15,10 @@ class AuthController extends BaseController
             $authUser = Auth::user();
             $success["token"] = $authUser->createToken("MyAuthApp")->plainTextToken;
             $success["name"] = $authUser->name;
-            return $this->sendResponse($success,"Sikeres Bejelentkezés");
+            return $this->sendResponse($success,"Successful login.");
         }
         else{
-            return $this->sendError("Hibás Adatok");
+            return $this->sendError("Wrong credentials!");
         }
     }
 
@@ -44,7 +44,7 @@ class AuthController extends BaseController
         $user = User::create($input);
         $success["name"] = $user->name;
 
-        return $this->sendResponse($success, "Sikeres regisztráció");
+        return $this->sendResponse($success, "Succesful register.");
     }
 
     public function signOut(Request $request)

@@ -30,13 +30,13 @@ class BrandController extends BaseController
         }
 
         $brands = Brand::create($input);
-        return $this->sendResponse(new BrandResources($brands), "Brand létrehozva");
+        return $this->sendResponse(new BrandResources($brands), "Brand created.");
     }
 
     public function destroy($id)
     {
         Brand::destroy($id);
 
-        return $this->sendResponse([],"Brand törölve");
+        return $this->sendResponse([],"Brand deleted.");
     }
 }

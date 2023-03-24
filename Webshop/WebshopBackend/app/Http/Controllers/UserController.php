@@ -22,7 +22,7 @@ class UserController extends BaseController
     public function deleteUsers($id)
     {
         $user= User::destroy($id);
-        return $this->sendResponse([],"User törölve");
+        return $this->sendResponse([],"User deleted.");
     }
 
     public function AdminAccess($id)
@@ -31,7 +31,7 @@ class UserController extends BaseController
         //  $user = User::where("id",Auth::id())->update(["admin_since"=>now()]);
         $user->admin_since = now();
         $user->save();
-        return $this->sendResponse(new FullUserResources( $user ), "Admin access gived");
+        return $this->sendResponse(new FullUserResources( $user ), "Admin access gived.");
 
     }
 
@@ -50,7 +50,7 @@ class UserController extends BaseController
         } 
         else {
             $email = newsLetter::create($input);
-            return $this->sendResponse(new NewsLetterResources($email), "Subscribed");
+            return $this->sendResponse(new NewsLetterResources($email), "Subscribed.");
         }
         
 

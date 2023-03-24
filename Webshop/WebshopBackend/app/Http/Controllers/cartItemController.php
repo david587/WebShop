@@ -31,14 +31,14 @@ class cartItemController extends BaseController
         //If there is no such cart item, it will save the new cart item that is being created.
         if(cartItem::where('user_id', Auth::id())->where('product_id', $product_id)->first() == null){
             $cart_item->save();
-            return $this->sendResponse([],"Product hozzáadva a kosárhoz");
+            return $this->sendResponse([],"Product added to cart");
         }
         else{
             // cartItem::where('user_id', Auth::id())->where('product_id', $product_id)->update(['quantity' => $cart_item->quantity+1]);
             $cart_item = cartItem::where('user_id', Auth::id())->where('product_id', $product_id)->first();
             $cart_item->quantity += 1;
             $cart_item->save();
-            return $this->sendResponse([],"Product számának növelése");
+            return $this->sendResponse([],"Increasing the number of products");
         }
     }
 
@@ -46,6 +46,6 @@ class cartItemController extends BaseController
     {
         $cartItem = cartItem::find($id);
         $cartItem->delete();
-        return $this->sendResponse([],"Product törölve");
+        return $this->sendResponse([],"Product deleted");
     }
 }

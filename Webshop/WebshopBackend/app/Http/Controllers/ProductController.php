@@ -116,13 +116,13 @@ class ProductController extends BaseController
         $product = Product::find($id);
         $product->update($input);
 
-        return $this->sendResponse(new ProductResources($product), "Product frissitve");
+        return $this->sendResponse(new ProductResources($product), "Product updated.");
     }
 
     public function destroy($id)
     {
         Product::destroy($id);
-        return $this->sendResponse([],"Product törölve");
+        return $this->sendResponse([],"Product deleted.");
     }
 
     public function search(Request $request)

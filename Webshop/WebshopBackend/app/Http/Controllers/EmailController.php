@@ -15,7 +15,7 @@ class EmailController extends BaseController
     $emails = newsLetter::all();
 
     foreach ($emails as $email) {
-        $data = ['message' => 'This is the message being sent'];
+        $data = ['message' => 'This is the message being sent.'];
         Mail::to($email->email)->send(new SendMailable($data));
     }
 

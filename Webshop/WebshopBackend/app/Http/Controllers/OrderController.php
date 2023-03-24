@@ -45,7 +45,7 @@ class OrderController extends BaseController
         $emailAdd = $user->email;
         $this->showUserItems($emailAdd);
 
-        return $this->sendResponse([],"All cart items added to Orders");
+        return $this->sendResponse([],"All cart items added to Orders.");
     }
 
     public function showUserItems($emailAdd)
