@@ -1,3 +1,9 @@
+# GearDrop Webshop
+
+## Fejlesztői dokumentáció - frontend
+
+## 2022, 2023
+
 ## Felhasznált technológiák:
 
 OS: win32 x64
@@ -13,8 +19,8 @@ Tailwind css:
 
 ## Felépítés
 
-# Könyvtárszerkezet:
-
+### Könyvtárszerkezet:
+```txt
 studal/
   |-.angular/
   |-.vscode/
@@ -53,3 +59,7 @@ studal/
   |-package.json
   |-README.md
   |-tailwind.config.js
+  
+```
+
+A webes felület egy periféria webshop alkalmazás Angular keretrendszerrel összeállítva.
