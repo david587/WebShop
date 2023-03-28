@@ -63,3 +63,18 @@ studal/
 ```
 
 A webes felület egy periféria webshop alkalmazás Angular keretrendszerrel összeállítva.
+
+A következő vizuális komponensek lettek létrehozva:
+
+* app.component - Fő konténer
+* about.component - "Rólunk" oldal
+* cart.component - A kosár kezelése
+* checkout.component - fizetési adatokat kezeli és küldi
+* footer.component - minden oldal alján megjelenő általános információkat tartalmaz
+* home.component - Főoldal funkcióit kezelő oldal
+* navbar.component - A navigációs sáv funkcióit kezelő oldal
+* product.compopnent - Egy termék részletes információit jeleníti meg a termékre kattintva
+* products.component - Az összes termék megjelenítésére szolgáló oldal
+* signin.component - Beléptető felület
+* signup.component - Regisztrációs felület
+* support.component - ???
