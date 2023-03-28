@@ -1,8 +1,19 @@
-Felhasznált technológiák
+## Felhasznált technológiák:
 
-Felépítés
+OS: win32 x64
 
-Könyvtárszerkezet:
+Angular CLI: 15.0.3
+Node: 18.10.0
+Package Manager: npm 8.19.2
+
+Tailwind css:
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+## Felépítés
+
+# Könyvtárszerkezet:
 
 studal/
   |-.angular/
