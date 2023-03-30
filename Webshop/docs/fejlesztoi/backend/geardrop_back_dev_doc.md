@@ -312,7 +312,7 @@ Emails() metódus az összes feliratkozó email címét lekérdezi az adatbázis
 
 
 ### OrderController osztály
-```
+```txt
  az ügyfél által készített rendeléseket kezeli és kezdeményezi az e-mail értesítést az új rendelésekről.
 
 #### Store
@@ -323,6 +323,7 @@ Ezután lekéri az összes kosár elemet, amelyekhez hozzárendeli a megfelelő 
 #### showUserItems
 Végül az "showUserItems" függvényt hívja meg, amely elkészíti az e-mailt a megfelelő adatokkal, majd elküldi azt a felhasználó által megadott e-mail címre.
 ```
+
 ```php
 public function store(Request $request)
     {
