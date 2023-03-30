@@ -140,7 +140,7 @@ A következő vizuális nézetek lettek beépítve:
 
 
 
-Az adatbázis feltöltéséhez szükséges file-ok:
+Az adatbázis feltöltéséhez szükséges seederek és factory-k:
 * BrandFactory - megtervezett márkákkal feltölti az adatbázist
 * CategorieFactroy - megtervezett kategoriakkal feltölti az adatbázist
 
