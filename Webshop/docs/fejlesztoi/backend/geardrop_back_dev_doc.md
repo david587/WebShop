@@ -323,7 +323,7 @@ Ezután lekéri az összes kosár elemet, amelyekhez hozzárendeli a megfelelő 
 #### showUserItems
 Végül az "showUserItems" függvényt hívja meg, amely elkészíti az e-mailt a megfelelő adatokkal, majd elküldi azt a felhasználó által megadott e-mail címre.
 
-```json
+```
 public function store(Request $request)
     {
         $order_Information = new ModelsOrderInformations();
