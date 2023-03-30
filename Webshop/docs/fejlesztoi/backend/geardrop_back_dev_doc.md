@@ -190,190 +190,214 @@ Frontendnek adat listák átadását Resources állomákkal hajtottam végre:
 
 
 ### AuthController Osztály
-Ez a kontroller végzi a Regisztrációt, Bejelentkezést,Kijelentkezést. Ezek mind a feltelepitett Sanctummal voltak megvalósithatóak.
+Ez a osztály végzi a Regisztrációt, Bejelentkezést,Kijelentkezést. Ezek mind a feltelepitett Sanctummal voltak megvalósithatóak.
 
 #### signIn metódus
+ metódus feladata az, hogy bejelentkezési kérés alapján autentikálja az adott felhasználót és visszaadja az autentikáció eredményét. A metódus a Request objektumot kapja paraméterként, amely az űrlapból kapott adatokat tartalmazza. Az autentikáció a Laravel Auth fasszadon keresztül történik, az adatbázisban tárolt felhasználói adatok alapján. Ha az autentikáció sikeres, akkor a metódus létrehoz egy új token-t az autentikált felhasználó számára, majd visszatér az eredményrel.
 
-Két bemenő paramtére van, a felhasználónév és a jelszó string típusként. A metódus visszatér egy Observer objektummal, ami kapcsolódik az REST API /login végpontjához POSt metódussal.
 
 #### signUp metódus
-
-Bemenő paramétere nincs. Visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /logout végpontjához POST metódussal.
+Az signUp() metódus feladata az, hogy új felhasználót regisztráljon az alkalmazásba. A metódus kap egy Request objektumot paraméterként, amely az űrlapból kapott adatokat tartalmazza. A metódus a Laravel Validator-on keresztül ellenőrzi a bemeneti adatok helyességét. Ha a validáció sikeres, akkor a metódus létrehoz egy új felhasználót az adatbázisban, majd visszatér az eredménnyel.
 
 #### signOut metódus
+Az signOut() metódus feladata a felhasználó kijelentkeztetése az alkalmazásból. A metódus meghívja a Laravel auth fasszad currentAccessToken() metódusát, hogy megtalálja az aktuális felhasználóhoz tartozó token-t, majd azt törli az adatbázisból. Végül a metódus visszatér az eredménnyel.
 
-Nincs bemenő paramétere. A metódus Window.localStorage tulajdonsággal
-currentUser néven elmentett felhasználót keresi. Ha nincs ilyen false értékkel tér vissza. Ha van ilyen a tokennel tér vissza.
 
 
 
 ### BaseController osztály
-
-Ezt az osztály örökölték meg azok a kontrollerek ahol át akarunk adni adatot ez az osztály segitségével.
+A BaseController osztály a Laravel-ben egy központi hely, ahol közös metódusokat lehet definiálni az alkalmazásban használt többi vezérlő számára. Az itt definiált metódusokat bármelyik másik vezérlőben hívhatjuk meg.
 
 #### sendResponse metódus
+A sendResponse() metódus egy standard formátumú JSON választ ad vissza, amely success, data és message mezőket tartalmaz.
 
-A gurad szolgáltatás esetén ez a metódus egy kötelező elem. Ha be vagyunk jelentkezve vissaztér true értékkel, másként a beléptető felületre navigál.
 
 #### OrderResponse metódus
 Ezt külön az ordercontrollerhoz hoztam létre hogy rendesen meg lehssen jeleniteni jsonben az adatokat.
 
 #### sendError metódus
+A sendError() metódus egy JSON formátumú hibajelzést generál, amely tartalmazza az error, errorMessage és az opcionális code mezőket, ha szükséges. Ha van hibaüzenet, akkor az errorMessage mezőbe kerül. Ha nincs hibaüzenet, akkor az errorMessage üres marad. Alapértelmezett értékként a metódus a 404 hibakódot adja vissza.
 
 
+### BrandController osztály
+Az osztály a BaseController osztályból örököl,
 
-### ApiService osztály
+#### index
+Az index metódus lekéri az összes márka rekordot az adatbázisból, átalakítja azokat BrandResources erőforrásokká, majd visszaküldi őket egy  üzenettel.
 
-A tanulók kezelését végzi a REST API szerveren.
+#### store
+A store metódus validálja a kliens által küldött adatokat, majd létrehoz egy új márka rekordot az adatbázisban. Ha a folyamat sikeres, visszaküldi a létrehozott rekordot egy Brand create üzenettel.
 
-#### addStudent metódus
+#### delete
+Az destroy metódus törli az adatbázisból az adott azonosítójú márka rekordot,
 
-Egyetlen bemenő paramétere tartalmazza, a felvenni kívánt tanuló adatait. Egy Observer objektummal tér vissza, amiből kiolvasható
-a szerver válasza.
 
-#### getStudents metódus
 
-Nincs bemenő paramétere. Lekéri az össze felhasználó adatait, majd visszatér egy Observer objektummal, ami szolgáltatja az összes tanuló adatait.
+### CartitemController osztály
+Kosárban lévő termékek kezelésével foglalkozik.
 
-#### getGroupStudents metódus
+#### Show
+show() metódus lekéri az aktuális felhasználóhoz tartozó összes kosár elemet, majd ezt visszaadja JSON formátumban.
 
-Egy osztály tanulóit szolgáltatja. Bemenő paramétere a kívánt osztály vagy csoport azonosítója. Visszaad egy Observer objektumot, amiből megkaphatók az osztály tanulói.
+#### store
+store() metódus fogad egy termék azonosítót, majd hozzáadja azt az aktuális felhasználó kosarához. Ha a termék már szerepel a kosárban, akkor a mennyiségét növeli eggyel, ha pedig még nem szerepel, akkor létrehoz egy új kosár elemet a termékkel és mennyiséggel egyenlő egyel.
 
-#### deleteStudent metódus
+```code
+public function store($id)
+    //when put different item not storeing that, just add plus 1 to the preveous quantity
+    {
+        $product_id = Product::find($id)->id;
+        $cart_item = new CartItem();
+        $cart_item->user_id = Auth::id();
+        $cart_item->product_id = $product_id;
+        $cart_item->quantity += 1;
+        //is checking if there is already an existing cart item in the database that has the same user ID and product ID as the current user and product.
+        //If there is no such cart item, it will save the new cart item that is being created.
+        if(cartItem::where('user_id', Auth::id())->where('product_id', $product_id)->first() == null){
+            $cart_item->save();
+            return $this->sendResponse([],"Product added to cart");
+        }
+        else{
+            // cartItem::where('user_id', Auth::id())->where('product_id', $product_id)->update(['quantity' => $cart_item->quantity+1]);
+            $cart_item = cartItem::where('user_id', Auth::id())->where('product_id', $product_id)->first();
+            $cart_item->quantity += 1;
+            $cart_item->save();
+            return $this->sendResponse([],"Increasing the number of products");
+        }
+    }
+```
 
-Egy tanuló törlésére szolgál. Bemenő paramétere, a törltendő tanuló azonosítója. A törléshez azonosítást használ. Visszatér a szerver válaszával, egy Observer objektum formájában.
+#### destroy
+destroy() metódus törli a megadott kosár elemet az adatbázisból.
 
-#### updateStudent metódus
 
-Egy tanuló adatit képes frissíteni. Bemenő első paramétere a frisített tanulói adatok. Második paramétere a tanuló azonosítója. A metódus azonosításhoz tokent küld a REST API szervernek. Visszatérési értéke egy Observer objektum, amely tartalmazza a szerver válaszát.
+### CategorieController osztály
+A kategóriákkal kapcsolatos műveleteket végzi el
 
-### ApiclassService osztály
+#### Index
+index() metódus visszaadja az összes kategóriát, 
+CategorieResources::collection() segítségével átalakítva. A válasz "OK" üzenettel van ellátva.
 
-A tanulói osztályok vagy csoportok kezelésére használható.
+#### Store
+store(Request $request) metódus fogad egy Request objektumot, amelynek categorie mezője kötelező. Ha a validáció sikertelen, akkor a hibaüzenetet küldi vissza a sendError() metódussal. Ha a validáció sikeres, akkor létrehoz egy új kategóriát a megadott adatokkal és visszaküldi azt a CategorieResources átalakításával, az üzenet "Categorie létrehozva".
 
-#### host változó
+#### destroy
+destroy($id) metódus törli a megadott ID-jú kategóriát. A válasz "Categorie törölve" üzenettel van ellátva.
 
-A REST API eléréshez egy URL-t tartalmaz
 
-#### addClassgroup metódus
 
-A metódus segítségével felvehető egy új osztály. Bemenő paramtére az osztály adatai. A művelethez azonosítást végez, a tárolt token elküldésével. A metódus visszatér egy Observer objektummal, ami tartalmazza a szerver válaszát.
 
-#### getClassgroups metódus
+### EmailController osztály
+Az email küldéssel és az feliratkozók email címének lekérdezésével foglalkozik.
 
-Az összes osztály adatait kérdezi le. Nincs bemenő paramétere. Visszatér egy Observer objektummal, ami tartalmazza az összes osztály adatait.
+#### sendEmail
+sendEmail() metódus az összes feliratkozóknak elküld egy emailt, amelyben egy előre definiált üzenet szerepel.
 
-#### deleteClassgroup metódus
+#### Emails
+Emails() metódus az összes feliratkozó email címét lekérdezi az adatbázisból és visszaküldi ezeket egy NewsLetterResources erőforrás gyűjteményben.
 
-Egy osztály törlésére használható metódus. Bemenő paraméter a törlendő osztály azonosítója. Azonosításhoz a tárolt tokent elküldi a szerver számára. A metódus visszaad egy Observer objektumot, ami tartalmazza a szerver válaszát.
 
-#### updateClassgroup metódus
 
-Egy osztály adatait frissíti. Első bemenő paramétere a frissített adatok, a második a frissítendő osztály azonosítója. A metódus azonosításhoz elküdli a tárolt tokent, majd visszaad egy Observer
-objektumot, ami tartalmazza a szerver válaszát.
+### OrderController
+ az ügyfél által készített rendeléseket kezeli és kezdeményezi az e-mail értesítést az új rendelésekről.
 
-### Class komponens
+#### Store
+Az "store" függvény felelős azért, hogy elmentse a felhasználó kosarában lévő összes elemet a megrendelési adatbázisban. A függvény paraméterként kap egy HTTP kérést (Request), amely tartalmazza a szállítási címet, a telefonszámot és a fizetési módot. Először létrehoz egy új "ModelsOrderInformations" objektumot, amelyben elmenti ezeket az adatokat.
 
-A komponens a szokásos Angular komponenseket tartalmazza, plusz egy osztályt, ami modelként szolgál az osztályok tárolására.
+Ezután lekéri az összes kosár elemet, amelyekhez hozzárendeli a megfelelő felhasználót és terméket, majd eltárolja azokat az adatbázisban. Az árukészletet is frissíti a termékekhez tartozó mennyiséggel.
 
-A komponens Reaktív űrlapot használ, a következő osztályokkal:
+#### showUserItems
+Végül az "showUserItems" függvényt hívja meg, amely elkészíti az e-mailt a megfelelő adatokkal, majd elküldi azt a felhasználó által megadott e-mail címre.
 
-* FormGroup
-* FormBuilder
+```code
+public function store(Request $request)
+    {
+        $order_Information = new ModelsOrderInformations();
+        $order_Information->shippingAddress =$request->shippingAddress;
+        $order_Information->phone = $request->phone;
+        $order_Information->paymentMethod = $request->paymentMethod;
+        $order_Information->save();
 
-#### classgroupData objektum
+        $allSorted = cartItem::where("user_id",Auth::id())->get();
+        foreach($allSorted as $cartItem) {
+            $order_item = new Order();
+            $order_item->user_id = Auth::id();
+            $order_item->product_id = $cartItem->product_id;
 
-Tartalmazza az összes osztály adatait. Ebből renderelődik a táblázat.
+            $product = Product::find($cartItem->product_id);
+            $product->inStock = $product->inStock - 1;
+            $product->save();
+            $order_item->quantity = $cartItem->quantity;
+            $order_item->order_information_id = $order_Information->id;
+            $order_item->save();
+        }
+        $user = User::where("id",Auth::id())->first();
+        $emailAdd = $user->email;
+        $this->showUserItems($emailAdd);
 
-#### ClassComponent.addClassgroup metódus
+        return $this->sendResponse([],"All cart items added to Orders.");
+    }
 
-A metódusnak nincs bemenőparamétere. A .html fájlban megjelenített űrlapból olvassa az új komponens nevét, majd eltárolja az apiclass szolgáltatás használatával.
+    public function showUserItems($emailAdd)
+    {
+        $userOrder = cartItem::where("user_id",Auth::id())->get();
+        //get the lastest id
+        $userOrder_id = Order::where("user_id", Auth::id())->latest('order_information_id')->value('order_information_id');
+        $shippingData = OrderInformations::where("id",$userOrder_id)->get();
+        $UserData = User::where("id",Auth::id())->first();
+        $user = $UserData->toArray();
+        $shipping = $shippingData->toArray();
+        $order = $userOrder;
 
-#### ClassComponent.getAllClassgroup metódus
+        // Send email
+        $email = config('mail.from.address');
+        Mail::to($emailAdd)->send(new OrderSubmitted($user,$email,$order,$shipping));
+    }
+```
 
-A metódusnak nincs bemenő paramétere. Az apiclass szolgáltaáson keresztül lekéri az összes osztályt, majd betölti a classgroupData objektumba.
+### ProductController osztály
+ termékekhez kapcsolódó funkciók kezelése, beleértve a kategóriák és márkák szerinti rendezést, a termékek létrehozását, szerkesztését, törlését, keresését és megjelenítését teszi lehetővé. 
 
-#### ClassComponent.deleteClassgroup metódus
+#### sortCategories
+Ez a metódus a kategóriák alapján történő szűrést valósítja meg. A $request paraméterben megkapott keresési kifejezést felhasználva kikeresi a kategória azonosítóját az adatbázisból, majd a kategóriához tartozó összes terméket lekérdezi az adatbázisból.
 
-A metódus paraméterként fogadja a törlendő osztály azonosítóját. Az apiclass szolgáltatáson keresztül törli a megadott osztályt. Törlés
-után újragenerálja a weboldalon a táblázatot.
+#### sortBrands
+Ez a metódus a márkák alapján történő szűrést valósítja meg. A $request paraméterben megkapott keresési kifejezést felhasználva kikeresi a márkához tartozó azonosítót az adatbázisból, majd a márkához tartozó összes terméket lekérdezi az adatbázisból.
 
-#### ClassComponent.onEdit metódus
+#### index
+Ez a metódus az összes termék lekérdezését valósítja meg oldalakra bontva. Az oldalszámot a $request paraméterben megadott érték határozza meg, ha az nincs megadva, akkor az első oldalt jeleníti meg. Az oldalonként megjelenő termékek számát a $perPage változó határozza meg, amelynek alapértéke 10.
 
-Megjeleníti a szerkesztő űrlapot.
+#### home
+Ez a metódus a főoldal megjelenítéséért felelős. Az összes terméket lekérdezi az adatbázisból, majd véletlenszerűen kiválasztja közülük az első négyet. Ha az összes termék száma kevesebb, mint négy, akkor a visszatérési érték üres tömb lesz. A visszatérési érték egy JSON objektum, amely a véletlenszerűen kiválasztott négy termék adatait tartalmazza.
 
-#### ClassComponent.updateClassgorup metódus
+#### store
+Ez a metódus a termék létrehozásáért felelős. A $request paraméterben megkapott adatokat ellenőrzi a validátornál, majd az adatbázisba menti
 
-Frissíti a megadott osztály. A metódusnak nincs bemenőparamétere. Az adatbázist az apiclass szolgáltatáson keresztül telepíti. A frissítés után újragenerálja a táblázatot.
+#### show
+A show metódus egy Product objektumot keres a megadott $id alapján az adatbázisból. Ha az objektum nem létezik, akkor hibaüzenetet ad vissza. Ha az objektum megtalálható, akkor a ProductResources objektum létrehozása után az objektumot visszaküldi a felhasználónak.
 
-#### ClassComponent.clickAddClassgroup metódus
+#### update
+Az update metódus a felhasználó által megadott adatok alapján frissíti a Product objektumot, amelyet a $id alapján talált meg a kódban. A metódus ellenőrzi, hogy minden szükséges mező kitöltött-e, ha nincs, akkor hibaüzenetet ad vissza. Ha minden adat rendben van, akkor a $request által kapott adatok alapján az adatbázisban frissíti a Product objektumot és visszaküldi a frissített objektumot a felhasználónak.
 
-Megjeleníti az új osztály hozzáadási lehetőséget.
+#### destroy
+A destroy metódus a megadott $id alapján törli a Product objektumot az adatbázisból. Ha sikerült törölni az objektumot, akkor üres tömböt küld vissza.
 
-### InstituteComponent komponens
+#### search
+A search metódus a felhasználó által megadott szövegre keres a Product objektumok között. A metódus megvizsgálja, hogy a megadott szöveg megegyezik-e a Brand vagy a Categorie objektumok valamelyikével, és ha igen, akkor a megfelelő id-t eltárolja. Ezután a Product objektumok között keres a megadott szövegre és a tárolt id-k között. Ha talál megfelelő objektumot, akkor ezeket visszaküldi a felhasználónak.
 
-A programot haszlnáló intézmény adatait
-tartalmazza.
 
-#### instituteName változó
 
-Az intézmény nevét tartalmazza.
+### UserController osztály
+az alkalmazás különböző felhasználói műveleteit végzik.
 
-#### courses objektum
+#### listUsers
+A "listUsers" metódus a rendszerben tárolt összes felhasználót lekéri és visszaadja a megfelelő JSON formátumban.
 
-Az intézmény által futtatott tanfolyamok listája.
+#### deleteUsers
+A "deleteUsers" metódus egy felhasználót töröl az adatbázisból az azonosítója alapján.
 
-### LoginComponent komponens
+#### AdminAccess
+Az "AdminAccess" metódus beállítja az adott felhasználó admin jogosultságát az azonosítója alapján. Ehhez a metódus megtalálja a felhasználót az azonosítója alapján, majd beállítja az "admin_since" mező értékét az aktuális dátumra.
 
-#### loginForm objektum
-
-A beléptető felület űrlapjának leképezése, FormGroup és FormBuilder osztályok használatával.
-
-#### LoginComponent.login() metódus
-
-A beléptető űrlap alapján elvégzi az azonosítást az auth szolgáltatás segítségével. A szervertől kapott tokent és a felhasználónevet eltárolja Window.localStorage tulajdonsággal.
-
-### nopage komponens
-
-Ha nemlétező weboldalra hivatkozik egy látogató, ez a weblapot szolgáljuk ki.
-
-### StudentComponent komponens
-
-A tanulók kezelését végzi ez a komponens.
-
-#### studentForm objetkum
-
-Új tanuló felvételéhez használt űrlap leképezése.
-
-#### studentsData objektum
-
-Az összes tanuló adatait tartalmazza.
-
-#### classgroups objektum
-
-Az összes osztály adatait tartalmazza. Az osztályok válaszhatók a webes felületen.
-
-#### selectedClassgroup objektum
-
-A kiválaszott osztály adatait tartalmazza.
-
-#### onChangeGroupSelect() metódus
-
-Ha változik a kiválasztott osztály, újratölti a tanulókat.
-
-#### StudentComponent.getClassgroups() metódus
-
-A metódus letölti az osztályokat, az apiclass szolgáltatás segítségével, majd betölti a classgroups objektumba.
-
-#### StudentComponent.addStudent() metódus
-
-Új tanulót vesz fel. A tanuló adatait komponens studentForm űrlapjából veszi. Az adatbázisban az auth szolgáltatás segítségével rögzíti az új tanuló adatait.
-
-#### StudentComponent.getAllStudent() metódus
-
-Lekéri az összes tanuló adatát az api szolgáltatáson keresztül,
-majd betölti az osztály studentsData objektumába.
-
-#### StudentComponent.getGroupStudent() metódus
-
-Bemenő paraméterként fogadja egy osztály azonosítóját. Az azonosító alapján lekérdezi az osztályba tartozó tanulók adatatit, majd beállítja azokat az osztály studentsData
+#### newsLetter
+A "newsLetter" metódus lehetővé teszi a felhasználók számára, hogy feliratkozzanak a Hirlevélre . Az felhasználó által megadott e-mail címet ellenőrzi, hogy egyedi-e és érvényes-e. Ha a validáció sikeres, akkor az felhasználó e-mail címe hozzáadódik az adatbázishoz, és visszatér a megfelelő JSON formátumban. Ha a validáció nem sikerül, akkor a metódus hibajelzést ad vissza a hibák adataival.
