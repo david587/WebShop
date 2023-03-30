@@ -99,7 +99,7 @@ A következő nem vizuális komponensek lettek beépítve:
 
 ### AuthService osztály
 
-Az Angularban elérhető HttpClient osztály segítségével elvégzi a beléptetést, a kiléptetést és a regisztrációt.
+- Az Angularban elérhető HttpClient osztály segítségével elvégzi a beléptetést, a kiléptetést és a regisztrációt.
 
 
 #### login metódus
