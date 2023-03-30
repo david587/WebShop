@@ -197,6 +197,7 @@ Frontendnek adat listák átadását Resources állomákkal hajtottam végre:
 ```
 
 ### AuthController Osztály
+```txt
 Ez a osztály végzi a Regisztrációt, Bejelentkezést,Kijelentkezést. Ezek mind a feltelepitett Sanctummal voltak megvalósithatóak.
 
 #### signIn metódus
@@ -208,11 +209,12 @@ Az signUp() metódus feladata az, hogy új felhasználót regisztráljon az alka
 
 #### signOut metódus
 Az signOut() metódus feladata a felhasználó kijelentkeztetése az alkalmazásból. A metódus meghívja a Laravel auth fasszad currentAccessToken() metódusát, hogy megtalálja az aktuális felhasználóhoz tartozó token-t, majd azt törli az adatbázisból. Végül a metódus visszatér az eredménnyel.
-
+```
 
 
 
 ### BaseController osztály
+```txt
 A BaseController osztály a Laravel-ben egy központi hely, ahol közös metódusokat lehet definiálni az alkalmazásban használt többi vezérlő számára. Az itt definiált metódusokat bármelyik másik vezérlőben hívhatjuk meg.
 
 #### sendResponse metódus
@@ -224,9 +226,10 @@ Ezt külön az ordercontrollerhoz hoztam létre hogy rendesen meg lehssen jeleni
 
 #### sendError metódus
 A sendError() metódus egy JSON formátumú hibajelzést generál, amely tartalmazza az error, errorMessage és az opcionális code mezőket, ha szükséges. Ha van hibaüzenet, akkor az errorMessage mezőbe kerül. Ha nincs hibaüzenet, akkor az errorMessage üres marad. Alapértelmezett értékként a metódus a 404 hibakódot adja vissza.
-
+```
 
 ### BrandController osztály
+```txt
 Az osztály a BaseController osztályból örököl,
 
 #### index
@@ -237,10 +240,11 @@ A store metódus validálja a kliens által küldött adatokat, majd létrehoz e
 
 #### delete
 Az destroy metódus törli az adatbázisból az adott azonosítójú márka rekordot,
-
+```
 
 
 ### CartitemController osztály
+```txt
 Kosárban lévő termékek kezelésével foglalkozik.
 
 #### Show
@@ -249,7 +253,11 @@ show() metódus lekéri az aktuális felhasználóhoz tartozó összes kosár el
 #### store
 store() metódus fogad egy termék azonosítót, majd hozzáadja azt az aktuális felhasználó kosarához. Ha a termék már szerepel a kosárban, akkor a mennyiségét növeli eggyel, ha pedig még nem szerepel, akkor létrehoz egy új kosár elemet a termékkel és mennyiséggel egyenlő egyel.
 
-```code
+#### destroy
+destroy() metódus törli a megadott kosár elemet az adatbázisból.
+```
+
+```php
 public function store($id)
     //when put different item not storeing that, just add plus 1 to the preveous quantity
     {
@@ -274,11 +282,9 @@ public function store($id)
     }
 ```
 
-#### destroy
-destroy() metódus törli a megadott kosár elemet az adatbázisból.
-
 
 ### CategorieController osztály
+```txt
 A kategóriákkal kapcsolatos műveleteket végzi el
 
 #### Index
@@ -290,11 +296,12 @@ store(Request $request) metódus fogad egy Request objektumot, amelynek categori
 
 #### destroy
 destroy($id) metódus törli a megadott ID-jú kategóriát. A válasz "Categorie törölve" üzenettel van ellátva.
-
+```
 
 
 
 ### EmailController osztály
+```txt
 Az email küldéssel és az feliratkozók email címének lekérdezésével foglalkozik.
 
 #### sendEmail
@@ -302,10 +309,11 @@ sendEmail() metódus az összes feliratkozóknak elküld egy emailt, amelyben eg
 
 #### Emails
 Emails() metódus az összes feliratkozó email címét lekérdezi az adatbázisból és visszaküldi ezeket egy NewsLetterResources erőforrás gyűjteményben.
+```
 
 
-
-### OrderController
+### OrderController osztály
+```txt
  az ügyfél által készített rendeléseket kezeli és kezdeményezi az e-mail értesítést az új rendelésekről.
 
 #### Store
@@ -315,8 +323,9 @@ Ezután lekéri az összes kosár elemet, amelyekhez hozzárendeli a megfelelő 
 
 #### showUserItems
 Végül az "showUserItems" függvényt hívja meg, amely elkészíti az e-mailt a megfelelő adatokkal, majd elküldi azt a felhasználó által megadott e-mail címre.
+```
 
-```code
+```php
 public function store(Request $request)
     {
         $order_Information = new ModelsOrderInformations();
@@ -362,8 +371,10 @@ public function store(Request $request)
     }
 ```
 
+
 ### ProductController osztály
- termékekhez kapcsolódó funkciók kezelése, beleértve a kategóriák és márkák szerinti rendezést, a termékek létrehozását, szerkesztését, törlését, keresését és megjelenítését teszi lehetővé. 
+```txt
+termékekhez kapcsolódó funkciók kezelése, beleértve a kategóriák és márkák szerinti rendezést, a termékek létrehozását, szerkesztését, törlését, keresését és megjelenítését teszi lehetővé. 
 
 #### sortCategories
 Ez a metódus a kategóriák alapján történő szűrést valósítja meg. A $request paraméterben megkapott keresési kifejezést felhasználva kikeresi a kategória azonosítóját az adatbázisból, majd a kategóriához tartozó összes terméket lekérdezi az adatbázisból.
@@ -391,10 +402,11 @@ A destroy metódus a megadott $id alapján törli a Product objektumot az adatb�
 
 #### search
 A search metódus a felhasználó által megadott szövegre keres a Product objektumok között. A metódus megvizsgálja, hogy a megadott szöveg megegyezik-e a Brand vagy a Categorie objektumok valamelyikével, és ha igen, akkor a megfelelő id-t eltárolja. Ezután a Product objektumok között keres a megadott szövegre és a tárolt id-k között. Ha talál megfelelő objektumot, akkor ezeket visszaküldi a felhasználónak.
-
+```
 
 
 ### UserController osztály
+```txt
 az alkalmazás különböző felhasználói műveleteit végzik.
 
 #### listUsers
@@ -408,3 +420,6 @@ Az "AdminAccess" metódus beállítja az adott felhasználó admin jogosultság�
 
 #### newsLetter
 A "newsLetter" metódus lehetővé teszi a felhasználók számára, hogy feliratkozzanak a Hirlevélre . Az felhasználó által megadott e-mail címet ellenőrzi, hogy egyedi-e és érvényes-e. Ha a validáció sikeres, akkor az felhasználó e-mail címe hozzáadódik az adatbázishoz, és visszatér a megfelelő JSON formátumban. Ha a validáció nem sikerül, akkor a metódus hibajelzést ad vissza a hibák adataival.
+```
+#### Adatbázis terv
+![DatbasePlanFinal](https://user-images.githubusercontent.com/61178364/228766169-2b6369d2-677c-4f25-8291-aa58e041efe7.PNG)
