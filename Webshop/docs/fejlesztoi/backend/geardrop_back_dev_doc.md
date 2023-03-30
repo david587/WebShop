@@ -115,6 +115,7 @@ WebshopBackend/
 A backend egy  rest api alkalmazás laravel keretrendszerrel összeállítva.
 
 A következő kontrollerek lettek létrehozva:
+```txt
 * AuthController - Az authentikációt kezeli
 * BaseController - Az üzenetek küldésére szolgál
 * BrandController - Márkák megjelenitésére,tárolására törlésére szolgál
@@ -130,17 +131,19 @@ A következő kontrollerek lettek létrehozva:
 * ProductController - Márkák és Kategoriak szürését,termékek CRUD müveleteit kezeli
 
 * UserController - A felhazsnálók megjelenitését,törlését,Admin jog adását,Hirlevél elküldését kezeli.
-
+```
 
 
 A következő vizuális nézetek lettek beépítve:
+```txt
 * emails.order-submitted.blade.php - Ez a blade file érkezik meg a felhasználók emailcimére rendelések után. A rendelt termékeinek egy összegzését végzi.
 
 * send.blade.php - A hirlevélre feliratkozók kapják meg, admin felüleltről lehet elküldeni.
-
+```
 
 
 Az adatbázis feltöltéséhez szükséges seederek és factory-k:
+```txt
 * BrandFactory - megtervezett márkákkal feltölti az adatbázist
 * CategorieFactroy - megtervezett kategoriakkal feltölti az adatbázist
 
@@ -176,8 +179,10 @@ A táblák "JOIN-JA",feltölthetősége,idő ignorálása modellek segitségéve
 * User - 
     |hasMany ->Order
     |hasMany ->cartItem
+```
 
 Frontendnek adat listák átadását Resources állomákkal hajtottam végre:
+```txt
 * Brand
 * cartItem
 * Categorie
@@ -187,7 +192,7 @@ Frontendnek adat listák átadását Resources állomákkal hajtottam végre:
 * OrderInformation
 * Product
 * User
-
+```
 
 ### AuthController Osztály
 Ez a osztály végzi a Regisztrációt, Bejelentkezést,Kijelentkezést. Ezek mind a feltelepitett Sanctummal voltak megvalósithatóak.
