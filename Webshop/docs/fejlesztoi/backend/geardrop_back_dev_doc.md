@@ -112,50 +112,117 @@ WebshopBackend/
 
 ```
 
-A webes felület egy SPA alkalmazás Angular keretrendszerrel összeállítva.
+A backend egy  rest api alkalmazás laravel keretrendszerrel összeállítva.
 
-A következő vizuális komponensek lettek létrehozva:
+A következő kontrollerek lettek létrehozva:
+* AuthController - Az authentikációt kezeli
+* BaseController - Az üzenetek küldésére szolgál
+* BrandController - Márkák megjelenitésére,tárolására törlésére szolgál
 
-* app.component - Fő konténer
-* class.component - az osztályok kezelése
-* institue.component - intézményi oldal
-* login.component - beléptető felület
-* nopage.component - nem létező oldalak helyett megjelenő lap
-* student.component - tanulók megjelenítése kezelése
+* cartItemController - Kosár megjelenitésére,mennyiség növelésére,tárolására,törlésére szolgál
 
-A következő nem vizuális komponensek lettek beépítve:
+* CategorieController - Kategoriák megjelenitésére,tárolására törlésére szolgál
 
-* api.service - a tanulók kezelése a REST API felületen
-* apiclass.service - az osztályok kezelése a REST API felületen
-* auth.guard - Útvonalak védelme
-* auth.service - Azonosítás
+* EmailController - Email előkészitése az email kliensnek,ősszes feliratkozott személy lekérése
 
-### AuthService osztály
+* OrderController - A felhasználó szállitási adatatit,termékeit,mennyiség csökkentését,rendelések emailes elküldését kezeli
 
-Az Angularban elérhető HttpClient osztály segítségével elvégzi a beléptetést, a kiléptetést, és lehetőséget ad annak ellenőrzésére, hogy be vagyunk-e jelentkezve.
+* ProductController - Márkák és Kategoriak szürését,termékek CRUD müveleteit kezeli
 
-#### login metódus
+* UserController - A felhazsnálók megjelenitését,törlését,Admin jog adását,Hirlevél elküldését kezeli.
+
+
+
+A következő vizuális nézetek lettek beépítve:
+* emails.order-submitted.blade.php - Ez a blade file érkezik meg a felhasználók emailcimére rendelések után. A rendelt termékeinek egy összegzését végzi.
+
+* send.blade.php - A hirlevélre feliratkozók kapják meg, admin felüleltről lehet elküldeni.
+
+
+
+Az adatbázis feltöltéséhez szükséges file-ok:
+* BrandFactory - megtervezett márkákkal feltölti az adatbázist
+* CategorieFactroy - megtervezett kategoriakkal feltölti az adatbázist
+
+* DatabaseSeeder - Kategoria és Márka factory meghivása, 1 alap admin felhasználó létrehozása.
+
+A táblák "JOIN-JA",feltölthetősége,idő ignorálása modellek segitségével lett megvalósitva:
+* Brand - 
+    |hasMany->product
+
+* cartItem - 
+    |belongsTo -> User    
+    |belongsTo-> Product
+
+* Categorie - 
+    |hasMany->Product
+
+* newsLetter
+
+* Order - 
+    |belongsTo -> User
+    |belongsTo -> Product
+    |belongsTo -> OrderInformation
+
+* OrderInformations -
+    |hasMany ->Order
+
+* Product -
+    |belongsTo -> Brand
+    |belongsTo -> Categorie
+    |belongsTo -> Order
+    |hasMany -> cartItem
+
+* User - 
+    |hasMany ->Order
+    |hasMany ->cartItem
+
+Frontendnek adat listák átadását Resources állomákkal hajtottam végre:
+* Brand
+* cartItem
+* Categorie
+* FullUser
+* newsLetter
+* Order
+* OrderInformation
+* Product
+* User
+
+
+### AuthController Osztály
+Ez a kontroller végzi a Regisztrációt, Bejelentkezést,Kijelentkezést. Ezek mind a feltelepitett Sanctummal voltak megvalósithatóak.
+
+#### signIn metódus
 
 Két bemenő paramtére van, a felhasználónév és a jelszó string típusként. A metódus visszatér egy Observer objektummal, ami kapcsolódik az REST API /login végpontjához POSt metódussal.
 
-#### logouot metódus
+#### signUp metódus
 
 Bemenő paramétere nincs. Visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /logout végpontjához POST metódussal.
 
-#### isLoggedIn metódus
+#### signOut metódus
 
 Nincs bemenő paramétere. A metódus Window.localStorage tulajdonsággal
 currentUser néven elmentett felhasználót keresi. Ha nincs ilyen false értékkel tér vissza. Ha van ilyen a tokennel tér vissza.
 
-### AuthGuard osztály
 
-Az útvonalak védelmét teszi lehetővé, az Angular beépített guard szolgáltatásán keresztül.
 
-#### canActivate metódus
+### BaseController osztály
+
+Ezt az osztály örökölték meg azok a kontrollerek ahol át akarunk adni adatot ez az osztály segitségével.
+
+#### sendResponse metódus
 
 A gurad szolgáltatás esetén ez a metódus egy kötelező elem. Ha be vagyunk jelentkezve vissaztér true értékkel, másként a beléptető felületre navigál.
 
-### ApiService
+#### OrderResponse metódus
+Ezt külön az ordercontrollerhoz hoztam létre hogy rendesen meg lehssen jeleniteni jsonben az adatokat.
+
+#### sendError metódus
+
+
+
+### ApiService osztály
 
 A tanulók kezelését végzi a REST API szerveren.
 
