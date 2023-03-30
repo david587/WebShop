@@ -148,8 +148,10 @@ Az adatbázis feltöltéséhez szükséges seederek és factory-k:
 * CategorieFactroy - megtervezett kategoriakkal feltölti az adatbázist
 
 * DatabaseSeeder - Kategoria és Márka factory meghivása, 1 alap admin felhasználó létrehozása.
+```
 
 A táblák "JOIN-JA",feltölthetősége,idő ignorálása modellek segitségével lett megvalósitva:
+```txt
 * Brand - 
     |hasMany->product
 
