@@ -17,6 +17,18 @@ Tailwind css:
   @tailwind components;
   @tailwind utilities;
 
+## Projekt elindítása
+
+### WebshopBackend
+    - composer install, hogy létre hozzuk a vendor mappát
+    - .env mappa létrehozása
+    - php artisan key:generate a kulcs legenerálásához
+    - php artisan serve, szerver elindítása
+
+### Webshop
+    - npm install, a node könyvtár létrehozásához
+    - ng serve, a szerver elindítása
+
 ## Felépítés
 
 ### Könyvtárszerkezet:
@@ -78,3 +90,9 @@ A következő vizuális komponensek lettek létrehozva:
 * signin.component - Beléptető felület
 * signup.component - Regisztrációs felület
 * support.component - ???
+
+A következő nem vizuális komponensek lettek beépítve:
+
+* auth.service - Azonosítás
+* emitter.service - Oldalak közötti adat átadás
+* products.service - Tremékek kezelése a Rest API felületen
