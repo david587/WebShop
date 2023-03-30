@@ -39,8 +39,6 @@ class UserController extends BaseController
     {
         $input = $request->all();
         $validator = Validator::make($input,[
-            //todo:
-            //implement unique parameter there
             "email"=> "required|email|unique:news_letters"
         ]);
 
