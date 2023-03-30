@@ -373,7 +373,7 @@ public function store(Request $request)
 
 
 ### ProductController osztály
-```
+```txt
 termékekhez kapcsolódó funkciók kezelése, beleértve a kategóriák és márkák szerinti rendezést, a termékek létrehozását, szerkesztését, törlését, keresését és megjelenítését teszi lehetővé. 
 
 #### sortCategories
@@ -421,3 +421,5 @@ Az "AdminAccess" metódus beállítja az adott felhasználó admin jogosultság�
 #### newsLetter
 A "newsLetter" metódus lehetővé teszi a felhasználók számára, hogy feliratkozzanak a Hirlevélre . Az felhasználó által megadott e-mail címet ellenőrzi, hogy egyedi-e és érvényes-e. Ha a validáció sikeres, akkor az felhasználó e-mail címe hozzáadódik az adatbázishoz, és visszatér a megfelelő JSON formátumban. Ha a validáció nem sikerül, akkor a metódus hibajelzést ad vissza a hibák adataival.
 ```
+#### Adatbázis terv
+![DatbasePlanFinal](https://user-images.githubusercontent.com/61178364/228766169-2b6369d2-677c-4f25-8291-aa58e041efe7.PNG)
