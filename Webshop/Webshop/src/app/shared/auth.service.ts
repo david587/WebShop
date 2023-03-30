@@ -67,15 +67,4 @@ export class AuthService {
     return this.http.post(url, "", httpOption);
   }
 
-  //guard
-  // isLoggedIn():any {
-  //   if(localStorage.getItem('token') === null) {
-  //     return false;
-  //   }
-  //   let token = localStorage.getItem('token');
-  //   return token;
-  // }
-
-
-
 }
