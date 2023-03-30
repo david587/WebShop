@@ -253,7 +253,7 @@ show() metódus lekéri az aktuális felhasználóhoz tartozó összes kosár el
 #### store
 store() metódus fogad egy termék azonosítót, majd hozzáadja azt az aktuális felhasználó kosarához. Ha a termék már szerepel a kosárban, akkor a mennyiségét növeli eggyel, ha pedig még nem szerepel, akkor létrehoz egy új kosár elemet a termékkel és mennyiséggel egyenlő egyel.
 
-```
+```json
 public function store($id)
     //when put different item not storeing that, just add plus 1 to the preveous quantity
     {
@@ -323,7 +323,7 @@ Ezután lekéri az összes kosár elemet, amelyekhez hozzárendeli a megfelelő 
 #### showUserItems
 Végül az "showUserItems" függvényt hívja meg, amely elkészíti az e-mailt a megfelelő adatokkal, majd elküldi azt a felhasználó által megadott e-mail címre.
 
-```
+```json
 public function store(Request $request)
     {
         $order_Information = new ModelsOrderInformations();
