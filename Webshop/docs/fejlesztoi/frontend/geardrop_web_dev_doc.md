@@ -96,3 +96,17 @@ A következő nem vizuális komponensek lettek beépítve:
 * auth.service - Azonosítás
 * emitter.service - Oldalak közötti adat átadás
 * products.service - Tremékek kezelése a Rest API felületen
+
+### AuthService osztály
+
+Az Angularban elérhető HttpClient osztály segítségével elvégzi a beléptetést, a kiléptetést és a regisztrációt.
+
+
+#### login metódus
+
+Két bemenő paramtére van, az email és a jelszó string típusként. A metódus visszatér egy Observer objektummal, ami kapcsolódik az REST API /login végpontjához POST metódussal.
+
+#### logout metódus
+
+Bemenő paramétere nincs. Visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /logout végpontjához POST metódussal.
+
