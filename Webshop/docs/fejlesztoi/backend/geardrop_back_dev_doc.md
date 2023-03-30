@@ -253,6 +253,10 @@ show() metódus lekéri az aktuális felhasználóhoz tartozó összes kosár el
 #### store
 store() metódus fogad egy termék azonosítót, majd hozzáadja azt az aktuális felhasználó kosarához. Ha a termék már szerepel a kosárban, akkor a mennyiségét növeli eggyel, ha pedig még nem szerepel, akkor létrehoz egy új kosár elemet a termékkel és mennyiséggel egyenlő egyel.
 
+#### destroy
+destroy() metódus törli a megadott kosár elemet az adatbázisból.
+```
+
 ```php
 public function store($id)
     //when put different item not storeing that, just add plus 1 to the preveous quantity
@@ -278,9 +282,6 @@ public function store($id)
     }
 ```
 
-#### destroy
-destroy() metódus törli a megadott kosár elemet az adatbázisból.
-```
 
 ### CategorieController osztály
 ```txt
@@ -373,7 +374,7 @@ public function store(Request $request)
 
 ### ProductController osztály
 ```
- termékekhez kapcsolódó funkciók kezelése, beleértve a kategóriák és márkák szerinti rendezést, a termékek létrehozását, szerkesztését, törlését, keresését és megjelenítését teszi lehetővé. 
+termékekhez kapcsolódó funkciók kezelése, beleértve a kategóriák és márkák szerinti rendezést, a termékek létrehozását, szerkesztését, törlését, keresését és megjelenítését teszi lehetővé. 
 
 #### sortCategories
 Ez a metódus a kategóriák alapján történő szűrést valósítja meg. A $request paraméterben megkapott keresési kifejezést felhasználva kikeresi a kategória azonosítóját az adatbázisból, majd a kategóriához tartozó összes terméket lekérdezi az adatbázisból.
