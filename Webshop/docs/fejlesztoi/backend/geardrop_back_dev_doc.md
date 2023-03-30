@@ -322,7 +322,7 @@ Ezután lekéri az összes kosár elemet, amelyekhez hozzárendeli a megfelelő 
 
 #### showUserItems
 Végül az "showUserItems" függvényt hívja meg, amely elkészíti az e-mailt a megfelelő adatokkal, majd elküldi azt a felhasználó által megadott e-mail címre.
-
+```
 ```
 public function store(Request $request)
     {
@@ -368,7 +368,7 @@ public function store(Request $request)
         Mail::to($emailAdd)->send(new OrderSubmitted($user,$email,$order,$shipping));
     }
 ```
-```
+
 
 ### ProductController osztály
 ```
