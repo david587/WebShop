@@ -39,7 +39,7 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 | DELETE  | /Users/Delete/{id} | UserController | Felhasználó törlése adott azonosítóval | Azonosító | Login,Admin |
 | POST    | /Users/Admin/{id} | UserController | Admin jogosultság adása adott azonosítóval rendelkező felhasználónak | Azonosító | Login,Admin |
 | GET     | /sendEmail | EmailController | Üzenetek küldése eltárolt e-mailekre | - | Login,Admin |
-| GET     | /Emails | EmailController | Összes e-mail cím lekérése a nevsletterTable táblából | - | Login,Admin |"
+| GET     | /Emails | EmailController | Összes e-mail cím lekérése a nevsletterTable táblából | - | Login,Admin |
 ```
 
 ## Felhasználó utvonalak
