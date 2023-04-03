@@ -124,5 +124,20 @@ Ez a metódus meghívja az event objektum emit() metódusát, amely elindítja a
 
 ### ProductsService osztály
 
-Ez az osztály egy adatkezelő szolgáltatás, amely különféle funkciókat biztosít a termékekhez, kosárelemekhez, rendelésekhez, kereséshez és szűréshez kapcsolódó háttér API-val való interakcióhoz.
+Ez az osztály egy adatkezelő szolgáltatás, amely különféle funkciókat biztosít a termékekhez, kosárelemekhez, rendelésekhez, kereséshez és szűrésekhez kapcsolódó háttér API-val való interakcióhoz. Haznál egy products (any típus) és egy host (ebben jelöljük az útvonalat) változót. A konstruktorban megadunk egy HttpClient paramétert http néven. 
 
+#### getProducts metódus
+
+Ez a metódus az összes terméket jeleníti meg, az url a fentebb létrehozott host változóból és a végpontból áll, a kettő között "/".  A metódus visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /Products végpontjához GET metódussal.
+
+#### getCartItem metódus
+
+Ez a metódus a kosár termékeit jeleníti meg, az url a fentebb létrehozott host változóból és a végpontból áll, a kettő között "/". Ez a funkció csak bejelentkezés után érhető el. A tokent lekérjük és ez lesz a httpHeaders kulcsértéke. A httpOption a http kérés beállításait kezeli. A metódus visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /cartItems/show végpontjához GET metódussal.
+
+#### getRandomFour metódus
+
+Ez a metódus négy random terméket jelenít meg, az url a fentebb létrehozott host változóból és a végpontból áll, a kettő között "/".  A metódus visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /Products/Home végpontjához GET metódussal.
+
+#### addToCart metódus
+
+Ez a metódus a termékek kosárhoz adásáért felelős, van egy bemenő paramétere, az id, number típusként. Az url a fentebb létrehozott host változóból, a végpontból és az id-ból áll, közöttük "/" az elválasztó. A tokent lekérjük és ez lesz a httpHeaders kulcsértéke. A httpOption a http kérés beállításait kezeli. A metódus visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /cartItems végpontjához POST metódussal.
