@@ -26,20 +26,20 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 ```bash
 | Metódus | Elérés | Kontroller | Leírás | Bemenő paraméterek | Jogosultság |
 | ------- | ------- | ---------- | ------ | ------------------ | ----------- |
-| POST    | /Products/Store | ProductController | Új termék létrehozása | Név,ár,részletek,kép URL,készlet száma,márka,kategória | Login |
-| POST    | /Products/Update/{id} | ProductController | Termék frissítése adott azonosítóval | Azonosító, név, ár, részletek, kép URL, készlet száma, márka, kategória | Login |
-| DELETE  | /Products/Delete/{id} | ProductController | Termék törlése adott azonosítóval | Azonosító | Login |
-| GET     | /Brands/Index | BrandController | Összes márka lekérése | - | Login |
-| POST    | /Brands/Store | BrandController | Új márka létrehozása | Név | Login |
-| DELETE  | /Brands/Delete/{id} | BrandController | Márka törlése adott azonosítóval | Azonosító | Login |
-| GET     | /Categories/Index | CategorieController | Összes kategória lekérése | - | Login |
-| POST    | /Categories/Store | CategorieController | Új kategória létrehozása | Név | Login |
-| DELETE  | /Categories/Delete/{id} | CategorieController | Kategória törlése adott azonosítóval | Azonosító | Login |
-| GET     | /Users/Show | UserController | Az összes felhasználó listázása | - | Login |
-| DELETE  | /Users/Delete/{id} | UserController | Felhasználó törlése adott azonosítóval | Azonosító | Login |
-| POST    | /Users/Admin/{id} | UserController | Admin jogosultság adása adott azonosítóval rendelkező felhasználónak | Azonosító | Admin |
-| GET     | /sendEmail | EmailController | Üzenetek küldése eltárolt e-mailekre | - | Login |
-| GET     | /Emails | EmailController | Összes e-mail cím lekérése a nevsletterTable táblából | - | Login |"
+| POST    | /Products/Store | ProductController | Új termék létrehozása | Név,ár,részletek,kép URL,készlet száma,márka,kategória | Login,Admin |
+| POST    | /Products/Update/{id} | ProductController | Termék frissítése adott azonosítóval | Azonosító, név, ár, részletek, kép URL, készlet száma, márka, kategória | Login,Admin |
+| DELETE  | /Products/Delete/{id} | ProductController | Termék törlése adott azonosítóval | Azonosító | Login,Admin |
+| GET     | /Brands/Index | BrandController | Összes márka lekérése | - | Login,Admin |
+| POST    | /Brands/Store | BrandController | Új márka létrehozása | Név | Login,Admin |
+| DELETE  | /Brands/Delete/{id} | BrandController | Márka törlése adott azonosítóval | Azonosító | Login,Admin |
+| GET     | /Categories/Index | CategorieController | Összes kategória lekérése | - | Login,Admin |
+| POST    | /Categories/Store | CategorieController | Új kategória létrehozása | Név | Login,Admin |
+| DELETE  | /Categories/Delete/{id} | CategorieController | Kategória törlése adott azonosítóval | Azonosító | Login,Admin |
+| GET     | /Users/Show | UserController | Az összes felhasználó listázása | - | Login,Admin |
+| DELETE  | /Users/Delete/{id} | UserController | Felhasználó törlése adott azonosítóval | Azonosító | Login,Admin |
+| POST    | /Users/Admin/{id} | UserController | Admin jogosultság adása adott azonosítóval rendelkező felhasználónak | Azonosító | Login,Admin |
+| GET     | /sendEmail | EmailController | Üzenetek küldése eltárolt e-mailekre | - | Login,Admin |
+| GET     | /Emails | EmailController | Összes e-mail cím lekérése a nevsletterTable táblából | - | Login,Admin |"
 ```
 
 ## Felhasználó utvonalak
