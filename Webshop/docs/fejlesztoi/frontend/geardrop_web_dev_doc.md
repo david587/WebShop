@@ -17,6 +17,18 @@ Tailwind css:
   @tailwind components;
   @tailwind utilities;
 
+## Projekt elindítása
+
+### WebshopBackend
+    - composer install, hogy létre hozzuk a vendor mappát
+    - .env mappa létrehozása
+    - php artisan key:generate a kulcs legenerálásához
+    - php artisan serve, szerver elindítása
+
+### Webshop
+    - npm install, a node könyvtár létrehozásához
+    - ng serve, a szerver elindítása
+
 ## Felépítés
 
 ### Könyvtárszerkezet:
@@ -78,3 +90,39 @@ A következő vizuális komponensek lettek létrehozva:
 * signin.component - Beléptető felület
 * signup.component - Regisztrációs felület
 * support.component - ???
+
+A következő nem vizuális komponensek lettek beépítve:
+
+* auth.service - Azonosítás
+* emitter.service - Oldalak közötti adat átadás
+* products.service - Tremékek kezelése a Rest API felületen
+
+### AuthService osztály
+
+ Az Angularban elérhető HttpClient osztály segítségével elvégzi a beléptetést, a kiléptetést és a regisztrációt.
+
+
+#### login metódus
+
+Két bemenő paramtére van, az email és a jelszó string típusként. A metódus visszatér egy Observer objektummal, ami kapcsolódik az REST API /login végpontjához POST metódussal.
+
+#### logout metódus
+
+Bemenő paramétere nincs. Visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /logout végpontjához POST metódussal.
+
+#### signup metódus
+
+Hat bemenő paramétere van, a név, email, telefonszám, jelszó, ismétlő jelszó. A metódus visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /register végpontjához POST metódussal.
+
+### EmitterService osztály
+
+Ez az osztály egy eseménykezelő szolgáltatást biztosít, amelyen keresztül az alkalmazásban bármely komponens vagy szolgáltatás eseményeket küldhet egymásnak.
+
+#### onButton metódus
+
+Ez a metódus meghívja az event objektum emit() metódusát, amely elindítja az eseményt. Az emit() metódusnak nincs paramétere, ezért bármilyen típusú adatot át lehet adni az eseményhez.
+
+### ProductsService osztály
+
+Ez az osztály egy adatkezelő szolgáltatás, amely különféle funkciókat biztosít a termékekhez, kosárelemekhez, rendelésekhez, kereséshez és szűréshez kapcsolódó háttér API-val való interakcióhoz.
+
