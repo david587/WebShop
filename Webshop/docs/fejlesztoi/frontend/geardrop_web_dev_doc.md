@@ -140,8 +140,14 @@ Ez a metódus négy random terméket jelenít meg, az url a fentebb létrehozott
 
 #### addToCart metódus
 
-Ez a metódus a termékek kosárhoz adásáért felelős, van egy bemenő paramétere, az id, number típusként. Az url a fentebb létrehozott host változóból, a végpontból és az id-ból áll, közöttük "/" az elválasztó. A tokent lekérjük és ez lesz a httpHeaders kulcsértéke. A httpOption a http kérés beállításait kezeli. A metódus visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /cartItems végpontjához POST metódussal.
+Ez a metódus a termékek kosárhoz adásáért felelős, van egy bemenő paramétere, az id, number típusként. Az url a fentebb létrehozott host változóból, a végpontból és az id-ból áll, közöttük "/" az elválasztó. Ez a funkció csak bejelentkezés után érhető el. A tokent lekérjük és ez lesz a httpHeaders kulcsértéke. A httpOption a http kérés beállításait kezeli. A metódus visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /cartItems végpontjához POST metódussal.
 
 #### remove metódus
 
 Ez a metódus a termékek kosárból való törléséért felelős, van egy bemenő paramétere, az id, number típusként. Az url a fentebb létrehozott host változóból, a végpontból és az id-ból áll, közöttük "/" az elválasztó. A tokent lekérjük és ez lesz a httpHeaders kulcsértéke. A httpOption a http kérés beállításait kezeli. A metódus visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /cartItems/delete végpontjához DELETE metódussal.
+
+#### newsLetter metódus
+
+Ez a metódus a hírlevélre való feliratkozást kezeli, van egy bemenő paramétere, az email, ami string típus. Az url a fentebb létrehozott host változóból és a végpontból áll, a kettő között "/". Létrehozza a data nevű objektumot, mely a felhasználók email címét tartalmazza. A HttpHeaders objektum segítségével létrehoz egy fejléceket tartalmazó objektumot, amelyet a headers változóban tárol.
+Létrehozza a httpOption objektumot, amely a HTTP kérés beállításait tartalmazza. Ebben az esetben csak a fejléc beállításokat. A metódus visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /Users/NewsLetter végpontjához POST metódussal.
+
