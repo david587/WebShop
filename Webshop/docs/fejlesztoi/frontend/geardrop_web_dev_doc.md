@@ -141,3 +141,7 @@ Ez a metódus négy random terméket jelenít meg, az url a fentebb létrehozott
 #### addToCart metódus
 
 Ez a metódus a termékek kosárhoz adásáért felelős, van egy bemenő paramétere, az id, number típusként. Az url a fentebb létrehozott host változóból, a végpontból és az id-ból áll, közöttük "/" az elválasztó. A tokent lekérjük és ez lesz a httpHeaders kulcsértéke. A httpOption a http kérés beállításait kezeli. A metódus visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /cartItems végpontjához POST metódussal.
+
+#### remove metódus
+
+Ez a metódus a termékek kosárból való törléséért felelős, van egy bemenő paramétere, az id, number típusként. Az url a fentebb létrehozott host változóból, a végpontból és az id-ból áll, közöttük "/" az elválasztó. A tokent lekérjük és ez lesz a httpHeaders kulcsértéke. A httpOption a http kérés beállításait kezeli. A metódus visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /cartItems/delete végpontjához DELETE metódussal.
