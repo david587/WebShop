@@ -8,7 +8,7 @@
 
 Lépjünk be a Webshop/Webshopbackend könyvtárba:
 
-```bash
+    ```bash
 cd Webshop/Webshopbackend
 ```
 
@@ -17,8 +17,11 @@ Most le kell töltenünk a függőségeket. E paranccsokkal lehetséges:
 ```bash
 composer install ->vendor generálása
 .env ->file létrehozása
+.env ->file üres adatbázis hozzáadása
+.env ->file email fiók hozzáadása
 php artisan key:generate ->kulcs generálás
 php artisan migrate:fresh --seed ->adatbázis feltöltése
+
 ```
 
 A Backend indítása:
@@ -422,4 +425,56 @@ Az "AdminAccess" metódus beállítja az adott felhasználó admin jogosultság�
 A "newsLetter" metódus lehetővé teszi a felhasználók számára, hogy feliratkozzanak a Hirlevélre . Az felhasználó által megadott e-mail címet ellenőrzi, hogy egyedi-e és érvényes-e. Ha a validáció sikeres, akkor az felhasználó e-mail címe hozzáadódik az adatbázishoz, és visszatér a megfelelő JSON formátumban. Ha a validáció nem sikerül, akkor a metódus hibajelzést ad vissza a hibák adataival.
 ```
 #### Adatbázis terv
+```txt
+Az első "késznek" itélt terv nem volt jól felépitve azért ezt teljesen újrairtam és átgondoltam mit ,hogyan akarunk tárolni és megjeleniteni. 
+Több olyan nem praktikus felépitéstől szabadultunk meg igy Pld:
+|-uj kategoriak,termékek esetén uj táblát kellet volna létrehozni
+|-rendeléseket nem tároltuk volna
+
+És végül ugy döntöttem amilyen funkciókat kitatáltunk azokat mind rest api-n meg tudom valósitani és frontendeknek csak használni kell ezeket.
+
+<br>
+
+Ez lett a végleges adatbázis terv,lassan született meg ez a koncepció.
+
 ![DatbasePlanFinal](https://user-images.githubusercontent.com/61178364/228766169-2b6369d2-677c-4f25-8291-aa58e041efe7.PNG)
+```
+
+#### Miket tárol az adatbázis?
+```txt
+|-Kategoriakat
+|-Márkákat
+|-Felhasználókat
+|-Hirlevélre feliratkozott emberek email címét.
+|-Termékeket
+|-Éppen kosárban lévő felhasználó termékét,db-számot
+|-Felhasználók rendeléseit és rendelési adatait
+```
+
+#### Útvonalak
+```txt
+Én az utvonalak védésére 2féle laravel middlewaret használtam.
+|-Bejelentkezéshez kötött utvonalak
+|-Admin hozzáférésű utvonalak
+De az admin utvonalak alpjáraton megkapták az Auth middleware-t is. 
+```
+
+#### Tesztelés
+```txt
+A restapi tesztelése Statikus teszteléssel teszteltem le.
+Minden használatra kész útvonalat egy Insomniának nevezett API-tesztelővel teszteltem le. Arra törekedtem hogy, siker esetén sikerüzenettel térjen vissza, hiba esetén meg hibaüzenettel.
+Később a frontenndekkel eggyüt lettek letesztelve ezek az utvonalak.
+Voltak olyan utvonalak amik csal emailt-küld egy adott blade fileal, igy ezket insomniában és késöbb frontenden el tudtam küldeni , és meg tudtam nézni , hogy tenyleg jól megjött-e az az email.
+```
+
+#### Ősszefoglalás
+```txt
+Probáltam minden funckciót itt backenden megvalósítani, ami sikerült is. De ha legközelebb ugyanezzel a stack-el kell dolgoznom ugyanilyen projekten, akkor a kosárba helyezést és termékek keresését Frontend-en fogom megvalósítani. Ugy egy sokkal jobb gyorsabb felhasználói élményt biztositani, mivel most várni kell a restapi válaszára.
+```
+
+
+
+
+
+
+
