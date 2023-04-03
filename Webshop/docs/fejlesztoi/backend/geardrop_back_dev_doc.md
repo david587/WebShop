@@ -478,7 +478,7 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 | GET     | /Emails | EmailController | Összes e-mail cím lekérése a nevsletterTable táblából | - | Login |"
 ```
 
-##Felhasználó utvonalak
+## Felhasználó utvonalak
 ```bash
 | Metódus | Elérés | Kontroller | Leírás | Bemenő paraméterek | Jogosultság |
 | ------- | ------- | ---------- | ------ | ------------------ | ----------- |
@@ -493,7 +493,7 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 | GET     | /Products/Search | ProductController | Keresés a termékek között | query (keresett szöveg) | - |
 ```
 
-##Bejelentkezett felhasználó utvonalai
+## Bejelentkezett felhasználó utvonalai
 ```bash
 | Metódus | Elérés | Kontroller | Leírás | Bemenő paraméterek | Jogosultság |
 | ------- | ------- | ---------- | ------ | ------------------ | ----------- |
