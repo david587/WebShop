@@ -164,6 +164,9 @@ Ez a metódus az adatok közötti keresést teszi lehetővé. Van egy bemenő pa
 Ez a metódus a márkára való szűrést teszi számunkra lehetővé. Van egy bemenő paramétere, name (any típusú). Az url a fentebb létrehozott host változóból és a végpontból áll, közöttük "/" az elválasztó. Létrehozza a data nevű objektumot, mely az adatok nevét tartalmazza. A HttpHeaders objektum segítségével létrehoz egy fejléceket tartalmazó objektumot, amelyet a headers változóban tárol. Létrehozza a httpOption objektumot, amely a HTTP kérés beállításait tartalmazza. Ebben az esetben csak a fejléc beállításokat.  A metódus visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /Products/Brands végpontjához GET metódussal.
 
 #### categorie metódus
-```txt
+
 Ez a metódus a márkára való szűrést teszi számunkra lehetővé. Van egy bemenő paramétere, name (any típusú). Az url a fentebb létrehozott host változóból és a végpontból áll, közöttük "/" az elválasztó. Létrehozza a data nevű objektumot, mely az adatok nevét tartalmazza. A HttpHeaders objektum segítségével létrehoz egy fejléceket tartalmazó objektumot, amelyet a headers változóban tárol. Létrehozza a httpOption objektumot, amely a HTTP kérés beállításait tartalmazza. Ebben az esetben csak a fejléc beállításokat.  A metódus visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /Products/Categories végpontjához GET metódussal.
-```
+
+#### getProduct metódus
+
+Ez a metódus a képre kattintva egy újoldalon jeleníti meg az adott terméket és azok adatait. Van egy bemenő paramétere, id (number típusú). Az url a fentebb létrehozott host változóból és a végpontból áll, közöttük "/" az elválasztó. A végpont a termékek egy adott azonosítója alapján való lekérdezését teszi lehetővé. Létrehozza a data nevű objektumot, amely az id azonosítóját tartalmazza. A HttpHeaders objektum segítségével létrehoz egy fejléceket tartalmazó objektumot, amelyet a headers változóban tárol. Létrehozza a httpOption objektumot, amely a HTTP kérés beállításait tartalmazza. Ebben az esetben a fejléc és a paraméterek beállításait is tartalmazza. A metódus visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /Products/Show/:id végpontjához GET metódussal, ahol az :id az adott termék azonosítója.
