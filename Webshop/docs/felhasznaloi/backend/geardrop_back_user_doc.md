@@ -27,19 +27,34 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 | Metódus | Elérés | Kontroller | Leírás | Bemenő paraméterek | Jogosultság |
 | ------- | ------- | ---------- | ------ | ------------------ | ----------- |
 | POST    | /Products/Store | ProductController | Új termék létrehozása | Név,ár,részletek,kép URL,készlet száma,márka,kategória | Login,Admin |
-| POST    | /Products/Update/{id} | ProductController | Termék frissítése adott azonosítóval | Azonosító, név, ár, részletek, kép URL, készlet száma, márka, kategória | Login,Admin |
+________________________________________________________________________________________________________________________________________________
+| POST    | /Products/Update/{id} | ProductController | Termék frissítése adott azonosítóval | Azonosító, név, ár, részletek, kép URL, készlet száma, márka, kategória
+| Login,Admin |
+________________________________________________________________________________________________________________________________________________
 | DELETE  | /Products/Delete/{id} | ProductController | Termék törlése adott azonosítóval | Azonosító | Login,Admin |
+________________________________________________________________________________________________________________________________________________
 | GET     | /Brands/Index | BrandController | Összes márka lekérése | - | Login,Admin |
+________________________________________________________________________________________________________________________________________________
 | POST    | /Brands/Store | BrandController | Új márka létrehozása | Név | Login,Admin |
+________________________________________________________________________________________________________________________________________________
 | DELETE  | /Brands/Delete/{id} | BrandController | Márka törlése adott azonosítóval | Azonosító | Login,Admin |
+________________________________________________________________________________________________________________________________________________
 | GET     | /Categories/Index | CategorieController | Összes kategória lekérése | - | Login,Admin |
+________________________________________________________________________________________________________________________________________________
 | POST    | /Categories/Store | CategorieController | Új kategória létrehozása | Név | Login,Admin |
+________________________________________________________________________________________________________________________________________________
 | DELETE  | /Categories/Delete/{id} | CategorieController | Kategória törlése adott azonosítóval | Azonosító | Login,Admin |
+________________________________________________________________________________________________________________________________________________
 | GET     | /Users/Show | UserController | Az összes felhasználó listázása | - | Login,Admin |
+________________________________________________________________________________________________________________________________________________
 | DELETE  | /Users/Delete/{id} | UserController | Felhasználó törlése adott azonosítóval | Azonosító | Login,Admin |
+________________________________________________________________________________________________________________________________________________
 | POST    | /Users/Admin/{id} | UserController | Admin jogosultság adása adott azonosítóval rendelkező felhasználónak | Azonosító | Login,Admin |
+________________________________________________________________________________________________________________________________________________
 | GET     | /sendEmail | EmailController | Üzenetek küldése eltárolt e-mailekre | - | Login,Admin |
+________________________________________________________________________________________________________________________________________________
 | GET     | /Emails | EmailController | Összes e-mail cím lekérése a nevsletterTable táblából | - | Login,Admin |
+________________________________________________________________________________________________________________________________________________
 ```
 
 ## Felhasználó utvonalak
@@ -113,6 +128,23 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 	"paymentMethod":"Card"
 }
 ```
+
+### /Users/NewsLetter
+```json
+{
+	"email": "example@gmail.com"
+}
+```
+
+
+### /Users/NewsLetter
+```json
+{
+	"email": "example@gmail.com"
+}
+```
+
+
 
 
 
