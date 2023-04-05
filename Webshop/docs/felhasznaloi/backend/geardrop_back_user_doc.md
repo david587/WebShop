@@ -62,17 +62,17 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 
 ## Felhasználó utvonalak
 ```bash
-| Metódus | Elérés | Kontroller | Leírás | Bemenő paraméterek | Jogosultság |
-| ------- | ------- | ---------- | ------ | ------------------ | ----------- |
-| POST    | /register | AuthController | Regisztráció | name, address, phone, email, password, confirm_password | - |
-| POST    | /login | AuthController | Bejelentkezés | email, password | - |
-| GET     | /Products | ProductController | Összes termék listázása | page (opcionális) | - |
-| GET     | /Products/Home | ProductController | Random 4 termék listázása a kezdőoldalon | - | - |
-| GET     | /Products/Show/{id} | ProductController | Adott azonosítójú termék adatainak lekérése | id | - |
-| GET     | /Products/Categories | ProductController | Kategóriák szerinti rendezés | - | - |
-| GET     | /Products/Brands | ProductController | Márkák szerinti rendezés | - | - |
-| POST    | /Users/NewsLetter | UserController | Feliratkozás a hírlevélre | email | - |
-| GET     | /Products/Search | ProductController | Keresés a termékek között | query (keresett szöveg) | - |
+| Metódus | Elérés              | Kontroller        | Leírás                           | Bemenő paraméterek                                      | Jogosultság |
+| ------- | ------------------- | ----------------- | -------------------------------- | ------------------------------------------------------- | ----------- |
+| POST    | /register           | AuthController    | Regisztráció                     | name, address, phone, email, password, confirm_password | -           |
+| POST    | /login              | AuthController    | Bejelentkezés | email, password  | -                                                       | -           |
+| GET     | /Products           | ProductController | Összes termék listázása          | page (opcionális)                                       | -           |
+| GET     | /Products/Home      | ProductController | Random 4 termék listázása        | -                                                       | -           |
+| GET     | /Products/Show/{id} | ProductController | Adott azonosítójú termék         | id                                                      | -           |
+| GET     | /Products/Categories| ProductController | Kategóriák szerinti rendezés     | -                                                       | -           |
+| GET     | /Products/Brands    | ProductController | Márkák szerinti rendezés         | -                                                       | -           |
+| POST    | /Users/NewsLetter   | UserController    | Feliratkozás a hírlevélre        | email                                                   | -           |
+| GET     | /Products/Search    | ProductController | Keresés a termékek között        | query (keresett szöveg)                                 | -           |
 ```
 
 ## Bejelentkezett felhasználó utvonalai
