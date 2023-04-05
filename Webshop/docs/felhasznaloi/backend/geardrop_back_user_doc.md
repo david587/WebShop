@@ -114,13 +114,5 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 }
 ```
 
-### /Orders/Store
-```json
-{
-	"shippingAddress":"budapest",
-	"phone":"3123131",
-	"paymentMethod":"Card"
-}
-```
 
 
