@@ -170,3 +170,31 @@ Ez a metódus a márkára való szűrést teszi számunkra lehetővé. Van egy b
 #### getProduct metódus
 
 Ez a metódus a képre kattintva egy újoldalon jeleníti meg az adott terméket és azok adatait. Van egy bemenő paramétere, id (number típusú). Az url a fentebb létrehozott host változóból és a végpontból áll, közöttük "/" az elválasztó. A végpont a termékek egy adott azonosítója alapján való lekérdezését teszi lehetővé. Létrehozza a data nevű objektumot, amely az id azonosítóját tartalmazza. A HttpHeaders objektum segítségével létrehoz egy fejléceket tartalmazó objektumot, amelyet a headers változóban tárol. Létrehozza a httpOption objektumot, amely a HTTP kérés beállításait tartalmazza. Ebben az esetben a fejléc és a paraméterek beállításait is tartalmazza. A metódus visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /Products/Show/:id végpontjához GET metódussal, ahol az :id az adott termék azonosítója.
+
+### CartComponent osztály
+
+Ennek az osztálynak a célja az, hogy megjelenítse a felhasználó kosarában lévő termékeket. Az alkalmazás használja a ProductsService szolgáltatást a REST API hívások végrehajtásához. 
+
+#### ngOnInit metódus
+
+Ez a metódus meghívja a getCartItem() metódust.
+
+#### getTotalPrice metódus
+
+Ez a metódus kiszámítja az összes termék árát a kosárban.
+
+#### getCartItem
+
+Ez a metódust elkéri az összes terméket a kosárból és megjeleníti azokat.
+
+#### remove metódus
+
+Ez a metódus eltávolít egy adott terméket a kosárból az azonosítója alapján.
+
+#### addToCart
+
+Ez a metódus hozzáad egy terméket a kosárhoz azonosító alapján.
+
+#### showMessage metódus
+
+Ez a metódus megjeleníti az üzenetet a felhasználónak, majd eltávolítja azt a megadott időtartam után.
