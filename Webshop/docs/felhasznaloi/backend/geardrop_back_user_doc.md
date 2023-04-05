@@ -69,3 +69,58 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 | POST    | /logOut | AuthController | Felhasználó kijelentkeztetése | - | Login |
 
 ```
+
+## Utvonalak Json kitöltése
+
+###  /register
+```json
+{
+	"name":"David",
+	"address":"Magyary",
+	"phone":"+2512551253",
+	"email":"david@gmail.com",
+	"password":"titok",
+	"confirm_password":"titok"
+}
+```
+
+###  /login
+```json
+{
+	"email":"david@gmail.com",
+	"password":"titok"
+}
+```
+
+###  /Products/Store
+```json
+{
+	"name":"g250",
+	"price":32322,
+	"details":"new key",
+	"image":"sss",
+	"inStock":10,
+	"brand_id":"Urage",
+	"categorie_id":"Monitor"
+}
+```
+
+### /Orders/Store
+```json
+{
+	"shippingAddress":"budapest",
+	"phone":"3123131",
+	"paymentMethod":"Card"
+}
+```
+
+### /Orders/Store
+```json
+{
+	"shippingAddress":"budapest",
+	"phone":"3123131",
+	"paymentMethod":"Card"
+}
+```
+
+
