@@ -79,12 +79,12 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 ```bash
 | Metódus | Elérés                 | Kontroller                    | Leírás                            | Bemenő paraméterek                      | Jogosultság |
 | ------- | ---------------------- | ----------------------------  | --------------------------------  | --------------------------------------  | ----------- |
-| POST    | /cartItems/{id}        | CartItemController            | Termék hozzáadása a kosárhoz      | Azonosító                               | Login |
-| GET     | /cartItems/show        | CartItemController            | Kosár tartalmának lekérése        | -                                       | Login |
-| DELETE  | /cartItems/delete/{id} | CartItemController            | Termék eltávolítása a kosárból    | Azonosító                               | Login |
-| POST    | /Orders/Store/         | OrderController               | Rendelés létrehozása a kosárból   | -                                       | Login |
-| GET     | /Orders/Show           | OrderController               | Felhasználói rendelések lekérése  | -                                       | Login |
-| POST    | /logOut                | AuthController                | Felhasználó kijelentkeztetése     | -                                       | Login |
+| POST    | /cartItems/{id}        | CartItemController            | Termék hozzáadása a kosárhoz      | Azonosító                               | Login       |
+| GET     | /cartItems/show        | CartItemController            | Kosár tartalmának lekérése        | -                                       | Login       |
+| DELETE  | /cartItems/delete/{id} | CartItemController            | Termék eltávolítása a kosárból    | Azonosító                               | Login       |
+| POST    | /Orders/Store/         | OrderController               | Rendelés létrehozása a kosárból   | -                                       | Login       |
+| GET     | /Orders/Show           | OrderController               | Felhasználói rendelések lekérése  | -                                       | Login       |
+| POST    | /logOut                | AuthController                | Felhasználó kijelentkeztetése     | -                                       | Login       |
 
 ```
 
