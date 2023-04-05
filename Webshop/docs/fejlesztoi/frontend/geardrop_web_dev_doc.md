@@ -151,3 +151,18 @@ Ez a metódus a termékek kosárból való törléséért felelős, van egy beme
 Ez a metódus a hírlevélre való feliratkozást kezeli, van egy bemenő paramétere, az email, ami string típus. Az url a fentebb létrehozott host változóból és a végpontból áll, a kettő között "/". Létrehozza a data nevű objektumot, mely a felhasználók email címét tartalmazza. A HttpHeaders objektum segítségével létrehoz egy fejléceket tartalmazó objektumot, amelyet a headers változóban tárol.
 Létrehozza a httpOption objektumot, amely a HTTP kérés beállításait tartalmazza. Ebben az esetben csak a fejléc beállításokat. A metódus visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /Users/NewsLetter végpontjához POST metódussal.
 
+#### next metódus
+
+Ez a metódus a fizetési adatok kezeléséért felelős. Van három bemenő paramétere, shippingAddress (string típus), phone (number típus) paymentMethod (string típus). Az url a fentebb létrehozott host változóból és a végpontból áll, közöttük "/" az elválasztó.  Ez a funkció csak bejelentkezés után érhető el. A tokent lekérjük és ez lesz a httpHeaders kulcsértéke. Létrehozza a data nevű objektumot, mely a felhasználók szállítási címét, a telefonszámát és a fizetési adatait tartalmazza. Létrehozza a httpOption objektumot, amely a HTTP kérés beállításait tartalmazza.A metódus visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /Orders/Store végpontjához POST metódussal.
+
+#### search metódus
+
+Ez a metódus az adatok közötti keresést teszi lehetővé. Van egy bemenő paramétere, a name (string típus). Az url a fentebb létrehozott host változóból és a végpontból áll, közöttük "/" az elválasztó. Létrehozza a data nevű objektumot, mely az adatok nevét tartalmazza.  A HttpHeaders objektum segítségével létrehoz egy fejléceket tartalmazó objektumot, amelyet a headers változóban tárol. Létrehozza a httpOption objektumot, amely a HTTP kérés beállításait tartalmazza. Ebben az esetben csak a fejléc beállításokat.  A metódus visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /Products/Search végpontjához GET metódussal.
+
+#### brand metódus
+
+Ez a metódus a márkára való szűrést teszi számunkra lehetővé. Van egy bemenő paramétere, name (any típusú). Az url a fentebb létrehozott host változóból és a végpontból áll, közöttük "/" az elválasztó. Létrehozza a data nevű objektumot, mely az adatok nevét tartalmazza. A HttpHeaders objektum segítségével létrehoz egy fejléceket tartalmazó objektumot, amelyet a headers változóban tárol. Létrehozza a httpOption objektumot, amely a HTTP kérés beállításait tartalmazza. Ebben az esetben csak a fejléc beállításokat.  A metódus visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /Products/Brands végpontjához GET metódussal.
+
+#### categorie metódus
+
+Ez a metódus a márkára való szűrést teszi számunkra lehetővé. Van egy bemenő paramétere, name (any típusú). Az url a fentebb létrehozott host változóból és a végpontból áll, közöttük "/" az elválasztó. Létrehozza a data nevű objektumot, mely az adatok nevét tartalmazza. A HttpHeaders objektum segítségével létrehoz egy fejléceket tartalmazó objektumot, amelyet a headers változóban tárol. Létrehozza a httpOption objektumot, amely a HTTP kérés beállításait tartalmazza. Ebben az esetben csak a fejléc beállításokat.  A metódus visszatér egy Observer objektummal, ami kapcsolódik a REST API szerver /Products/Categories végpontjához GET metódussal.
