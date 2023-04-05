@@ -144,6 +144,34 @@ ________________________________________________________________________________
 }
 ```
 
+### /Products/Search
+```json
+{
+	"name": "hp"
+}
+```
+
+### /Products/Brands
+```json
+{
+	"name": "hp"
+}
+```
+
+### /Products/categories
+```json
+{
+	"name": "mouse"
+}
+```
+
+
+### /Products/show
+```json
+{
+	"name": "mouse"
+}
+```
 
 
 
