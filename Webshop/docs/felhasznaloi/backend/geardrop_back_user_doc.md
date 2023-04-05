@@ -77,7 +77,7 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 
 ## Bejelentkezett felhasználó utvonalai
 ```bash
-| Metódus | Elérés | Kontroller | Leírás | Bemenő paraméterek | Jogosultság |
+| Metódus | Elérés  | Kontroller | Leírás | Bemenő paraméterek | Jogosultság |
 | ------- | ------- | ---------- | ------ | ------------------ | ----------- |
 | POST    | /cartItems/{id} | CartItemController | Termék hozzáadása a kosárhoz | Azonosító | Login |
 | GET     | /cartItems/show | CartItemController | Kosár tartalmának lekérése | - | Login |
