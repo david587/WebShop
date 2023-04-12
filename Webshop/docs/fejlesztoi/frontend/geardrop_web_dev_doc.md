@@ -238,3 +238,24 @@ Ez a metódus megjeleníti az üzenetet a felhasználónak, majd eltávolítja a
 #### path, alt változók
 
 Ezek a változók tartalmazzák a kezdőoldalon megjelenítendő képek elérési útvonalát és alt szövegét. Ezeket a változókat használja a kezdőoldal HTML kódja.
+
+### NavbarComponent osztály
+
+Ez az osztály lehetővé teszi a felhasználó számára a webhely más oldalaira való navigálást, valamint a bejelentkezés és a kijelentkezés lehetőségét. Az osztály használja a AuthService szolgáltatást a REST API hívások végrehajtásához.
+
+
+#### ngOnInit metódus
+
+Ez a metódus elindítja a hideAuth metódust, és beállítja a authvisible változót. Ezután az EmitterService feliratkozik az eseményekre, és meghívja a hideAuth metódust.
+
+#### hideAuth metódus
+
+Ez a metódus ellenőrzi, hogy a felhasználó be van-e jelentkezve vagy sem.
+
+#### logout metódus
+
+Ez a metódus a kijelentkezést kezeli.
+
+#### onClickToggle metódus
+
+Ez a metódus az navVisible változó értékét állítja be true-ra vagy false-ra, attól függően, hogy az érték korábban false vagy true volt. Ennek eredményeként a navigációs menü kinyílhat vagy bezárhat.
