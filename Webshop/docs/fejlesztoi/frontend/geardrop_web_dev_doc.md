@@ -201,7 +201,7 @@ Ez a metódus megjeleníti az üzenetet a felhasználónak, majd eltávolítja a
 
 ### CheckoutComponent osztály
 
-Ennek az osztálynak az a célja, hogy belérje a fizetésiadatokat és kezelje azokat.
+Ennek az osztálynak az a célja, hogy belérje a fizetésiadatokat és kezelje azokat. Az alkalmazás használja a ProductsService szolgáltatást a REST API hívások végrehajtásához.
 
 #### ngOnInit metódus
 
@@ -211,3 +211,30 @@ Ez a metódus inicializálja az űrlapot a FormBuilder segítségével, létreho
 
 Ez a metódus továbblendíti a felhasználót az ellenőrzési folyamatban.
 
+### HomeComponent osztály
+
+Ez az osztály felelős az alkalmazás kezdőoldalának megjelenítéséért, valamint az újságírói feliratkozások kezeléséért. Az osztály használja a ProductsService szolgáltatást a REST API hívások végrehajtásához.
+
+#### ngOnInit metódus
+
+Ez a metódus meghívja a getRandomFour() metódust. A metódus létrehoz egy űrlapot az újságírói feliratkozások kezelésére, majd megjeleníti az előző oldalról kapott üzenetet a showMessage metódus segítségével.
+
+#### getRandomFour metódus
+
+Ez a metódus véletlenszerűen kiválaszt négy terméket az adatbázisból, majd megjeleníti azokat a kezdőoldalon.
+
+#### addToCart metódus
+
+Ez a metódus hozzáad egy terméket a kosárhoz azonosító alapján.
+
+#### newsLetter metódus
+
+Ez a metódus kezeli az újságírói feliratkozásokat.
+
+#### showMessage metódus
+
+Ez a metódus megjeleníti az üzenetet a felhasználónak, majd eltávolítja azt a megadott időtartam után.
+
+#### path, alt változók
+
+Ezek a változók tartalmazzák a kezdőoldalon megjelenítendő képek elérési útvonalát és alt szövegét. Ezeket a változókat használja a kezdőoldal HTML kódja.
