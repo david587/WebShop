@@ -198,3 +198,16 @@ Ez a metódus hozzáad egy terméket a kosárhoz azonosító alapján.
 #### showMessage metódus
 
 Ez a metódus megjeleníti az üzenetet a felhasználónak, majd eltávolítja azt a megadott időtartam után.
+
+### CheckoutComponent osztály
+
+Ennek az osztálynak az a célja, hogy belérje a fizetésiadatokat és kezelje azokat.
+
+#### ngOnInit metódus
+
+Ez a metódus inicializálja az űrlapot a FormBuilder segítségével, létrehozva egy nextForm nevű űrlapot, amely három mezőt tartalmaz: shippingAddress, phone és paymentMethod.
+
+#### next metódus
+
+Ez a metódus továbblendíti a felhasználót az ellenőrzési folyamatban.
+
