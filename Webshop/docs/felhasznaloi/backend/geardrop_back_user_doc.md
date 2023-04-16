@@ -88,9 +88,10 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 
 ```
 
-## Utvonalak Json kitöltése
+## Body-val rendelkező utvonalak
 
 ###  /register
+#### Json
 ```json
 {
 	"name":"David",
@@ -101,8 +102,19 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 	"confirm_password":"titok"
 }
 ```
+#### Response
+```json
+{
+	"success": true,
+	"data": {
+		"name": "David33"
+	},
+	"message": "Sikeres regisztráció"
+}
+```
 
 ###  /login
+#### Json
 ```json
 {
 	"email":"david@gmail.com",
@@ -110,7 +122,9 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 }
 ```
 
+
 ###  /Products/Store
+#### Json
 ```json
 {
 	"name":"g250",
@@ -122,8 +136,123 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 	"categorie_id":"Monitor"
 }
 ```
+#### Response
+```json
+{
+	"success": true,
+	"data": {
+		"id": 5,
+		"name": "sounz400",
+		"price": 10035,
+		"details": "new headset",
+		"image": "assets\/images\/urage_soundz400.png",
+		"inStock": 10,
+		"brand_id": "Urage",
+		"categorie_id": "Headset"
+	},
+	"message": "Product Létrehozva"
+}
+```
+
+###  /Products/Update/{id}
+```json
+{
+	"name":"gamingLog",
+	"price":212,
+	"details":"now mouse",
+	"image":"Product.img",
+	"inStock":"",
+	"brand_id":"Hp",
+	"categorie_id":"Headset"
+}
+```
+
+### /Products/Search
+#### Json
+```json
+{
+	"name": "redragon"
+}
+```
+#### Response
+```json
+{
+	"success": true,
+	"data": [
+		{
+			"id": 6,
+			"name": "s",
+			"price": 1,
+			"details": "22ss",
+			"image": "1sasda",
+			"inStock": 8888,
+			"brand_id": "Redragon",
+			"categorie_id": "Keyboard"
+		},
+		{
+			"id": 7,
+			"name": "Susan",
+			"price": 12212,
+			"details": "22ss",
+			"image": "ss",
+			"inStock": 2,
+			"brand_id": "Redragon",
+			"categorie_id": "Mouse"
+		},
+		{
+			"id": 8,
+			"name": "david",
+			"price": 12212,
+			"details": "22ss",
+			"image": "sa2",
+			"inStock": 1,
+			"brand_id": "Redragon",
+			"categorie_id": "Monitor"
+		}
+	],
+	"message": "OK"
+}
+```
+
+### /Brands/Store
+#### Json
+```json
+{
+	"brand": "Asus"
+}
+```
+#### Response
+```json
+{
+	"success": true,
+	"data": {
+		"id": 5,
+		"brand": "Asus"
+	},
+	"message": "Brand létrehozva"
+}
+```
+
+### /Categories/Store
+#### Json
+```json
+{
+	"categorie":"Mousepad"
+}
+```
+#### Response
+```json
+{
+	"success": true,
+	"data": {
+		"categorie": "Mousepad"
+	},
+	"message": "Categorie létrehozva"
+}
+```
 
 ### /Orders/Store
+#### Json
 ```json
 {
 	"shippingAddress":"budapest",
@@ -131,34 +260,60 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 	"paymentMethod":"Card"
 }
 ```
+#### Response
+```json
+{
+	"success": true,
+	"data": [],
+	"message": "All cart items added to Orders"
+}
+```
+# Ha van már ilyen termék
+#### Response
+```json
+{
+	"success": true,
+	"data": [],
+	"message": "Product quantity increased"
+}
+```
 
 ### /Users/NewsLetter
+#### Json
 ```json
 {
 	"email": "example@gmail.com"
 }
 ```
-
-### /Products/Search
+#### Response
 ```json
 {
-	"name": "hp"
+	"success": true,
+	"data": {
+		"id": 1,
+		"SubscribedEmail": "davidbarath08@gmail.com"
+	},
+	"message": "Subscribed"
 }
 ```
 
-### /Products/Brands
+## Body-val nem rendelkező utvonalak:
+### /logOut
+#### Response
+```json
+
+```
+
+### /Products
+#### Response
 ```json
 {
-	"name": "hp"
+	"success": true,
+	"data": [],
+	"message": "OK"
 }
 ```
 
-### /Products/categories
-```json
-{
-	"name": "mouse"
-}
-```
 
 
 
