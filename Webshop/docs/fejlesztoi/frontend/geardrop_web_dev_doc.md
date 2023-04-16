@@ -198,3 +198,64 @@ Ez a metódus hozzáad egy terméket a kosárhoz azonosító alapján.
 #### showMessage metódus
 
 Ez a metódus megjeleníti az üzenetet a felhasználónak, majd eltávolítja azt a megadott időtartam után.
+
+### CheckoutComponent osztály
+
+Ennek az osztálynak az a célja, hogy belérje a fizetésiadatokat és kezelje azokat. Az alkalmazás használja a ProductsService szolgáltatást a REST API hívások végrehajtásához.
+
+#### ngOnInit metódus
+
+Ez a metódus inicializálja az űrlapot a FormBuilder segítségével, létrehozva egy nextForm nevű űrlapot, amely három mezőt tartalmaz: shippingAddress, phone és paymentMethod.
+
+#### next metódus
+
+Ez a metódus továbblendíti a felhasználót az ellenőrzési folyamatban.
+
+### HomeComponent osztály
+
+Ez az osztály felelős az alkalmazás kezdőoldalának megjelenítéséért, valamint az újságírói feliratkozások kezeléséért. Az osztály használja a ProductsService szolgáltatást a REST API hívások végrehajtásához.
+
+#### ngOnInit metódus
+
+Ez a metódus meghívja a getRandomFour() metódust. A metódus létrehoz egy űrlapot az újságírói feliratkozások kezelésére, majd megjeleníti az előző oldalról kapott üzenetet a showMessage metódus segítségével.
+
+#### getRandomFour metódus
+
+Ez a metódus véletlenszerűen kiválaszt négy terméket az adatbázisból, majd megjeleníti azokat a kezdőoldalon.
+
+#### addToCart metódus
+
+Ez a metódus hozzáad egy terméket a kosárhoz azonosító alapján.
+
+#### newsLetter metódus
+
+Ez a metódus kezeli az újságírói feliratkozásokat.
+
+#### showMessage metódus
+
+Ez a metódus megjeleníti az üzenetet a felhasználónak, majd eltávolítja azt a megadott időtartam után.
+
+#### path, alt változók
+
+Ezek a változók tartalmazzák a kezdőoldalon megjelenítendő képek elérési útvonalát és alt szövegét. Ezeket a változókat használja a kezdőoldal HTML kódja.
+
+### NavbarComponent osztály
+
+Ez az osztály lehetővé teszi a felhasználó számára a webhely más oldalaira való navigálást, valamint a bejelentkezés és a kijelentkezés lehetőségét. Az osztály használja a AuthService szolgáltatást a REST API hívások végrehajtásához.
+
+
+#### ngOnInit metódus
+
+Ez a metódus elindítja a hideAuth metódust, és beállítja a authvisible változót. Ezután az EmitterService feliratkozik az eseményekre, és meghívja a hideAuth metódust.
+
+#### hideAuth metódus
+
+Ez a metódus ellenőrzi, hogy a felhasználó be van-e jelentkezve vagy sem.
+
+#### logout metódus
+
+Ez a metódus a kijelentkezést kezeli.
+
+#### onClickToggle metódus
+
+Ez a metódus az navVisible változó értékét állítja be true-ra vagy false-ra, attól függően, hogy az érték korábban false vagy true volt. Ennek eredményeként a navigációs menü kinyílhat vagy bezárhat.
