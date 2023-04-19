@@ -88,9 +88,9 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 
 ```
 
-## Body-val rendelkező utvonalak
+# Body-val rendelkező utvonalak
 
-###  /register
+#  /register
 #### Json
 ```json
 {
@@ -113,7 +113,7 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 }
 ```
 
-###  /login
+#  /login
 #### Json
 ```json
 {
@@ -133,7 +133,7 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 }
 ```
 
-###  /Products/Store
+#  /Products/Store
 #### Json
 ```json
 {
@@ -164,8 +164,12 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 }
 ```
 
+<<<<<<< HEAD
 ###  /Products/Update/{id}
 #### Json
+=======
+#  /Products/Update/{id}
+>>>>>>> 5c1fd9d9614b22b3b48be936dd6933daeaddb3b7
 ```json
 {
 	"name":"gamingLog",
@@ -195,7 +199,7 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 }
 ```
 
-### /Products/Search
+# /Products/Search
 #### Json
 ```json
 {
@@ -242,7 +246,7 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 }
 ```
 
-### /Brands/Store
+# /Brands/Store
 #### Json
 ```json
 {
@@ -261,7 +265,7 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 }
 ```
 
-### /Categories/Store
+# /Categories/Store
 #### Json
 ```json
 {
@@ -279,7 +283,7 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 }
 ```
 
-### /Orders/Store
+# /Orders/Store
 #### Json
 ```json
 {
@@ -296,7 +300,7 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 	"message": "All cart items added to Orders"
 }
 ```
-# Ha van már ilyen termék
+## Ha van már ilyen termék
 #### Response
 ```json
 {
@@ -306,7 +310,7 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 }
 ```
 
-### /Users/NewsLetter
+# /Users/NewsLetter
 #### Json
 ```json
 {
@@ -325,8 +329,8 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 }
 ```
 
-## Body-val nem rendelkező utvonalak:
-### /logOut
+# Body-val nem rendelkező utvonalak:
+# /logOut
 #### Response
 ```json
 {
@@ -563,7 +567,7 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 
 ### Users/Show
 #### Response
-```josn
+```json
 {
 	"success": true,
 	"data": [

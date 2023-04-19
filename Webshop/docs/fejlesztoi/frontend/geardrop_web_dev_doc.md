@@ -259,3 +259,69 @@ Ez a metódus a kijelentkezést kezeli.
 #### onClickToggle metódus
 
 Ez a metódus az navVisible változó értékét állítja be true-ra vagy false-ra, attól függően, hogy az érték korábban false vagy true volt. Ennek eredményeként a navigációs menü kinyílhat vagy bezárhat.
+
+
+### ProductComponent osztály
+
+Ez az osztály a Products oldalon lévő termékek egyikére kattintva átnavigál egy külön oldalra, ahol az adott termék nagyított képét és leírását találjuk, valamint a termékekkel kapcsolatos lehetőségeket igénybe vehetjük (pl: kosárba tétel).
+
+#### addToCart metódus
+
+Ez a metódus hozzáad egy terméket a kosárhoz azonosító alapján.
+
+#### showMessage metódus
+
+Ez a metódus megjeleníti az üzenetet a felhasználónak, majd eltávolítja azt a megadott időtartam után.
+
+### ProductsComponent osztály
+
+Ez az osztály megjeleníti a termékeket az adatbázisból és a termékekkel kapcsolatos lehetőségeket itt is igénybe lehet venni. Tudunk szűrni márka, kategória és keresés alapján is.
+
+#### ngOnInit metódus
+
+Ez a metódus meghívja a getProducts() metódust, inicializálja a searchForm, brandForm és categorieForm űrlapokat, beállítja és megjeleníti az üzenetet.
+
+#### addToCart metódus
+
+Ez a metódus hozzáad egy terméket a kosárhoz azonosító alapján.
+
+#### search metódus
+
+Ez a metódus a megadott név alapján keresi meg a termékeket a productService segítségével, majd elmenti őket a products változóba.
+
+#### brand metódus
+
+Ez a metódus a megadott márka alapján keresi meg a termékeket a productService segítségével, majd elmenti őket a products változóba.
+
+#### categoria metódus
+
+A metódus a megadott kategória alapján keresi meg a termékeket a productService segítségével, majd elmenti őket a products változóba.
+
+#### showMessage metódus
+
+Ez a metódus megjeleníti az üzenetet a felhasználónak, majd eltávolítja azt a megadott időtartam után.
+
+#### getProduct metódus
+
+Ez a metódus lekéri az egyik termék adatait, majd átirányítja az adott termék oldalára.
+
+### SigninComponent osztály
+
+Ez az osztály felel e bejelentkezésért
+
+#### login metódus
+
+Ez a metódus az email és a jelszó bekérésével bejelentkezteti a regisztrált felhasználót.
+
+#### showMessage metódus
+
+Ez a metódus megjeleníti az üzenetet a felhasználónak, majd eltávolítja azt a megadott időtartam után.
+
+
+### SignupComponent osztály
+
+Ez az osztály a felhasználó regisztrálásáért felelős.
+
+#### signUp metódus
+
+Ez a metódus a név, az email, a cím, a telefonszám, a jelszó és az ismétlő jelszó bekérése után létrehozza a regisztrációt.
