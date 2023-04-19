@@ -316,3 +316,12 @@ Ez a metódus az email és a jelszó bekérésével bejelentkezteti a regisztrá
 #### showMessage metódus
 
 Ez a metódus megjeleníti az üzenetet a felhasználónak, majd eltávolítja azt a megadott időtartam után.
+
+
+### SignupComponent osztály
+
+Ez az osztály a felhasználó regisztrálásáért felelős.
+
+#### signUp metódus
+
+Ez a metódus a név, az email, a cím, a telefonszám, a jelszó és az ismétlő jelszó bekérése után létrehozza a regisztrációt.
