@@ -121,7 +121,17 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 	"password":"titok"
 }
 ```
-
+#### Response
+```json
+{
+	"success": true,
+	"data": {
+		"token": "1|NGR9TapRDIOxGAdUOZcEuiI07xI2UtIkz7YQtfpb",
+		"name": "David33"
+	},
+	"message": "Successful login."
+}
+```
 
 ###  /Products/Store
 #### Json
@@ -155,6 +165,7 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 ```
 
 ###  /Products/Update/{id}
+#### Json
 ```json
 {
 	"name":"gamingLog",
@@ -164,6 +175,23 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 	"inStock":"",
 	"brand_id":"Hp",
 	"categorie_id":"Headset"
+}
+```
+#### Response
+```json
+{
+	"success": true,
+	"data": {
+		"id": 1,
+		"name": "gamingLog",
+		"price": 212,
+		"details": "now mouse",
+		"image": "Product.img",
+		"inStock": 10,
+		"brand_id": "Hp",
+		"categorie_id": "Headset"
+	},
+	"message": "Product updated."
 }
 ```
 
@@ -301,7 +329,11 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 ### /logOut
 #### Response
 ```json
-
+{
+	"success": true,
+	"data": [],
+	"message": "Logged out"
+}
 ```
 
 ### /Products
@@ -313,6 +345,286 @@ De az admin utvonalak alpjáraton megkapták az Auth middleware-t is.
 	"message": "OK"
 }
 ```
+
+### Products/Home
+#### Response
+```json
+{
+	"success": true,
+	"data": [
+		{
+			"id": 1,
+			"name": "Kumara",
+			"price": 18435,
+			"details": "new Keyboard",
+			"image": "img\/product.png",
+			"brand_id": "Redragon",
+			"categorie_id": "Keyboard"
+		},
+		{
+			"id": 4,
+			"name": "Stinger",
+			"price": 21035,
+			"details": "new Headset",
+			"image": "img\/product.png",
+			"brand_id": "Hp",
+			"categorie_id": "Headset"
+		},
+		{
+			"id": 7,
+			"name": "G250",
+			"price": 16035,
+			"details": "new Headset",
+			"image": "img\/product.png",
+			"brand_id": "Logitech",
+			"categorie_id": "Mouse"
+		},
+		{
+			"id": 8,
+			"name": "galaxy",
+			"price": 63035,
+			"details": "new Headset",
+			"image": "img\/product.png",
+			"brand_id": "Urage",
+			"categorie_id": "Monitor"
+		}
+	],
+	"message": "Ok"
+}
+```
+
+### Products/Show/{id}
+#### Response
+```json
+{
+	"success": true,
+	"data": {
+		"id": 2,
+		"name": "stinger",
+		"price": 63035,
+		"details": "new Headset",
+		"image": "img\/product.png",
+		"brand_id": "Hp",
+		"categorie_id": "Headset"
+	},
+	"message": "Ok"
+}
+```
+### Brands/index
+#### Response
+```json
+{
+	"success": true,
+	"data": [
+		{
+			"id": 1,
+			"brand": "Hp"
+		},
+		{
+			"id": 2,
+			"brand": "Redragon"
+		},
+		{
+			"id": 3,
+			"brand": "Logitech"
+		},
+		{
+			"id": 4,
+			"brand": "Urage"
+		},
+		{
+			"id": 5,
+			"brand": "Asus"
+		}
+	],
+	"message": "OK"
+}
+```
+
+### Brands/Delete/{id}
+#### Response
+```json
+{
+	"success": true,
+	"data": [],
+	"message": "Brand törölve"
+}
+```
+
+### Categories/Index
+#### Response
+```json
+{
+	"success": true,
+	"data": [
+		{
+			"id": 1,
+			"categorie": "Monitor"
+		},
+		{
+			"id": 2,
+			"categorie": "Headset"
+		},
+		{
+			"id": 3,
+			"categorie": "Keyboard"
+		},
+		{
+			"id": 4,
+			"categorie": "Mouse"
+		}
+	],
+	"message": "OK"
+}
+```
+
+### Categories/Delete/{id}
+#### Response
+```json
+{
+	"success": true,
+	"data": [],
+	"message": "Categorie törölve"
+}
+```
+
+### Products/Categories/{product name}
+#### Response
+```json
+{
+	"success": true,
+	"data": [
+		{
+			"id": 4,
+			"name": "Kumara",
+			"price": 15342,
+			"details": "New kwyboard",
+			"image": "assets\/images\/redragon_k552kumara.png",
+			"inStock": 9,
+			"brand_id": "Redragon",
+			"categorie_id": "Keyboard"
+		}
+	],
+	"message": "OK"
+}
+```
+
+### Products/Brands/{brand name}
+#### Response
+```json
+{
+	"success": true,
+	"data": [
+		{
+			"id": 1,
+			"name": "k552",
+			"price": 63035,
+			"details": "new Headset",
+			"image": "img\/product.png",
+			"inStock": 9,
+			"brand_id": "Redragon",
+			"categorie_id": "Keyboard"
+		}
+	],
+	"message": "OK"
+}
+```
+
+### cartItems/show
+#### Response
+```json
+{
+	"success": true,
+	"data": [
+		{
+			"id": 1,
+			"quantity": 4,
+			"Productname": "stinger",
+			"description": "new Headset",
+			"price": 63035,
+			"image": "img\/product.png",
+			"product_id": 1,
+			"user_id": "David33"
+		}
+	],
+	"message": "OK"
+}
+```
+
+### cartItems/delete/{id}
+#### Response
+```json
+{
+	"success": true,
+	"data": [],
+	"message": "Product törölve"
+}
+```
+
+### Users/Show
+#### Response
+```josn
+{
+	"success": true,
+	"data": [
+		{
+			"id": 1,
+			"name": "David",
+			"email": "david@gmail.com",
+			"address": "Magyary László utca 6",
+			"admin": "2023-02-10 09:07:28",
+			"created": "2023-02-10T09:05:08.000000Z",
+			"updated": "2023-02-10T09:07:28.000000Z"
+		},
+		{
+			"id": 3,
+			"name": "Bence",
+			"email": "davi@gmail.com",
+			"address": "Magyary László utca 6",
+			"admin": "2023-03-02 06:07:54",
+			"created": "2023-03-01T06:24:55.000000Z",
+			"updated": "2023-03-02T06:07:54.000000Z"
+		}
+	],
+	"message": "OK"
+}
+```
+
+### Users/Delete/{id}
+#### Response
+```json
+{
+	"success": true,
+	"data": [],
+	"message": "User törölve"
+}
+```
+
+### sendEmail
+#### Response
+```json
+Html response:
+Email was sent
+```
+
+### Emails
+#### Response
+```json
+{
+	"success": true,
+	"data": [
+		{
+			"SubscribedEmail": "davidbarathgamer@gmail.com"
+		},
+		{
+			"SubscribedEmail": "davidbarath@gmail.com"
+		}
+	],
+	"message": ""
+}
+```
+
+
 
 
 
