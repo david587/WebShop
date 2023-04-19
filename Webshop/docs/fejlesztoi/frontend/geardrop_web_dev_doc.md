@@ -259,3 +259,16 @@ Ez a metódus a kijelentkezést kezeli.
 #### onClickToggle metódus
 
 Ez a metódus az navVisible változó értékét állítja be true-ra vagy false-ra, attól függően, hogy az érték korábban false vagy true volt. Ennek eredményeként a navigációs menü kinyílhat vagy bezárhat.
+
+
+### ProductComponent osztály
+
+Ez az osztály a Products oldalon lévő termékek egyikére kattintva átnavigál egy külön oldalra, ahol az adott termék nagyított képét és leírását találjuk, valamint a termékekkel kapcsolatos lehetőségeket igénybe vehetjük (pl: kosárba tétel).
+
+#### addToCart metódus
+
+Ez a metódus hozzáad egy terméket a kosárhoz azonosító alapján.
+
+#### showMessage metódus
+
+Ez a metódus megjeleníti az üzenetet a felhasználónak, majd eltávolítja azt a megadott időtartam után.
