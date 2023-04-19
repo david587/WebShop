@@ -304,3 +304,15 @@ Ez a metódus megjeleníti az üzenetet a felhasználónak, majd eltávolítja a
 #### getProduct metódus
 
 Ez a metódus lekéri az egyik termék adatait, majd átirányítja az adott termék oldalára.
+
+### SigninComponent osztály
+
+Ez az osztály felel e bejelentkezésért
+
+#### login metódus
+
+Ez a metódus az email és a jelszó bekérésével bejelentkezteti a regisztrált felhasználót.
+
+#### showMessage metódus
+
+Ez a metódus megjeleníti az üzenetet a felhasználónak, majd eltávolítja azt a megadott időtartam után.
