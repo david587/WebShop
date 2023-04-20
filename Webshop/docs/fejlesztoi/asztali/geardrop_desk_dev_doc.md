@@ -10,7 +10,14 @@ Angular CLI: 15.0.3
 Node: 18.10.0 
 Package Manager: npm 8.19.2
 Electron: 
+Bootstrap: 5.3
 
+## Projekt elindítása
+
+## desktop
+  - 'npm install' a node könyvtár létrehozása
+  - 'ng serve' a szerver leindítása
+  - 'npm start' az electron az asztali alkalmazás indítása
 
 ## Felépítés
 
@@ -59,18 +66,78 @@ admin/
   Vizuális komponensek:
   
   * app.component.html - 
-  * brands.omponent.html
-  * categories.component.html
-  * dashboard.component.html
-  * email.component.html
-  * login.component.html
-  * navbar.component.html
-  * user.component.html
+  * brands.omponent.html - termékek márkái láthatóak
+  * categories.component.html - termékek karegóriái láthatóak
+  * dashboard.component.html - fő oldal
+  * email.component.html - hírlevelek kiküldése
+  * login.component.html - bejelentkezési felület
+  * navbar.component.html - navigáció oldalak között
+  * user.component.html - felhasználók láthatóak
   
   Nem vizuális komponensek:
   
-   * api.service.ts
-   * auth.service.ts
-   * emitter.service.ts
+   * api.service.ts - termékek, felhasználók, márkák, katekoriák, emailek kezelése
+   * auth.service.ts - Azonosítás
+   * emitter.service.ts - ?
+
+
+  ### getProducts metódus
+  
+  Ez a metódus felel a termékek megjelenitéséért, url az apihost változóból és az endpoint változóból állössze. A Rest Api a 'Products' végponttal érie, get metódust     használ 
+  
+  ### addProduct metódus
+  
+  ### deleteProduct metódus
+  
+  ### updateProduct metódus
+  
+  ### getUsers metódus
+  
+  ### giveAdmin metódus
+  
+  ### getEmails metódus
+  
+  ### sendEmail metódus
+  
+  Ez a metódus felel a hirlevél kiküldésééret a feliratkozott email címekre 
+  
+  ### deleteUser metódus
+  
+  ### getBrands metódus
+  
+  ### addBrand metódus
+  
+  ### deleteBrand metódus
+  
+  ### getCategories metódus
+  
+  ### addCategorie metódus
+  
+  ### deleteCategorie metódus
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
