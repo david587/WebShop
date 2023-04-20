@@ -81,39 +81,39 @@ admin/
    * emitter.service.ts - ?
 
 
-  ### getProducts metódus
+  #### getProducts metódus
   
   Ez a metódus felel a termékek megjelenitéséért, url az apihost változóból és az endpoint változóból állössze. A Rest Api a 'Products' végponttal érie, get metódust     használ 
   
-  ### addProduct metódus
+  #### addProduct metódus
   
-  ### deleteProduct metódus
+  #### deleteProduct metódus
   
-  ### updateProduct metódus
+  #### updateProduct metódus
   
-  ### getUsers metódus
+  #### getUsers metódus
   
-  ### giveAdmin metódus
+  #### giveAdmin metódus
   
-  ### getEmails metódus
+  #### getEmails metódus
   
-  ### sendEmail metódus
+  #### sendEmail metódus
   
   Ez a metódus felel a hirlevél kiküldésééret a feliratkozott email címekre 
   
-  ### deleteUser metódus
+  #### deleteUser metódus
   
-  ### getBrands metódus
+  #### getBrands metódus
   
-  ### addBrand metódus
+  #### addBrand metódus
   
-  ### deleteBrand metódus
+  #### deleteBrand metódus
   
-  ### getCategories metódus
+  #### getCategories metódus
   
-  ### addCategorie metódus
+  #### addCategorie metódus
   
-  ### deleteCategorie metódus
+  #### deleteCategorie metódus
   
   
   
