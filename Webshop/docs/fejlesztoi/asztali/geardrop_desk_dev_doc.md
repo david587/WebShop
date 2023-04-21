@@ -4,13 +4,12 @@
 
 ## Felhasznált technológiák:
 
-OS: win32 x64
-
-Angular CLI: 15.0.3 
-Node: 18.10.0 
-Package Manager: npm 8.19.2
-Electron: 
-Bootstrap: 5.3
+  - OS: win32 x64
+  - Angular CLI: 15.0.3 
+  - Node: 18.10.0 
+  - Package Manager: npm 8.19.2
+  - Electron: 
+  - Bootstrap: 5.3
 
 ## Projekt elindítása
 
