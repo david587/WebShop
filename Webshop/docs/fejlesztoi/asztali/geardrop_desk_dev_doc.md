@@ -78,7 +78,7 @@ admin/
   
    * api.service.ts - termékek, felhasználók, márkák, katekoriák, emailek kezelése
    * auth.service.ts - Azonosítás
-   * emitter.service.ts - ?
+   * emitter.service.ts - komponensek kommunikációjához szükséges
 
 
   #### getProducts metódus
