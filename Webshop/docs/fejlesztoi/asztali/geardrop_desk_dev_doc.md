@@ -80,11 +80,15 @@ admin/
    * emitter.service.ts - komponensek kommunikációjához szükséges
 
 
+  ### api service metodusai
+
   #### getProducts metódus
   
-  Ez a metódus felel a termékek megjelenitéséért, url az apihost változóból és az endpoint változóból állössze. A Rest Api a 'Products' végponttal érie, get metódust     használ 
+  Ez a metódus felel a termékek megjelenitésért felel, url az apihost változóból és az endpoint változóból állössze. A Rest Api a 'Products' végponttal érie, get metódust használ 
   
   #### addProduct metódus
+  
+   Ez a metódus felel az új termék felvételért, 
   
   #### deleteProduct metódus
   
@@ -98,7 +102,7 @@ admin/
   
   #### sendEmail metódus
   
-  Ez a metódus felel a hirlevél kiküldésééret a feliratkozott email címekre 
+ 
   
   #### deleteUser metódus
   
@@ -116,8 +120,13 @@ admin/
   
   
   
+  ### auth service metodusai
   
+  #### login
   
+  #### logout
+  
+  ####  isLoggedIn
   
   
   
