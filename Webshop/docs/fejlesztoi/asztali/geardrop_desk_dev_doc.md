@@ -84,40 +84,63 @@ admin/
 
   #### getProducts metódus
   
-  Ez a metódus felel a termékek megjelenitésért felel, url az apihost változóból és az endpoint változóból állössze. A Rest Api a 'Products' végponttal érie, get metódust használ 
+   A metódus felel a termékek megjelenitésért felel, url az apihost változóból és az endpoint változóból állössze. A Rest Api a 'Products' végponttal érie, get metódust használ 
   
   #### addProduct metódus
   
-   Ez a metódus felel az új termék felvételért, 
+   A metódus felel az új termék felvételért, url az apihost változóból és az endpoint változóból állössze. A Rest Api a 'Products/Store' végponttal érie, post metódust használ, szükséges az azonosítás.
   
   #### deleteProduct metódus
   
+  A metódus felel az adott termék töréséért id alapján, url az apihost változóból és az endpoint változóból "/" plusz az adott termék id ból állössze. A Rest Api a 'Products/Delete' végponttal érie, delete metódust használ, szükséges az azonosítás.
+  
   #### updateProduct metódus
+  
+  A metódus felel a már meglévő retmékek módositásáért, url az apihost változóból és az endpoint plusz az adott termék id ából változóból állössze. A Rest Api a 'Products/Update' végponttal érie, post metódust használ, szükséges az azonosítás.
   
   #### getUsers metódus
   
-  #### giveAdmin metódus
+  A metódus felel a felhasználók megjelenítéséért, url az apihost változóból és az endpoint változóból állössze. A Rest Api a 'Users/Show' végponttal érie, get metódust használ, szükséges az azonosítás.
+  
+  #### giveAdmin metódus 
+  
+  A metódus felel az admin jog adásért, url az apihost változóból és az endpoint plusz az id ból változóból állössze. A Rest Api a 'Users/Admin' végponttal érie, post metódust használ, szükséges az azonosítás.
   
   #### getEmails metódus
   
+  A metódus felel az email-ek megjelenitésért, url az apihost változóból és az endpoint változóból állössze. A Rest Api a 'Emails' végponttal érie, get metódust használ, szükséges az azonosítás.
+  
   #### sendEmail metódus
   
- 
+   A metódus felel a hírlevelek kiküldéséért, url az apihost változóból és az endpoint változóból állössze. A Rest Api a 'sendEmail' végponttal érie, get metódust használ, szükséges az azonosítás.
   
   #### deleteUser metódus
   
+  A metódus felel a felhasználó törléséért id alapján,  url az apihost változóból és az endpoint változóból "/" plusz az adott felhasználó id ából állössze. A Rest Api a 'Users/Delete' végponttal érie, delete metódust használ, szükséges az azonosítás.
+  
   #### getBrands metódus
+  
+  A metódus felel a márkák megjelenitéséért, url az apihost változóból és az endpoint változóból állössze. A Rest Api a 'Brands/Index' végponttal érie, get metódust használ, szükséges az azonosítás.
   
   #### addBrand metódus
   
+   A metódus felel a új márka hozzáadáséet,  url az apihost változóból és az endpoint változóból állössze. A Rest Api a 'Brands/Store' végponttal érie, post metódust használ, szükséges az azonosítás.
+  
   #### deleteBrand metódus
+  
+  A metódus felel a mátka törléséért, url az apihost változóból és az endpoint "/" plusz az adott márka id ából állössze. A Rest Api a 'Brands/Delete' végponttal érie, delete metódust használ, szükséges az azonosítás.
   
   #### getCategories metódus
   
+   A metódus felel a kategotiák megjelenitéséért, url az apihost változóból és az endpoint változóból állössze. A Rest Api a 'Categories/Index' végponttal érie, get metódust használ, szükséges az azonosítás.
+  
   #### addCategorie metódus
+  
+   A metódus felel a új katekoria hozzáadáséet,  url az apihost változóból és az endpoint változóból állössze. A Rest Api a 'Categories/Store' végponttal érie, post metódust használ, szükséges az azonosítás.
   
   #### deleteCategorie metódus
   
+   A metódus felel a kategoria törléséért, url az apihost változóból és az endpoint "/" plusz az adott márka id ából állössze. A Rest Api a 'Categories/Delete' végponttal érie, delete metódust használ, szükséges az azonosítás.
   
   
   ### auth service metodusai
