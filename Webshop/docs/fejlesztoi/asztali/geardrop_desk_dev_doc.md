@@ -84,11 +84,11 @@ admin/
 
   #### getProducts metódus
   
-   A metódus felel a termékek megjelenitésért felel, url az apihost változóból és az endpoint változóból állössze. A Rest Api a 'Products' végponttal érie, get metódust használ 
+   A metódus felel a termékek megjelenitésért felel, url az apihost változóból és az endpoint változóból állössze. A Rest Api a 'Products' végponttal érie, get metódust használ. Visszatérési érték <any>, amely azt jelzi, hogy a metódus bármilyen típusú választ képes visszaadni
   
   #### addProduct metódus
   
-   A metódus felel az új termék felvételért, url az apihost változóból és az endpoint változóból állössze. A Rest Api a 'Products/Store' végponttal érie, post metódust használ, szükséges az azonosítás.
+   A metódus felel az új termék felvételért, url az apihost változóból és az endpoint változóból állössze. A Rest Api a 'Products/Store' végponttal érie, post metódust használ, szükséges a token azonosítás.
   
   #### deleteProduct metódus
   
