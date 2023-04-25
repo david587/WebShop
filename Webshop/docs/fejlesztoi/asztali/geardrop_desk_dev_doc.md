@@ -84,7 +84,9 @@ admin/
 
   #### getProducts metódus
   
-   A metódus felel a termékek megjelenitésért felel, url az apihost változóból és az endpoint változóból állössze. A Rest Api a 'Products' végponttal érie, get metódust használ. Visszatérési érték <any>, amely azt jelzi, hogy a metódus bármilyen típusú választ képes visszaadni
+   - A metódus felel a termékek megjelenitésért felel, url az apihost változóból és az endpoint változóból állössze. A Rest Api a 'Products' végponttal érie, get metódust használ.
+   - Nincsenek bemeneti paraméterek a metódusban.
+   - Visszatérési érték <any>, amely azt jelzi, hogy a metódus bármilyen típusú választ képes visszaadni
   
   #### addProduct metódus
   
