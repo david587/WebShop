@@ -177,7 +177,15 @@ admin/
   
   #### login
   
+  * A metódus felel az admin bejelentkezéséért, url az apihost változóból és az endpoint változóbólából állössze.A Rest Api a 'login' végponttal érie, post metódust használ.
+  *  Paraméterek: 'email: string', 'pass: string': Az 'email' bemeneti paraméter tartalmazza az admin email címét, 'pass' bemeneti paraméter tartalmazza az admin jelszavát.
+  * Visszatérési érték: 'post' metódus típusa 'any', amely azt jelzi, hogy a metódus bármilyen típusú választ képes visszaadni.
+  
   #### logout
+ 
+  *  A metódus felel az admin kijelentkeztetéséért, url az apihost változóból és az endpoint változóbólából állössze.A Rest Api a 'LogOut' végponttal érie, post metódust használ.
+  *  Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+  *  
   
   ####  isLoggedIn
   
