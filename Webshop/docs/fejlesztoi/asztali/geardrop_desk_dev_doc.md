@@ -190,9 +190,18 @@ admin/
   
   ####  isLoggedIn
   
-  * 
+  * A metódus azt nézi hogy be van e jelentkezve az admin vagy nincs.
   * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
   * Visszatérési: egy boolean értékkel tér vissza, ami azt jelzi, hogy a felhasználó be van-e jelentkezve vagy sem.
+  
+  ### emitter service metodusai:
+  
+  * Két komponens kommunikációját hoza létre
+  
+  #### onButton
+  
+  * A medódus létre hozza az event meit metódust és ezzel tud kommunikálmi két metódus.
+  
   
   
   
