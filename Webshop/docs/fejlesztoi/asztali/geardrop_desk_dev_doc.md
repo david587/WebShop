@@ -185,9 +185,13 @@ admin/
  
   *  A metódus felel az admin kijelentkeztetéséért, url az apihost változóból és az endpoint változóbólából állössze.A Rest Api a 'LogOut' végponttal érie, post metódust használ.
   *  Paraméter: Nincsenek bemeneti paraméterek a metódusban.
-  *  
+  *  Visszatérési érték: 'post' metódus típusa 'any', amely azt jelzi, hogy a metódus bármilyen típusú választ képes visszaadni.
   
   ####  isLoggedIn
+  
+  * 
+  * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+  * Visszatérési: egy boolean értékkel tér vissza, ami azt jelzi, hogy a felhasználó be van-e jelentkezve vagy sem.
   
   
   
