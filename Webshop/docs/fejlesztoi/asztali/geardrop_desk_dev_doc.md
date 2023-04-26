@@ -192,7 +192,7 @@ admin/
   
   * A metódus azt nézi hogy be van e jelentkezve az admin vagy nincs.
   * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
-  * Visszatérési: egy boolean értékkel tér vissza, ami azt jelzi, hogy a felhasználó be van-e jelentkezve vagy sem.
+  * Visszatérési érték: egy boolean értékkel tér vissza, ami azt jelzi, hogy a felhasználó be van-e jelentkezve vagy sem.
   
   ### emitter service metodusai:
   
@@ -201,6 +201,63 @@ admin/
   #### onButton
   
   * A medódus létre hozza az event meit metódust és ezzel tud kommunikálmi két metódus.
+
+ ### brands service metodusai:
+ 
+ #### külső paraméterek:
+ 
+ * 'brandForm: FormGroup': Egy FormGroup objektum, amely a brand adatokat tartalmazza.
+ * 'brands: any[]': Egy tömb, amely tartalmazza a márka adatokat.
+ * 'message: any': Egy változó, amely tárolja a üzenetet a sikeres műveletek során.
+ * 'errmess: any': Egy változó, amely tárolja a hibaüzenetet sikertelen műveletek esetén.
+
+ #### constructor paraméterei:
+ 
+ * 'api: ApiService': Egy szolgáltatás osztály példánya, amely az API kommunikációt végzi.
+ * 'formBuilder: FormBuilder': Egy FormBuilder objektum, amelyet a brandForm FormGroup létrehozásához használunk.
+ * 'ngZone: NgZone': Egy NgZone objektum, amelyet a showMessage metódus futtatásához használunk.
+ 
+ #### ngOnInit metódus
+ 
+ * Az Angular metódusa, amely az osztály példányosításakor hívódik meg. Itt inicializáljuk a brandForm-ot és meghívjuk a getBrands 
+ * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+ * Visszatérési érték: Nincek visszatérési érték.
+ 
+ #### getBrands metódus
+ 
+ * Lekéri a márkákat az API segítségével és beállítja az eredményt a brands tömbbe. Ezen kívül meghívja a showMessage metódust.
+ * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+ * Visszatérési érték: Nincek visszatérési érték.
+ 
+ #### onClick metódus
+ 
+ * A gombra kattintva meghívja az 'addBrand' metódus.
+ * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+ * Visszatérési érték: Nincek visszatérési érték.
+ 
+ #### addBrand metódus
+ 
+ * Hozzáad egy új márkát az API-n keresztül a brandForm űrlapban megadott érték alapján. Az adatokat elküldi a api.addBrand() metódusnak és megfigyeli a választ.
+ * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+ * Visszatérési érték: Nincek visszatérési érték.
+ 
+ #### clearField metódus
+ 
+ * Törli a brandForm mező értékét.
+ * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+ * Visszatérési érték: Nincek visszatérési érték.
+ 
+ #### deleteBrand metódus
+ 
+ * Törli a megadott azonosítójú márkát az API-n keresztül. Beállítja az üzenetet, majd meghívja a getBrands és a showMessage metódusokat
+ * Paraméter: id: number - A törlendő márkát azonosítója.
+ * Visszatérési érték: Nincek visszatérési érték.
+ 
+ #### showMessage metódus
+ 
+ * Beállítja az üzenetet vagy hibaüzenetet, majd a ngZone segítségével beállít egy időzítést, amely 4 másodperc múlva törli az üzenetet és az errmess változó értékét.
+ * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+ * Visszatérési érték: Nincek visszatérési érték.
   
   
   
