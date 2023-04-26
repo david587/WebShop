@@ -8,19 +8,20 @@
   - Angular CLI: 15.0.3 
   - Node: 18.10.0 
   - Package Manager: npm 8.19.2
-  - Electron: 
+  - Electron
   - Bootstrap: 5.3
 
 ## Projekt elindítása
 
 ## desktop
+
   - 'npm install' a node könyvtár létrehozása
   - 'ng serve' a szerver leindítása
   - 'npm start' az electron az asztali alkalmazás indítása
 
 ## Felépítés
 
-### Könyvtárszerkezet:
+### Könyvtárszerkezet
 
 ```txt
 admin/
