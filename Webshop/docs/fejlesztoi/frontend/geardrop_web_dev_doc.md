@@ -19,6 +19,8 @@ Tailwind css:
 
 ## Projekt elindítása
 
+### git clone https://github.com/david587/Webshop
+
 ### WebshopBackend
     - composer install, hogy létre hozzuk a vendor mappát
     - .env mappa létrehozása
