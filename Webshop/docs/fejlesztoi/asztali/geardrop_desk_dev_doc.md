@@ -204,14 +204,14 @@ admin/
 
  ### brands service metodusai:
  
- #### külső paraméterek:
+ #### külső paraméterek
  
  * 'brandForm: FormGroup': Egy FormGroup objektum, amely a brand adatokat tartalmazza.
  * 'brands: any[]': Egy tömb, amely tartalmazza a márka adatokat.
  * 'message: any': Egy változó, amely tárolja a üzenetet a sikeres műveletek során.
  * 'errmess: any': Egy változó, amely tárolja a hibaüzenetet sikertelen műveletek esetén.
 
- #### constructor paraméterei:
+ #### constructor paraméterei
  
  * 'api: ApiService': Egy szolgáltatás osztály példánya, amely az API kommunikációt végzi.
  * 'formBuilder: FormBuilder': Egy FormBuilder objektum, amelyet a brandForm FormGroup létrehozásához használunk.
@@ -259,8 +259,61 @@ admin/
  * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
  * Visszatérési érték: Nincek visszatérési érték.
   
+  ### brands service metodusai:
   
+  #### külső paraméterek
+   
+  * 'message: any': Egy változó, amely tárolja a üzenetet a sikeres műveletek során.
+  * 'errmess: any': Egy változó, amely tárolja a hibaüzenetet sikertelen műveletek esetén.
   
+  #### constructor paraméterei
+  
+  * 'api: ApiService': Egy példány az ApiService osztályból, amely a kategóriákkal kapcsolatos API hívásokat kezeli.
+  * 'formBuilder': FormBuilder: Egy példány a FormBuilder osztályból, amely segítséget nyújt a formok kezeléséhez.
+  * 'ngZone: NgZone': Egy példány az NgZone osztályból, amely segítséget nyújt a változások aszinkron módon történő frissítéséhez az Angular környezetben.
+
+  
+  #### ngOnInit metódus
+  
+  * Ez a metódus az Angular életciklus hook-jának része, és akkor hívódik meg, amikor a CategoriesComponent inicializálódik.
+  * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+  * Visszatérési érték: Nincek visszatérési érték.
+  
+  #### getCategories metódus
+  
+  * Ez a metódus lekéri a kategóriákat az api.getCategories() metódus segítségével, majd beállítja a kategóriák tömbjét és megjeleníti az üzenetet.
+  * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+  * Visszatérési érték: Nincek visszatérési érték.
+  
+  #### onClick metódus
+  
+  * Ez a metódus meghívja az addCategories() metódust.
+  * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+  * Visszatérési érték: Nincek visszatérési érték.
+  
+  #### addCategories metódus
+  
+  * Ez a metódus hozzáad egy új kategóriát a megadott adatok alapján a this.api.addCategorie() metódus segítségével. Ezután törli a mező tartalmát, frissíti a kategóriákat és megjeleníti az üzenetet.
+  * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+  * Visszatérési érték: Nincek visszatérési érték.
+   
+  #### clearField metódus
+  
+  * Ez a metódus törli a mező tartalmát a this.categorieForm mező inCategorie értékének üres stringre állításával.
+  * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+  * Visszatérési érték: Nincek visszatérési érték.
+  
+  #### deleteCategorie metódus
+  
+  * Ez a metódus törli a kategóriát a megadott azonosító alapján a this.api.deleteCategorie(id) metódus segítségével. Ezután frissíti a kategóriákat és megjeleníti az üzenetet.
+  * Paraméter: 'id: number' A törlendő kategória azonosítója.
+  * Visszatérési érték: Nincek visszatérési érték.
+  
+  #### showMessage metódus
+  
+  * Ez a metódus beállítja a message és errmess mezőket üres stringre a ngZone.run() metódus segítségével, majd 4 másodperc múlva törli az üzeneteket.
+  * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+  * Visszatérési érték: Nincek visszatérési érték.
   
   
   
