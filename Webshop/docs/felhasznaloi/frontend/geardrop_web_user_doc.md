@@ -14,6 +14,8 @@ Tailwind css: @tailwind base; @tailwind components; @tailwind utilities;
 
 ## Projekt elindítása
 
+### git clone https://github.com/david587/Webshop
+
 ### WebshopBackend
 
 - composer install, hogy létre hozzuk a vendor mappát
@@ -25,6 +27,10 @@ Tailwind css: @tailwind base; @tailwind components; @tailwind utilities;
 
 - npm install, a node könyvtár létrehozásához
 - ng serve, a szerver elindítása
+
+### Home Page
+
+A főoldal az első lap, ami megjelenik számunkra. Lehetőségünk van átnavigálni a többi oldalra. Az első két gomb a Buy Now (a kosárba navigál), Show All (a termékek oldalára navigál), majd négy random terméket jelenít meg az oldal amiket itt a kosarunkba tudunk tenni. A View More gomb is a termékek oldalra navigál, és végül a hírlevélre való feliratkozás áll módunkban. Az emali cím beírását követően és a submit gombra kattintva kapunk egy üdvözlő emailt.
 
 
 
