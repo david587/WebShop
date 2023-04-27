@@ -315,8 +315,23 @@ admin/
   * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
   * Visszatérési érték: Nincek visszatérési érték.
   
-  
-  
+   ### dashboard service metodusai:
+ 
+ #### külső paraméterek
+ 
+  * 'name: any': Ez a változó tárolja a "name" értékét a localStorage-ból.
+
+#### ngOnInit metódus
+
+  * Ez a metódus az Angular életciklus hook-jának része, és akkor hívódik meg, amikor a DashboardComponent inicializálódik. Ebben az esetben a metódus meghívja a getname() metódust.
+  * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+  * Visszatérési érték: Nincek visszatérési érték.
+
+#### getname metódus
+
+  * Ez a metódus a localStorage-ból lekéri a "name" kulcshoz tartozó értéket, majd beállítja azt a "name" nevű változóban.
+  * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+  * Visszatérési érték: Nincek visszatérési érték.
   
   
   
