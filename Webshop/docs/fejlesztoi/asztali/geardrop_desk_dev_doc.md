@@ -378,19 +378,54 @@ admin/
   
   #### constructor paraméterei
   
-  #### ngOnInit
+  * 'formBuilder: FormBuilder': A FormBuilder osztály egy példánya, amelyet a komponens használ az űrlap létrehozásához és kezeléséhez.
+  * 'auth: AuthService': Az AuthService osztály egy példánya, amelyet a komponens használ a bejelentkezési műveletek végrehajtásához és az autentikációhoz.
+  * 'router: Router': A Router osztály egy példánya, amelyet a komponens használ a navigációhoz és az útvonalak kezeléséhez.
+  * 'emit: EmitterService': Az EmitterService osztály egy példánya, amelyet a komponens használ az események kibocsátásához.
+  
+  #### ngOnInit metódus
   
   * Ez a metódus az Angular életciklus hook-jának része, és akkor hívódik meg, amikor a LoginComponent inicializálódik. Ebben az esetben a metódus létrehozza a loginForm űrlapot a formBuilder segítségével.
   * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
   * Visszatérési érték: Nincek visszatérési érték.
   
-  #### login
+  #### login metódus
   
   * Ez a metódus végrehajtja a bejelentkezést. Az email és jelszó adatokat kiolvassa a loginForm űrlapból, majd meghívja az auth.login(email, pass) metódust, hogy azonosító adatokat küldjön az authentikációs szolgáltatásnak. Az eredménytől függően a megfelelő műveleteket hajtja végre, például a token és a felhasználó nevének tárolása a localStorage-ban, az űrlap törlése, a dashboard oldalra navigálás és egy esemény kibocsátása.
   * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
   * Visszatérési érték: Nincek visszatérési érték.
+
+ ### email service metodusai:
   
+  #### külső paraméterek
   
+  * 'loginVisible:any': Ez a változó tárolja, hogy a bejelentkezési gomb látható-e a navigációs sávban.
+  * 'logoutVisible:any': Ez a változó tárolja, hogy a kijelentkezési gomb látható-e a navigációs sávban.
+
+  #### constructor paraméterei
+  
+  * 'auth: AuthService': Az AuthService osztály egy példánya, amelyet a komponens használ a bejelentkezési és kijelentkezési műveletek végrehajtásához és az autentikációhoz.
+  * 'router: Router': A Router osztály egy példánya, amelyet a komponens használ a navigációhoz és az útvonalak kezeléséhez.
+  * 'emit: EmitterService': Az EmitterService osztály egy példánya, amelyet a komponens használ az események kibocsátásához.
+  
+  #### ngOnInit metódus
+  
+  * Ez a metódus az Angular életciklus hook-jának része, és akkor hívódik meg, amikor a NavbarComponent inicializálódik. Ebben az esetben a metódus feliratkozik az emit eseményre, és amikor az esemény bekövetkezik, meghívja a hideAuth() metódust.
+  * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+  * Visszatérési érték: Nincek visszatérési érték.
+  
+  #### hideAuth metódus
+  
+  * Ez a metódus eldönti, hogy a bejelentkezési és kijelentkezési gombok láthatóak-e a navigációs sávban. Ha a localStorage-ban van token tárolva, akkor a kijelentkezési gomb lesz látható, különben a bejelentkezési gomb. A loginVisible és logoutVisible változók értékét ennek megfelelően állítja be.
+  * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+  * Visszatérési érték: Nincek visszatérési érték.
+  
+  #### logout metódus
+  
+  * Ez a metódus kijelentkezést hajt végre. Meghívja az auth.logout() metódust, ami törli a token-t a localStorage-ból. Ezután a logoutVisible változót hamisra állítja, és a loginVisible változót igazra állítja. Végül kiírja a token értékét a konzolra.
+  * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+  * Visszatérési érték: Nincek visszatérési érték.
+   
   
   
   
