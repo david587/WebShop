@@ -426,6 +426,59 @@ admin/
   * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
   * Visszatérési érték: Nincek visszatérési érték.
    
+   ### email service metodusai:
+  
+  #### külső változók
+  
+  * 'productForm !: FormGroup': Ez a FormGroup objektum a termék űrlapjához tartozó form csoportot reprezentálja, amely tartalmazza a termék adatait (név, ár, részletek, kép stb.).
+  * 'editForm !: FormGroup': Ez a FormGroup objektum a szerkesztett termék űrlapjához tartozó form csoportot reprezentálja, amely tartalmazza a szerkesztett termék adatait (név, ár, részletek, kép stb.).
+  * 'products:any = []': Ez az any[] típusú változó tárolja a termékek tömbjét.
+  * 'message!:any': Ez az any típusú változó tárolja a üzenetet, amelyet meg kell jeleníteni a felhasználónak.
+  * 'errmess: any': Ez az any típusú változó tárolja a hibaüzenetet, amelyet meg kell jeleníteni a felhasználónak.
+  
+   #### constructor paraméterei
+   
+   * 'api: ApiService': Az ApiService osztály egy példánya, amelyet a komponens használ az adatok lekérdezéséhez, hozzáadásához, törléséhez és frissítéséhez.
+   * 'formBuilder: FormBuilder': A FormBuilder osztály egy példánya, amelyet a komponens használ űrlapok létrehozásához és kezeléséhez.
+   * 'ngZone: NgZone': Az NgZone osztály egy példánya, amelyet a komponens használ az aszinkron műveletek kezeléséhez.
+   
+   #### ngOnInit metódus
+   
+   * Ez a metódus az OnInit interfész része, és a komponens inicializálásakor fut le. A metódus létrehozza a productForm és editForm FormGroup-okat, beállítja az alapértelmezett értékeket, és meghívja a getProducts metódust az adatok lekérdezéséhez.
+   
+   #### showMessage metódus
+   
+   * Ez a metódus a üzenetek (message és errmess) kezelésére szolgál. Beállítja a message és errmess változókat üres értékre, amelyeket a felhasználói felületen megjelenítünk. A metódus a ngZone.run metódust használja az Angular aszinkron műveletek kezelésére, és időzített időzítőt használ a message és errmess értékek törléséhez.
+   
+   #### getProducts metódus
+   
+   *Ez a metódus az ApiService segítségével lekéri a termékek adatait. Az előfizetéses megfigyelőt használja, és a válasz függvényét beállítja a products változóra, majd meghívja a showMessage metódust.
+   
+   #### onClick metódus
+   
+   * Ez a metódus meghívja az addProduct metódust.
+   
+   #### addProduct metódus
+   
+   * Ez a metódus hozzáad egy új terméket az api.addProduct metódus segítségével. Először létrehoz egy data objektumot, amely tartalmazza a termék adatait a productForm FormGroup-ból. Ezután meghívja a clearField metódust, amely törli a productForm mezőit. Az api.addProduct metódust előfizetéses megfigyelővel hívja meg, és a válasz függvényét beállítja a message változóra, majd meghívja a getProducts és showMessage metódusokat.
+   
+   #### clearField metódus
+   
+   * Ez a metódus üríti a productForm mezőit, beállítva azok értékét üresre.
+   
+   #### deleteProduct metódus
+   
+   * Ez a metódus törli a megadott azonosítójú terméket az api.deleteProduct metódus segítségével. Az id paraméterben adja át a termék azonosítóját. Az api.deleteProduct metódust előfizetéses megfigyelővel hívja meg, és a válasz függvényét beállítja a message változóra, majd meghívja a getProducts és showMessage metódusokat.
+   * Paraméter: 'id: number' A törlendő termék azonosítója.
+    
+   #### editProduct metódus
+   
+   * Ez a metódus beállítja az editForm FormGroup mezőinek értékét a megadott termék adataival. A product paraméterben adja át a szerkeszteni kívánt termék objektumot. Az editForm.patchValue metódust használja a mezők értékeinek beállítására.
+   * Paraméter: 'product: any' A szerkeszteni kívánt termék objektuma.
+   
+   #### updateProduct metódus
+   
+   * Ez a metódus frissíti a termék adatait az api.updateProduct metódus segítségével. Először létrehoz egy data objektumot, amely tartalmazza a frissítendő termék adatait az editForm FormGroup mezőiből. Az api.updateProduct metódust előfizetéses megfigyelővel hívja meg, és a válasz függvényét beállítja a message változóra, majd meghívja a getProducts és showMessage metódusokat.
   
   
   
