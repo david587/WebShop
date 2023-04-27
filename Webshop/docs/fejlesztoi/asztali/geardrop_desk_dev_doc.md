@@ -332,8 +332,43 @@ admin/
   * Ez a metódus a localStorage-ból lekéri a "name" kulcshoz tartozó értéket, majd beállítja azt a "name" nevű változóban.
   * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
   * Visszatérési érték: Nincek visszatérési érték.
+
+ ### email service metodusai:
   
+  #### külső paraméterek
   
+  * 'emailForm !: FormGroup': Ez a változó tárolja az email formját.
+  * 'emails:any = []': Ez a változó tárolja az emaileket tömbeb.
+  * 'message!:any': Ez a változó tárolja az üzenetet, amelyet megjelenítünk az email műveletek eredményével kapcsolatban.
+  
+  #### constructor paraméterei
+  
+  * 'api: ApiService': Ez a változó tárolja az ApiService osztály egy példányát, amelyet a komponens használ a HTTP kérések végrehajtásához.
+  * 'ngZone: NgZone': Ez a változó tárolja az NgZone osztály egy példányát, amelyet a komponens használ a zone-ok közötti aszinkronitás kezeléséhez.
+  
+  #### ngOnInit metódus
+  
+  * Ez a metódus az Angular életciklus hook-jának része, és akkor hívódik meg, amikor az EmailComponent inicializálódik. Ebben az esetben a metódus meghívja az getEmails() metódust.
+  * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+  * Visszatérési érték: Nincek visszatérési érték.
+  
+  #### getEmails metódus
+  
+  * Ez a metódus lekéri az emaileket az api.getEmails() metódus segítségével, majd beállítja az "emails" tömböt és megjeleníti az üzenetet.
+  * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+  * Visszatérési érték: Nincek visszatérési érték.
+  
+  #### sendEmail metódus
+  
+  * Ez a metódus elküldi az emailt az api.sendEmail() metódus segítségével. Ha a kérés sikeres, megjeleníti az üzenetet. Ha hiba történik, a "message" változó értékét "sikeresen elküldve!"-re állítja, majd megjeleníti az üzenetet.
+  * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+  * Visszatérési érték: Nincek visszatérési érték.
+  
+  #### showMessage metódus
+  
+  * Ez a metódus beállítja a "message" változót üres stringre a ngZone.run() metódus segítségével, majd 4 másodperc múlva törli az üzenetet.
+  * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+  * Visszatérési érték: Nincek visszatérési érték.
   
   
   
