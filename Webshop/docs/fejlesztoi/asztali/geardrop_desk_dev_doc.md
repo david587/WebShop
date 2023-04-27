@@ -204,7 +204,7 @@ admin/
 
  ### brands service metodusai:
  
- #### külső paraméterek
+ #### külső változók
  
  * 'brandForm: FormGroup': Egy FormGroup objektum, amely a brand adatokat tartalmazza.
  * 'brands: any[]': Egy tömb, amely tartalmazza a márka adatokat.
@@ -261,7 +261,7 @@ admin/
   
   ### brands service metodusai:
   
-  #### külső paraméterek
+  #### külső változók
    
   * 'message: any': Egy változó, amely tárolja a üzenetet a sikeres műveletek során.
   * 'errmess: any': Egy változó, amely tárolja a hibaüzenetet sikertelen műveletek esetén.
@@ -317,7 +317,7 @@ admin/
   
    ### dashboard service metodusai:
  
- #### külső paraméterek
+ #### külső változók
  
   * 'name: any': Ez a változó tárolja a "name" értékét a localStorage-ból.
 
@@ -335,7 +335,7 @@ admin/
 
  ### email service metodusai:
   
-  #### külső paraméterek
+  #### külső változók
   
   * 'emailForm !: FormGroup': Ez a változó tárolja az email formját.
   * 'emails:any = []': Ez a változó tárolja az emaileket tömbeb.
@@ -372,7 +372,7 @@ admin/
   
    ### login service metodusai:
   
-  #### külső paraméterek
+  #### külső változók
   
   * 'loginForm !: FormGroup': Ez a változó tárolja a bejelentkezési űrlapot.
   
@@ -397,7 +397,7 @@ admin/
 
  ### email service metodusai:
   
-  #### külső paraméterek
+  #### külső változók
   
   * 'loginVisible:any': Ez a változó tárolja, hogy a bejelentkezési gomb látható-e a navigációs sávban.
   * 'logoutVisible:any': Ez a változó tárolja, hogy a kijelentkezési gomb látható-e a navigációs sávban.
