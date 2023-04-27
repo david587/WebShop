@@ -370,12 +370,25 @@ admin/
   * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
   * Visszatérési érték: Nincek visszatérési érték.
   
+   ### login service metodusai:
   
+  #### külső paraméterek
   
+  * 'loginForm !: FormGroup': Ez a változó tárolja a bejelentkezési űrlapot.
   
+  #### constructor paraméterei
   
+  #### ngOnInit
   
+  * Ez a metódus az Angular életciklus hook-jának része, és akkor hívódik meg, amikor a LoginComponent inicializálódik. Ebben az esetben a metódus létrehozza a loginForm űrlapot a formBuilder segítségével.
+  * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+  * Visszatérési érték: Nincek visszatérési érték.
   
+  #### login
+  
+  * Ez a metódus végrehajtja a bejelentkezést. Az email és jelszó adatokat kiolvassa a loginForm űrlapból, majd meghívja az auth.login(email, pass) metódust, hogy azonosító adatokat küldjön az authentikációs szolgáltatásnak. Az eredménytől függően a megfelelő műveleteket hajtja végre, például a token és a felhasználó nevének tárolása a localStorage-ban, az űrlap törlése, a dashboard oldalra navigálás és egy esemény kibocsátása.
+  * Paraméter: Nincsenek bemeneti paraméterek a metódusban.
+  * Visszatérési érték: Nincek visszatérési érték.
   
   
   
