@@ -16,7 +16,7 @@ adása és hírlevél elküldése.
 ## Használata
 
 Bejelentkezés, Az admi kap egy személyre szabott felhasználó nevet és jelszót amivel be tud
-jelentkezni.
+jelentkezni, csak ezek után tud müveletek végrehejtani.
 
 Products:  
 
